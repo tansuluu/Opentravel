@@ -8,7 +8,6 @@ import java.util.Date;
 @Entity
 @Table(name = "place")
 public class Place {
-
     @Id
     @GeneratedValue
     @Column(name = "id", nullable = false)
