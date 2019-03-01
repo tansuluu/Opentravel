@@ -47,6 +47,7 @@ public class Place {
         @Column(name = "image", length = 136)
         private String image;
 
+
         public String getImage() {
             return image;
         }
