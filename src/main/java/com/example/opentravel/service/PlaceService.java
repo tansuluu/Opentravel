@@ -18,11 +18,7 @@ public class PlaceService {
     public Place findById(long id){
         return placeRepository.findById(id);
     }
-    public Place updateView(long id,int n){
-        Place place=findById(id);
-        place.setView(place.getView()+n);
-        return save(place);
-    }
+
 
     public Place save(Place place){
         place.setDate(Calendar.getInstance().getTime());
@@ -42,17 +38,7 @@ public class PlaceService {
     public List<Place> findByUsarname(String username){
         return placeRepository.findByUsarname(username);
     }
-    public Place updateLikes(long id, int n){
-        Place place=findById(id);
-        place.setLikes(place.getLikes()+n);
-        return save(place);
-    }
-    public Place updateCommentNum(long id,int n){
-        Place place=findById(id);
-        place.setView(place.getView());
-        place.setComNumber(place.getComNumber()+n);
-        return save(place);
-    }
+
 
     public List<Place> getAll(){
         return placeRepository.getAllByOrderByView();
