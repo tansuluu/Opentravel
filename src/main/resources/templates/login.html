@@ -1,12 +1,149 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Page Title</title>
+	<title>Login V9</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" th:href="@{/folderforlogin/images/icons/favicon.ico}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/folderforlogin/vendor/bootstrap/css/bootstrap.min.css}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/folderforlogin/fonts/font-awesome-4.7.0/css/font-awesome.min.css}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/folderforlogin/fonts/iconic/css/material-design-iconic-font.min.css}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/folderforlogin/vendor/animate/animate.css}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/folderforlogin/vendor/css-hamburgers/hamburgers.min.css}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/folderforlogin/vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/folderforlogin/vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/folderforlogin/vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/folderforlogin/css/util.css">
+	<link rel="stylesheet" type="text/css" href="/folderforlogin/css/main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<!--===============================================================================================-->
 </head>
 <body>
 
-<h1>This is a Heading</h1>
-<p>This is a paragraph.</p>
+
+<div class="container-login100" style="background-image: url('/folderforlogin/images/k1.jpg');">
+	<div class="wrap-login100 p-l-55 p-r-55 p-t-80 p-b-30">
+		<h6><span class="text-success" th:utext="${successMessage}"></span></h6>
+		<form class="login100-form validate-form" th:action="@{/login}" method="post" id="login">
+				<span class="login100-form-title p-b-37">
+					Sign In
+				</span>
+
+			<div class="wrap-input100 validate-input m-b-20" data-validate="Enter email">
+				<input class="input100" type="text" id="email" name="email" placeholder="Email">
+				<span class="focus-input100"></span>
+			</div>
+
+			<div class="wrap-input100 validate-input m-b-25" data-validate = "Enter password">
+				<input class="input100" type="password" id="password" name="password" placeholder="password">
+				<span class="focus-input100"></span>
+			</div>
+
+			<div align="center" th:if="${param.error}">
+				<p style="font-size: 22; color: #FF1C19;">Email or Password invalid, please verify</p>
+			</div>
+
+			<div class="container-login100-form-btn">
+				<button class="login100-form-btn" type="submit">
+					Sign In
+				</button>
+			</div>
+
+			<div class="text-center">
+				<a class="txt2 hov1" th:href="@{/registration}">
+					Sign Up
+				</a>
+			</div>
+            <div class="text-center">
+                <p id="res" >
+                    Forget Password?
+                </p>
+            </div>
+		</form>
+        <div class="login100-form validate-form"  id="reset" style="display: none">
+				<span class="login100-form-title p-b-37" id="resetSuccess">
+					Reset
+				</span>
+
+            <div class="wrap-input100 validate-input m-b-20" data-validate="Enter email" id="em">
+                <span class="focus-input100"></span>
+            </div>
+            <div class="container-login100-form-btn">
+                <button class="login100-form-btn" id="resetButton">
+                    Submit
+                </button>
+            </div>
+
+            <div class="text-center">
+                <a class="txt2 hov1" th:href="@{/login}">
+                    Back to login
+                </a>
+            </div>
+        </div>
+
+
+	</div>
+</div>
+
+
+
+<div id="dropDownSelect1"></div>
+<script>
+    $(document).ready(function() {
+        $('#res').on('click', function () {
+           console.log("helllo");
+           $("#login").hide();
+           $("#em").append("<input class='input100' type='text' name='email' placeholder='Email' required='required' id='emailR'>");
+           $("#reset").show();
+       });
+    $("#resetButton").on("click",function(){
+        console.log("here comment");
+        var text=$("#emailR").val();
+        $.ajax({
+            url:"/resetPassword",
+            type:"GET",
+            data:({email:text}),
+            dataType: 'json',
+            contentType: "application/json",
+            success: funcSuccess
+        });
+        });
+        function funcSuccess(data) {
+            console.log(("ddf"));
+            console.log(data);
+            if(data==1){
+                $("#resetSuccess").text("The email was sent to you, please check it!");
+            }
+        }
+    });
+</script>
+<!--===============================================================================================-->
+<script src="folderforlogin/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+<script src="folderforlogin/vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+<script src="folderforlogin/vendor/bootstrap/js/popper.js"></script>
+<script src="folderforlogin/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+<script src="folderforlogin/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+<script src="folderforlogin/vendor/daterangepicker/moment.min.js"></script>
+<script src="folderforlogin/vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+<script src="folderforlogin/vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+<script src="folderforlogin/js/main.js"></script>
 
 </body>
 </html>
