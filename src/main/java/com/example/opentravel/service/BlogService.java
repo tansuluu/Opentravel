@@ -16,12 +16,6 @@ public class BlogService {
         return blogRepository.findById(id);
     }
 
-    public Blog updateView(long id,int n){
-        Blog blog=findById(id);
-        blog.setView(blog.getView()+n);
-        return save(blog);
-    }
-
     public Blog save(Blog blog){
         blog.setDate(Calendar.getInstance().getTime());
         blog.setSmallText(blog.getText().substring(0,100)+"...");
