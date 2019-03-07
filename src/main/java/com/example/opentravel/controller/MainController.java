@@ -33,11 +33,9 @@ public class MainController {
         ArrayList list= (ArrayList)placeService.getTop3PlaceByOrderByView();
         ArrayList list2=userService.getAllByStatus("gid");
         ArrayList list1=userService.getAllByStatus("tourist");
-        ArrayList list3=(ArrayList)blogService.getTop3PlaceByOrderByView();
         model.addAttribute("places",list);
         model.addAttribute("gids", list2);
         model.addAttribute("tourist", list1);
-        model.addAttribute("blogs", list3);
         return "index";
     }
     @RequestMapping("/about")
