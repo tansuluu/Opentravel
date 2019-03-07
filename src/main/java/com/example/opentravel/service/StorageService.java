@@ -15,6 +15,7 @@ import java.nio.file.Paths;
 public class StorageService {
 
     public static final Path rootApp = Paths.get("upload-dir");
+
     public static final Path avatar = Paths.get("up-avatar");
 
     public void store(MultipartFile file){
