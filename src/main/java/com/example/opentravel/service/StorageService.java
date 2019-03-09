@@ -66,7 +66,7 @@ public class StorageService {
         }
     }
     public Place preStore(MultipartFile f1, MultipartFile f2, MultipartFile f3, Place app){
-        if(!f1.isEmpty()){
+        if(!f1.isEmpty() || f1==null){
             app.setPhoto1(f1.getOriginalFilename());
             store(f1);}
         else
