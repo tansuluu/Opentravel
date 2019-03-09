@@ -30,14 +30,15 @@ public class MainController {
 
     @RequestMapping("/")
     public String index(Model model){
-        ArrayList list= (ArrayList)placeService.getTop3PlaceByOrderByView();
         ArrayList list2=userService.getAllByStatus("gid");
         ArrayList list1=userService.getAllByStatus("tourist");
-        model.addAttribute("places",list);
+        ArrayList list3=(ArrayList)blogService.getTop3PlaceByOrderByView();
         model.addAttribute("gids", list2);
         model.addAttribute("tourist", list1);
+        model.addAttribute("blogs", list3);
         return "index";
     }
+
     @RequestMapping("/about")
     public String about(){
         return "about";
