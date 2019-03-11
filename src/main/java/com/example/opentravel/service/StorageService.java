@@ -1,4 +1,5 @@
 package com.example.opentravel.service;
+import com.example.opentravel.model.Blog;
 import com.example.opentravel.model.Place;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
@@ -71,6 +72,22 @@ public class StorageService {
             store(f1);}
         else
             app.setPhoto1("tur.jpg");
+        if(!f2.isEmpty()){
+            app.setPhoto2(f2.getOriginalFilename());
+            store(f2);}
+        if(!f3.isEmpty()) {
+            app.setPhoto3(f3.getOriginalFilename());
+            store(f3);}
+        return app;
+    }
+
+
+    public Blog preStore(MultipartFile f1, MultipartFile f2, MultipartFile f3, Blog app){
+        if(!f1.isEmpty()){
+            app.setPhoto1(f1.getOriginalFilename());
+            store(f1);}
+        else
+            app.setPhoto1("blogging.jpg");
         if(!f2.isEmpty()){
             app.setPhoto2(f2.getOriginalFilename());
             store(f2);}
