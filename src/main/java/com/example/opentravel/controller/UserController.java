@@ -24,6 +24,7 @@ import java.util.List;
 @Transactional
 public class UserController {
 
+
     @Autowired
     private StorageService storageService;
 
@@ -34,10 +35,47 @@ public class UserController {
     PlaceService placeService;
 
     @RequestMapping("/find")
-    public String find(@RequestParam(name = "input", required = true) String input, Model model) {
-        ArrayList<User> list = userService.findByName(input);
+    public String find(@RequestParam(name = "input",required = true) String input, Model model){
+        ArrayList<User> list=userService.findByName(input);
         model.addAttribute("gids", list);
         return "gids";
+    }
+    @RequestMapping("/userPage")
+    public String showUser(Model model, @RequestParam("username")String email){
+        User user=userService.findUserByEmail(email);
+        List<Place> list=placeService.findByUsarname(email);
+        model.addAttribute("places",list);
+        model.addAttribute("user",user);
+        return "profile";
+    }
+    @GetMapping("/image/{filename:.+}")
+    @ResponseBody
+    public ResponseEntity<Resource> getImage(@PathVariable String filename) {
+        Resource file = storageService.loadFile(filename);
+        String mimeType = "";
+        try {
+            mimeType = Files.probeContentType(file.getFile().toPath());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "filename=\"" + file.getFilename() + "\"")
+                .body(file);
+    }
+    @GetMapping("/up-avatar/{filename:.+}")
+    @ResponseBody
+    public ResponseEntity<Resource> getAvatar(@PathVariable String filename) {
+        Resource file = storageService.loadAvatar(filename);
+        String mimeType = "";
+        try {
+            mimeType = Files.probeContentType(file.getFile().toPath());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println(file.getFilename());
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "filename=\"" + file.getFilename() + "\"")
+                .body(file);
     }
 
 

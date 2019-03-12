@@ -409,13 +409,6 @@
                                 <div style="display: block"><a href="" th:text="${blog.username}">Admin</a></div>
                             </div>
                             <h3 class="heading" th:text="${blog.title}"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-                            <p class="clearfix">
-                                <a th:href="@{/blogInfo(id=${blog.id})}"  class="float-left read">Read more</a>
-                                <a href="" class="float-right meta-chat"  style="padding-right: 8px; padding-left: 8px"><span class="icon-chat"  ></span> <span th:text="${blog.comNumber}"></span></a>
-                                <a href="" class="float-right meta-chat"  style="padding-left:8px"><span class="icon-eye"></span> <span th:text="${blog.view}"></span></a>
-								<a href="" class="float-right meta-chat" style="padding-left: 8px"><span class="icon-heart"></span> <span th:text="${blog.likes}"></span></a>
-
-                            </p>
                         </div>
                     </div>
                 </div>

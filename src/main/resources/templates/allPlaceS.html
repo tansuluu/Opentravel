@@ -190,11 +190,6 @@
               <div class="text text-center order-last">
                 <a th:href="@{/placeInfo(id=${places.get(i).id})}" ><h2 class="heading" th:text="${places.get(i).title}" style="color: #0c5460"></h2></a>
                 <p th:text="${places.get(i).smallText}"> </p>
-                <ul class="post-footer">
-                  <li><a th:href="@{/placeInfo(id=${places.get(i).id})}"  th:text="${' '+places.get(i).likes}" class="icon-heart"></a></li>
-                  <li><a th:href="@{/placeInfo(id=${places.get(i).id})}" th:text="${' '+places.get(i).comNumber}" class="icon-chat"></a></li>
-                  <li><a th:href="@{/placeInfo(id=${places.get(i).id})}" th:text="${' '+places.get(i).view}" class="icon-eye"></a></li>
-                </ul>
               </div>
             </div>
           </div>

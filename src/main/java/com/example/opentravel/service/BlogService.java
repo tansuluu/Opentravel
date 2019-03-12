@@ -36,5 +36,9 @@ public class BlogService {
         listTop.add(list.get(2));
         return listTop;
     }
+    public List<Blog> getAll() {
+        return blogRepository.getAllByOrderByView();
+    }
+
 
 }
