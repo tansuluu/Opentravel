@@ -96,4 +96,9 @@ public class PlaceController {
         placeService.delete(id);
         return "redirect:/places";
     }
+    @RequestMapping("/updateApp")
+    public String update(Model model, @RequestParam("id")long id){
+        model.addAttribute("place", placeService.findById(id));
+        return "newPlace";
+    }
 }
