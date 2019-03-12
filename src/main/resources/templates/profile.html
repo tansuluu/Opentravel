@@ -3,7 +3,8 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-        <meta charset="utf-8">
+
+    <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
@@ -187,12 +188,6 @@
                                     <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
                                     <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
                                 </ul><br>
-                                <div class="right-area" sec:authorize="hasAuthority('ADMIN')">
-                                    <a class="load-more-btn" th:href="@{/updateUser(id=${user.id})}"><b>UPDATE USER</b></a><br>
-                                    <a class="load-more-btn" th:href="@{/deleteUser(id=${user.id})}"><b>DELETE USER</b></a><br>
-                                    <a class="load-more-btn" th:href="@{/newPlace}"><b>NEW PLACE</b></a><br>
-                                    <a class="load-more-btn" th:href="@{/newBlog}"><b>NEW BLOG</b></a><br>
-                                </div>
                                 <div th:if="${#request.userPrincipal != null}">
                                 <div class="right-area" th:if="${user.email==#request.userPrincipal.name}">
                                     <a class="load-more-btn" th:href="@{/updateUser(id=${user.id})}"><b>UPDATE USER</b></a><br>
@@ -217,72 +212,11 @@
                                             <h4 class="title"><a th:href="@{/placeInfo(id=${app1.id})}" ><b th:text="${app1.title}"></b></a></h4>
 
                                             <div id = "Tansulu_kreative">
-                                                <ul class="post-footer">
-                                                    <li><a th:href="@{/placeInfo(id=${app1.id})}"  th:text="${' '+app1.likes}" class="ion-heart"></a></li>
-                                                    <li><a th:href="@{/placeInfo(id=${app1.id})}"  th:text="${' '+app1.comNumber}" class="ion-chatbubble"></a></li>
-                                                    <li><a th:href="@{/placeInfo(id=${app1.id})}"  th:text="${' '+app1.view}" class="ion-eye"></a></li>
-                                                </ul>
                                             </div>
                                         </div><!-- blog-info -->
                                     </div><!-- single-post -->
                                 </div><!-- card -->
                             </div><!-- col-md-6 col-sm-12 -->
-                        </div><!-- row -->
-
-                    </div><!-- container -->
-                </section>
-                <section class="comment-section center-text">
-                    <div class="container">
-                        <h4><b th:if="${#request.userPrincipal != null}">Write post</b></h4>
-                        <h4><b th:if="${#request.userPrincipal == null}">To add post, <a th:href="@{/login}">sign in</a></b></h4>
-                        <div class="row">
-
-                            <div class="col-lg-2 col-md-0"></div>
-
-                            <div class="col-lg-8 col-md-12"   >
-                                <div class="comment-form" th:if="${#request.userPrincipal != null}">
-                                    <form>
-                                        <div class="row">
-                                            <a class="name" href="#"><b th:text="${'Write post as '+#request.userPrincipal.name}"></b></a>
-                                            <div class="col-sm-12">
-                                                <input type="hidden" th:value="${user.email}" id="userID">
-                                                <textarea id="comments" rows="2" class="text-area-messge form-control" placeholder="Enter your comment"></textarea >
-                                            </div><!-- col-sm-12 -->
-                                            <div class="col-sm-12">
-                                                <button class="submit-btn" type="button" id="form-submit"><b>POST</b></button>
-                                            </div><!-- col-sm-12 -->
-
-                                        </div><!-- row -->
-                                    </form>
-                                </div><!-- comment-form -->
-                                <div class="commnets-area text-left" id="postarea">
-
-                                    <div class="comment" th:each="post: ${posts}">
-
-                                        <div class="post-info">
-
-                                            <div class="left-area">
-                                                <a class="avatar" href="#"><img th:src="@{${post.image}}" alt="Profile Image"></a>
-                                            </div>
-
-                                            <div class="middle-area">
-                                                <a class="name" th:href="@{/userPage(username=${post.username})}"><b th:text="${post.username}"></b></a>
-                                                <h6 class="date" th:text="${'on '+post.datePost}"></h6>
-                                            </div>
-                                            <div class="right-area" sec:authorize="hasRole('ROLE_ADMIN')">
-                                                <a th:href="@{/deletePost(id=${post.id},username=${post.user})}"><img  src="images/trash.png" style="width: 30px" alt="Profile Image"></a>
-                                            </div>
-
-                                        </div><!-- post-info -->
-
-                                        <p th:text="${post.postText}"></p>
-
-                                    </div>
-                                </div>
-
-
-                            </div><!-- col-lg-8 col-md-12 -->
-
                         </div><!-- row -->
 
                     </div><!-- container -->
@@ -315,47 +249,6 @@
             </div>
         </div>
     </div>
-
-                <!--================End Map Area =================-->
-        <script>
-            $(document).ready(function() {
-                console.log("here ready");
-                $("#form-submit").on("click", function () {
-                    console.log("here post");
-                    var text = $("#comments").val();
-                    var id = $("#userID").val();
-                    if (text != null && text != "" && text != " ") {
-                        $.ajax({
-                            url: "/newPost",
-                            type: "GET",
-                            data: ({post: text, username: id}),
-                            dataType: 'json',
-                            contentType: "application/json",
-                            success: funcSuccessAddPost
-                        });
-                    }
-                });
-                function funcSuccessAddPost(data) {
-                    console.log(data);
-                    var comment='<div class="comment">' +
-                        '<div class="post-info">' +
-                        '<div class="left-area">' +
-                        '<a class="avatar" href="#"><img  src="'+data.image+'" alt="Profile Image"></a>' +
-                        '</div>\n' +
-                        '<div class="middle-area">\n' +
-                        '<a class="name"><b style="color: black">'+data.username+'</b></a>' +
-                        '<h6 class="date">on '+data.datePost+'</h6>' +
-                        '</div>\n' +
-                        '</div>' +
-                        '<p>'+data.postText+'</p>\n' +
-                        '</div>';
-                    $("#postarea").append(comment);
-                    console.log(comment);
-                    $("#comments").val("");
-                }
-
-            });
-        </script>
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="folderforprofile/js/jquery-2.1.4.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->

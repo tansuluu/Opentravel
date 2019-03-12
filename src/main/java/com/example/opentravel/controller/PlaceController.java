@@ -49,8 +49,10 @@ public class PlaceController {
                                @RequestParam(name = "file2", required = false)MultipartFile file2, @RequestParam(name = "file3", required = false)MultipartFile file3) {
         if (result.hasErrors()) {
             model.addAttribute("place", place);
+            System.out.println("errorr with place");
             return "newPlace";
         }
+        System.out.println("dvfhjbfhjvfhjfhjfjfjjvjgjgbjk");
         try {
             place=storageService.preStore(file1,file2,file3,place);
             userService.findUserByEmail(principal.getName());
@@ -78,5 +80,14 @@ public class PlaceController {
         ArrayList<Place> list=placeService.findByTitle(input);
         model.addAttribute("places", list);
         return "allPlaceS";
+    }
+
+    @RequestMapping("/placeInfo")
+    public String showApplications(Model model, @RequestParam("id")long id, Principal principal){
+        Place place=placeService.findById(id);
+        List<Place> popular=placeService.getTop3PlaceByOrderByView();
+        model.addAttribute("app",place);
+        model.addAttribute("popular",popular);
+        return "places";
     }
 }

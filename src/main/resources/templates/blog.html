@@ -3,35 +3,34 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
   <head>
-    <title>Tasty - Free Bootstrap 4 Template by Colorlib</title>
+    <title>Opentravel</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
-    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,600,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="folderforindex/styles/bootstrap4/bootstrap.min.css">
+    <link href="folderforindex/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="folderforindex/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
     <link rel="stylesheet" type="text/css" href="folderforindex/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
     <link rel="stylesheet" type="text/css" href="folderforindex/plugins/OwlCarousel2-2.2.1/animate.css">
     <link rel="stylesheet" type="text/css" href="folderforindex/styles/main_styles.css">
     <link rel="stylesheet" type="text/css" href="folderforindex/styles/my.css">
     <link rel="stylesheet" type="text/css" href="folderforindex/styles/responsive.css">
-    <link rel="stylesheet" href="tast/css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="tast/css/animate.css">
-    <link rel="stylesheet" href="tast/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="tast/css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="tast/css/magnific-popup.css">
-    <link rel="stylesheet" href="tast/css/aos.css">
+    <div>
+      <link rel="stylesheet" href="tast/css/open-iconic-bootstrap.min.css">
+      <link rel="stylesheet" href="tast/css/animate.css">
+      <link rel="stylesheet" href="tast/css/owl.carousel.min.css">
+      <link rel="stylesheet" href="tast/css/owl.theme.default.min.css">
+      <link rel="stylesheet" href="tast/css/magnific-popup.css">
+      <link rel="stylesheet" href="tast/css/aos.css">
+      <link rel="stylesheet" href="tast/css/ionicons.min.css">
+      <link rel="stylesheet" href="tast/css/bootstrap-datepicker.css">
+      <link rel="stylesheet" href="tast/css/jquery.timepicker.css">
+      <link rel="stylesheet" href="tast/css/flaticon.css">
+      <link rel="stylesheet" href="tast/css/icomoon.css">
+      <link rel="stylesheet" href="tast/css/style.css">
+    </div>
 
-    <link rel="stylesheet" href="tast/css/ionicons.min.css">
-
-    <link rel="stylesheet" href="tast/css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="tast/css/jquery.timepicker.css">
-
-    
-    <link rel="stylesheet" href="tast/css/flaticon.css">
-    <link rel="stylesheet" href="tast/css/icomoon.css">
-    <link rel="stylesheet" href="tast/css/style.css">
   </head>
+
   <body>
 
   <div class="super_container">
@@ -76,7 +75,7 @@
           <div class="row">
             <div class="col main_nav_col d-flex flex-row align-items-center justify-content-start">
               <div class="logo_container">
-                <div class="logo"><a href=""><img src="" alt="">opentravel</a></div>
+                <div class="logo"><a th:href="@{/}"><img src="" alt="">opentravel</a></div>
               </div>
               <div class="main_nav_container ml-auto">
                 <ul class="main_nav_list">
@@ -111,10 +110,9 @@
 							</svg>
               </div>
 
-              <form id="search_form" th:action="@{/findPlace}" class="search_form bez_1">
+              <form id="search_form" th:action="@{/findBlog}" class="search_form bez_1">
                 <input type="search" class="search_content_input bez_1" name="input">
               </form>
-
               <div class="hamburger">
                 <i class="fa fa-bars trans_200"></i>
               </div>
@@ -151,11 +149,11 @@
 
           <!-- Slider Item -->
           <div class="owl-item home_slider_item">
-            <div class="home_slider_background" style="background-image:url(images/IK.jpg)"></div>
+            <div class="home_slider_background" style="background-image:url(images/bb.jpg)"></div>
 
             <div class="home_slider_content text-center">
               <div class="home_slider_content_inner" data-animation-in="flipInX" data-animation-out="animate-out fadeOut">
-                <h1 style="font-size: 85px">Places</h1>
+                <h1 style="font-size: 85px">Blogs</h1>
               </div>
             </div>
           </div>
@@ -164,39 +162,32 @@
     </div>
 
   </div>
+    
     <section class="ftco-section bg-light">
       <div class="container">
-        <div class="row no-gutters justify-content-center mb-5 pb-5">
-          <div class="col-md-7 text-center heading-section ftco-animate">
-            <h2>Our Places</h2>
-          </div>
-        </div>
-        <div class="row d-flex no-gutters" th:each="i : ${#numbers.sequence( 0, places.size()-1)}">
-          <div class="col-lg-12" >
-            <div class="block-3 d-md-flex ftco-animate"  th:if="${i%2==0}">
-              <div class="image order-last" th:style="'background: url(/image/' + ${places.get(i).photo1} + ');background-size: cover'"></div>
-              <div class="text text-center order-first">
-                <a th:href="@{/placeInfo(id=${places.get(i).id})}" ><h2 class="heading" th:text="${places.get(i).title}" style="color: #0c5460"></h2></a>
-                <p th:text="${places.get(i).smallText}"> </p>
-                <ul class="post-footer">
-                  <li><a th:href="@{/placeInfo(id=${places.get(i).id})}"  th:text="${' '+places.get(i).likes}" class="icon-heart"></a></li>
-                  <li><a th:href="@{/placeInfo(id=${places.get(i).id})}" th:text="${' '+places.get(i).comNumber}" class="icon-chat"></a></li>
-                  <li><a th:href="@{/placeInfo(id=${places.get(i).id})}" th:text="${' '+places.get(i).view}" class="icon-eye"></a></li>
-                </ul>
-              </div>
-            </div>
-            <div class="block-3 d-md-flex ftco-animate"  th:if="${i%2==1}">
-              <div class="image order-last" th:style="'background: url(/image/' + ${places.get(i).photo1} + ');background-size: cover'"></div>
-              <div class="text text-center order-last">
-                <a th:href="@{/placeInfo(id=${places.get(i).id})}" ><h2 class="heading" th:text="${places.get(i).title}" style="color: #0c5460"></h2></a>
-                <p th:text="${places.get(i).smallText}"> </p>
+        <div class="row">
+          <div class="col-md-6 col-lg-3 ftco-animate" th:each="blog:${blogs}">
+            <div class="blog-entry">
+              <a th:href="@{/blogInfo(id=${blog.id})}"  class="block-20" th:style="'background: url(/image/' + ${blog.photo1} + ');background-size: cover'">
+              </a>
+              <div class="text p-4">
+                <div class="meta">
+                  <div><a href="" th:text="${blog.date}">July 7, 2018</a></div>
+                  <div style="display: block"><a href="" th:text="${blog.username}">Admin</a></div>
+                </div>
+                <h3 class="heading" th:text="${blog.title}"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
+                <p class="clearfix">
+                  <a th:href="@{/blogInfo(id=${blog.id})}"  class="float-left read">Read more</a>
+                  <a href="" class="float-right meta-chat"  style="padding-right: 8px; padding-left: 8px"><span class="icon-chat"  ></span> <span th:text="${blog.comNumber}"></span></a>
+                  <a href="" class="float-right meta-chat"  style="padding-left:8px"><span class="icon-eye"></span> <span th:text="${blog.view}"></span></a>
+                  <a href="" class="float-right meta-chat" style="padding-left: 8px"><span class="icon-heart"></span> <span th:text="${blog.likes}"></span></a>
+                </p>
               </div>
             </div>
           </div>
         </div>
       </div>
     </section>
-
     <div class="copyright">
       <div class="container">
         <div class="row">
@@ -224,30 +215,33 @@
       </div>
     </div>
 
-  <!-- loader -->
-  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+    </div>
+
     <script src="folderforindex/js/jquery-3.2.1.min.js"></script>
     <script src="folderforindex/styles/bootstrap4/popper.js"></script>
     <script src="folderforindex/styles/bootstrap4/bootstrap.min.js"></script>
     <script src="folderforindex/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
     <script src="folderforindex/plugins/easing/easing.js"></script>
     <script src="folderforindex/js/custom.js"></script>
-    <script src="tast/js/jquery.min.js"></script>
-    <script src="tast/js/jquery-migrate-3.0.1.min.js"></script>
-    <script src="tast/js/popper.min.js"></script>
-    <script src="tast/js/bootstrap.min.js"></script>
-    <script src="tast/js/jquery.easing.1.3.js"></script>
-    <script src="tast/js/jquery.waypoints.min.js"></script>
-    <script src="tast/js/jquery.stellar.min.js"></script>
-    <script src="tast/js/owl.carousel.min.js"></script>
-    <script src="tast/js/jquery.magnific-popup.min.js"></script>
-    <script src="tast/js/aos.js"></script>
-    <script src="tast/js/jquery.animateNumber.min.js"></script>
-    <script src="tast/js/bootstrap-datepicker.js"></script>
-    <script src="tast/js/jquery.timepicker.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-    <script src="tast/js/google-map.js"></script>
-    <script src="tast/js/main.js"></script>
+    <div>
+      <script src="tast/js/jquery.min.js"></script>
+      <script src="tast/js/jquery-migrate-3.0.1.min.js"></script>
+      <script src="tast/js/popper.min.js"></script>
+      <script src="tast/js/bootstrap.min.js"></script>
+      <script src="tast/js/jquery.easing.1.3.js"></script>
+      <script src="tast/js/jquery.waypoints.min.js"></script>
+      <script src="tast/js/jquery.stellar.min.js"></script>
+      <script src="tast/js/owl.carousel.min.js"></script>
+      <script src="tast/js/jquery.magnific-popup.min.js"></script>
+      <script src="tast/js/aos.js"></script>
+      <script src="tast/js/jquery.animateNumber.min.js"></script>
+      <script src="tast/js/bootstrap-datepicker.js"></script>
+      <script src="tast/js/jquery.timepicker.min.js"></script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+      <script src="tast/js/google-map.js"></script>
+      <script src="tast/js/main.js"></script>
+    </div>
+
     
   </body>
 </html>
