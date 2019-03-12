@@ -24,6 +24,9 @@ public class BlogService {
         return blogRepository.save(blog);
     }
 
+    public List<Blog> findByUsername(String username){
+        return blogRepository.findBlogByUsername(username);
+    }
 
     public List<Blog> getTop3PlaceByOrderByView(){
         List<Blog> list=blogRepository.getAllByOrderByView();
