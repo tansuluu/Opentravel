@@ -8,11 +8,11 @@ _knowledge and advise them to visit Kyrgyzstan and their circle of people._
 
 ### Developers team description
 
-Members roles and portfolio
-Mederbek Abdyldaev - back-end - [[mederbek.abdyldaev@iaau.edu.kg]](mederbek.abdyldaev@iaau.edu.kg])(mederbek.abdyldaev@iaau.edu.kg)
-Nadyrbek Sultanov - back-end - [nadyrbek.sultanov@iaau.edu.kg](nadyrbek.sultanov@iaau.edu.kg)
-Edil Kamchybekov - front-end - [edil.kamchybekov@iaau.edu.kg](edil.kamchybekov@iaau.edu.kg)
-Elmira Kurmanbekova - front-end - [elmira.kurmanbekova@iaau.edu.kg](elmira.kurmanbekova@iaau.edu.kg)
-Zarlyk Zhusubaliev - tester - [zarlyk.zhusubaliev@iaau.edu.kg](zarlyk.zhusubaliev@iaau.edu.kg)
-Tansuluu Myrzaeva - project manager - [tansuluu.myrzaeva@iaau.edu.kg](tansuluu.myrzaeva@iaau.edu.kg)
+Members roles and portfolio <br/>
+Mederbek Abdyldaev - back-end - [mederbek.abdyldaev@iaau.edu.kg](mederbek.abdyldaev@iaau.edu.kg) <br/>
+Nadyrbek Sultanov - back-end - [nadyrbek.sultanov@iaau.edu.kg](nadyrbek.sultanov@iaau.edu.kg) <br/>
+Edil Kamchybekov - front-end - [edil.kamchybekov@iaau.edu.kg](edil.kamchybekov@iaau.edu.kg) <br/>
+Elmira Kurmanbekova - front-end - [elmira.kurmanbekova@iaau.edu.kg](elmira.kurmanbekova@iaau.edu.kg) <br/>
+Zarlyk Zhusubaliev - tester - [zarlyk.zhusubaliev@iaau.edu.kg](zarlyk.zhusubaliev@iaau.edu.kg) <br/>
+Tansuluu Myrzaeva - project manager - [tansuluu.myrzaeva@iaau.edu.kg](tansuluu.myrzaeva@iaau.edu.kg) <br/>
 Nurdin Imanaliev - requirement engineer - nurdin.imanaliev@iaau.edu.kg
