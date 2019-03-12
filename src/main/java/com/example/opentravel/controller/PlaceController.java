@@ -52,7 +52,7 @@ public class PlaceController {
             System.out.println("errorr with place");
             return "newPlace";
         }
-        System.out.println("dvfhjbfhjvfhjfhjfjfjjvjgjgbjk");
+
         try {
             place=storageService.preStore(file1,file2,file3,place);
             userService.findUserByEmail(principal.getName());
@@ -89,5 +89,11 @@ public class PlaceController {
         model.addAttribute("app",place);
         model.addAttribute("popular",popular);
         return "places";
+    }
+
+    @RequestMapping("/deleteApp")
+    public String showApplications( @RequestParam("id")long id){
+        placeService.delete(id);
+        return "redirect:/places";
     }
 }

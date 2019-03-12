@@ -47,4 +47,8 @@ public class PlaceService {
     public ArrayList<Place> findByTitle(String title){
         return (ArrayList)placeRepository.findAllByTitle(title);
     }
+
+    public void delete(long id){
+        placeRepository.delete(placeRepository.findById(id));
+    }
 }

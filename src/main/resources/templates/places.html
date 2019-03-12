@@ -155,9 +155,6 @@
 						<div sec:authorize="hasRole('ROLE_USER')" th:if="${#request.userPrincipal!=null}">
 							<a  th:if="${app.usarname==#request.userPrincipal.name}"  class="load-more-btn" th:href="@{/deleteApp(id=${app.id})}"><b>DELETE THE APPLICACTION</b></a>
 						</div>
-						<div class="right-area" sec:authorize="hasRole('ROLE_ADMIN')">
-							<a class="load-more-btn" th:href="@{/deleteApp(id=${app.id})}"><b>DELETE THE APPLICACTION</b></a>
-						</div>
 
 						<div class="post-info">
 							<div class="middle-area">
