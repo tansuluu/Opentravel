@@ -50,7 +50,6 @@ public class BlogController {
             return "newBlog";
         }
         try {
-            System.out.println("here");
             blog=storageService.preStore(file1,file2,file3,blog);
             userService.findUserByEmail(principal.getName());
             blog.setUsername(principal.getName());
@@ -65,6 +64,21 @@ public class BlogController {
         }
 
         return "redirect:/userPage?username="+principal.getName();
+    }
+    @RequestMapping("/blogInfo")
+    public String showApplications(Model model, @RequestParam("id")long id, Principal principal){
+        Blog blog=blogService.findById(id);
+        List<Blog> popular=blogService.getTop3PlaceByOrderByView();
+        model.addAttribute("app",blog);
+        model.addAttribute("popular",popular);
+        return "single-blog";
+    }
+
+    @RequestMapping("/blog")
+    public String places(Model model){
+        List<Blog> list=blogService.getAll();
+        model.addAttribute("blogs", list);
+        return "blog";
     }
 
 
