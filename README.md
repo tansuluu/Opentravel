@@ -3,7 +3,7 @@
 _Site for providing services and the best experience in tourism for both parties._
 _Where a party to the provision of services can be any qualified guide by ensuring himself_
 _a stable income. Also for the promotion of tourism in Kyrgyzstan, this project will be very helpful._
-_Investigating and telling foreigners about the expanses of our country, people will share their _
+_Investigating and telling foreigners about the expanses of our country, people will share their_
 _knowledge and advise them to visit Kyrgyzstan and their circle of people._
 
 ### Developers team description
