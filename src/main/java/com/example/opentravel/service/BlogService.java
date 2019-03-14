@@ -40,5 +40,7 @@ public class BlogService {
         return blogRepository.getAllByOrderByView();
     }
 
-
+public void delete(long id){
+       blogRepository.delete(blogRepository.findById(id));
+}
 }

@@ -73,6 +73,11 @@ public class BlogController {
         model.addAttribute("popular",popular);
         return "single-blog";
     }
+    @RequestMapping("/deleteApp")
+    public String showApplications(@RequestParam("id")long id){
+        blogService.delete(id);
+        return "redirect:/blog";
+    }
 
     @RequestMapping("/blog")
     public String places(Model model){
