@@ -91,7 +91,7 @@ public class PlaceController {
         return "places";
     }
 
-    @RequestMapping("/deleteApp")
+    @RequestMapping("/deleteAppP")
     public String showApplications( @RequestParam("id")long id){
         placeService.delete(id);
         return "redirect:/places";
@@ -99,6 +99,16 @@ public class PlaceController {
     @RequestMapping("/updateApp")
     public String update(Model model, @RequestParam("id")long id){
         model.addAttribute("place", placeService.findById(id));
-        return "newPlace";
+        return "updatePlace";
+    }
+    @RequestMapping(value = "/updateApp",method = RequestMethod.POST)
+    public String update(@Valid Place place){
+        Place place1=placeService.findById(place.getId());
+        place1.setText(place.getText());
+        place1.setTitle(place.getTitle());
+        place1.setCategory(place.getCategory());
+        place1.setAddress(place.getAddress());
+        placeService.save(place1);
+        return "redirect:/placeInfo?id="+place.getId();
     }
 }

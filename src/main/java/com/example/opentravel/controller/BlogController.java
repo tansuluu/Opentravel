@@ -74,7 +74,7 @@ public class BlogController {
         return "single-blog";
     }
     @RequestMapping("/deleteApp")
-    public String showApplications(@RequestParam("id")long id){
+    public String deleteApplications(@RequestParam("id")long id){
         blogService.delete(id);
         return "redirect:/blog";
     }
