@@ -12,6 +12,7 @@ import java.util.List;
 public class BlogService {
 
     @Autowired
+    static
     BlogRepository blogRepository;
 
     public Blog findById(long id){
@@ -38,6 +39,9 @@ public class BlogService {
     }
     public List<Blog> getAll() {
         return blogRepository.getAllByOrderByView();
+    }
+    public List<Blog> getAllBlogs() {
+        return blogRepository.getAll();
     }
 
 public void delete(long id){
