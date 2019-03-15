@@ -14,7 +14,6 @@ import java.util.List;
 public class BlogService {
 
     @Autowired
-    static
     BlogRepository blogRepository;
 
     public Blog findById(long id){

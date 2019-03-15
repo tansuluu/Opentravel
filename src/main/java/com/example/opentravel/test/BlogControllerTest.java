@@ -14,6 +14,7 @@ import com.example.opentravel.model.Place;
 import com.example.opentravel.repository.BlogRepository;
 import com.example.opentravel.service.BlogService;
 import com.fasterxml.jackson.databind.ObjectWriter;
+import com.google.gson.Gson;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -43,7 +44,7 @@ public class BlogControllerTest {
     @Mock
     private BlogRepository mockMvc;
 
-    @InjectMocks
+    @MockBean
     private BlogService blogService;
 
     @Before
@@ -95,11 +96,10 @@ public class BlogControllerTest {
         ticketList.add(mockTicket2);
 
 //        Mockito.when(blogService.getAllBlogs()).thenReturn(ticketList);
-        Mockito.when(mockMvc.getAll()).thenReturn(ticketList);
+        Mockito.when(blogService.getAll()).thenReturn(ticketList);
 
         String URI = "/blog";
     }
-
 
     @Test
     public void testGetBlogById(){
@@ -121,5 +121,43 @@ public class BlogControllerTest {
 
         Mockito.when(mockMvc.findById(1)).thenReturn(mockTicket1);
         assertThat(mockMvc.findById(1)).isEqualTo(mockTicket1);
+    }
+
+
+//    @Test
+//    public void testBlogById() throws Exception {
+//        Blog mockTicket2 = new Blog();
+//        mockTicket2.setId(1);
+//        mockTicket2.setTitle("Martin Bingel");
+//        mockTicket2.setCategory("Kolkata");
+//        mockTicket2.setText("Delhi hjdksjdkjdkaskdasjdkjasd");
+//        mockTicket2.setPhoto1("emg/meder.png");
+//        mockTicket2.setPhoto2("emg/meder.png");
+//        mockTicket2.setPhoto3("emg/meder.png");
+//        mockTicket2.setUsername("meder");
+//        mockTicket2.setDate(new Date());
+//        mockTicket2.setView(1);
+//        mockTicket2.setComNumber(1);
+//        mockTicket2.setLikes(1);
+//        mockTicket2.setImage("img/png");
+//        mockTicket2.setSmallText("is the best of the best");
+//
+////        Mockito.when(blogService.findById(Mockito.anyInt()));
+//
+//        //String URI = "/blogInfo";
+//        String URI = "/blogInfo";
+////        RequestBuilder requestBuilder = MockMvcRequestBuilders.get(
+////                URI).accept(
+////                MediaType.APPLICATION_JSON);
+////
+////        MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+////        String expectedJson = this.mapToJson(mockTicket2);
+////        String outputInJson = result.getResponse().getContentAsString();
+////        assertThat(outputInJson).isEqualTo(expectedJson);
+//    }
+
+    private String mapToJson(Object object) throws JsonProcessingException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        return objectMapper.writeValueAsString(object);
     }
 }
