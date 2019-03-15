@@ -2,6 +2,7 @@ package com.example.opentravel.test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -9,6 +10,7 @@ import java.util.List;
 
 import com.example.opentravel.controller.BlogController;
 import com.example.opentravel.model.Blog;
+import com.example.opentravel.model.Place;
 import com.example.opentravel.repository.BlogRepository;
 import com.example.opentravel.service.BlogService;
 import com.fasterxml.jackson.databind.ObjectWriter;
@@ -41,7 +43,7 @@ public class BlogControllerTest {
     @Mock
     private BlogRepository mockMvc;
 
-    @Autowired
+    @InjectMocks
     private BlogService blogService;
 
     @Before
@@ -54,7 +56,7 @@ public class BlogControllerTest {
         System.out.println("Terminating Test Class");
     }
     @Test
-    public void testGetAllBlogs() throws Exception {
+    public void testGetAllBlogs() {
 
         Blog mockTicket1 = new Blog();
         mockTicket1.setId(1);
@@ -96,5 +98,28 @@ public class BlogControllerTest {
         Mockito.when(mockMvc.getAll()).thenReturn(ticketList);
 
         String URI = "/blog";
+    }
+
+
+    @Test
+    public void testGetBlogById(){
+        Blog mockTicket1 = new Blog();
+        mockTicket1.setId(1);
+        mockTicket1.setTitle("Martin Bingel");
+        mockTicket1.setCategory("Kolkata");
+        mockTicket1.setText("Delhi hjdksjdkjdkaskdasjdkjasd");
+        mockTicket1.setPhoto1("emg/meder.png");
+        mockTicket1.setPhoto2("emg/meder.png");
+        mockTicket1.setPhoto3("emg/meder.png");
+        mockTicket1.setUsername("meder");
+        mockTicket1.setDate(new Date());
+        mockTicket1.setView(1);
+        mockTicket1.setComNumber(1);
+        mockTicket1.setLikes(1);
+        mockTicket1.setImage("img/png");
+        mockTicket1.setSmallText("is the best of the best");
+
+        Mockito.when(mockMvc.findById(1)).thenReturn(mockTicket1);
+        assertThat(mockMvc.findById(1)).isEqualTo(mockTicket1);
     }
 }
