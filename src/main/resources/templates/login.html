@@ -97,7 +97,36 @@
 
 
 <div id="dropDownSelect1"></div>
+<script>
+    $(document).ready(function() {
+        $('#res').on('click', function () {
+           console.log("helllo");
+           $("#login").hide();
+           $("#em").append("<input class='input100' type='text' name='email' placeholder='Email' required='required' id='emailR'>");
+           $("#reset").show();
+       });
 
+    $("#resetButton").on("click",function(){
+        console.log("here comment");
+        var text=$("#emailR").val();
+        $.ajax({
+            url:"/resetPassword",
+            type:"GET",
+            data:({email:text}),
+            dataType: 'json',
+            contentType: "application/json",
+            success: funcSuccess
+        });
+        });
+        function funcSuccess(data) {
+            console.log(("ddf"));
+            console.log(data);
+            if(data==1){
+                $("#resetSuccess").text("The email was sent to you, please check it!");
+            }
+        }
+    });
+</script>
 <!--===============================================================================================-->
 <script src="folderforlogin/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
