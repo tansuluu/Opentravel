@@ -44,10 +44,10 @@ public class BlogServiceTest {
 
     @Test
     public void testFindByIdWhenNoSuchId(){
-        Blog place=new Blog();
+        Blog blog=new Blog();
         long id=0;
-        when(blogRepositoryMock.findById(id)).thenReturn(place);
-        assertEquals(place,blogServiceTest.findById(id));
+        when(blogRepositoryMock.findById(id)).thenReturn(blog);
+        assertEquals(blog,blogServiceTest.findById(id));
     }
 
     @Test
