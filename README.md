@@ -16,3 +16,6 @@ Elmira Kurmanbekova - front-end - [elmira.kurmanbekova@iaau.edu.kg](elmira.kurma
 Zarlyk Zhusubaliev - tester - [zarlyk.zhusubaliev@iaau.edu.kg](zarlyk.zhusubaliev@iaau.edu.kg) <br/>
 Tansuluu Myrzaeva - project manager - [tansuluu.myrzaeva@iaau.edu.kg](tansuluu.myrzaeva@iaau.edu.kg) <br/>
 Nurdin Imanaliev - requirement engineer - nurdin.imanaliev@iaau.edu.kg
+
+### [How to RUN](https://github.com/tansuluu/Opentravel/wiki/How-to-run)
+### [HELP](https://github.com/tansuluu/Opentravel/wiki)
