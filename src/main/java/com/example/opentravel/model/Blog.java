@@ -18,7 +18,7 @@ public class Blog {
     @Column(name = "category", length = 128)
     @NotEmpty(message = "*Please choose a ")
     private String category;
-    @Column(name = "text", length = 700)
+    @Column(columnDefinition = "LONGTEXT",name = "text")
     @NotEmpty(message = "*Please write a")
     private String text;
     @Column(name = "smallText", length = 700)
