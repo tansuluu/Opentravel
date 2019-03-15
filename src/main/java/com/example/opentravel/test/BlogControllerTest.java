@@ -93,19 +93,8 @@ public class BlogControllerTest {
         ticketList.add(mockTicket2);
 
 //        Mockito.when(blogService.getAllBlogs()).thenReturn(ticketList);
-        Mockito.when(blogService.getAll()).thenReturn(ticketList);
+        Mockito.when(mockMvc.getAll()).thenReturn(ticketList);
 
         String URI = "/blog";
-        RequestBuilder requestBuilder = MockMvcRequestBuilders.get(
-                URI).accept(
-                MediaType.APPLICATION_JSON);
-
-        MvcResult result = mockMvc.perform(requestBuilder).andReturn();
-
-        ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
-        String inputInJson = ow.writeValueAsString(ticketList);
-        String outputInJson = result.getResponse().getContentAsString();
-        assertThat(outputInJson).isEqualTo(inputInJson);
-        //System.out.println("First test of BlogController is works!");
     }
 }
