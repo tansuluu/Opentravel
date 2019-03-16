@@ -17,5 +17,5 @@ Zarlyk Zhusubaliev - tester - [zarlyk.zhusubaliev@iaau.edu.kg](zarlyk.zhusubalie
 Tansuluu Myrzaeva - project manager - [tansuluu.myrzaeva@iaau.edu.kg](tansuluu.myrzaeva@iaau.edu.kg) <br/>
 Nurdin Imanaliev - requirement engineer - nurdin.imanaliev@iaau.edu.kg
 
-### [How to RUN](https://github.com/tansuluu/Opentravel/wiki/How-to-run)
-### [HELP](https://github.com/tansuluu/Opentravel/wiki)
+### [MANUAL FOR TREVELER SITE](https://github.com/tansuluu/Opentravel/wiki/MANUAL-FOR-TREVELLER-SITE)
+### [TREVELLER SITE DEVELOPING CHRONOLOGY](https://github.com/tansuluu/Opentravel/wiki/TREVELLER-SITE-DEVELOPING-CHRONOLOGY)
