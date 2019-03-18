@@ -48,6 +48,9 @@ public class BlogService {
 public void delete(long id){
        blogRepository.delete(blogRepository.findById(id));
 }
+    public List<Blog> findAllByTitle(String text){
+        return blogRepository.findAllByTitle(text);
+}
 
 
 

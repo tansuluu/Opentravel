@@ -99,6 +99,12 @@ public class BlogController {
         return "redirect:/blogInfo?id="+blog1.getId();
 
     }
+    @RequestMapping("/findBlog")
+    public String find(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
 
 
 }
