@@ -147,47 +147,25 @@
 
     <!-- Home -->
 
-    <div class="home">
-
-      <!-- Home Slider -->
-
-      <div class="home_slider_container">
-
-        <div class="owl-carousel owl-theme home_slider">
-
-          <!-- Slider Item -->
-          <div class="owl-item home_slider_item">
-            <div class="home_slider_background" style="background-image:url(images/dow.jpg)"></div>
-
-            <div class="home_slider_content text-center">
-              <div class="home_slider_content_inner" data-animation-in="flipInX" data-animation-out="animate-out fadeOut">
-                <h1 style="font-size: 45px">post</h1>
-                <h1 style="font-size: 85px">a new blog</h1>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
   </div>
     <!-- END nav -->
     <section class="ftco-section">
       <div class="container">
         <div class="row no-gutters justify-content-center mb-5 pb-5">
           <div class="col-md-7 text-center heading-section ftco-animate">
-            <h2>Write a new blog</h2>
+            <h2>Updateblog</h2>
           </div>
         </div>
         <div class="row d-flex">
           <div class="col-md-4 ftco-animate img" style="background-image: url(images/и.jpg);"></div>
           <div class="col-md-8 ftco-animate makereservation p-5 bg-light">
             <form th:action="@{/newBlog}" enctype="multipart/form-data" th:object="${blog}" method="post" class="login100-form validate-form">
+              <input type="hidden"  th:field="*{id}" >
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label th:if="${#fields.hasErrors('title')}" th:errors="*{title}" class="validation-message" style="color: red"></label>
-                    <label for="">Title</label>
+                    <label th:if="${#fields.hasErrors('title')}" th:errors="*{title}" class="validation-message" style="color:red"></label>
+                    <label >Title</label>
                     <input type="text" th:field="*{title}" class="form-control" placeholder="Title">
                   </div>
                 </div>
@@ -214,27 +192,9 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="">Photo 1</label>
-                    <input type="file" class="form-control"  name="file1">
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="">Photo 2</label>
-                    <input type="file" class="form-control"  name="file2">
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="">Photo 3</label>
-                    <input type="file" class="form-control"  name="file3">
-                  </div>
-                </div>
                 <div class="col-md-12 mt-3">
                   <div class="form-group">
-                    <input type="submit" value="new blog" class="btn btn-primary py-3 px-5">
+                    <input type="submit" value="UPDATE" class="btn btn-primary py-3 px-5">
                   </div>
                 </div>
               </div>

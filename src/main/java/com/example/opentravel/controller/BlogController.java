@@ -86,5 +86,18 @@ public class BlogController {
         return "blog";
     }
 
+    @RequestMapping("/updateBlog")
+    public String updatePlace(@RequestParam("id") long id, Model model){
+        Blog blog=blogService.findById(id);
+        model.addAttribute("blog", blog);
+        return "updateBlog";
+    }
+    @RequestMapping(value = "/updateBlog",method = RequestMethod.POST)
+    public String updatePlace(@Valid Blog blog){
+        Blog blog1=blogService.findById(blog.getId());
+
+        return "updateBlog";
+    }
+
 
 }
