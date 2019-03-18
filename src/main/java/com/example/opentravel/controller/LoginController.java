@@ -6,6 +6,7 @@ import com.example.opentravel.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 
@@ -89,7 +91,7 @@ public class LoginController {
 
     }
     @RequestMapping("/reset")
-    public String  reset(@RequestParam("token") String token,Model model){
+    public String  reset(@RequestParam("token") String token, Model model){
         User user=userService.findByToken(token);
         if(user==null){
             return "error";
