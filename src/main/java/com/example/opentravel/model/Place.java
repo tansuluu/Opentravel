@@ -19,7 +19,7 @@ public class Place {
         @Column(name = "category", length = 128)
         @NotEmpty(message = "*Please choose a category")
         private String category;
-        @Column(name = "text", length = 700)
+        @Column(columnDefinition = "LONGTEXT",name = "text")
         @NotEmpty(message = "*Please write description")
         private String text;
         @Column(name = "smallText", length = 700)
