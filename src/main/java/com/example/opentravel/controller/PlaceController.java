@@ -105,7 +105,6 @@ public class PlaceController {
     @RequestMapping(value = "/updateApp",method = RequestMethod.POST)
     public String update(@Valid Place place){
         Place place1=placeService.findById(place.getId());
-        System.out.println(place.getText());
         place1.setText(place.getText());
         place1.setTitle(place.getTitle());
         place1.setCategory(place.getCategory());

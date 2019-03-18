@@ -95,8 +95,12 @@ public class BlogController {
     @RequestMapping(value = "/updateBlog",method = RequestMethod.POST)
     public String updatePlace(@Valid Blog blog){
         Blog blog1=blogService.findById(blog.getId());
+        blog1.setTitle(blog.getTitle());
+        blog1.setText(blog.getText());
+        blog1.setCategory(blog.getCategory());
+        blogService.save(blog1);
+        return "redirect:/blogInfo?id="+blog1.getId();
 
-        return "updateBlog";
     }
 
 
