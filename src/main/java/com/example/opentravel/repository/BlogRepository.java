@@ -14,8 +14,4 @@ public interface BlogRepository extends JpaRepository<Blog,Long> {
     List<Blog> getAllByOrderByView();
     List<Blog> findBlogByUsername(String username);
     List<Blog> findAllByTitle(String text);
-
-    ResultActions perform(RequestBuilder requestBuilder);
-
-    List<Blog> getAll();
 }

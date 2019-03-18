@@ -143,8 +143,9 @@
     <div class="container-login100" style="background-image: url('/images/IK.jpg');">
         <div class="wrap-login101 p-l-55 p-r-55 p-t-65 p-b-54" style="margin-top:200px">
             <form th:action="@{/updateApp}"  th:object="${place}" method="post" class="login100-form validate-form">
+                <input type="hidden" th:field="*{id}" >
                 <div class="form-group">
-                    <h1>New Place</h1>
+                    <h1>Update Place</h1>
                     <label class="col-xs-3 control-label"></label>
                     <div class="col-xs-3 inputGroupContainer ">
                         <label th:if="${#fields.hasErrors('title')}" th:errors="*{title}" class="validation-message"></label>
@@ -194,8 +195,6 @@
                         </button>
                     </div>
                 </div>
-
-
             </form>
         </div>
     </div>

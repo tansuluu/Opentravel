@@ -98,6 +98,7 @@ public class PlaceController {
     }
     @RequestMapping("/updateApp")
     public String update(Model model, @RequestParam("id")long id){
+        System.out.println(id);
         model.addAttribute("place", placeService.findById(id));
         return "updatePlace";
     }

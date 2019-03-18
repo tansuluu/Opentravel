@@ -46,7 +46,6 @@ public class BlogController {
                                @RequestParam(name = "file2", required = false)MultipartFile file2, @RequestParam(name = "file3", required = false)MultipartFile file3) {
         if (result.hasErrors()) {
             model.addAttribute("blog", blog);
-            System.out.println("errorororor");
             return "newBlog";
         }
         try {
@@ -54,12 +53,10 @@ public class BlogController {
             userService.findUserByEmail(principal.getName());
             blog.setUsername(principal.getName());
             blogService.save(blog);
-            System.out.println("here2");
         } catch (Exception e) {
             model.addAttribute("errorMessage", "Error: " + e.getMessage());
             model.addAttribute("blog", blog);
             model.addAttribute("message","There is already exist such image");
-            System.out.println("rrrr");
             return "newBlog";
         }
 
@@ -84,6 +81,23 @@ public class BlogController {
         List<Blog> list=blogService.getAll();
         model.addAttribute("blogs", list);
         return "blog";
+    }
+
+    @RequestMapping("/updateBlog")
+    public String updatePlace(@RequestParam("id") long id, Model model){
+        Blog blog=blogService.findById(id);
+        model.addAttribute("blog", blog);
+        return "updateBlog";
+    }
+    @RequestMapping(value = "/updateBlog",method = RequestMethod.POST)
+    public String updatePlace(@Valid Blog blog){
+        Blog blog1=blogService.findById(blog.getId());
+        blog1.setTitle(blog.getTitle());
+        blog1.setText(blog.getText());
+        blog1.setCategory(blog.getCategory());
+        blogService.save(blog1);
+        return "redirect:/blogInfo?id="+blog1.getId();
+
     }
 
 
