@@ -1,0 +1,262 @@
+
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="au theme template">
+    <meta name="author" content="Hau Nguyen">
+    <meta name="keywords" content="au theme template">
+
+    <!-- Title Page-->
+    <title>Users</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <!-- Fontfaces CSS-->
+    <link href="folderforadmin/css/font-face.css" rel="stylesheet" media="all">
+    <link href="folderforadmin/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="folderforadmin/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+    <link href="folderforadmin/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+
+    <!-- Bootstrap CSS-->
+    <link href="folderforadmin/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+
+    <!-- Vendor CSS-->
+    <link href="folderforadmin/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
+    <link href="folderforadmin/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+    <link href="folderforadmin/vendor/wow/animate.css" rel="stylesheet" media="all">
+    <link href="folderforadmin/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+    <link href="folderforadmin/vendor/slick/slick.css" rel="stylesheet" media="all">
+    <link href="folderforadmin/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="folderforadmin/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="folderforadmin/css/theme.css" rel="stylesheet" media="all">
+
+</head>
+
+<body class="animsition">
+    <div class="page-wrapper">
+        <!-- HEADER MOBILE-->
+        <!-- HEADER MOBILE-->
+        <header class="header-mobile d-block d-lg-none">
+            <div class="header-mobile__bar">
+                <div class="container-fluid">
+                    <div class="header-mobile-inner">
+                        <a class="logo" href="index.html">
+                            <img src="images/technodom.png" alt="CoolAdmin" />
+                        </a>
+                        <button class="hamburger hamburger--slider" type="button">
+                            <span class="hamburger-box">
+                                <span class="hamburger-inner"></span>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <nav class="navbar-mobile">
+                <div class="container-fluid">
+                    <ul class="navbar-mobile__list list-unstyled">
+                        <li class="has-sub">
+                            <a href="#" th:href="@{/}">
+                                <i class="fas fa-tachometer-alt"></i>Главная</a>
+                        </li>
+                        <li>
+                            <a class="js-arrow" th:href="@{/all}">
+                                <i class="fas fa-list-alt"></i>Пользователи технодом</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/allUsersQ}">
+                                <i class="fas fa-list-alt"></i>Пользователи технодомомой</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/sendMessage}">
+                                <i class="fas fa-envelope"></i>Отправить сообщение пользовательям</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/allMessages}">
+                                <i class="fas fa-list-alt"></i>Вопросы и ответы</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/history}">
+                                <i class="fas fa-bar-chart-o"></i>История тохнодом</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- END HEADER MOBILE-->
+
+        <!-- MENU SIDEBAR-->
+        <aside class="menu-sidebar d-none d-lg-block">
+            <div class="logo">
+                <a href="#">
+                    <img src="images/technodom.png" alt="Cool Admin" />
+                </a>
+            </div>
+            <div class="menu-sidebar__content js-scrollbar1">
+                <nav class="navbar-sidebar">
+                    <ul class="list-unstyled navbar__list">
+                        <li class="active has-sub">
+                            <a class="js-arrow" th:href="@{/}">
+                                <i class="fas fa-tachometer-alt"></i>Главная</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/all}">
+                                <i class="fas fa-list-alt"></i>Пользователи технодом</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/allUsersQ}">
+                                <i class="fas fa-list-alt"></i>Пользователи технодомомой</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/sendMessage}">
+                                <i class="fas fa-envelope"></i>Отправить сообщение пользовательям</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/allMessages}">
+                                <i class="fas fa-list-alt"></i>Вопросы и ответы</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/history}">
+                                <i class="fas fa-bar-chart-o"></i>История тохнодом</a>
+                        </li>
+
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+        <!-- END MENU SIDEBAR-->
+
+        <!-- PAGE CONTAINER-->
+        <div class="page-container">
+            <!-- HEADER DESKTOP-->
+            <header class="header-desktop">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="header-wrap">
+                            <form class="form-header" action="" method="POST">
+                            </form>
+                            <div class="header-button">
+                                <div class="account-wrap">
+                                    <a class="js-acc-btn" th:if="${#request.userPrincipal ==null}" th:href="@{/login}">Войти</a>
+                                    <a class="js-acc-btn" th:if="${#request.userPrincipal ==null}" th:href="@{/register}">Регистрация</a>
+                                    <div class="account-item clearfix js-item-menu" th:if="${#request.userPrincipal !=null}">
+                                        <div class="image">
+                                            <img src="images/av.png" alt="John Doe" />
+                                        </div>
+                                        <div class="content">
+                                            <a class="js-acc-btn" th:text="${#request.userPrincipal.name}"></a>
+                                        </div>
+                                        <div class="account-dropdown js-dropdown"  >
+                                            <div class="info clearfix">
+                                                <div class="image">
+                                                    <a href="#">
+                                                        <img src="images/av.png" alt="John Doe" />
+                                                    </a>
+                                                </div>
+                                                <div class="content">
+                                                    <h5 class="name">
+                                                        <a href="#" th:text="${#request.userPrincipal.name}">john doe</a>
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                            <div class="account-dropdown__body">
+                                                <div class="account-dropdown__item">
+                                                    <a th:href="@{/userPage(username=${#request.userPrincipal.name})}"  >
+                                                        <i class="zmdi zmdi-account"></i>Профиль</a>
+                                                </div>
+                                            </div>
+                                            <div class="account-dropdown__footer">
+                                                <a th:href="@{/logout}">
+                                                    <i class="zmdi zmdi-power"></i>Выйти</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <!-- MAIN CONTENT-->
+            <div class="main-content">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="row" id="mar">
+
+                            <div class="col-lg-12">
+                                <h2 class="title-1 m-b-25">Users Open travel</h2>
+                                <div class="table-responsive table--no-card m-b-40">
+                                    <table class="table table-borderless table-striped table-earning">
+                                        <thead>
+                                            <tr>
+                                                <th>Full name</th>
+                                                <th>Email</th>
+                                                <th>Image</th>
+                                                <th></th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr th:each="user:${users}">
+                                                <td th:text="${user.name}"></td>
+                                                <td th:text="${user.email}"></td>
+                                                <td ><img th:src="@{${user.image}}"></td>
+                                                <td class="button"><a th:href="@{/deleteUser(id=${user.id})}">Delete</a></td>
+                                                <td class="button"><a th:href="@{/updateUser(id=${user.id})}">Update</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="copyright">
+                                    <p>Copyright © 2019 Brigada. All rights reserved.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END MAIN CONTENT-->
+            <!-- END PAGE CONTAINER-->
+        </div>
+
+    </div>
+    <script>
+    </script>
+    <!-- Jquery JS-->
+    <script src="folderforadmin/vendor/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap JS-->
+    <script src="folderforadmin/vendor/bootstrap-4.1/popper.min.js"></script>
+    <script src="folderforadmin/vendor/bootstrap-4.1/bootstrap.min.js"></script>
+    <!-- Vendor JS       -->
+    <script src="folderforadmin/vendor/slick/slick.min.js">
+    </script>
+    <script src="folderforadmin/vendor/wow/wow.min.js"></script>
+    <script src="folderforadmin/vendor/animsition/animsition.min.js"></script>
+    <script src="folderforadmin/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+    </script>
+    <script src="folderforadmin/vendor/counter-up/jquery.waypoints.min.js"></script>
+    <script src="folderforadmin/vendor/counter-up/jquery.counterup.min.js">
+    </script>
+    <script src="folderforadmin/vendor/circle-progress/circle-progress.min.js"></script>
+    <script src="folderforadmin/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="folderforadmin/vendor/chartjs/Chart.bundle.min.js"></script>
+    <script src="folderforadmin/vendor/select2/select2.min.js">
+    </script>
+
+    <!-- Main JS-->
+    <script src="folderforadmin/js/main.js"></script>
+
+</body>
+
+</html>
+<!-- end document-->

@@ -98,12 +98,15 @@ public class PlaceController {
     }
     @RequestMapping("/updateApp")
     public String update(Model model, @RequestParam("id")long id){
+        System.out.println(id);
         model.addAttribute("place", placeService.findById(id));
         return "updatePlace";
     }
     @RequestMapping(value = "/updateApp",method = RequestMethod.POST)
     public String update(@Valid Place place){
+        System.out.println(place.getId());
         Place place1=placeService.findById(place.getId());
+        System.out.println(place.getText());
         place1.setText(place.getText());
         place1.setTitle(place.getTitle());
         place1.setCategory(place.getCategory());
