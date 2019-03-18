@@ -46,7 +46,6 @@ public class BlogController {
                                @RequestParam(name = "file2", required = false)MultipartFile file2, @RequestParam(name = "file3", required = false)MultipartFile file3) {
         if (result.hasErrors()) {
             model.addAttribute("blog", blog);
-            System.out.println("errorororor");
             return "newBlog";
         }
         try {
@@ -54,12 +53,10 @@ public class BlogController {
             userService.findUserByEmail(principal.getName());
             blog.setUsername(principal.getName());
             blogService.save(blog);
-            System.out.println("here2");
         } catch (Exception e) {
             model.addAttribute("errorMessage", "Error: " + e.getMessage());
             model.addAttribute("blog", blog);
             model.addAttribute("message","There is already exist such image");
-            System.out.println("rrrr");
             return "newBlog";
         }
 
