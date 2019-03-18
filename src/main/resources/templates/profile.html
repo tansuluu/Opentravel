@@ -196,7 +196,7 @@
                                     <a sec:authorize="hasAuthority('GID')" class="load-more-btn" th:href="@{/newPlace}"><b>NEW PLACE</b></a><br>
                                 </div>
                                 </div>
-                                <div th:if="${#request.userPrincipal != user.email}">
+                                <div th:if="${!#request.userPrincipal.getName().equals(user.email)}">
                                     <div class="right-area" sec:authorize="hasAuthority('ADMIN')">
                                     <a class="load-more-btn" th:href="@{/updateUser(id=${user.id})}"><b>UPDATE USER</b></a><br>
                                     <a class="load-more-btn" th:href="@{/deleteUser(id=${user.id})}"><b>DELETE USER</b></a><br>

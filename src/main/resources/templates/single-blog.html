@@ -159,7 +159,7 @@
                             <a  th:if="${app.username==#request.userPrincipal.name}"  class="load-more-btn" th:href="@{/updateBlog(id=${app.id})}"><b>UPDATE THE BLOG</b></a>
                         </div>
 						<div class="right-area" sec:authorize="hasAuthority('ADMIN')">
-							<div th:if="${#request.userPrincipal != app.username}">
+							<div th:if="${!#request.userPrincipal.getName().equals(app.username)}">
 							<a class="load-more-btn" th:href="@{/deleteApp(id=${app.id})}"><b>DELETE THE BLOG</b></a>
 							<a class="load-more-btn" th:href="@{/updateBlog(id=${app.id})}"><b>UPDATE THE BLOG</b></a>
 							</div>
