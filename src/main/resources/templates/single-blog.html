@@ -153,9 +153,13 @@
 					<div class="post-image"><img th:if="${app.getPhoto3()}!=null" th:src="@{${'/image/'+app.photo3}}"alt="Blog Image"></div>
 					<div class="post-bottom-area">
 						<div sec:authorize="hasRole('ROLE_USER')" th:if="${#request.userPrincipal!=null}">
-							<a  th:if="${app.username==#request.userPrincipal.name}"  class="load-more-btn" th:href="@{/deleteApp(id=${app.id})}"><b>DELETE THE APPLICACTION</b></a>
+							<a  th:if="${app.username==#request.userPrincipal.name}"  class="load-more-btn" th:href="@{/deleteApp(id=${app.id})}"><b>DELETE THE BLOG</b></a>
+							<a  th:if="${app.username==#request.userPrincipal.name}"  class="load-more-btn" th:href="@{/updateBlog(id=${app.id})}"><b>UPDATE THE BLOG</b></a>
 						</div>
-
+						<div class="right-area" sec:authorize="hasRole('ROLE_ADMIN')">
+							<a class="load-more-btn" th:href="@{/deleteApp(id=${app.id})}"><b>DELETE THE BLOG</b></a>
+							<a class="load-more-btn" th:href="@{/updateBlog(id=${app.id})}"><b>UPDATE THE BLOG</b></a>
+						</div>
 						<div class="post-info">
 							<div class="middle-area">
 								<a class="name" th:href="@{/userPage(username=${app.username})}"><b></b><h3 th:text="${app.username}"></h3></b></a>
