@@ -14,7 +14,6 @@ import com.example.opentravel.model.Place;
 import com.example.opentravel.repository.BlogRepository;
 import com.example.opentravel.service.BlogService;
 import com.fasterxml.jackson.databind.ObjectWriter;
-import com.google.gson.Gson;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
