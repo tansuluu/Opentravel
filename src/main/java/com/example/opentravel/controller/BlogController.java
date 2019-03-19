@@ -70,6 +70,7 @@ public class BlogController {
         model.addAttribute("popular",popular);
         return "single-blog";
     }
+
     @RequestMapping("/deleteApp")
     public String deleteApplications(@RequestParam("id")long id){
         blogService.delete(id);
@@ -89,6 +90,7 @@ public class BlogController {
         model.addAttribute("blog", blog);
         return "updateBlog";
     }
+
     @RequestMapping(value = "/updateBlog",method = RequestMethod.POST)
     public String updatePlace(@Valid Blog blog){
         Blog blog1=blogService.findById(blog.getId());
@@ -97,8 +99,8 @@ public class BlogController {
         blog1.setCategory(blog.getCategory());
         blogService.save(blog1);
         return "redirect:/blogInfo?id="+blog1.getId();
-
     }
+
     @RequestMapping("/findBlog")
     public String find(@RequestParam(name = "input",required = true) String input, Model model){
         List<Blog> list=blogService.findAllByTitle(input);
