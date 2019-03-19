@@ -14,10 +14,9 @@ public class AdminController {
     @Autowired
     private UserService userService;
 
-
     @RequestMapping("/admin")
     public String admin(Model model){
         model.addAttribute("users",userService.getAll());
-        return "users";
+        return "adminUsers";
     }
 }
