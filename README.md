@@ -19,8 +19,6 @@ Nurdin Imanaliev - requirement engineer - nurdin.imanaliev@iaau.edu.kg
 
 # HOW TO RUN
 
-***
-
 * Clone project to your computer [https://github.com/tansuluu/Opentravel.git](https://github.com/tansuluu/Opentravel.git)
 * Change database properties in [application.properties ](https://github.com/tansuluu/Opentravel/blob/master/src/main/resources/application.properties) file with your data 
     1. username 
