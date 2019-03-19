@@ -41,11 +41,8 @@ public class BlogService {
     public List<Blog> getAll() {
         return blogRepository.getAllByOrderByView();
     }
-    public List<Blog> getAllBlogs() {
-        return blogRepository.findAll();
-    }
 
-public void delete(long id){
+    public void delete(long id){
        blogRepository.delete(blogRepository.findById(id));
 }
     public List<Blog> findAllByTitle(String text){
