@@ -31,10 +31,7 @@ public class BlogServiceTest {
         System.out.println("Starting BlogService Test Class");
     }
 
-    @After
-    public void terminate(){
-        System.out.println("Terminating Test Class");
-    }
+
 
     @Test
     public void testFindById(){
@@ -214,5 +211,8 @@ public class BlogServiceTest {
         assertEquals(ticketList, blogServiceTest.getTop3PlaceByOrderByView());
     }
 
-
+    @After
+    public void terminate(){
+        System.out.println("Terminating Test Class");
+    }
 }

@@ -14,6 +14,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import javax.management.relation.Role;
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
@@ -30,13 +31,10 @@ class UserServiceTest {
 
     @Before
     public void setUp(){
-        System.out.println("Starting PlaceServiceTest class!");
+        System.out.println("Starting UserServiceTest class!");
     }
 
-    @After
-    public void terminate(){
-        System.out.println("PlaceServiceTest class is terminated");
-    }
+
 
     @Test
     public void testFindById(){
@@ -133,4 +131,10 @@ class UserServiceTest {
         when(userRepositoryMock.getAllByStatus(status)).thenReturn(list);
         assertEquals(list,userService.getAllByStatus(status));
     }
+
+    @After
+    public void terminate(){
+        System.out.println("UserServiceTest class is terminated");
+    }
+
 }

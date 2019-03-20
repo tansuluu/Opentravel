@@ -11,6 +11,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
@@ -29,10 +31,6 @@ public class PlaceServiceTest {
         System.out.println("Starting PlaceServiceTest class!");
     }
 
-    @After
-    public void terminate(){
-        System.out.println("PlaceServiceTest class is terminated");
-    }
 
     @Test
     public void testFindById(){
@@ -92,4 +90,40 @@ public class PlaceServiceTest {
         when(placeRepositoryMock.findByUsarname(name)).thenReturn(list);
         assertEquals(list,placeService.findByUsarname(name));
     }
+
+    @Test
+    public void testGetTop3PlaceByView(){
+        //List<Place> list=placeRepositoryMock.getAllByOrderByView();
+        List<Place> listTop=new ArrayList<>();
+        Place place1 = new Place();
+        Place place2 = new Place();
+        Place place3 = new Place();
+        listTop.add(place1);
+        listTop.add(place2);
+        listTop.add(place3);
+
+        when(placeRepositoryMock.getAllByOrderByView()).thenReturn(listTop);
+        assertEquals(listTop,placeService.getTop3PlaceByOrderByView());
+    }
+
+    @Test
+    public void getAllPlaces(){
+        List<Place> listTop=new ArrayList<>();
+        Place place1 = new Place();
+        Place place2 = new Place();
+        Place place3 = new Place();
+        listTop.add(place1);
+        listTop.add(place2);
+        listTop.add(place3);
+
+        when(placeRepositoryMock.getAllByOrderByView()).thenReturn(listTop);
+        assertEquals(listTop, placeService.getAll());
+    }
+
+    @After
+    public void terminate(){
+        System.out.println("PlaceServiceTest class is terminated");
+    }
+
+
 }
