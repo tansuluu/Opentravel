@@ -43,6 +43,7 @@ public class UserService {
     public User findUserById(int id) {
         return userRepository.findById(id);
     }
+
     public User saveUser(User user,String role) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setActive(1);
@@ -50,6 +51,7 @@ public class UserService {
         user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
         return userRepository.save(user);
     }
+
     public User saveNewPas(User user,String pas){
         user.setPassword(bCryptPasswordEncoder.encode(pas));
         user.setToken("");
