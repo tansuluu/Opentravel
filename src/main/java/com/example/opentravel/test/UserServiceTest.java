@@ -96,4 +96,41 @@ class UserServiceTest {
         when(userRepositoryMock.findAllByName(name)).thenReturn(list);
         assertEquals(list,userService.findByName(name));
     }
+
+    @Test
+    public void saveNewPas(){
+        User user = new User();
+        user.setName("meder");
+        String pass = "tmp";
+        user.setPassword(pass);
+        //when(userRepositoryMock.findByEmail("meder")).thenReturn(user);
+        assertEquals(pass,user.getPassword());
+    }
+
+    @Test
+    public void testFindByToken(){
+        User user=new User();
+        String token = "tok1";
+        user.setToken(token);
+        when(userRepositoryMock.findByToken(token)).thenReturn(user);
+        assertEquals(user,userService.findByToken(token));
+    }
+
+    @Test
+    public void testGetAllByStatus(){
+        User user = new User();
+        String status = "stat";
+        ArrayList<User> list=new ArrayList<>();
+        String name="mederbek@gmail.com";
+        user.setName(name);
+        User user1=new User();
+        User user2= new User();
+        user2.setName(name);
+        user1.setName(name);
+        list.add(user);
+        list.add(user1);
+        list.add(user2);
+        when(userRepositoryMock.getAllByStatus(status)).thenReturn(list);
+        assertEquals(list,userService.getAllByStatus(status));
+    }
 }
