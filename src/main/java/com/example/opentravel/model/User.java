@@ -31,7 +31,7 @@ public class User {
     private String country;
     @Column(name = "languages")
     private String languages;
-    @Column(name = "aboutMe")
+    @Column(columnDefinition = "LONGTEXT",name = "aboutMe")
     private String aboutMe;
     @Column(name = "active")
     private int active;

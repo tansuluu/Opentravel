@@ -1,0 +1,311 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Opentravel</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Travelix Project">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="folderforindex/styles/bootstrap4/bootstrap.min.css">
+    <link href="folderforindex/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="folderforindex/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="folderforindex/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+    <link rel="stylesheet" type="text/css" href="folderforindex/plugins/OwlCarousel2-2.2.1/animate.css">
+    <link rel="stylesheet" type="text/css" href="folderforindex/styles/main_styles.css">
+    <link rel="stylesheet" type="text/css" href="folderforindex/styles/my.css">
+    <link rel="stylesheet" type="text/css" href="folderforindex/styles/responsive.css">
+    <div>
+        <link rel="stylesheet" href="tast/css/open-iconic-bootstrap.min.css">
+        <link rel="stylesheet" href="tast/css/animate.css">
+        <link rel="stylesheet" href="tast/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="tast/css/owl.theme.default.min.css">
+        <link rel="stylesheet" href="tast/css/magnific-popup.css">
+        <link rel="stylesheet" href="tast/css/aos.css">
+        <link rel="stylesheet" href="tast/css/ionicons.min.css">
+        <link rel="stylesheet" href="tast/css/bootstrap-datepicker.css">
+        <link rel="stylesheet" href="tast/css/jquery.timepicker.css">
+        <link rel="stylesheet" href="tast/css/flaticon.css">
+        <link rel="stylesheet" href="tast/css/icomoon.css">
+        <link rel="stylesheet" href="tast/css/style.css">
+    </div>
+
+</head>
+
+<body>
+
+    <div class="super_container">
+
+        <!-- Header -->
+
+        <header class="header">
+
+            <!-- Top Bar -->
+
+            <div class="top_bar">
+                <div class="container">
+                    <div class="row">
+                        <div class="col d-flex flex-row">
+                            <div class="social">
+                                <ul class="social_list">
+                                    <li class="social_list_item"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                    <li class="social_list_item"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                    <li class="social_list_item"><a href="#"><i class="fa fa-vk" aria-hidden="true"></i></a></li>
+                                    <li class="social_list_item"><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="user_box ml-auto">
+                                <div class="user_box_register user_box_link"><a th:if="${#request.userPrincipal !=null}" th:href="@{/logout}">Logout</a></div>
+                                <div class="user_box_register user_box_link"><a th:if="${#request.userPrincipal !=null}" th:href="@{/userPage(username=${#request.userPrincipal.name})}"  th:text="${#request.userPrincipal.name}"></a></div>
+
+                                <div class="user_box_register user_box_link"><a th:if="${#request.userPrincipal == null}" th:href="@{/registration}">Register</a></div>
+                                <div class="user_box_register user_box_link"><a th:if="${#request.userPrincipal == null}" th:href="@{/login}">Login</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Main Navigation -->
+            <nav class="main_nav">
+                <div class="container">
+                    <div class="row">
+                        <div class="col main_nav_col d-flex flex-row align-items-center justify-content-start">
+                            <div class="logo_container">
+                                <div class="logo"><a th:href="@{/}"><img src="" alt="">opentravel</a></div>
+                            </div>
+                            <div class="main_nav_container ml-auto">
+                                <ul class="main_nav_list">
+                                    <li class="main_nav_item"><a th:href="@{/}">home</a></li>
+                                    <li class="main_nav_item"><a th:href="@{/about}">about us</a></li>
+                                    <li class="main_nav_item"><a th:href="@{/places}">offers</a></li>
+                                    <li class="main_nav_item"><a th:href="@{/blog}">blog</a></li>
+                                    <li class="main_nav_item"><a th:href="@{/gids}">users</a></li>
+                                </ul>
+                            </div>
+                            <div class="content_search ml-lg-0 ml-auto">
+                                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                width="17px" height="17px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+                                    <g>
+                                        <g>
+                                            <g>
+                                                <path class="mag_glass" fill="#FFFFFF" d="M78.438,216.78c0,57.906,22.55,112.343,63.493,153.287c40.945,40.944,95.383,63.494,153.287,63.494
+                                                s112.344-22.55,153.287-63.494C489.451,329.123,512,274.686,512,216.78c0-57.904-22.549-112.342-63.494-153.286
+                                                C407.563,22.549,353.124,0,295.219,0c-57.904,0-112.342,22.549-153.287,63.494C100.988,104.438,78.439,158.876,78.438,216.78z
+                                                M119.804,216.78c0-96.725,78.69-175.416,175.415-175.416s175.418,78.691,175.418,175.416
+                                                c0,96.725-78.691,175.416-175.416,175.416C198.495,392.195,119.804,313.505,119.804,216.78z"/>
+                                            </g>
+                                        </g>
+                                        <g>
+                                            <g>
+                                                <path class="mag_glass" fill="#FFFFFF" d="M6.057,505.942c4.038,4.039,9.332,6.058,14.625,6.058s10.587-2.019,14.625-6.058L171.268,369.98
+                                                c8.076-8.076,8.076-21.172,0-29.248c-8.076-8.078-21.172-8.078-29.249,0L6.057,476.693
+                                                C-2.019,484.77-2.019,497.865,6.057,505.942z"/>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </div>
+                            <div class="hamburger">
+                                <i class="fa fa-bars trans_200"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+        </header>
+
+        <div class="menu trans_500">
+            <div class="menu_content d-flex flex-column align-items-center justify-content-center text-center">
+                <div class="menu_close_container"><div class="menu_close"></div></div>
+                <div class="logo menu_logo"><a href="#"><img src="images/logo.png" alt=""></a></div>
+                <ul>
+                    <li class="menu_item"><a th:href="@{/}">home</a></li>
+                    <li class="menu_item"><a th:href="@{/about}">about us</a></li>
+                    <li class="menu_item"><a th:href="@{/places}">offers</a></li>
+                    <li class="menu_item"><a th:href="@{/blog}">blog</a></li>
+                    <li class="menu_item"><a th:href="@{/gids}">users</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Home -->
+
+        <div class="home">
+
+            <!-- Home Slider -->
+
+            <div class="home_slider_container">
+
+                <div class="owl-carousel owl-theme home_slider">
+
+                    <!-- Slider Item -->
+                    <div class="owl-item home_slider_item">
+                        <div class="home_slider_background" style="background-image:url(images/ab.jpg)"></div>
+
+                        <div class="home_slider_content text-center">
+                            <div class="home_slider_content_inner" data-animation-in="flipInX" data-animation-out="animate-out fadeOut">
+                                <h1 style="font-size: 45px"></h1>
+                                <h1 style="font-size: 85px">About us</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <section class="ftco-section-2">
+        <div class="container d-flex">
+            <div class="section-2-blocks-wrapper row">
+                <div class="img col-sm-12 col-lg-6" style="background-image: url('images/SK.jpg');">
+                </div>
+                <div class="text col-lg-6 ftco-animate">
+                    <div class="text-inner align-self-start">
+                        <span class="subheading">About Opentravel</span>
+                        <p>Site for providing services and the best experience in tourism for both parties. </p>
+
+                        <p>Where a party to the provision of services can be any qualified guide by ensuring himself a stable income. Also for the promotion of tourism in Kyrgyzstan, this project will be very helpful. Investigating and telling foreigners about the expanses of our country, people will share their knowledge and advise them to visit Kyrgyzstan and their circle of people.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="ftco-section">
+        <div class="container">
+            <div class="row justify-content-center mb-5 pb-5">
+                <div class="col-md-7 text-center heading-section ftco-animate">
+                    <h2>Other members</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 ftco-animate">
+                    <div class="block-10">
+                        <div class="chef-img" style="background-image: url(images/nn.jpg)"></div>
+
+                        <div class="person-info">
+                            <span class="name">Nurdin Imanaliev</span>
+                            <span class="position">Requirement engineer</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 ftco-animate">
+                    <div class="block-10">
+                        <div class="chef-img" style="background-image: url(images/my.jpg)"></div>
+
+                        <div class="person-info">
+                            <span class="name">Tansuluu Myrzaeva</span>
+                            <span class="position">Project manager</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 ftco-animate">
+                    <div class="block-10">
+                        <div class="chef-img" style="background-image: url(images/m.jpg)"></div>
+
+                        <div class="person-info">
+                            <span class="name">Meder Abdyldaev</span>
+                            <span class="position">Back-end developer</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 ftco-animate">
+                    <div class="block-10">
+                        <div class="chef-img" style="background-image: url(images/n.jpg)"></div>
+
+                        <div class="person-info">
+                            <span class="name">Nadyrbek Sultanov</span>
+                            <span class="position">Back-end developer</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 ftco-animate">
+                    <div class="block-10">
+                        <div class="chef-img" style="background-image: url(images/pp.jpg)"></div>
+
+                        <div class="person-info">
+                            <span class="name">Zarlyk Zhusubaliev</span>
+                            <span class="position">Tester</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 ftco-animate">
+                    <div class="block-10">
+
+                        <div class="chef-img" style="background-image: url(images/ee.jpg)"></div>
+                        <div class="person-info">
+                            <span class="name">Elmira Kurmanbekova</span>
+                            <span class="position">Front-end developer</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 ftco-animate">
+                    <div class="block-10">
+
+                        <div class="chef-img" style="background-image: url(images/ed.jpg)"></div>
+                        <div class="person-info">
+                            <span class="name">Edil Kamchybekov </span>
+                            <span class="position">Front-end developer</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 order-lg-1 order-2  ">
+                    <div class="copyright_content d-flex flex-row align-items-center">
+                        <div>
+                            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This project is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by Brigada
+                    </div>
+                </div>
+                <div class="col-lg-9 order-lg-2 order-1">
+                    <div class="footer_nav_container d-flex flex-row align-items-center justify-content-lg-end">
+                        <div class="footer_nav">
+                            <ul class="footer_nav_list">
+                                <li class="footer_nav_item"><a th:href="@{/}">home</a></li>
+                                <li class="footer_nav_item"><a th:href="@{/about}">about us</a></li>
+                                <li class="footer_nav_item"><a th:href="@{/places}">offers</a></li>
+                                <li class="footer_nav_item"><a th:href="@{/blod}">blog</a></li>
+                                <li class="footer_nav_item"><a th:href="@{/gids}">users</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="folderforindex/js/jquery-3.2.1.min.js"></script>
+    <script src="folderforindex/styles/bootstrap4/popper.js"></script>
+    <script src="folderforindex/styles/bootstrap4/bootstrap.min.js"></script>
+    <script src="folderforindex/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+    <script src="folderforindex/plugins/easing/easing.js"></script>
+    <script src="folderforindex/js/custom.js"></script>
+    <div>
+        <script src="tast/js/jquery.min.js"></script>
+        <script src="tast/js/jquery-migrate-3.0.1.min.js"></script>
+        <script src="tast/js/popper.min.js"></script>
+        <script src="tast/js/bootstrap.min.js"></script>
+        <script src="tast/js/jquery.easing.1.3.js"></script>
+        <script src="tast/js/jquery.waypoints.min.js"></script>
+        <script src="tast/js/jquery.stellar.min.js"></script>
+        <script src="tast/js/owl.carousel.min.js"></script>
+        <script src="tast/js/jquery.magnific-popup.min.js"></script>
+        <script src="tast/js/aos.js"></script>
+        <script src="tast/js/jquery.animateNumber.min.js"></script>
+        <script src="tast/js/bootstrap-datepicker.js"></script>
+        <script src="tast/js/jquery.timepicker.min.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+        <script src="tast/js/google-map.js"></script>
+        <script src="tast/js/main.js"></script>
+    </div>
+</body>
+</html>

@@ -98,9 +98,6 @@
 							</svg>
 					</div>
 
-					<form id="search_form" class="search_form bez_1">
-						<input type="search" class="search_content_input bez_1">
-					</form>
 					<div class="hamburger">
 						<i class="fa fa-bars trans_200"></i>
 					</div>
@@ -152,37 +149,24 @@
 					<div class="post-image"><img th:if="${app.getPhoto2()}!=null" th:src="@{${'/image/'+app.photo2}}"alt="Blog Image"></div>
 					<div class="post-image"><img th:if="${app.getPhoto3()}!=null" th:src="@{${'/image/'+app.photo3}}"alt="Blog Image"></div>
 					<div class="post-bottom-area">
-						<div sec:authorize="hasRole('ROLE_USER')" th:if="${#request.userPrincipal!=null}">
-							<a  th:if="${app.username==#request.userPrincipal.name}"  class="load-more-btn" th:href="@{/deleteApp(id=${app.id})}"><b>DELETE THE APPLICACTION</b></a>
+						<div  th:if="${#request.userPrincipal!=null}">
+							<a  th:if="${app.username==#request.userPrincipal.name}"  class="load-more-btn" th:href="@{/deleteApp(id=${app.id})}"><b>DELETE THE BLOG</b></a>
 						</div>
-						<div class="right-area" sec:authorize="hasRole('ROLE_ADMIN')">
-							<a class="load-more-btn" th:href="@{/deleteApp(id=${app.id})}"><b>DELETE THE APPLICACTION</b></a>
+                        <div  th:if="${#request.userPrincipal!=null}">
+                            <a  th:if="${app.username==#request.userPrincipal.name}"  class="load-more-btn" th:href="@{/updateBlog(id=${app.id})}"><b>UPDATE THE BLOG</b></a>
+                        </div>
+						<div class="right-area" sec:authorize="hasAuthority('ADMIN')">
+							<div th:if="${!#request.userPrincipal.getName().equals(app.username)}">
+							<a class="load-more-btn" th:href="@{/deleteApp(id=${app.id})}"><b>DELETE THE BLOG</b></a>
+							<a class="load-more-btn" th:href="@{/updateBlog(id=${app.id})}"><b>UPDATE THE BLOG</b></a>
+							</div>
 						</div>
-
 						<div class="post-info">
 							<div class="middle-area">
 								<a class="name" th:href="@{/userPage(username=${app.username})}"><b></b><h3 th:text="${app.username}"></h3></b></a>
 								<h6 class="date" th:text="${'on '+ app.date}">on Sep 29, 2017 at 9:48 am</h6>
 							</div>
 
-						</div>
-						<div class="post-icons-area">
-							<ul class="post-icons" >
-								<input th:value="${app.id}" type="hidden" id="placeId">
-								<input type="hidden" th:if="${#request.userPrincipal !=null}" th:value="${#request.userPrincipal.name}"  id="userName">
-								<li id="deleteLike" th:if="${#request.userPrincipal!=null}"><a style="color: red" id="dl" th:text="${' '+app.likes}" class="ion-heart"></a></li>
-								<li id="addLike" th:if="${#request.userPrincipal!=null}" ><a  th:text="${' '+app.likes}" id="ad" class="ion-heart"></a></li>
-								<li><a th:if="${#request.userPrincipal==null}"  th:text="${' '+app.likes}" class="ion-heart" style="color: red"></a></li>
-								<li><a href="#" class="ion-chatbubble"  th:text="${' '+app.comNumber}"></a></li>
-								<li><a href="#" class="ion-eye" th:text="${' '+app.view}" ></a></li>
-							</ul>
-
-							<ul class="icons">
-								<li>SHARE : </li>
-								<li><a href="#"><i class="ion-social-facebook"></i></a></li>
-								<li><a href="#"><i class="ion-social-twitter"></i></a></li>
-								<li><a href="#"><i class="ion-social-pinterest"></i></a></li>
-							</ul>
 						</div>
 					</div><!-- post-bottom-area -->
 

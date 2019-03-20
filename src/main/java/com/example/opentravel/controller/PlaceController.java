@@ -52,7 +52,7 @@ public class PlaceController {
             System.out.println("errorr with place");
             return "newPlace";
         }
-        System.out.println("dvfhjbfhjvfhjfhjfjfjjvjgjgbjk");
+
         try {
             place=storageService.preStore(file1,file2,file3,place);
             userService.findUserByEmail(principal.getName());
@@ -89,5 +89,27 @@ public class PlaceController {
         model.addAttribute("app",place);
         model.addAttribute("popular",popular);
         return "places";
+    }
+
+    @RequestMapping("/deleteAppP")
+    public String showApplications( @RequestParam("id")long id){
+        placeService.delete(id);
+        return "redirect:/places";
+    }
+    @RequestMapping("/updateApp")
+    public String update(Model model, @RequestParam("id")long id){
+        System.out.println(id);
+        model.addAttribute("place", placeService.findById(id));
+        return "updatePlace";
+    }
+    @RequestMapping(value = "/updateApp",method = RequestMethod.POST)
+    public String update(@Valid Place place){
+        Place place1=placeService.findById(place.getId());
+        place1.setText(place.getText());
+        place1.setTitle(place.getTitle());
+        place1.setCategory(place.getCategory());
+        place1.setAddress(place.getAddress());
+        placeService.save(place1);
+        return "redirect:/placeInfo?id="+place.getId();
     }
 }

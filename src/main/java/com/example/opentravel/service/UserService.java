@@ -5,22 +5,29 @@ import com.example.opentravel.model.User;
 import com.example.opentravel.repository.RoleRepository;
 import com.example.opentravel.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 
 
 @Service("userService")
 public class UserService {
 
+
+
+    @Autowired
     private UserRepository userRepository;
+    @Autowired
     private RoleRepository roleRepository;
+    @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-//    @Autowired
-//    private EmailService emailService;
+    @Autowired
+    private EmailService emailService;
 
     @Autowired
     public UserService(UserRepository userRepository, RoleRepository roleRepository,BCryptPasswordEncoder bCryptPasswordEncoder) {
@@ -32,6 +39,7 @@ public class UserService {
     public User findUserByEmail(String email) {
         return userRepository.findByEmail(email);
     }
+
     public User findUserById(int id) {
         return userRepository.findById(id);
     }
@@ -67,5 +75,20 @@ public class UserService {
 
     public User findByToken(String token){
         return userRepository.findByToken(token);
+    }
+
+
+    public void sendTokenToReset(User user, HttpServletRequest request){
+        user.setToken(UUID.randomUUID().toString());
+
+        String appUrl = request.getScheme() + "://" + request.getServerName();
+
+        SimpleMailMessage registrationEmail = new SimpleMailMessage();
+        registrationEmail.setTo(user.getEmail());
+        registrationEmail.setSubject("Password reset");
+        registrationEmail.setText("To reset your password on opentravel site, please click the link below:\n"
+                + appUrl + ":8080/reset?token=" + user.getToken());
+        registrationEmail.setFrom("noreply@domain.com");
+        emailService.sendEmail(registrationEmail);
     }
 }

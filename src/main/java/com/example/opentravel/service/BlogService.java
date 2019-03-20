@@ -3,6 +3,8 @@ import com.example.opentravel.model.Blog;
 import com.example.opentravel.repository.BlogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.test.web.servlet.RequestBuilder;
+import org.springframework.test.web.servlet.ResultActions;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -39,6 +41,14 @@ public class BlogService {
     public List<Blog> getAll() {
         return blogRepository.getAllByOrderByView();
     }
+
+    public void delete(long id){
+       blogRepository.delete(blogRepository.findById(id));
+}
+    public List<Blog> findAllByTitle(String text){
+        return blogRepository.findAllByTitle(text);
+}
+
 
 
 }

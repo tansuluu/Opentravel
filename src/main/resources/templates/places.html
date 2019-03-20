@@ -97,10 +97,6 @@
 								</g>
 							</svg>
 					</div>
-
-					<form id="search_form" class="search_form bez_1">
-						<input type="search" class="search_content_input bez_1">
-					</form>
 					<div class="hamburger">
 						<i class="fa fa-bars trans_200"></i>
 					</div>
@@ -152,13 +148,18 @@
 					<div class="post-image"><img th:if="${app.getPhoto2()}!=null" th:src="@{${'/image/'+app.photo2}}"alt="Blog Image"></div>
 					<div class="post-image"><img th:if="${app.getPhoto3()}!=null" th:src="@{${'/image/'+app.photo3}}"alt="Blog Image"></div>
 					<div class="post-bottom-area">
-						<div sec:authorize="hasRole('ROLE_USER')" th:if="${#request.userPrincipal!=null}">
-							<a  th:if="${app.usarname==#request.userPrincipal.name}"  class="load-more-btn" th:href="@{/deleteApp(id=${app.id})}"><b>DELETE THE APPLICACTION</b></a>
+						<div  th:if="${#request.userPrincipal!=null}">
+							<a  th:if="${app.usarname==#request.userPrincipal.name}"  class="load-more-btn" th:href="@{/deleteAppP(id=${app.id})}"><b>DELETE THE PLACE</b></a>
 						</div>
-						<div class="right-area" sec:authorize="hasRole('ROLE_ADMIN')">
-							<a class="load-more-btn" th:href="@{/deleteApp(id=${app.id})}"><b>DELETE THE APPLICACTION</b></a>
+						<div  th:if="${#request.userPrincipal!=null}">
+							<a  th:if="${app.usarname==#request.userPrincipal.name}"  class="load-more-btn" th:href="@{/updateApp(id=${app.id})}"><b>UPDATE THE PLACE</b></a>
 						</div>
-
+						<div class="right-area" sec:authorize="hasAuthority('ADMIN')">
+                            <div th:if="${!#request.userPrincipal.getName().equals(app.usarname)}">
+							<a class="load-more-btn" th:href="@{/deleteAppP(id=${app.id})}"><b>DELETE THE PLACE</b></a>
+							<a class="load-more-btn" th:href="@{/updateApp(id=${app.id})}"><b>UPDATE THE PLACE</b></a>
+                            </div>
+						</div>
 						<div class="post-info">
 							<div class="middle-area">
 								<a class="name" th:href="@{/userPage(username=${app.usarname})}"><b></b><h3 th:text="${app.usarname}"></h3></b></a>
