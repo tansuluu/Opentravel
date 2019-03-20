@@ -96,4 +96,14 @@ class UserServiceTest {
         when(userRepositoryMock.findAllByName(name)).thenReturn(list);
         assertEquals(list,userService.findByName(name));
     }
+
+    @Test
+    public void saveNewPas(){
+        User user = new User();
+        user.setName("meder");
+        String pass = "tmp";
+        user.setPassword(pass);
+        //when(userRepositoryMock.findByEmail("meder")).thenReturn(user);
+        assertEquals(pass,user.getPassword());
+    }
 }
