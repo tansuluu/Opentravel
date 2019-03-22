@@ -210,10 +210,10 @@
                     </div>
                 </section>
                 <section class="recomended-area section">
-                    <h2 style="color: #0c5460; padding-bottom: 20px; font-family: 'Maven Pro', sans-serif " th:text="${user.email+' places'}"></h2>
+                    <h2 style="color: #0c5460; padding-bottom: 20px; font-family: 'Maven Pro', sans-serif " th:text="${places.size()+' - ' + user.email+' places'}"></h2>
                     <div class="container" >
                         <div class="row">
-                            <div class="col-lg-4 col-md-6" th:each="app1:${blogs}">
+                            <div class="col-lg-4 col-md-6" th:each="app1:${places}">
                                 <div class="card h-100">
                                     <div class="single-post post-style-1">
                                         <div class="blog-image"><img th:if="${app1.getPhoto1()}!=null" th:src="@{${'/image/'+app1.photo1}}" alt="Blog Image"></div>
@@ -229,10 +229,10 @@
                     </div><!-- container -->
                 </section>
                 <section class="recomended-area section">
-                    <h2 style="color: #0c5460; padding-bottom: 20px; font-family: 'Maven Pro', sans-serif " th:text="${user.email+' posts'}"></h2>
+                    <h2 style="color: #0c5460; padding-bottom: 20px; font-family: 'Maven Pro', sans-serif " th:text="${blogs.size()+' - '+ user.email+' blogs'}"></h2>
                     <div class="container" >
                         <div class="row">
-                            <div class="col-lg-4 col-md-6" th:each="app1:${places}">
+                            <div class="col-lg-4 col-md-6" th:each="app1:${blogs}">
                                 <div class="card h-100">
                                     <div class="single-post post-style-1">
                                         <div class="blog-image"><img th:if="${app1.getPhoto1()}!=null" th:src="@{${'/image/'+app1.photo1}}" alt="Blog Image"></div>
