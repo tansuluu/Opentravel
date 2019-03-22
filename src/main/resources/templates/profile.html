@@ -207,6 +207,26 @@
                             </div>
                         </div>
                     </div>
+                    </div>
+                </section>
+                <section class="recomended-area section">
+                    <h2 style="color: #0c5460; padding-bottom: 20px; font-family: 'Maven Pro', sans-serif " th:text="${user.email+' places'}"></h2>
+                    <div class="container" >
+                        <div class="row">
+                            <div class="col-lg-4 col-md-6" th:each="app1:${blogs}">
+                                <div class="card h-100">
+                                    <div class="single-post post-style-1">
+                                        <div class="blog-image"><img th:if="${app1.getPhoto1()}!=null" th:src="@{${'/image/'+app1.photo1}}" alt="Blog Image"></div>
+                                        <div class="blog-info">
+                                            <h4 class="title"><a th:href="@{/placeInfo(id=${app1.id})}" ><b th:text="${app1.title}"></b></a></h4>
+
+                                        </div><!-- blog-info -->
+                                    </div><!-- single-post -->
+                                </div><!-- card -->
+                            </div><!-- col-md-6 col-sm-12 -->
+                        </div><!-- row -->
+
+                    </div><!-- container -->
                 </section>
                 <section class="recomended-area section">
                     <h2 style="color: #0c5460; padding-bottom: 20px; font-family: 'Maven Pro', sans-serif " th:text="${user.email+' posts'}"></h2>
@@ -219,8 +239,6 @@
                                         <div class="blog-info">
                                             <h4 class="title"><a th:href="@{/placeInfo(id=${app1.id})}" ><b th:text="${app1.title}"></b></a></h4>
 
-                                            <div id = "Tansulu_kreative">
-                                            </div>
                                         </div><!-- blog-info -->
                                     </div><!-- single-post -->
                                 </div><!-- card -->

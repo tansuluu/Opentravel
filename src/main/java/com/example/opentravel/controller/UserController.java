@@ -1,7 +1,9 @@
 package com.example.opentravel.controller;
 
+import com.example.opentravel.model.Blog;
 import com.example.opentravel.model.Place;
 import com.example.opentravel.model.User;
+import com.example.opentravel.service.BlogService;
 import com.example.opentravel.service.PlaceService;
 import com.example.opentravel.service.StorageService;
 import com.example.opentravel.service.UserService;
@@ -32,6 +34,9 @@ public class UserController {
     UserService userService;
 
     @Autowired
+    BlogService blogService;
+
+    @Autowired
     PlaceService placeService;
 
     @RequestMapping("/find")
@@ -40,14 +45,18 @@ public class UserController {
         model.addAttribute("gids", list);
         return "gids";
     }
+
     @RequestMapping("/userPage")
     public String showUser(Model model, @RequestParam("username")String email){
         User user=userService.findUserByEmail(email);
         List<Place> list=placeService.findByUsarname(email);
+        List<Blog> list1=blogService.findByUsername(email);
         model.addAttribute("places",list);
+        model.addAttribute("blogs",list1);
         model.addAttribute("user",user);
         return "profile";
     }
+
     @GetMapping("/image/{filename:.+}")
     @ResponseBody
     public ResponseEntity<Resource> getImage(@PathVariable String filename) {
