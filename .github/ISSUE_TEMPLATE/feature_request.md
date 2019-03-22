@@ -7,28 +7,14 @@ assignees: ''
 
 ---
 
-- [ ] Produced code for presumed functionalities
+**Is your feature request related to a problem? Please describe.**
+A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
 
-- [ ] Assumptions of User Story met
+**Describe the solution you'd like**
+A clear and concise description of what you want to happen.
 
-- [ ] Project builds without errors
+**Describe alternatives you've considered**
+A clear and concise description of any alternative solutions or features you've considered.
 
-- [ ] Unit tests written and passing
-
-- [ ] Project deployed on the test environment identical to production platform
-
-- [ ]  Tests on devices/browsers listed in the project assumptions passed
-
-- [ ] Feature ok-ed by UX designer
-
-- [ ] QA performed & issues resolved
-
-- [ ] Feature is tested against acceptance criteria
-
-- [ ] Refactoring completed
-
-- [ ] Any configuration or build changes documented
-
-- [ ] Documentation updated
-
-- [ ] Peer Code Review performed
+**Additional context**
+Add any other context or screenshots about the feature request here.
