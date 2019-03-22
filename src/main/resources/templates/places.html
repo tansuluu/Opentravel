@@ -137,10 +137,9 @@
 
 						<h5 class="pre-title" style="text-align: center; font-size: 35px; font-weight: bold">Place</h5>
 
-						<h3 class="title" ><a  href=""><b th:text="${app.title}"></b></a></h3>
-
-
-
+						<h3 class="title" ><i th:text="${app.title}"></i></h3>
+						<h4 class="title"><i class="fa fa-home"> </i> Address: <i th:text="${app.address}"></i></h4>
+						<h4 class="title"><i class="fa fa-tags"> </i> Category: <i th:text="${app.category}"></i></h4>
 						<p class="para" th:text="${app.text}"></p>
 
 					</div><!-- post-top-area -->
@@ -188,7 +187,7 @@
 
 						<div class="blog-info">
 
-							<h4 class="title"><a th:href="@{/appInfo(id=${app1.id})}"><b th:text="${app1.title}"></b></a></h4>
+							<h4 class="title"><a th:href="@{/placeInfo(id=${app1.id})}"><b th:text="${app1.title}"></b></a></h4>
 
 						</div><!-- blog-info -->
 					</div><!-- single-post -->
