@@ -44,6 +44,11 @@ public class MainController {
         return "about";
 
     }
+    @RequestMapping("/help")
+    public String help(){
+        return "help";
+
+    }
 
     @RequestMapping("/gids")
     public String gid(Model model){
