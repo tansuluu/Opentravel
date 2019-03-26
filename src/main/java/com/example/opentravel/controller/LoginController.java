@@ -65,12 +65,12 @@ public class LoginController {
                 user.setCountry("Kyrgyzstan");
                 user.setStatus("gid");
                 userService.saveUser(user, "GID");
-                modelAndView.addObject("successMessage", "User has been registered successfully as GID");
+                modelAndView.addObject("successMessage", "User has been registered successfully as GID,We sent confirmation to your email, please confirm to login!");
             }
             else {
                 user.setStatus("tourist");
                 userService.saveUser(user, "TOURIST");
-                modelAndView.addObject("successMessage", "User has been registered successfully as Tourist");
+                modelAndView.addObject("successMessage", "User has been registered successfully as Tourist, We sent confirmation to your email, please confirm to login!");
             }
 
             modelAndView.addObject("user", new User());
@@ -110,5 +110,17 @@ public class LoginController {
             return ResponseEntity.ok(1);
         }
         return ResponseEntity.ok(0);
+    }
+
+    @RequestMapping("/reset")
+    public String  reset(@RequestParam("token") String token, Model model){
+        User user=userService.findByToken(token);
+        if(user==null){
+            return "error";
+        }
+        else {
+            model.addAttribute("token",token);
+            return "reset";
+        }
     }
 }

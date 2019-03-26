@@ -46,7 +46,7 @@ public class UserService {
 
     public User saveUser(User user,String role) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        user.setActive(1);
+        user.setActive(0);
         Role userRole = roleRepository.findByRole(role);
         user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
         return userRepository.save(user);
@@ -90,6 +90,20 @@ public class UserService {
         registrationEmail.setSubject("Password reset");
         registrationEmail.setText("To reset your password on opentravel site, please click the link below:\n"
                 + appUrl + ":8080/reset?token=" + user.getToken());
+        registrationEmail.setFrom("noreply@domain.com");
+        emailService.sendEmail(registrationEmail);
+    }
+
+    public void sendTokenToConfirm(User user, HttpServletRequest request){
+        user.setToken(UUID.randomUUID().toString());
+
+        String appUrl = request.getScheme() + "://" + request.getServerName();
+
+        SimpleMailMessage registrationEmail = new SimpleMailMessage();
+        registrationEmail.setTo(user.getEmail());
+        registrationEmail.setSubject("Confirmation to OpenTravel site");
+        registrationEmail.setText("To confirm your gmail on opentravel site, please click the link below:\n"
+                + appUrl + ":8080/confirm?token=" + user.getToken());
         registrationEmail.setFrom("noreply@domain.com");
         emailService.sendEmail(registrationEmail);
     }
