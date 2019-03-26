@@ -76,9 +76,7 @@
 <script>
     $(document).ready(function() {
         $("#pas").on("click",function(){
-            console.log("hhh");
 			if($("#password").val()==$("#password1").val()){
-			    console.log("dsx");
                 $.ajax({
                     url:"/newPassword",
                     type:"GET",
