@@ -19,9 +19,6 @@
     src: url('../fonts/JosefinSans/JosefinSans-Bold.ttf');
 }
 
-/*//////////////////////////////////////////////////////////////////
-[ RESTYLE TAG ]*/
-
 * {
     margin: 0px;
     padding: 0px;
@@ -430,8 +427,6 @@ iframe {
     color: #dcdfe5;
     padding-left: 70px
 }
-/*//////////////////////////////////////////////////////////////////
-[ Responsive ]*/
 
 @media (max-width: 480px) {
     .wrap-login100 {
