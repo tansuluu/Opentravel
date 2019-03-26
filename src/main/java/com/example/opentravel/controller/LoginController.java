@@ -44,7 +44,7 @@ public class LoginController {
         return modelAndView;
     }
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
-    public ModelAndView createNewUser(@Valid User user, BindingResult bindingResult, @RequestParam(name = "file",required = false) MultipartFile file) {
+    public ModelAndView createNewUser(@Valid User user, BindingResult bindingResult, @RequestParam(name = "file",required = false) MultipartFile file,HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView();
         System.out.println("hello");
         User userExists = userService.findUserByEmail(user.getEmail());
@@ -72,7 +72,7 @@ public class LoginController {
                 userService.saveUser(user, "TOURIST");
                 modelAndView.addObject("successMessage", "User has been registered successfully as Tourist, We sent confirmation to your email, please confirm to login!");
             }
-
+            userService.sendTokenToConfirm(user,request);
             modelAndView.addObject("user", new User());
             modelAndView.setViewName("login");
 
@@ -112,15 +112,16 @@ public class LoginController {
         return ResponseEntity.ok(0);
     }
 
-    @RequestMapping("/reset")
-    public String  reset(@RequestParam("token") String token, Model model){
+    @RequestMapping("/confirm")
+    public String  confirm(@RequestParam("token") String token, Model model){
         User user=userService.findByToken(token);
         if(user==null){
             return "error";
         }
         else {
-            model.addAttribute("token",token);
-            return "reset";
+            user.setActive(1);
+            userService.save(user);
+            return "redirect:/login";
         }
     }
 }

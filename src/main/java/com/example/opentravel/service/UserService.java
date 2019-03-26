@@ -107,4 +107,7 @@ public class UserService {
         registrationEmail.setFrom("noreply@domain.com");
         emailService.sendEmail(registrationEmail);
     }
+    public User save(User user){
+        return userRepository.save(user);
+    }
 }
