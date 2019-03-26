@@ -1,10 +1,4 @@
 
-
-
-
-/*//////////////////////////////////////////////////////////////////
-[ FONT ]*/
-
 @font-face {
     font-family: SourceSansPro-Regular;
     src: url('../fonts/source-sans-pro/SourceSansPro-Regular.ttf');
@@ -59,10 +53,6 @@ a {
 
 a:focus {
     outline: none !important;
-}
-
-a:hover {
-    text-decoration: none;
 }
 
 /*---------------------------------------------*/
@@ -123,11 +113,6 @@ button:hover {
 iframe {
     border: none !important;
 }
-
-
-
-/*//////////////////////////////////////////////////////////////////
-[ Utility ]*/
 .txt1 {
     font-family: SourceSansPro-Regular;
     font-size: 16px;
@@ -327,10 +312,6 @@ iframe {
     -ms-box-shadow: 0 10px 30px 0px rgba(189, 89, 212, 0.8);
 }
 
-
-/*------------------------------------------------------------------
-[ Alert validate ]*/
-
 .validate-input {
     position: relative;
 }
@@ -406,10 +387,6 @@ iframe {
     top: 0px;
     right: 23px;
 }
-
-/*//////////////////////////////////////////////////////////////////
-[ Social item ]*/
-
 
 .login100-social-item {
     font-size: 25px;
