@@ -114,4 +114,16 @@ public class LoginController {
             return "redirect:/login";
         }
     }
+        
+    @RequestMapping(value = "/resetPassword", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<?> reset(@RequestParam("email") String email, HttpServletRequest request) {
+        int result =0 ;
+        User user=userService.findUserByEmail(email);
+        if (user!=null) {
+            userService.sendTokenToReset(user,request);
+            result = 1;
+        }
+        return ResponseEntity.ok(result);
+
+    }
 }
