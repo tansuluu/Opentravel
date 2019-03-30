@@ -8,7 +8,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 
 public class Sprint1 {
-    static String uName="Example@mail.ru";
+    static String uName="Exa@mail.ru";
     static String uName2="Example2@mail.ru";
     static String pWord="zzz123";
     static String exname="Example user";
@@ -115,7 +115,7 @@ public class Sprint1 {
     }*/
 
     public static void main(String[] args) {
-        System.setProperty("webdriver.gecko.driver","/home/student/Videos/geckodriver-master/geckodriver");
+        System.setProperty("webdriver.gecko.driver","C:/Users/tanya/Downloads/programs/geckodriver.exe");
 
         WebDriver driver = new FirefoxDriver();
         Sprint1 sp=new Sprint1();
@@ -146,19 +146,19 @@ public class Sprint1 {
         driver.findElement(By.linkText("GID")).click();
         st=sp.exname;
         driver.findElement(By.id("name")).sendKeys(st);
-        /*driver.findElement(By.id("languages")).sendKeys(this.exlang);
-        driver.findElement(By.id("age")).sendKeys(this.exage);
-        driver.findElement(By.id("experience")).sendKeys(this.exexp);
-        driver.findElement(By.id("aboutMe")).sendKeys(this.exabout);
-        driver.findElement(By.id("email")).sendKeys(this.uName);
-        driver.findElement(By.id("password")).sendKeys(this.pWord);*/
-        driver.findElement(By.linkText(("SIGN UP"))).click();
+        driver.findElement(By.id("languages")).sendKeys(sp.exlang);
+        driver.findElement(By.id("age")).sendKeys(sp.exage);
+        driver.findElement(By.id("experience")).sendKeys(sp.exexp);
+        driver.findElement(By.id("aboutMe")).sendKeys(sp.exabout);
+        driver.findElement(By.id("email")).sendKeys(sp.uName);
+        driver.findElement(By.id("password")).sendKeys(sp.pWord);
+        driver.findElement(By.className(("login100-form-btn"))).click();
         title=driver.getTitle();
-        if(title == "Login") {
+        if(title.equals("Login")) {
             System.out.println("GID registration successful!!!");
         }
         else
-        System.out.println("Failed in registration GID");
+        System.out.println("Failed in registration GID"+title);
 
 
         driver.close();
