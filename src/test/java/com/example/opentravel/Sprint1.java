@@ -96,10 +96,10 @@ public class Sprint1 {
         }
         driver.findElement(By.id("email")).sendKeys(sp.uName);
         driver.findElement(By.id("password")).sendKeys(sp.pWord);
-        driver.findElement(By.linkText(("SIGN IN"))).click();
+        driver.findElement(By.className(("container-login100-form-btn"))).click();
         title=driver.getTitle();
         if(title.equals(sp.baseUrl)) {
-            System.out.println("Tourist registration successful!!!");
+            System.out.println("Logged In!!!");
             return true;
         }
         System.out.println("Failed in registration Tourist");
@@ -108,12 +108,73 @@ public class Sprint1 {
 
     public static boolean USE2(WebDriver driver, Sprint1 sp) {
         String title = "";
+        String expectedTitle = "Profile";
+
+        driver.get(sp.baseUrl);
+        driver.findElement(By.partialLinkText("@gmail.com")).click();
+        title=driver.getTitle();
+        if(!title.equals(expectedTitle)){
+            System.out.println("Failed:" + title);
+            return false;
+        }
+        System.out.println("User's Profile Done!!!");
+        return true;
+    }
+
+    public static boolean BLO4(WebDriver driver, Sprint1 sp) {
+        String title = "";
         String expectedTitle = "Login";
 
         driver.get(sp.baseUrl);
         driver.findElement(By.partialLinkText("@gmail.com")).click();
-        return true;
+        title=driver.getTitle();
+        if(!title.equals(expectedTitle)){
+            System.out.println("Failed:" + title);
+            return false;
+        }
+
+        driver.findElement(By.linkText("NEW BLOG"));
+        driver.findElement(By.id("title")).sendKeys("hehehe");
+        driver.findElement(By.id("text")).sendKeys("hahaha");
+        driver.findElement(By.id("category")).click();
+        driver.findElement(By.className("btn btn-primary py-3 px-5")).click();
+
+        return true
     }
+
+    public static boolean BLO5(WebDriver driver, Sprint1 sp) {
+        String title = "";
+        String expectedTitle = "Login";
+
+        driver.get(sp.baseUrl);
+        driver.findElement(By.partialLinkText("@gmail.com")).click();
+        title=driver.getTitle();
+        if(!title.equals(expectedTitle)){
+            System.out.println("Failed:" + title);
+            return false;
+        }
+
+
+        return true
+    }
+
+    public static boolean LUP6(WebDriver driver, Sprint1 sp) {
+        String title = "";
+        String expectedTitle = "Login";
+
+        driver.get(sp.baseUrl);
+
+        return true
+    }
+
+    public static boolean LUP7(WebDriver driver, Sprint1 sp) {
+        String title = "";
+        String expectedTitle = "Login";
+
+        driver.get(sp.baseUrl);
+        return true
+    }
+
 
     public static void main(String[] args) {
         System.setProperty("webdriver.gecko.driver","/home/student/Videos/geckodriver-master/geckodriver");
@@ -133,7 +194,46 @@ public class Sprint1 {
             System.exit(0);
             return;
         }
+        progress=logIn(driver,sp);
+        if(!progress){
+            driver.close();
+            System.exit(0);
+            return;
+        }
+        progress=USE2(driver,sp);
+        if(!progress){
+            driver.close();
+            System.exit(0);
+            return;
+        }
 
+        progress=BLO4(driver,sp);
+        if(!progress){
+            driver.close();
+            System.exit(0);
+            return;
+        }
+
+        progress=BLO5(driver,sp);
+        if(!progress){
+            driver.close();
+            System.exit(0);
+            return;
+        }
+
+        progress=LUP6(driver,sp);
+        if(!progress){
+            driver.close();
+            System.exit(0);
+            return;
+        }
+
+        progress=LUP7(driver,sp);
+        if(!progress){
+            driver.close();
+            System.exit(0);
+            return;
+        }
 
         driver.close();
         System.exit(0);
