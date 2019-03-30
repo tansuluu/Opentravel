@@ -1,4 +1,4 @@
-package com.example.opentravel.test;
+package com.example.opentravel;
 
 import com.example.opentravel.model.Comment;
 import org.junit.After;
