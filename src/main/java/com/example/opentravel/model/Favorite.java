@@ -15,4 +15,26 @@ public class Favorite {
     @Column(name = "placeId", length = 128)
     private long placeId;
 
+    public Favorite() {
+    }
+
+    public Favorite(long placeId) {
+        this.placeId = placeId;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public long getPlaceId() {
+        return placeId;
+    }
+
+    public void setPlaceId(long placeId) {
+        this.placeId = placeId;
+    }
 }
