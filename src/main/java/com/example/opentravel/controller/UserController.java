@@ -71,21 +71,7 @@ public class UserController {
                 .header(HttpHeaders.CONTENT_DISPOSITION, "filename=\"" + file.getFilename() + "\"")
                 .body(file);
     }
-    @GetMapping("/up-avatar/{filename:.+}")
-    @ResponseBody
-    public ResponseEntity<Resource> getAvatar(@PathVariable String filename) {
-        Resource file = storageService.loadAvatar(filename);
-        String mimeType = "";
-        try {
-            mimeType = Files.probeContentType(file.getFile().toPath());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        System.out.println(file.getFilename());
-        return ResponseEntity.ok()
-                .header(HttpHeaders.CONTENT_DISPOSITION, "filename=\"" + file.getFilename() + "\"")
-                .body(file);
-    }
+}
 
 
 }
