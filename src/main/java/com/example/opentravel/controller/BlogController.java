@@ -102,11 +102,1485 @@ public class BlogController {
     }
 
     @RequestMapping("/findBlog")
-    public String find(@RequestParam(name = "input",required = true) String input, Model model){
+    public String find2(@RequestParam(name = "input",required = true) String input, Model model){
         List<Blog> list=blogService.findAllByTitle(input);
         model.addAttribute("blogs", list);
         return "blog";
     }
 
+
+
+    @RequestMapping("/findBlog")
+    public String find22(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+
+    @RequestMapping("/findBlog")
+    public String find222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+
+    @RequestMapping("/findBlog")
+    public String find2222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
 
 }
