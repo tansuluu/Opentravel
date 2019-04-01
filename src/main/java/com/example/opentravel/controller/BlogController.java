@@ -62,6 +62,20 @@ public class BlogController {
 
         return "redirect:/userPage?username="+principal.getName();
     }
+    @RequestMapping("/blogInfo")
+    public String showApplications(Model model, @RequestParam("id")long id, Principal principal){
+        Blog blog=blogService.findById(id);
+        List<Blog> popular=blogService.getTop3PlaceByOrderByView();
+        model.addAttribute("app",blog);
+        model.addAttribute("popular",popular);
+        return "single-blog";
+    }
+
+    @RequestMapping("/deleteApp")
+    public String deleteApplications(@RequestParam("id")long id){
+        blogService.delete(id);
+        return "redirect:/blog";
+    }
 
     @RequestMapping("/blog")
     public String places(Model model){
