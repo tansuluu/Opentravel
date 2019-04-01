@@ -1780,5 +1780,41 @@ public class BlogController {
         model.addAttribute("blogs", list);
         return "blog";
     }
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
+    @RequestMapping("/findBlog")
+    public String find22222(@RequestParam(name = "input",required = true) String input, Model model){
+        List<Blog> list=blogService.findAllByTitle(input);
+        model.addAttribute("blogs", list);
+        return "blog";
+    }
 
 }
