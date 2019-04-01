@@ -69,7 +69,64 @@
                 </p>
             </div>
 		</form>
+        <div class="login100-form validate-form"  id="reset" style="display: none">
+				<span class="login100-form-title p-b-37" id="resetSuccess">
+					Reset
+				</span>
 
+            <div class="wrap-input100 validate-input m-b-20" data-validate="Enter email" id="em">
+                <span class="focus-input100"></span>
+            </div>
+            <div class="container-login100-form-btn">
+                <button class="login100-form-btn" id="resetButton">
+                    Submit
+                </button>
+            </div>
+
+            <div class="text-center">
+                <a class="txt2 hov1" th:href="@{/login}">
+                    Back to login
+                </a>
+            </div>
+        </div>
+
+
+	</div>
+</div>
+
+
+
+<div id="dropDownSelect1"></div>
+<script>
+    $(document).ready(function() {
+        $('#res').on('click', function () {
+           console.log("helllo");
+           $("#login").hide();
+           $("#em").append("<input class='input100' type='text' name='email' placeholder='Email' required='required' id='emailR'>");
+           $("#reset").show();
+       });
+
+    $("#resetButton").on("click",function(){
+        console.log("here comment");
+        var text=$("#emailR").val();
+        $.ajax({
+            url:"/resetPassword",
+            type:"GET",
+            data:({email:text}),
+            dataType: 'json',
+            contentType: "application/json",
+            success: funcSuccess
+        });
+        });
+        function funcSuccess(data) {
+            console.log(("ddf"));
+            console.log(data);
+            if(data==1){
+                $("#resetSuccess").text("The email was sent to you, please check it!");
+            }
+        }
+    });
+</script>
 <!--===============================================================================================-->
 <script src="folderforindex/vendor2/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
