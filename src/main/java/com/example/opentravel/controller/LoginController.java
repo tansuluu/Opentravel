@@ -80,6 +80,17 @@ public class LoginController {
         return modelAndView;
     }
 
+    @RequestMapping("/reset")
+    public String  reset(@RequestParam("token") String token, Model model){
+        User user=userService.findByToken(token);
+        if(user==null){
+            return "error";
+        }
+        else {
+            model.addAttribute("token",token);
+            return "reset";
+        }
+    }
 
     @RequestMapping(value = "/newPassword", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity<?> newPassword(@RequestParam("password") String password,@RequestParam("token") String token,Model model) {
