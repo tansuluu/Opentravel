@@ -96,6 +96,20 @@ public class PlaceController {
         placeService.delete(id);
         return "redirect:/places";
     }
-
+    @RequestMapping("/updateApp")
+    public String update(Model model, @RequestParam("id")long id){
+        System.out.println(id);
+        model.addAttribute("place", placeService.findById(id));
+        return "updatePlace";
+    }
+    @RequestMapping(value = "/updateApp",method = RequestMethod.POST)
+    public String update(@Valid Place place){
+        Place place1=placeService.findById(place.getId());
+        place1.setText(place.getText());
+        place1.setTitle(place.getTitle());
+        place1.setCategory(place.getCategory());
+        place1.setAddress(place.getAddress());
+        placeService.save(place1);
+        return "redirect:/placeInfo?id="+place.getId();
     }
 }
