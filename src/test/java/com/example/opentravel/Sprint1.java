@@ -177,7 +177,7 @@ public class Sprint1 {
 
 
     public static void main(String[] args) {
-        System.setProperty("webdriver.gecko.driver","/home/student/Videos/geckodriver-master/geckodriver");
+        System.setProperty("webdriver.gecko.driver","C:/Users/tanya/Downloads/programs/geckodriver.exe");
 
         WebDriver driver = new FirefoxDriver();
         Sprint1 sp=new Sprint1();
@@ -227,6 +227,7 @@ public class Sprint1 {
             System.exit(0);
             return;
         }
+
 
         progress=LUP7(driver,sp);
         if(!progress){

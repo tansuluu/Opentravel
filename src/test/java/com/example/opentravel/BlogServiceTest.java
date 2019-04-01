@@ -1,4 +1,4 @@
-package com.example.opentravel.test;
+package com.example.opentravel;
 
 import com.example.opentravel.model.Blog;
 import com.example.opentravel.repository.BlogRepository;
