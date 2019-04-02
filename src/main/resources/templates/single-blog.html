@@ -151,7 +151,7 @@
 					<div class="post-image"><img th:if="${app.getPhoto3()}!=null" th:src="@{${'/image/'+app.photo3}}"alt="Blog Image"></div>
 					<div class="post-bottom-area">
 						<div  th:if="${#request.userPrincipal!=null}">
-							<a  th:if="${app.username==#request.userPrincipal.name}"  class="load-more-btn" th:href="@{/deleteApp(id=${app.id})}"><b>DELETE THE BLOG</b></a>
+							<button class="btn btn-danger" th:if="${app.username==#request.userPrincipal.name}"  type="button" data-toggle="modal" data-target="#myModal" style="width: 100%">DELETE THE PLACE</button>
 						</div>
                         <div  th:if="${#request.userPrincipal!=null}">
                             <a  th:if="${app.username==#request.userPrincipal.name}"  class="load-more-btn" th:href="@{/updateBlog(id=${app.id})}"><b>UPDATE THE BLOG</b></a>
@@ -159,7 +159,9 @@
 						<div class="right-area" sec:authorize="hasAuthority('ADMIN')">
 							<div th:if="${!#request.userPrincipal.getName().equals(app.username)}">
 							<a class="load-more-btn" th:href="@{/deleteApp(id=${app.id})}"><b>DELETE THE BLOG</b></a>
-							<a class="load-more-btn" th:href="@{/updateBlog(id=${app.id})}"><b>UPDATE THE BLOG</b></a>
+								<button class="btn btn-danger"  type="button" data-toggle="modal" data-target="#myModal" style="width: 100%">DELETE THE PLACE</button>
+
+								<a class="load-more-btn" th:href="@{/updateBlog(id=${app.id})}"><b>UPDATE THE BLOG</b></a>
 							</div>
 						</div>
 						<div class="post-info">
@@ -235,7 +237,25 @@
 </div>
 
 </div>
-
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<b class="modal-title">Confirmation</b>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				Are you sure about deleting data?
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+				<a class="btn btn-danger btn-ok" th:href="@{/deleteApp(id=${app.id})}" >Delete</a>
+			</div>
+		</div>
+	</div>
+</div>
 <script src="folderforindex/js/jquery-3.2.1.min.js"></script>
 <script src="folderforindex/styles/bootstrap4/popper.js"></script>
 <script src="folderforindex/styles/bootstrap4/bootstrap.min.js"></script>
