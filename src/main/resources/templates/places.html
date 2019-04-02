@@ -148,6 +148,7 @@
 					<div class="post-image"><img th:if="${app.getPhoto3()}!=null" th:src="@{${'/image/'+app.photo3}}"alt="Blog Image"></div>
 					<div class="post-bottom-area">
 						<div  th:if="${#request.userPrincipal!=null}">
+							<button class="btn btn-danger" th:if="${app.usarname==#request.userPrincipal.name}"  type="button" data-toggle="modal" data-target="#myModal" th:attr="data-href=@{/deleteAppP(id=${app.id})}"  style="width: 100%">DELETE THE PLACE</button>
 							<a  th:if="${app.usarname==#request.userPrincipal.name}"  class="load-more-btn" th:href="@{/deleteAppP(id=${app.id})}"><b>DELETE THE PLACE</b></a>
 						</div>
 						<div  th:if="${#request.userPrincipal!=null}">
@@ -225,7 +226,29 @@
 </div>
 
 </div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<b class="modal-title">Confirmation</b>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				Are you sure about deleting data?
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+				<a class="btn btn-danger btn-ok">Delete</a>
+			</div>
+		</div>
+	</div>
+</div>
 <script>
+    $(document).on('show.bs.modal','#myModal', function () {
+        console.log("here");
+    });
 </script>
 <script src="folderforindex/js/jquery-3.2.1.min.js"></script>
 <script src="folderforindex/styles/bootstrap4/popper.js"></script>
