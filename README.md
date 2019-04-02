@@ -18,9 +18,9 @@ Tansuluu Myrzaeva - project manager - [tansuluu.myrzaeva@iaau.edu.kg](tansuluu.m
 Nurdin Imanaliev - requirement engineer - [nurdin.imanaliev@iaau.edu.kg](nurdin.imanaliev@iaau.edu.kg) <br/>
 
 
-[HOW TO RUN](https://github.com/tansuluu/Opentravel/wiki/MANUAL-FOR-TREVELLER-SITE#how-to-run)
 
 
 ### [MANUAL FOR TREVELER SITE](https://github.com/tansuluu/Opentravel/wiki/MANUAL-FOR-TREVELLER-SITE)
+   [HOW TO RUN](https://github.com/tansuluu/Opentravel/wiki/MANUAL-FOR-TREVELLER-SITE#how-to-run)
 ### [TREVELLER SITE DEVELOPING CHRONOLOGY](https://github.com/tansuluu/Opentravel/wiki/TREVELLER-SITE-DEVELOPING-CHRONOLOGY)
 ### [SOFTWARE REQUIREMENTS SPECIFICATION DOCUMENT](https://github.com/tansuluu/Opentravel/wiki/SRS)
