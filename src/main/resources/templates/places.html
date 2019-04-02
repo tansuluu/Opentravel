@@ -10,7 +10,7 @@
 	<!-- Font -->
 	<title>Registration Form</title>
 	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
-
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="/folderforindex/styles/bootstrap4/bootstrap.min.css">
 	<link href="folderforindex/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -137,6 +137,7 @@
 
 						<h5 class="pre-title" style="text-align: center; font-size: 35px; font-weight: bold">Place</h5>
 
+
 						<h3 class="title" ><i th:text="${app.title}"></i></h3>
 						<h4 class="title"><i class="fa fa-home"> </i> Address: <i th:text="${app.address}"></i></h4>
 						<h4 class="title"><i class="fa fa-tags"> </i> Category: <i th:text="${app.category}"></i></h4>
@@ -148,7 +149,7 @@
 					<div class="post-image"><img th:if="${app.getPhoto3()}!=null" th:src="@{${'/image/'+app.photo3}}"alt="Blog Image"></div>
 					<div class="post-bottom-area">
 						<div  th:if="${#request.userPrincipal!=null}">
-							<button class="btn btn-danger" th:if="${app.usarname==#request.userPrincipal.name}"  type="button" data-toggle="modal" data-target="#myModal" th:attr="data-href=@{/deleteAppP(id=${app.id})}"  style="width: 100%">DELETE THE PLACE</button>
+							<button class="btn btn-danger" th:if="${app.usarname==#request.userPrincipal.name}"  type="button" data-toggle="modal" data-target="#myModal" style="width: 100%">DELETE THE PLACE</button>
 							<a  th:if="${app.usarname==#request.userPrincipal.name}"  class="load-more-btn" th:href="@{/deleteAppP(id=${app.id})}"><b>DELETE THE PLACE</b></a>
 						</div>
 						<div  th:if="${#request.userPrincipal!=null}">
@@ -217,6 +218,7 @@
 							<li class="footer_nav_item"><a th:href="@{/places}">offers</a></li>
 							<li class="footer_nav_item"><a th:href="@{/blod}">blog</a></li>
 							<li class="footer_nav_item"><a th:href="@{/gids}">users</a></li>
+
 						</ul>
                     </div>
                 </div>
@@ -240,15 +242,13 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-				<a class="btn btn-danger btn-ok">Delete</a>
+				<a class="btn btn-danger btn-ok" th:href="@{/deleteAppP(id=${app.id})}" >Delete</a>
 			</div>
 		</div>
 	</div>
 </div>
 <script>
-    $(document).on('show.bs.modal','#myModal', function () {
-        console.log("here");
-    });
+
 </script>
 <script src="folderforindex/js/jquery-3.2.1.min.js"></script>
 <script src="folderforindex/styles/bootstrap4/popper.js"></script>
