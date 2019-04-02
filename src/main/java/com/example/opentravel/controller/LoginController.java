@@ -46,7 +46,6 @@ public class LoginController {
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
     public ModelAndView createNewUser(@Valid User user, BindingResult bindingResult, @RequestParam(name = "file",required = false) MultipartFile file,HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView();
-        System.out.println("hello");
         User userExists = userService.findUserByEmail(user.getEmail());
         if (userExists != null) {
             bindingResult
