@@ -150,14 +150,13 @@
 					<div class="post-bottom-area">
 						<div  th:if="${#request.userPrincipal!=null}">
 							<button class="btn btn-danger" th:if="${app.usarname==#request.userPrincipal.name}"  type="button" data-toggle="modal" data-target="#myModal" style="width: 100%">DELETE THE PLACE</button>
-							<a  th:if="${app.usarname==#request.userPrincipal.name}"  class="load-more-btn" th:href="@{/deleteAppP(id=${app.id})}"><b>DELETE THE PLACE</b></a>
 						</div>
 						<div  th:if="${#request.userPrincipal!=null}">
 							<a  th:if="${app.usarname==#request.userPrincipal.name}"  class="load-more-btn" th:href="@{/updateApp(id=${app.id})}"><b>UPDATE THE PLACE</b></a>
 						</div>
 						<div class="right-area" sec:authorize="hasAuthority('ADMIN')">
                             <div th:if="${!#request.userPrincipal.getName().equals(app.usarname)}">
-							<a class="load-more-btn" th:href="@{/deleteAppP(id=${app.id})}"><b>DELETE THE PLACE</b></a>
+								<button class="btn btn-danger" type="button" data-toggle="modal" data-target="#myModal" style="width: 100%">DELETE THE PLACE</button>
 							<a class="load-more-btn" th:href="@{/updateApp(id=${app.id})}"><b>UPDATE THE PLACE</b></a>
                             </div>
 						</div>
