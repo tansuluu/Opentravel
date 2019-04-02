@@ -237,7 +237,7 @@
                                     <div class="single-post post-style-1">
                                         <div class="blog-image"><img th:if="${app1.getPhoto1()}!=null" th:src="@{${'/image/'+app1.photo1}}" alt="Blog Image"></div>
                                         <div class="blog-info">
-                                            <h4 class="title"><a th:href="@{/placeInfo(id=${app1.id})}" ><b th:text="${app1.title}"></b></a></h4>
+                                            <h4 class="title"><a th:href="@{/blogInfo(id=${app1.id})}" ><b th:text="${app1.title}"></b></a></h4>
 
                                         </div><!-- blog-info -->
                                     </div><!-- single-post -->
