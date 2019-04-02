@@ -107,7 +107,7 @@
     $("#resetButton").on("click",function(){
         console.log("here comment");
         var text=$("#emailR").val();
-        $("#resetSuccess").append("<span class='sr-only'>Loading...</span>");
+        $("#resetSuccess").text('Sending email...');
         $.ajax({
             url:"/resetPassword",
             type:"GET",
