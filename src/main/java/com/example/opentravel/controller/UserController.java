@@ -81,7 +81,6 @@ public class UserController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println(file.getFilename());
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_DISPOSITION, "filename=\"" + file.getFilename() + "\"")
                 .body(file);
