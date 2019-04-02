@@ -23,3 +23,4 @@ Nurdin Imanaliev - requirement engineer - [nurdin.imanaliev@iaau.edu.kg](nurdin.
 
 ### [MANUAL FOR TREVELER SITE](https://github.com/tansuluu/Opentravel/wiki/MANUAL-FOR-TREVELLER-SITE)
 ### [TREVELLER SITE DEVELOPING CHRONOLOGY](https://github.com/tansuluu/Opentravel/wiki/TREVELLER-SITE-DEVELOPING-CHRONOLOGY)
+###[Software requirements specification documentatons](https://github.com/tansuluu/Opentravel/wiki/SRS)
