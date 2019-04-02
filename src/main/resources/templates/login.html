@@ -70,9 +70,9 @@
             </div>
 		</form>
         <div class="login100-form validate-form"  id="reset" style="display: none">
-				<span class="login100-form-title p-b-37" id="resetSuccess">
+				<div class="login100-form-title p-b-37" id="resetSuccess">
 					Reset
-				</span>
+				</div>
 
             <div class="wrap-input100 validate-input m-b-20" data-validate="Enter email" id="em">
                 <span class="focus-input100"></span>
@@ -89,8 +89,6 @@
                 </a>
             </div>
         </div>
-
-
 	</div>
 </div>
 
@@ -109,6 +107,7 @@
     $("#resetButton").on("click",function(){
         console.log("here comment");
         var text=$("#emailR").val();
+        $("#resetSuccess").append("<span class='sr-only'>Loading...</span>");
         $.ajax({
             url:"/resetPassword",
             type:"GET",
@@ -119,8 +118,6 @@
         });
         });
         function funcSuccess(data) {
-            console.log(("ddf"));
-            console.log(data);
             if(data==1){
                 $("#resetSuccess").text("The email was sent to you, please check it!");
             }
