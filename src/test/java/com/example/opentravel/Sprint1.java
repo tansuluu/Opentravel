@@ -1,6 +1,6 @@
 package com.example.opentravel;
 
-
+/*
 import ch.qos.logback.core.net.SyslogOutputStream;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -241,3 +241,4 @@ public class Sprint1 {
 
     }
 }
+*/
