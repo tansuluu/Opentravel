@@ -11,6 +11,7 @@ public class OpentravelApplicationTests {
 
 	@Test
 	public void contextLoads() {
+
 	}
 
 }
