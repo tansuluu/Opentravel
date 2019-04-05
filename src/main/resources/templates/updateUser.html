@@ -1,31 +1,32 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	  xmlns:th="http://www.thymeleaf.org">
+	  xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 
 <head>
-	<title>Update User</title>
+	<title>Update profile</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<link rel="stylesheet" type="text/css" href="folderforlogin/vendor/bootstrap/css/bootstrap.min.css">
 	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="folderforlogin/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" th:href="@{/folderforindex/vendor2/bootstrap/css/bootstrap.min.css}">
 	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="folderforlogin/fonts/iconic/css/material-design-iconic-font.min.css">
+	<link rel="stylesheet" type="text/css" th:href="@{/folderforindex/fonts2/font-awesome-4.7.0/css/font-awesome.min.css}">
 	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="folderforlogin/vendor/animate/animate.css">
+	<link rel="stylesheet" type="text/css" th:href="@{/folderforindex/fonts2/iconic/css/material-design-iconic-font.min.css}">
 	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="folderforlogin/vendor/css-hamburgers/hamburgers.min.css">
+	<link rel="stylesheet" type="text/css" th:href="@{/folderforindex/vendor2/animate/animate.css}">
 	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="folderforlogin/vendor/animsition/css/animsition.min.css">
+	<link rel="stylesheet" type="text/css" th:href="@{/folderforindex/vendor2/css-hamburgers/hamburgers.min.css}">
 	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="folderforlogin/vendor/select2/select2.min.css">
+	<link rel="stylesheet" type="text/css" href="/folderforindex/vendor2/animsition/css/animsition.min.css">
 	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="folderforlogin/vendor/daterangepicker/daterangepicker.css">
+	<link rel="stylesheet" type="text/css" href="/folderforindex/vendor2/select2/select2.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/folderforindex/vendor2/daterangepicker/daterangepicker.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/folderforlogin/css/util.css">
+	<link rel="stylesheet" type="text/css" href="/folderforlogin/css/main.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="folderforlogin/css/util.css">
-	<link rel="stylesheet" type="text/css" href="folderforlogin/css/mstyle.css">
 	<!--===============================================================================================-->
 </head>
 <body>
@@ -34,29 +35,25 @@
 <div class="container-login100" style="background-image: url('/folderforlogin/images/k2.jpg');">
 	<div class="wrap-login100 p-l-55 p-r-55 p-t-80 p-b-30">
 			<span class="login100-form-title p-b-37" style="padding-left: 60px">
-					Sign Up as:
+					Update profile
 			</span>
-		<div id="tur">
-			<a><p class="login100-form-title p-b-37"  style="color: #4b5257;padding-left: 20px ">Tourist </p></a>
-			<a><p class="login100-form-title p-b-37" id="gid1">GID</p></a>
-		</div>
-		<div id="gid">
-			<a><p class="login100-form-title p-b-37"  style="color: #0c5460;padding-left: 20px">GID</p></a>
-			<a><p class="login100-form-title p-b-37" id="tourist">Tourist </p></a>
-		</div>
-		<form class="login100-form validate-form" th:action="@{/registration}" method="post" th:object="${user}" enctype="multipart/form-data">
-
+		<form class="login100-form validate-form" th:action="@{/updateUser}" method="post" th:object="${user}" enctype="multipart/form-data">
+			<label th:if="${#fields.hasErrors('email')}" th:errors="*{email}"   class="validation-message"></label>
+			<div class="wrap-input100 validate-input m-b-25">
+				<input class="input100" type="text" name="email"  th:field="*{email}" placeholder="Email" readonly="readonly">
+				<input type="number" th:field="*{id}" hidden="hidden">
+				<input type="text" th:field="*{password}" value="12345" hidden="hidden">
+				<span class="focus-input100"></span>
+			</div>
 			<label th:if="${#fields.hasErrors('name')}" th:errors="*{name}"  class="validation-message"></label>
 			<div class="wrap-input100 validate-input m-b-20" >
 				<input class="input100" type="text" th:field="*{name}" name="name" placeholder="First name & last name">
 				<span class="focus-input100"></span>
 			</div>
-			<div id="tur1">
-				<div class="wrap-input100">
+			<div class="wrap-input100 validate-input m-b-20" sec:authorize="hasAuthority('TOURIST')" >
 					<input class="input100" type="text" name="country" th:field="*{country}" placeholder="Country">
 					<span class="focus-input100"></span>
 				</div>
-			</div>
 			<div class="wrap-input100 validate-input m-b-25">
 				<input class="input100" type="text" name="language" th:field="*{languages}" placeholder="Languages">
 				<span class="focus-input100"></span>
@@ -65,7 +62,7 @@
 				<input class="input100" type="number" name="age"  th:field="*{age}" placeholder="Age">
 				<span class="focus-input100"></span>
 			</div>
-			<div class="wrap-input100" id="gid3" style="margin-bottom: 15px">
+			<div  class="wrap-input100 validate-input m-b-25" sec:authorize="hasAuthority('GID')" >
 				<input class="input100" type="number" name="experience" th:field="*{experience}" placeholder="Experience">
 				<span class="focus-input100"></span>
 			</div>
@@ -82,31 +79,10 @@
 				<textarea class="input100" type="text" name="aboutMe" th:field="*{aboutMe}" placeholder="About me"></textarea>
 				<span class="focus-input100"></span>
 			</div>
-			<label th:if="${#fields.hasErrors('email')}" th:errors="*{email}"   class="validation-message"></label>
-			<div class="wrap-input100 validate-input m-b-25">
-				<input class="input100" type="text" name="email"  th:field="*{email}" placeholder="Email">
-				<span class="focus-input100"></span>
-			</div>
-			<label th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="validation-message"></label>
-			<div class="wrap-input100 validate-input m-b-25">
-				<input class="input100" type="password" name="password"   th:field="*{password}" placeholder="Password">
-				<span class="focus-input100"></span>
-			</div>
-			<div class="wrap-input100" >
-				<span class="label-input100" th:text="Image"></span>
-				<input class="input100" type="file"  name="file" >
-				<span class="focus-input100" data-symbol="&#xf13e;"></span>
-			</div>
 			<div class="container-login100-form-btn">
 				<button class="login100-form-btn" type="submit">
-					Sign Up
+					UPDATE
 				</button>
-			</div>
-			<div class="text-center">
-
-				<a th:href="@{/login}" class="txt2 hov1">
-					Sign In
-				</a>
 			</div>
 		</form>
 
@@ -118,21 +94,20 @@
 
 
 <div id="dropDownSelect1"></div>
-
 <!--===============================================================================================-->
-<script type="application/javascript" src="/folderforlogin/vendor/jquery/jquery-3.2.1.min.js"></script>
+<script type="application/javascript" src="/folderforindex/vendor2/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
-<script type="application/javascript" src="/folderforlogin/vendor/animsition/js/animsition.min.js"></script>
+<script type="application/javascript" src="/folderforindex/vendor2/animsition/js/animsition.min.js"></script>
 <!--===============================================================================================-->
-<script type="application/javascript" src="/folderforlogin/vendor/bootstrap/js/popper.js"></script>
-<script type="application/javascript" src="/folderforlogin/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script type="application/javascript" src="/folderforindex/vendor2/bootstrap/js/popper.js"></script>
+<script type="application/javascript" src="/folderforindex/vendor2/bootstrap/js/bootstrap.min.js"></script>
 <!--===============================================================================================-->
-<script type="application/javascript" src="folderforlogin/vendor/select2/select2.min.js"></script>
+<script type="application/javascript" src="/folderforindex/vendor2/select2/select2.min.js"></script>
 <!--===============================================================================================-->
-<script type="application/javascript" src="/folderforlogin/vendor/daterangepicker/moment.min.js"></script>
-<script type="application/javascript" src="/folderforlogin/vendor/daterangepicker/daterangepicker.js"></script>
+<script type="application/javascript" src="/folderforindex/vendor2/daterangepicker/moment.min.js"></script>
+<script type="application/javascript" src="/folderforindex/vendor2/daterangepicker/daterangepicker.js"></script>
 <!--===============================================================================================-->
-<script type="application/javascript" src="/folderforlogin/vendor/countdowntime/countdowntime.js"></script>
+<script type="application/javascript" src="/folderforindex/vendor2/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
 <script type="application/javascript" src="/folderforlogin/js/main.js"></script>
 

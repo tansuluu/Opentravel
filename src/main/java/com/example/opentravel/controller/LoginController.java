@@ -56,7 +56,7 @@ public class LoginController {
             modelAndView.setViewName("registration");
         } else {
             if(user.getGender().equals("female")){
-                user.setImage("downloads.jpg");
+                user.setImage("download.jpg");
             }
             else user.setImage("images.png");
             if (file!=null && !file.isEmpty()){
@@ -82,23 +82,6 @@ public class LoginController {
         return modelAndView;
     }
 
-    @RequestMapping("/reset")
-    public String  reset(@RequestParam("token") String token, Model model){
-        User user=userService.findByToken(token);
-            model.addAttribute("token",token);
-            return "reset";
-        }
-
-    @RequestMapping(value = "/newPassword", method = RequestMethod.GET, produces = "application/json")
-    public ResponseEntity<?> newPassword(@RequestParam("password") String password,@RequestParam("token") String token,Model model) {
-        User user=userService.findByToken(token);
-        if (user!=null) {
-            userService.saveNewPas(user,password);
-            return ResponseEntity.ok(1);
-        }
-        return ResponseEntity.ok(0);
-    }
-
     @RequestMapping("/confirm")
     public String  confirm(@RequestParam("token") String token, Model model){
         User user=userService.findByToken(token);
@@ -118,4 +101,22 @@ public class LoginController {
         return ResponseEntity.ok(result);
 
     }
+
+    @RequestMapping("/reset")
+    public String  reset(@RequestParam("token") String token, Model model){
+        User user=userService.findByToken(token);
+        model.addAttribute("token",token);
+        return "reset";
+    }
+
+    @RequestMapping(value = "/newPassword", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<?> newPassword(@RequestParam("password") String password,@RequestParam("token") String token,Model model) {
+        User user=userService.findByToken(token);
+        if (user!=null) {
+            userService.saveNewPas(user,password);
+            return ResponseEntity.ok(1);
+        }
+        return ResponseEntity.ok(0);
+    }
+
 }
