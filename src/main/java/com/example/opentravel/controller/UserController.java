@@ -96,10 +96,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/updateUser",method = RequestMethod.POST)
-    public String updateUser(@Valid User user, BindingResult bindingResult){
-        if (bindingResult.hasErrors()) {
-            return "updateUser";
-        }
+    public String updateUser(@Valid User user){
         userService.updateUser(user);
         return "redirect:/userPage?username="+user.getEmail();
     }

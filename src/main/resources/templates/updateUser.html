@@ -49,12 +49,10 @@
 				<input class="input100" type="text" th:field="*{name}" name="name" placeholder="First name & last name">
 				<span class="focus-input100"></span>
 			</div>
-			<div id="tur1">
-				<div class="wrap-input100">
+			<div class="wrap-input100 validate-input m-b-20" sec:authorize="hasAuthority('TOURIST')" >
 					<input class="input100" type="text" name="country" th:field="*{country}" placeholder="Country">
 					<span class="focus-input100"></span>
 				</div>
-			</div>
 			<div class="wrap-input100 validate-input m-b-25">
 				<input class="input100" type="text" name="language" th:field="*{languages}" placeholder="Languages">
 				<span class="focus-input100"></span>

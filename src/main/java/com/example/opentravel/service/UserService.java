@@ -132,7 +132,15 @@ public class UserService {
     }
 
     public void updateUser(User user){
-        userRepository.save(user);
+        User user1=findUserByEmail(user.getEmail());
+        user1.setName(user.getName());
+        user1.setCountry(user.getCountry());
+        user1.setAboutMe(user.getAboutMe());
+        user1.setAge(user.getAge());
+        user1.setExperience(user.getExperience());
+        user1.setLanguages(user.getLanguages());
+        user1.setGender(user.getGender());
+        save(user1);
     }
 
 }
