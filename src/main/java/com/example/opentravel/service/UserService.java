@@ -41,7 +41,7 @@ public class UserService {
         return userRepository.findByEmail(email);
     }
 
-    public User findUserById(long id) {
+    public User findUserById(int id) {
         return userRepository.findById(id);
     }
 
@@ -112,7 +112,16 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public void deleteUser(User user){
-Repository.delete(user);
+    public void deleteUser(int id){
+        User user =findUserById(id);
+        List<Blog> blogs=blogService.findByUsername(user.getEmail());
+        for (Blog b:blogs){
+            blogService.deleteBlog(b);
+        }
+        List<Place> places=placeService.findByUsarname(user.getEmail());
+        for(Place p: places){
+            placeService.deletePlace(p);
+        }
+        userRepository.delete(user);
     }
 }

@@ -89,8 +89,8 @@ public class UserController {
 
     @RequestMapping("/deleteUser")
     public String deleteUser(@RequestParam("id") long id){
-        User user= userService.findUserById(id);
-        userService.deleteUser(user);
+        userService.deleteUser(id);
+        return "gids";
     }
 
 
