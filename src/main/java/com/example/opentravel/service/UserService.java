@@ -113,14 +113,6 @@ public class UserService {
     }
 
     public void deleteUser(User user){
-        List<Blog> blogs=blogService.findByUsername(user.getEmail());
-        for (Blog b:blogs){
-            blogService.deleteBlog(b);
-        }
-        List<Place> places=placeService.findByUsarname(user.getEmail());
-        for(Place p: places){
-            placeService.deletePlace(p);
-        }
-        userRepository.delete(user);
+Repository.delete(user);
     }
 }
