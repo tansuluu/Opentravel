@@ -118,7 +118,9 @@ public class UserService {
             blogService.deleteBlog(b);
         }
         List<Place> places=placeService.findByUsarname(user.getEmail());
-        for()
+        for(Place p: places){
+            placeService.deletePlace(p);
+        }
         userRepository.delete(user);
     }
 }
