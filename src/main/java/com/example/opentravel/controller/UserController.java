@@ -71,6 +71,7 @@ public class UserController {
                 .header(HttpHeaders.CONTENT_DISPOSITION, "filename=\"" + file.getFilename() + "\"")
                 .body(file);
     }
+
     @GetMapping("/up-avatar/{filename:.+}")
     @ResponseBody
     public ResponseEntity<Resource> getAvatar(@PathVariable String filename) {
@@ -84,6 +85,12 @@ public class UserController {
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_DISPOSITION, "filename=\"" + file.getFilename() + "\"")
                 .body(file);
+    }
+
+    @RequestMapping("/deleteUser")
+    public String deleteUser(@RequestParam("id") long id){
+        User user= userService.findUserById(id);
+        userService.
     }
 
 

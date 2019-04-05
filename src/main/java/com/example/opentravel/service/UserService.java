@@ -40,7 +40,7 @@ public class UserService {
         return userRepository.findByEmail(email);
     }
 
-    public User findUserById(int id) {
+    public User findUserById(long id) {
         return userRepository.findById(id);
     }
 
@@ -109,5 +109,9 @@ public class UserService {
     }
     public User save(User user){
         return userRepository.save(user);
+    }
+
+    public void deleteUser(User user){
+
     }
 }
