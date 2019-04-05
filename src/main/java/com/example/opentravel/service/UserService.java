@@ -103,8 +103,13 @@ public class UserService {
         SimpleMailMessage registrationEmail = new SimpleMailMessage();
         registrationEmail.setTo(user.getEmail());
         registrationEmail.setSubject("Confirmation to OpenTravel site");
-        registrationEmail.setText("To confirm your gmail on opentravel site, please click the link below:\n"
-                + appUrl + ":8080/confirm?token=" + user.getToken());
+        registrationEmail.setText("Hello "+ user.getName()+"! \n" +
+                "Welcome to OpenTravel site, We so happy to see you as a "+ user.getStatus()+" in our big tourism family!"+
+                "\n Please confirm your gmail on opentravel site to finish registration,click the link below:\n\n"
+                + appUrl + ":8080/confirm?token=" + user.getToken()+"\n\n" +
+                "best regards,\n" +
+                "OpenTravel team")
+        ;
         registrationEmail.setFrom("noreply@domain.com");
         emailService.sendEmail(registrationEmail);
     }

@@ -88,9 +88,9 @@ public class UserController {
     }
 
     @RequestMapping("/deleteUser")
-    public String deleteUser(@RequestParam("id") long id){
+    public String deleteUser(@RequestParam("id") int id){
         userService.deleteUser(id);
-        return "gids";
+        return "redirect:/logout";
     }
 
 

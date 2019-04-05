@@ -55,7 +55,10 @@ public class LoginController {
         if (bindingResult.hasErrors()) {
             modelAndView.setViewName("registration");
         } else {
-            user.setImage("member.png");
+            if(user.getGender().equals("female")){
+                user.setImage("downloads.jpg");
+            }
+            else user.setImage("images.png");
             if (file!=null && !file.isEmpty()){
                 storageService.saveAvatar(file);
                 user.setImage(file.getOriginalFilename());
