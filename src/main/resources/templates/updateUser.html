@@ -31,20 +31,12 @@
 <body>
 
 
-<div class="container-login100" style="background-image: url('/folderforlogin/images/k2.jpg');">
+<div class="container-login100" style="background-image: url('images/k2.jpg');">
 	<div class="wrap-login100 p-l-55 p-r-55 p-t-80 p-b-30">
 			<span class="login100-form-title p-b-37" style="padding-left: 60px">
-					Sign Up as:
+					Update profile
 			</span>
-		<div id="tur">
-			<a><p class="login100-form-title p-b-37"  style="color: #4b5257;padding-left: 20px ">Tourist </p></a>
-			<a><p class="login100-form-title p-b-37" id="gid1">GID</p></a>
-		</div>
-		<div id="gid">
-			<a><p class="login100-form-title p-b-37"  style="color: #0c5460;padding-left: 20px">GID</p></a>
-			<a><p class="login100-form-title p-b-37" id="tourist">Tourist </p></a>
-		</div>
-		<form class="login100-form validate-form" th:action="@{/registration}" method="post" th:object="${user}" enctype="multipart/form-data">
+		<form class="login100-form validate-form" th:action="@{/updateUser}" method="post" th:object="${user}" enctype="multipart/form-data">
 
 			<label th:if="${#fields.hasErrors('name')}" th:errors="*{name}"  class="validation-message"></label>
 			<div class="wrap-input100 validate-input m-b-20" >

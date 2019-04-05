@@ -129,4 +129,11 @@ public class UserService {
         }
         userRepository.delete(user);
     }
+
+    public void updateUser(int id){
+        User user =findUserById(id);
+
+        userRepository.delete(user);
+    }
+
 }

@@ -93,5 +93,11 @@ public class UserController {
         return "redirect:/logout";
     }
 
+    @RequestMapping("/updateUser")
+    public String updateUser(@RequestParam("id") int id){
+        userService.updateUser(id);
+        return "redirect:/logout";
+    }
+
 
 }
