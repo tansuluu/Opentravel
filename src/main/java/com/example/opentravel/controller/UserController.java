@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -95,15 +96,19 @@ public class UserController {
     }
 
     @RequestMapping(value = "/updateUser",method = RequestMethod.POST)
-    public String updateUser(@Valid User user){
+    public String updateUser(@Valid User user, BindingResult bindingResult){
+        if (bindingResult.hasErrors()) {
+            return "updateUser";
+        }
         userService.updateUser(user);
-        return "redirect:/logout";
+        return "redirect:/userPage?username="+user.getEmail();
     }
 
     @RequestMapping(value = "/updateUser",method = RequestMethod.GET)
-    public String updateUser(@RequestParam("id") int id){
-        userService.updateUser(user);
-        return "redirect:/logout";
+    public String updateUser(@RequestParam("id") int id,Model model){
+        User user=userService.findUserById(id);
+        model.addAttribute("user",user);
+        return "updateUser";
     }
 
 

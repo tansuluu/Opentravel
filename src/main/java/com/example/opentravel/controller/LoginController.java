@@ -56,7 +56,7 @@ public class LoginController {
             modelAndView.setViewName("registration");
         } else {
             if(user.getGender().equals("female")){
-                user.setImage("downloads.jpg");
+                user.setImage("download.jpg");
             }
             else user.setImage("images.png");
             if (file!=null && !file.isEmpty()){
