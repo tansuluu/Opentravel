@@ -1,5 +1,7 @@
 package com.example.opentravel.service;
 
+import com.example.opentravel.model.Blog;
+import com.example.opentravel.model.Place;
 import com.example.opentravel.model.Role;
 import com.example.opentravel.model.User;
 import com.example.opentravel.repository.RoleRepository;
@@ -17,24 +19,23 @@ import java.util.*;
 @Service("userService")
 public class UserService {
 
-
-
     @Autowired
     private UserRepository userRepository;
+
     @Autowired
     private RoleRepository roleRepository;
+
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
-    private EmailService emailService;
+    private BlogService blogService;
 
     @Autowired
-    public UserService(UserRepository userRepository, RoleRepository roleRepository,BCryptPasswordEncoder bCryptPasswordEncoder) {
-        this.userRepository = userRepository;
-        this.roleRepository = roleRepository;
-        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
-    }
+    private PlaceService placeService;
+
+    @Autowired
+    private EmailService emailService;
 
     public User findUserByEmail(String email) {
         return userRepository.findByEmail(email);
@@ -112,6 +113,12 @@ public class UserService {
     }
 
     public void deleteUser(User user){
-
+        List<Blog> blogs=blogService.findByUsername(user.getEmail());
+        for (Blog b:blogs){
+            blogService.deleteBlog(b);
+        }
+        List<Place> places=placeService.findByUsarname(user.getEmail());
+        for()
+        userRepository.delete(user);
     }
 }

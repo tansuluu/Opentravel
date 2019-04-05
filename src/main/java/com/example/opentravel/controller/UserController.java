@@ -90,7 +90,7 @@ public class UserController {
     @RequestMapping("/deleteUser")
     public String deleteUser(@RequestParam("id") long id){
         User user= userService.findUserById(id);
-        userService.
+        userService.deleteUser(user);
     }
 
 
