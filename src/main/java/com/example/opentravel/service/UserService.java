@@ -1,5 +1,7 @@
 package com.example.opentravel.service;
 
+import com.example.opentravel.model.Blog;
+import com.example.opentravel.model.Place;
 import com.example.opentravel.model.Role;
 import com.example.opentravel.model.User;
 import com.example.opentravel.repository.RoleRepository;
@@ -17,24 +19,23 @@ import java.util.*;
 @Service("userService")
 public class UserService {
 
-
-
     @Autowired
     private UserRepository userRepository;
+
     @Autowired
     private RoleRepository roleRepository;
+
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
-    private EmailService emailService;
+    private BlogService blogService;
 
     @Autowired
-    public UserService(UserRepository userRepository, RoleRepository roleRepository,BCryptPasswordEncoder bCryptPasswordEncoder) {
-        this.userRepository = userRepository;
-        this.roleRepository = roleRepository;
-        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
-    }
+    private PlaceService placeService;
+
+    @Autowired
+    private EmailService emailService;
 
     public User findUserByEmail(String email) {
         return userRepository.findByEmail(email);
@@ -102,12 +103,30 @@ public class UserService {
         SimpleMailMessage registrationEmail = new SimpleMailMessage();
         registrationEmail.setTo(user.getEmail());
         registrationEmail.setSubject("Confirmation to OpenTravel site");
-        registrationEmail.setText("To confirm your gmail on opentravel site, please click the link below:\n"
-                + appUrl + ":8080/confirm?token=" + user.getToken());
+        registrationEmail.setText("Hello "+ user.getName()+"! \n" +
+                "Welcome to OpenTravel site, We so happy to see you as a "+ user.getStatus()+" in our big tourism family!"+
+                "\n Please confirm your gmail on opentravel site to finish registration,click the link below:\n\n"
+                + appUrl + ":8080/confirm?token=" + user.getToken()+"\n\n" +
+                "best regards,\n" +
+                "OpenTravel team")
+        ;
         registrationEmail.setFrom("noreply@domain.com");
         emailService.sendEmail(registrationEmail);
     }
     public User save(User user){
         return userRepository.save(user);
+    }
+
+    public void deleteUser(int id){
+        User user =findUserById(id);
+        List<Blog> blogs=blogService.findByUsername(user.getEmail());
+        for (Blog b:blogs){
+            blogService.deleteBlog(b);
+        }
+        List<Place> places=placeService.findByUsarname(user.getEmail());
+        for(Place p: places){
+            placeService.deletePlace(p);
+        }
+        userRepository.delete(user);
     }
 }
