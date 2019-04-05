@@ -17,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.Valid;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
@@ -93,9 +94,15 @@ public class UserController {
         return "redirect:/logout";
     }
 
-    @RequestMapping("/updateUser")
+    @RequestMapping(value = "/updateUser",method = RequestMethod.POST)
+    public String updateUser(@Valid User user){
+        userService.updateUser(user);
+        return "redirect:/logout";
+    }
+
+    @RequestMapping(value = "/updateUser",method = RequestMethod.GET)
     public String updateUser(@RequestParam("id") int id){
-        userService.updateUser(id);
+        userService.updateUser(user);
         return "redirect:/logout";
     }
 

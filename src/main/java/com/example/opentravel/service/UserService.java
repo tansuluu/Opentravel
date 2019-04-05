@@ -89,7 +89,8 @@ public class UserService {
         SimpleMailMessage registrationEmail = new SimpleMailMessage();
         registrationEmail.setTo(user.getEmail());
         registrationEmail.setSubject("Password reset");
-        registrationEmail.setText("To reset your password on opentravel site, please click the link below:\n"
+        registrationEmail.setText("Hello "+ user.getName()+"!\n" +
+                "To reset your password on opentravel site, please click the link below:\n"
                 + appUrl + ":8080/reset?token=" + user.getToken());
         registrationEmail.setFrom("noreply@domain.com");
         emailService.sendEmail(registrationEmail);
@@ -130,10 +131,8 @@ public class UserService {
         userRepository.delete(user);
     }
 
-    public void updateUser(int id){
-        User user =findUserById(id);
-
-        userRepository.delete(user);
+    public void updateUser(User user){
+        userRepository.save(user);
     }
 
 }
