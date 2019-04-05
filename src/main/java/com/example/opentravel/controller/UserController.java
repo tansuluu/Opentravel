@@ -104,6 +104,7 @@ public class UserController {
     @RequestMapping(value = "/updateUser",method = RequestMethod.GET)
     public String updateUser(@RequestParam("id") int id,Model model){
         User user=userService.findUserById(id);
+        System.out.println(user.getPassword());
         model.addAttribute("user",user);
         return "updateUser";
     }

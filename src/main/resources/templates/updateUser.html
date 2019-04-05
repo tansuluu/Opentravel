@@ -42,6 +42,7 @@
 			<div class="wrap-input100 validate-input m-b-25">
 				<input class="input100" type="text" name="email"  th:field="*{email}" placeholder="Email" readonly="readonly">
 				<input type="number" th:field="*{id}" hidden="hidden">
+				<input type="text" th:field="*{password}" value="12345" hidden="hidden">
 				<span class="focus-input100"></span>
 			</div>
 			<label th:if="${#fields.hasErrors('name')}" th:errors="*{name}"  class="validation-message"></label>
