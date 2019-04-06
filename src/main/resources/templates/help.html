@@ -31,11 +31,6 @@
         <link rel="stylesheet" href="tast/css/style.css">
     </div>
 
-
-
-
-
-
     <style>
         *, *:before, *:after {
             box-sizing: inherit;
@@ -260,7 +255,7 @@
         <div class="panel pricing-table">
 
 
-            <div class="pricing-plan">
+            <div class="pricing-plan" sec:authorize="hasAuthority('TOURIST')">
                 <img src="https://s28.postimg.cc/ju5bnc3x9/plane.png" alt="" class="pricing-img">
                 <h2 class="pricing-header">Tourist</h2>
                 <h5 style="font-size: 90%;">As a tourist you may</h5>
@@ -317,7 +312,7 @@
 
         </div>
 
-            <div class="pricing-plan">
+            <div class="pricing-plan" th:if="${#request.userPrincipal == null}" >
                 <img src="https://s22.postimg.cc/8mv5gn7w1/paper-plane.png" alt="" class="pricing-img">
                 <h2 class="pricing-header">Guest</h2>
                 <h5 style="font-size: 90%;">As a guest you may</h5>
@@ -358,12 +353,9 @@
                     <li class="pricing-features-item">read comments that have been left on each individual blog.</li>
                     <li class="pricing-features-item">activity display ( likes, comments ).</li>
                 </ul>
-            </div>
+            </div >
 
-
-
-
-            <div class="pricing-plan">
+            <div class="pricing-plan" sec:authorize="hasAuthority('GID')">
             <img src="https://s21.postimg.cc/tpm0cge4n/space-ship.png" alt="" class="pricing-img">
             <h2 class="pricing-header">Guide</h2>
             <h5 style="font-size: 90%;">As a guide you may</h5>

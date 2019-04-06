@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.nio.file.attribute.UserPrincipal;
 import java.util.ArrayList;
 
 
@@ -56,7 +57,10 @@ public class MainController {
     }
 
     @RequestMapping("/chats")
-    public String chats(Model model){
+    public String chats(UserPrincipal userPrincipal){
+        if (userPrincipal==null){
+            return "redirect:/login";
+        }
         return "chat";
     }
 }
