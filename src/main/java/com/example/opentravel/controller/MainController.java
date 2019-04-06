@@ -57,6 +57,6 @@ public class MainController {
 
     @RequestMapping("/chats")
     public String chats(Model model){
-        return "chats";
+        return "chat";
     }
 }
