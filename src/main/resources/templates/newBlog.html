@@ -179,11 +179,11 @@
             <h2>Write a new blog</h2>
           </div>
         </div>
-        <div class="row d-flex">
+        <div class="row d-flex" >
           <div class="col-md-4 ftco-animate img" style="background-image: url(images/и.jpg);"></div>
           <div class="col-md-8 ftco-animate makereservation p-5 bg-light">
             <form th:action="@{/newBlog}" enctype="multipart/form-data" th:object="${blog}" method="post" class="login100-form validate-form">
-              <div class="row">
+              <div class="row" style="visibility: visible;">
                 <div class="col-md-6">
                   <div class="form-group">
                     <label th:if="${#fields.hasErrors('title')}" th:errors="*{title}" class="validation-message" style="color: red"></label>

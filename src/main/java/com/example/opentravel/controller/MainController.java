@@ -1,6 +1,5 @@
 package com.example.opentravel.controller;
 
-import com.example.opentravel.model.Place;
 import com.example.opentravel.model.User;
 import com.example.opentravel.service.BlogService;
 import com.example.opentravel.service.PlaceService;
@@ -12,7 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 @Controller
@@ -28,7 +26,7 @@ public class MainController {
     @Autowired
     BlogService blogService;
 
-    @RequestMapping("/")
+    @RequestMapping("/home")
     public String index(Model model){
         ArrayList list2=userService.getAllByStatus("gid");
         ArrayList list1=userService.getAllByStatus("tourist");
@@ -36,7 +34,7 @@ public class MainController {
         model.addAttribute("gids", list2);
         model.addAttribute("tourist", list1);
         model.addAttribute("blogs", list3);
-        return "index";
+        return "home";
     }
 
     @RequestMapping("/about")
