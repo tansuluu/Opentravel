@@ -14,9 +14,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.Valid;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
@@ -85,6 +87,26 @@ public class UserController {
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_DISPOSITION, "filename=\"" + file.getFilename() + "\"")
                 .body(file);
+    }
+
+    @RequestMapping("/deleteUser")
+    public String deleteUser(@RequestParam("id") int id){
+        userService.deleteUser(id);
+        return "redirect:/logout";
+    }
+
+    @RequestMapping(value = "/updateUser",method = RequestMethod.POST)
+    public String updateUser(@Valid User user){
+        userService.updateUser(user);
+        return "redirect:/userPage?username="+user.getEmail();
+    }
+
+    @RequestMapping(value = "/updateUser",method = RequestMethod.GET)
+    public String updateUser(@RequestParam("id") int id,Model model){
+        User user=userService.findUserById(id);
+        System.out.println(user.getPassword());
+        model.addAttribute("user",user);
+        return "updateUser";
     }
 
 
