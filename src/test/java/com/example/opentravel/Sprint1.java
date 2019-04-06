@@ -1,4 +1,4 @@
-package com.example.opentravel;
+/*package com.example.opentravel;
 
 
 import ch.qos.logback.core.net.SyslogOutputStream;
@@ -274,7 +274,7 @@ public class Sprint1 {
             System.exit(0);
             return;
         }*/
-        progress = logIn(driver, sp);
+        /*progress = logIn(driver, sp);
         if (!progress) {
             driver.close();
             System.exit(0);
@@ -301,7 +301,7 @@ public class Sprint1 {
             return;
         }*/
 
-        progress = LUP6(driver, sp);
+       /* progress = LUP6(driver, sp);
         if (!progress) {
             driver.close();
             System.exit(0);
@@ -327,3 +327,5 @@ public class Sprint1 {
 
     }
 }
+}
+        */
