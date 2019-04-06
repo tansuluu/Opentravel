@@ -176,6 +176,7 @@ public class Sprint1 {
             System.out.println("Failed:" + title);
             return false;
         }
+
         driver.findElement(By.linkText(sp.exBlogName)).click();
         title = driver.getTitle();
         if (!title.equals("Single Blog")) {
