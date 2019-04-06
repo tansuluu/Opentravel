@@ -42,20 +42,20 @@ public class UserController {
     PlaceService placeService;
 
     @RequestMapping("/find")
-    public String find(@RequestParam(name = "input",required = true) String input, Model model){
-        ArrayList<User> list=userService.findByName(input);
+    public String find(@RequestParam(name = "input", required = true) String input, Model model) {
+        ArrayList<User> list = userService.findByName(input);
         model.addAttribute("gids", list);
         return "gids";
     }
 
     @RequestMapping("/userPage")
-    public String showUser(Model model, @RequestParam("username")String email){
-        User user=userService.findUserByEmail(email);
-        List<Place> list=placeService.findByUsarname(email);
-        List<Blog> list1=blogService.findByUsername(email);
-        model.addAttribute("places",list);
-        model.addAttribute("blogs",list1);
-        model.addAttribute("user",user);
+    public String showUser(Model model, @RequestParam("username") String email) {
+        User user = userService.findUserByEmail(email);
+        List<Place> list = placeService.findByUsarname(email);
+        List<Blog> list1 = blogService.findByUsername(email);
+        model.addAttribute("places", list);
+        model.addAttribute("blogs", list1);
+        model.addAttribute("user", user);
         return "profile";
     }
 
