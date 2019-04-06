@@ -26,7 +26,7 @@ public class MainController {
     @Autowired
     BlogService blogService;
 
-    @RequestMapping("/home")
+    @RequestMapping("/")
     public String index(Model model){
         ArrayList list2=userService.getAllByStatus("gid");
         ArrayList list1=userService.getAllByStatus("tourist");
