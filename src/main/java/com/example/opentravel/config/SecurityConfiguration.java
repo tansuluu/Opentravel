@@ -48,6 +48,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 authorizeRequests()
                 .antMatchers("/**").permitAll()
                 .antMatchers("/image/**").permitAll()
+                .antMatchers("/topic/**").permitAll()
+                .antMatchers("/app/**").permitAll()
                 .antMatchers("/login").permitAll()
                 .antMatchers("/hello").permitAll()
                 .antMatchers("/registration").permitAll()
