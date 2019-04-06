@@ -11,10 +11,6 @@
     <noscript>
       <h2>Sorry! Your browser doesn't support Javascript</h2>
     </noscript>
-
-    <div th:if="${#request.userPrincipal == null}">
-        <h1>Please <a th:href="@{/login}">Login</a> or Sign up <a th:href="@{/registration}">Registration</a></h1>
-    </div>
     <div id="username-page" th:if="${#request.userPrincipal != null}">
         <div class="username-page-container">
             <h1 class="title">Type your username</h1>
