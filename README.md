@@ -15,7 +15,10 @@ Edil Kamchybekov - front-end - [edil.kamchybekov@iaau.edu.kg](edil.kamchybekov@i
 Elmira Kurmanbekova - front-end - [elmira.kurmanbekova@iaau.edu.kg](elmira.kurmanbekova@iaau.edu.kg) <br/>
 Zarlyk Zhusubaliev - tester - [zarlyk.zhusubaliev@iaau.edu.kg](zarlyk.zhusubaliev@iaau.edu.kg) <br/>
 Tansuluu Myrzaeva - project manager - [tansuluu.myrzaeva@iaau.edu.kg](tansuluu.myrzaeva@iaau.edu.kg) <br/>
-Nurdin Imanaliev - requirement engineer - nurdin.imanaliev@iaau.edu.kg
+Nurdin Imanaliev - requirement engineer - [nurdin.imanaliev@iaau.edu.kg](nurdin.imanaliev@iaau.edu.kg) <br/>
+
+
+
 
 # HOW TO RUN
 
@@ -35,4 +38,6 @@ Nurdin Imanaliev - requirement engineer - nurdin.imanaliev@iaau.edu.kg
 ***
 
 ### [MANUAL FOR TREVELER SITE](https://github.com/tansuluu/Opentravel/wiki/MANUAL-FOR-TREVELLER-SITE)
-### [TREVELLER SITE DEVELOPING CHRONOLOGY](https://github.com/tansuluu/Opentravel/wiki/TREVELLER-SITE-DEVELOPING-CHRONOLOGY)
+   [HOW TO RUN](https://github.com/tansuluu/Opentravel/wiki/MANUAL-FOR-TREVELLER-SITE#how-to-run)
+### [TREVELLER SITE DEVELOPING CHRONOLOGY DOCUMENT](https://github.com/tansuluu/Opentravel/wiki/TREVELLER-SITE-DEVELOPING-CHRONOLOGY)
+### [SOFTWARE REQUIREMENTS SPECIFICATION DOCUMENT](https://github.com/tansuluu/Opentravel/wiki/SRS)

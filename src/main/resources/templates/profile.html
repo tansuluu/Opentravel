@@ -92,7 +92,7 @@
                             </ul>
                         </div>
                         <div class="content_search ml-lg-0 ml-auto">
-                            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"  x="0px" y="0px"
 							width="17px" height="17px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
 								<g>
 									<g>
@@ -181,28 +181,26 @@
                                         <li><a href="#"th:text="${user.email}"></a></li>
                                     </ul>
                                 </div>
-                                <ul class="social_icon">
+                                <ul class="social_icon" style="display: inline">
                                     <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                                     <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                                     <li><a href="#"><i class="fa fa-instagram"></i></a></li>
                                     <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
                                     <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                </ul><br>
+                                </ul><br><br>
                                 <div th:if="${#request.userPrincipal != null}">
-                                <div class="right-area" th:if="${user.email==#request.userPrincipal.name}">
+                                <div  th:if="${user.email==#request.userPrincipal.name}">
                                     <a class="load-more-btn" th:href="@{/updateUser(id=${user.id})}"><b>UPDATE USER</b></a><br>
-                                    <a class="load-more-btn" th:href="@{/deleteUser(id=${user.id})}"><b>DELETE USER</b></a><br>
+                                    <button class="btn btn-danger" style="max-width: 170px" type="button" data-toggle="modal" data-target="#myModal">DELETE PROFILE</button><br>
                                     <a class="load-more-btn" th:href="@{/newBlog}"><b>NEW BLOG</b></a><br>
                                     <a sec:authorize="hasAuthority('GID')" class="load-more-btn" th:href="@{/newPlace}"><b>NEW PLACE</b></a><br>
                                     <a sec:authorize="hasAuthority('ADMIN')" class="load-more-btn" th:href="@{/newPlace}"><b>NEW PLACE</b></a><br>
                                 </div>
                                 <div th:if="${!#request.userPrincipal.getName().equals(user.email)}">
                                     <div class="right-area" sec:authorize="hasAuthority('ADMIN')">
-                                    <a class="load-more-btn" th:href="@{/updateUser(id=${user.id})}"><b>UPDATE USER</b></a><br>
-                                    <a class="load-more-btn" th:href="@{/deleteUser(id=${user.id})}"><b>DELETE USER</b></a><br>
-                                    <a class="load-more-btn" th:href="@{/newBlog}"><b>NEW BLOG</b></a><br>
-                                    <a class="load-more-btn" th:href="@{/newPlace}"><b>NEW PLACE</b></a><br>
-                                </div>
+                                        <a class="load-more-btn" th:href="@{/updateUser(id=${user.id})}"><b>UPDATE USER</b></a><br>
+                                        <button class="btn btn-danger" style="max-width: 170px" type="button" data-toggle="modal" data-target="#myModal" >DELETE PROFILE</button><br>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -237,7 +235,7 @@
                                     <div class="single-post post-style-1">
                                         <div class="blog-image"><img th:if="${app1.getPhoto1()}!=null" th:src="@{${'/image/'+app1.photo1}}" alt="Blog Image"></div>
                                         <div class="blog-info">
-                                            <h4 class="title"><a th:href="@{/placeInfo(id=${app1.id})}" ><b th:text="${app1.title}"></b></a></h4>
+                                            <h4 class="title"><a th:href="@{/blogInfo(id=${app1.id})}" ><b th:text="${app1.title}"></b></a></h4>
 
                                         </div><!-- blog-info -->
                                     </div><!-- single-post -->
@@ -275,6 +273,26 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <b class="modal-title">Confirmation</b>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Are you sure about deleting data?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-danger btn-ok" th:href="@{/deleteUser(id=${user.id})}" >Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="folderforprofile/js/jquery-2.1.4.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -294,7 +312,7 @@
         <!--gmaps Js-->
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
         <script src="folderforprofile/js/gmaps.min.js"></script>
-        
+
         <!-- contact js -->
         <script src="folderforprofile/js/jquery.form.js"></script>
         <script src="folderforprofile/js/jquery.validate.min.js"></script>
