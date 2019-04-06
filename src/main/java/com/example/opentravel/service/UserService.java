@@ -143,4 +143,8 @@ public class UserService {
         save(user1);
     }
 
+    public String getImagePhoto(String name){
+        return findUserByEmail(name).getImage();
+    }
+
 }
