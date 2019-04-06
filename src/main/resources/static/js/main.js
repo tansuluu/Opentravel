@@ -9,6 +9,7 @@ var connectingElement = document.querySelector('.connecting');
 
 var stompClient = null;
 var username = null;
+var avatar = null;
 
 var colors = [
     '#2196F3', '#32c787', '#00BCD4', '#ff5652',
@@ -17,6 +18,7 @@ var colors = [
 
 function connect(event) {
     username = document.querySelector('#name').value.trim();
+    avatar = document.querySelector('#avatar').value.trim();
 
     if(username) {
         usernamePage.classList.add('hidden');
@@ -83,9 +85,8 @@ function onMessageReceived(payload) {
         messageElement.classList.add('chat-message');
 
         var avatarElement = document.createElement('i');
-        var avatarText = document.createTextNode(message.sender[0]);
-        avatarElement.appendChild(avatarText);
-        avatarElement.style['background-color'] = getAvatarColor(message.sender);
+        avatarElement.style['background'] = "url("+avatar+")";
+        avatarElement.style['background-size'] = "cover";
 
         messageElement.appendChild(avatarElement);
 

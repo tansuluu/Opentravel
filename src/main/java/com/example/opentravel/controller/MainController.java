@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.nio.file.attribute.UserPrincipal;
+import java.security.Principal;
 import java.util.ArrayList;
 
 
@@ -57,10 +58,11 @@ public class MainController {
     }
 
     @RequestMapping("/chats")
-    public String chats(UserPrincipal userPrincipal){
+    public String chats(Principal userPrincipal,Model model){
         if (userPrincipal==null){
             return "redirect:/login";
         }
+        model.addAttribute("user",userService);
         return "chat";
     }
 }
