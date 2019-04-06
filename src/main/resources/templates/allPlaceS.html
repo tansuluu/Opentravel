@@ -174,7 +174,7 @@
             <h2>Our Places</h2>
           </div>
         </div>
-        <div class="row d-flex no-gutters" th:each="i : ${#numbers.sequence( 0, places.size()-1)}">
+        <div class="row d-flex no-gutters"  th:if="${!places.isEmpty()}" th:each="i : ${#numbers.sequence( 0, places.size()-1)}">
           <div class="col-lg-12" >
             <div class="block-3 d-md-flex ftco-animate"  th:if="${i%2==0}">
               <div class="image order-last" th:style="'background: url(/image/' + ${places.get(i).photo1} + ');background-size: cover'"></div>

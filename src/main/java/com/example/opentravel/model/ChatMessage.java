@@ -1,16 +1,21 @@
 package com.example.opentravel.model;
 
-public class WebSocketChatMessage {
-
-    private String type;
+public class ChatMessage {
+    private MessageType type;
     private String content;
     private String sender;
 
-    public String getType() {
+    public enum MessageType {
+        CHAT,
+        JOIN,
+        LEAVE
+    }
+
+    public MessageType getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(MessageType type) {
         this.type = type;
     }
 
