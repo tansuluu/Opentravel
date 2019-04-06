@@ -1,17 +1,19 @@
 package com.example.opentravel;
 
 
-import ch.qos.logback.core.net.SyslogOutputStream;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.JavascriptExecutor;
-
-import java.io.IOException;
+//import ch.qos.logback.core.net.SyslogOutputStream;
+//import org.openqa.selenium.By;
+//import org.openqa.selenium.WebDriver;
+//import org.openqa.selenium.firefox.FirefoxDriver;
+//import org.openqa.selenium.support.ui.Select;
+//import org.openqa.selenium.JavascriptExecutor;
+//
+//import java.io.IOException;
 
 
 public class Sprint1 {
+
+    /*
     static String uName = "Examp@mail.ru";
     static String uName2 = "Exam2@mail.ru";
     static String exUName="admin@admin.com";
@@ -279,7 +281,7 @@ public class Sprint1 {
             System.exit(0);
             return;
         }*/
-        progress = logIn(driver, sp);
+       /* progress = logIn(driver, sp);
         if (!progress) {
             driver.close();
             System.exit(0);
@@ -306,7 +308,7 @@ public class Sprint1 {
             return;
         }*/
 
-        progress = LUP6(driver, sp);
+      /*  progress = LUP6(driver, sp);
         if (!progress) {
             driver.close();
             System.exit(0);
@@ -331,4 +333,6 @@ public class Sprint1 {
         System.exit(0);
 
     }
+    */
+
 }
