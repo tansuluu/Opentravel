@@ -52,7 +52,7 @@ public class UserController {
     public String showUser(Model model, @RequestParam("username") String email) {
         User user = userService.findUserByEmail(email);
         List<Place> list = placeService.findByAuthor(user);
-        List<Blog> list1 = blogService.findByUsername(email);
+        List<Blog> list1 = blogService.findByAuthor(user);
         model.addAttribute("places", list);
         model.addAttribute("blogs", list1);
         model.addAttribute("user", user);

@@ -120,7 +120,7 @@ public class UserService {
 
     public void deleteUser(int id){
         User user =findUserById(id);
-        List<Blog> blogs=blogService.findByUsername(user.getEmail());
+        List<Blog> blogs=blogService.findByAuthor(user);
         for (Blog b:blogs){
             blogService.deleteBlog(b);
         }
