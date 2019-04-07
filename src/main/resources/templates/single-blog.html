@@ -137,11 +137,11 @@
 
 					<div class="post-top-area">
 
-						<h5 class="pre-title" style="text-align: center; font-size: 35px; font-weight: bold">Blog</h5>
+						<h5 class="pre-title"  th:text="${app.title}" style="text-align: center; font-size: 35px; font-weight: bold">Blog</h5>
 
-						<h3 class="title"><i th:text="${app.title}"></i></h3>
+                        <h4 class="title"><i class="fa fa-user"></i> <a th:href="@{/userPage(username=${app.username})}"> Author: <i th:text="${app.username}"></i></a></h4>
 						<h4 class="title"><i class="fa fa-tags"> </i> Category: <i th:text="${app.category}"></i></h4>
-
+						<h4 class="title"><i class="fa fa-calendar"> </i> Date: <i th:text="${app.date}"></i></h4>
 
 						<p class="para" th:text="${app.text}"></p>
 
@@ -163,13 +163,6 @@
 
 								<a class="load-more-btn" th:href="@{/updateBlog(id=${app.id})}"><b>UPDATE THE BLOG</b></a>
 							</div>
-						</div>
-						<div class="post-info">
-							<div class="middle-area">
-								<a class="name" th:href="@{/userPage(username=${app.username})}"><b></b><h3 th:text="${app.username}"></h3></b></a>
-								<h6 class="date" th:text="${'on '+ app.date}">on Sep 29, 2017 at 9:48 am</h6>
-							</div>
-
 						</div>
 					</div><!-- post-bottom-area -->
 
