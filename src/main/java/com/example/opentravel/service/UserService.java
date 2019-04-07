@@ -68,7 +68,7 @@ public class UserService {
     }
     public ArrayList<User> getAll()
     {
-        return (ArrayList) userRepository.getAllByOrderByAboutMe();
+        return (ArrayList) userRepository.findAll();
     }
 
     public ArrayList<User> findByName(String name){
@@ -124,7 +124,7 @@ public class UserService {
         for (Blog b:blogs){
             blogService.deleteBlog(b);
         }
-        List<Place> places=placeService.findByUsarname(user.getEmail());
+        List<Place> places=placeService.findByAuthor(user);
         for(Place p: places){
             placeService.deletePlace(p);
         }

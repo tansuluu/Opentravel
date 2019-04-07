@@ -31,8 +31,6 @@ public class BlogServiceTest {
         System.out.println("Starting BlogService Test Class");
     }
 
-
-
     @Test
     public void testFindById(){
         Blog blog = new Blog();

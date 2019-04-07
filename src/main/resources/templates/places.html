@@ -135,37 +135,32 @@
 
 					<div class="post-top-area">
 
-						<h5 class="pre-title" style="text-align: center; font-size: 35px; font-weight: bold">Place</h5>
+						<h5 class="pre-title"  th:text="${app.title}" style="text-align: center; font-size: 35px; font-weight: bold">Place</h5>
+						<div class="post-image"><img th:if="${app.getPhoto1()}!=null" th:src="@{${'/image/'+app.photo1}}"alt="Blog Image"></div>
 
-
-						<h3 class="title" ><i th:text="${app.title}"></i></h3>
+						<h4 class="title"><i class="fa fa-user"></i> <a th:href="@{/userPage(username=${app.author.getEmail()})}"> Author: <i th:text="${app.author.getEmail()}"></i></a></h4>
+                        <h4 class="title"><i class="fa fa-tags"> </i> Category: <i th:text="${app.category}"></i></h4>
+                        <h4 class="title"><i class="fa fa-calendar"> </i> Date: <i th:text="${app.date}"></i></h4>
 						<h4 class="title"><i class="fa fa-home"> </i> Address: <i th:text="${app.address}"></i></h4>
-						<h4 class="title"><i class="fa fa-tags"> </i> Category: <i th:text="${app.category}"></i></h4>
+
+
 						<p class="para" th:text="${app.text}"></p>
 
 					</div><!-- post-top-area -->
-					<div class="post-image"><img th:if="${app.getPhoto1()}!=null" th:src="@{${'/image/'+app.photo1}}"alt="Blog Image"></div>
 					<div class="post-image"><img th:if="${app.getPhoto2()}!=null" th:src="@{${'/image/'+app.photo2}}"alt="Blog Image"></div>
 					<div class="post-image"><img th:if="${app.getPhoto3()}!=null" th:src="@{${'/image/'+app.photo3}}"alt="Blog Image"></div>
 					<div class="post-bottom-area">
 						<div  th:if="${#request.userPrincipal!=null}">
-							<button class="btn btn-danger" th:if="${app.usarname==#request.userPrincipal.name}"  type="button" data-toggle="modal" data-target="#myModal" style="width: 100%">DELETE THE PLACE</button>
+							<button class="btn btn-danger" th:if="${app.author.getEmail()==#request.userPrincipal.name}"  type="button" data-toggle="modal" data-target="#myModal" style="width: 100%">DELETE THE PLACE</button>
 						</div>
 						<div  th:if="${#request.userPrincipal!=null}">
-							<a  th:if="${app.usarname==#request.userPrincipal.name}"  class="load-more-btn" th:href="@{/updateApp(id=${app.id})}"><b>UPDATE THE PLACE</b></a>
+							<a  th:if="${app.author.getEmail()==#request.userPrincipal.name}"  class="load-more-btn" th:href="@{/updateApp(id=${app.id})}"><b>UPDATE THE PLACE</b></a>
 						</div>
 						<div class="right-area" sec:authorize="hasAuthority('ADMIN')">
-                            <div th:if="${!#request.userPrincipal.getName().equals(app.usarname)}">
+                            <div th:if="${!#request.userPrincipal.getName().equals(app.author.getEmail())}">
 								<button class="btn btn-danger" type="button" data-toggle="modal" data-target="#myModal" style="width: 100%">DELETE THE PLACE</button>
 							<a class="load-more-btn" th:href="@{/updateApp(id=${app.id})}"><b>UPDATE THE PLACE</b></a>
                             </div>
-						</div>
-						<div class="post-info">
-							<div class="middle-area">
-								<a class="name" th:href="@{/userPage(username=${app.usarname})}"><b></b><h3 th:text="${app.usarname}"></h3></b></a>
-								<h6 class="date" th:text="${'on '+ app.date}">on Sep 29, 2017 at 9:48 am</h6>
-							</div>
-
 						</div>
 					</div><!-- post-bottom-area -->
 				</div><!-- main-post -->

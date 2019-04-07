@@ -55,8 +55,8 @@ public class PlaceController {
 
         try {
             place=storageService.preStore(file1,file2,file3,place);
-            userService.findUserByEmail(principal.getName());
-            place.setUsarname(principal.getName());
+            User user=userService.findUserByEmail(principal.getName());
+            place.setAuthor(user);
             placeService.save(place);
         } catch (Exception e) {
             model.addAttribute("errorMessage", "Error: " + e.getMessage());
