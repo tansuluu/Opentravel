@@ -1,6 +1,7 @@
 package com.example.opentravel.service;
 
 import com.example.opentravel.model.Place;
+import com.example.opentravel.model.User;
 import com.example.opentravel.repository.PlaceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,8 +36,8 @@ public class PlaceService {
         return listTop;
     }
 
-    public List<Place> findByUsarname(String username){
-        return placeRepository.findByUsarname(username);
+    public List<Place> findByAuthor(User user){
+        return placeRepository.findByAuthor(user);
     }
 
 

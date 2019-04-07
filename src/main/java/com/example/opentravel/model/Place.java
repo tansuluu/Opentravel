@@ -43,8 +43,8 @@ public class Place {
         private int view;
         @Column(name = "likes")
         private int likes;
+
         @ManyToOne(fetch = FetchType.LAZY, optional = false)
-        @JoinColumn(name = "user_id", nullable = false)
         @OnDelete(action = OnDeleteAction.CASCADE)
         @JsonIgnore
         private User author;
