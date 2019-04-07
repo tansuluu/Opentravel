@@ -1,6 +1,7 @@
 package com.example.opentravel;
 
 import com.example.opentravel.model.Blog;
+import com.example.opentravel.model.User;
 import com.example.opentravel.repository.BlogRepository;
 import com.example.opentravel.service.BlogService;
 import org.junit.After;
@@ -38,6 +39,19 @@ public class BlogServiceTest {
         blog.setId(id);
         when(blogRepositoryMock.findById(id)).thenReturn(blog);
         assertEquals(blog,blogRepositoryMock.findById(id));
+    }
+
+    @Test
+    public void testFindByAuthor(){
+        ArrayList<Blog> list=new ArrayList<>();
+        Blog blog=new Blog();
+        String title = "Blog1";
+        blog.setTitle(title);
+        User user=new User();
+        user.setName("Meder");
+        list.add(blog);
+        when(blogRepositoryMock.findByAuthor(user)).thenReturn(list);
+        assertEquals(list,blogServiceTest.findByAuthor(user));
     }
 
     @Test
