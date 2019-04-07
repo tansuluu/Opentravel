@@ -11,18 +11,25 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
+import static org.mockito.internal.verification.VerificationModeFactory.times;
 
 @RunWith(MockitoJUnitRunner.class)
 public class BlogServiceTest {
 
     @Mock
     BlogRepository blogRepositoryMock;
+
+    @Autowired
+    BlogRepository blogRepository;
 
     @InjectMocks
     BlogService blogServiceTest;
@@ -41,6 +48,7 @@ public class BlogServiceTest {
         assertEquals(blog,blogRepositoryMock.findById(id));
     }
 
+
     @Test
     public void testFindByAuthor(){
         ArrayList<Blog> list=new ArrayList<>();
@@ -52,6 +60,20 @@ public class BlogServiceTest {
         list.add(blog);
         when(blogRepositoryMock.findByAuthor(user)).thenReturn(list);
         assertEquals(list,blogServiceTest.findByAuthor(user));
+    }
+
+    @Test
+    public void testDelete() {
+        Blog blog = new Blog();
+
+        int doseId=1;
+        blog.setId(doseId);
+        // perform the call
+        blogServiceTest.delete(doseId);
+
+        // verify the mocks
+        //assertEquals(blog,blogServiceTest.findById(doseId));
+
     }
 
     @Test
@@ -180,6 +202,7 @@ public class BlogServiceTest {
         when(blogRepositoryMock.getAllByOrderByView()).thenReturn(ticketList);
         assertEquals(ticketList, blogServiceTest.getTop3PlaceByOrderByView());
     }
+
 
     @After
     public void terminate(){
