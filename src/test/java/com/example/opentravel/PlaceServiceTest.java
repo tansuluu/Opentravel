@@ -94,6 +94,20 @@ public class PlaceServiceTest {
         assertEquals(listTop, placeService.getAll());
     }
 
+    @Test
+    public void testDelete() {
+        Place place = new Place();
+
+        int doseId=1;
+        place.setId(doseId);
+        // perform the call
+        placeService.delete(place.getId());
+
+        // verify the mocks
+        //assertEquals(blog,blogServiceTest.findById(doseId));
+
+    }
+
     @After
     public void terminate(){
         System.out.println("PlaceServiceTest class is terminated");
