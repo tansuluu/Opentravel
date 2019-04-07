@@ -14,4 +14,5 @@ public interface PlaceRepository extends JpaRepository<Place,Long> {
     List<Place> findByAuthor(User author);
     List<Place> findAllByTitle(String text);
 
+
 }
