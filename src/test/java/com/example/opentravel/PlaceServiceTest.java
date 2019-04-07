@@ -1,6 +1,8 @@
 package com.example.opentravel;
 
+import com.example.opentravel.model.Blog;
 import com.example.opentravel.model.Place;
+import com.example.opentravel.model.User;
 import com.example.opentravel.repository.PlaceRepository;
 import com.example.opentravel.service.PlaceService;
 import org.junit.After;
@@ -40,6 +42,20 @@ public class PlaceServiceTest {
         when(placeRepositoryMock.findById(id)).thenReturn(place);
         assertEquals(place,placeService.findById(id));
     }
+
+    @Test
+    public void testFindByAuthor(){
+        ArrayList<Place> list=new ArrayList<>();
+        Place place=new Place();
+        String title = "Blog1";
+        place.setTitle(title);
+        User user=new User();
+        user.setName("Meder");
+        list.add(place);
+        when(placeRepositoryMock.findByAuthor(user)).thenReturn(list);
+        assertEquals(list,placeService.findByAuthor(user));
+    }
+
 
     @Test
     public void testFindByIdWhenNoSuchId(){
