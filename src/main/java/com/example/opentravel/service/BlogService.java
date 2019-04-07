@@ -1,5 +1,6 @@
 package com.example.opentravel.service;
 import com.example.opentravel.model.Blog;
+import com.example.opentravel.model.User;
 import com.example.opentravel.repository.BlogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,8 +27,8 @@ public class BlogService {
         return blogRepository.save(blog);
     }
 
-    public List<Blog> findByUsername(String username){
-        return blogRepository.findBlogByUsername(username);
+    public List<Blog> findByAuthor(User user){
+        return blogRepository.findByAuthor(user);
     }
 
     public List<Blog> getTop3PlaceByOrderByView(){
