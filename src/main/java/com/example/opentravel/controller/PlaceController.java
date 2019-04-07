@@ -76,17 +76,14 @@ public class PlaceController {
 
     @RequestMapping("/places")
     public String places(@RequestParam(value = "page",defaultValue = "1") int page,Model model){
-        PageRequest pageRequest=PageRequest.of(page-1,6);
-        Page<Blog> adminPage=blogService.findAll(pageRequest);
+        PageRequest pageRequest=PageRequest.of(page-1,5);
+        Page<Place> adminPage=placeService.getAll(pageRequest);
         int total=adminPage.getTotalPages();
         if(total>0){
             List<Integer> pageNumbers = IntStream.rangeClosed(1,total).boxed().collect(Collectors.toList());
             model.addAttribute("pageNumbers", pageNumbers);
         }
-        model.addAttribute("blogs",adminPage.getContent());
-        return "blog";
-        ArrayList<Place> list=(ArrayList)placeService.getAll();
-        model.addAttribute("places", list);
+        model.addAttribute("places",adminPage.getContent());
         return "allPlaceS";
     }
     @RequestMapping("/findPlace")
