@@ -3,10 +3,9 @@
     "use strict";
 
         $(document).ready(function () {
-
+            var data_map_x = selector_map.attr('data-map-x');
             var selector_map = $('#google_map');
             var img_pin = selector_map.attr('data-pin');
-            var data_map_x = selector_map.attr('data-map-x');
             var data_map_y = selector_map.attr('data-map-y');
             var scrollwhell = selector_map.attr('data-scrollwhell');
             var draggable = selector_map.attr('data-draggable');
@@ -202,6 +201,7 @@
                 ]
             }
             ];
+
 
             var latitude = data_map_x,
                 longitude = data_map_y,

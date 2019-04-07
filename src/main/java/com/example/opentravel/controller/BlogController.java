@@ -102,7 +102,7 @@ public class BlogController {
     }
 
     @RequestMapping("/findBlog")
-    public String find(@RequestParam(name = "input",required = true) String input, Model model){
+    public String find2(@RequestParam(name = "input",required = true) String input, Model model){
         List<Blog> list=blogService.findAllByTitle(input);
         model.addAttribute("blogs", list);
         return "blog";

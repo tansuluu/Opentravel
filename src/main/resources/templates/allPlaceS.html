@@ -86,6 +86,7 @@
                   <li class="main_nav_item"><a th:href="@{/blog}">blog</a></li>
                   <li class="main_nav_item"><a th:href="@{/gids}">users</a></li>
                   <li class="main_nav_item"><a th:href="@{/chats}">chats</a></li>
+
                 </ul>
               </div>
               <div class="content_search ml-lg-0 ml-auto">
@@ -136,6 +137,8 @@
           <li class="menu_item"><a th:href="@{/places}">offers</a></li>
           <li class="menu_item"><a th:href="@{/blog}">blog</a></li>
           <li class="menu_item"><a th:href="@{/gids}">users</a></li>
+          <li class="menu_item"><a th:href="@{/help}">help</a></li>
+
         </ul>
       </div>
     </div>
@@ -172,7 +175,7 @@
             <h2>Our Places</h2>
           </div>
         </div>
-        <div class="row d-flex no-gutters" th:each="i : ${#numbers.sequence( 0, places.size()-1)}">
+        <div class="row d-flex no-gutters"  th:if="${!places.isEmpty()}" th:each="i : ${#numbers.sequence( 0, places.size()-1)}">
           <div class="col-lg-12" >
             <div class="block-3 d-md-flex ftco-animate"  th:if="${i%2==0}">
               <div class="image order-last" th:style="'background: url(/image/' + ${places.get(i).photo1} + ');background-size: cover'"></div>
@@ -181,7 +184,7 @@
                 <p th:text="${places.get(i).smallText}"> </p>
                 <ul class="post-footer">
                   <li><a th:href="@{/placeInfo(id=${places.get(i).id})}"  th:text="${' '+places.get(i).likes}" class="icon-heart"></a></li>
-                  <li><a th:href="@{/placeInfo(id=${places.get(i).id})}" th:text="${' '+places.get(i).comNumber}" class="icon-chat"></a></li>
+                  <!--<li><a th:href="@{/placeInfo(id=${places.get(i).id})}" th:text="${' '+places.get(i).comNumber}" class="icon-chat"></a></li>-->
                   <li><a th:href="@{/placeInfo(id=${places.get(i).id})}" th:text="${' '+places.get(i).view}" class="icon-eye"></a></li>
                 </ul>
               </div>
@@ -226,7 +229,6 @@
     </div>
 
   <!-- loader -->
-  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
     <script src="folderforindex/js/jquery-3.2.1.min.js"></script>
     <script src="folderforindex/styles/bootstrap4/popper.js"></script>
     <script src="folderforindex/styles/bootstrap4/bootstrap.min.js"></script>

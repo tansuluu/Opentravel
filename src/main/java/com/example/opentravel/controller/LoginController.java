@@ -44,9 +44,8 @@ public class LoginController {
         return modelAndView;
     }
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
-    public ModelAndView createNewUser(@Valid User user, BindingResult bindingResult, @RequestParam(name = "file",required = false) MultipartFile file) {
+    public ModelAndView createNewUser(@Valid User user, BindingResult bindingResult, @RequestParam(name = "file",required = false) MultipartFile file,HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView();
-        System.out.println("hello");
         User userExists = userService.findUserByEmail(user.getEmail());
         if (userExists != null) {
             bindingResult
@@ -56,7 +55,10 @@ public class LoginController {
         if (bindingResult.hasErrors()) {
             modelAndView.setViewName("registration");
         } else {
-            user.setImage("member.png");
+            if(user.getGender().equals("female")){
+                user.setImage("download.jpg");
+            }
+            else user.setImage("images.png");
             if (file!=null && !file.isEmpty()){
                 storageService.saveAvatar(file);
                 user.setImage(file.getOriginalFilename());
@@ -65,20 +67,29 @@ public class LoginController {
                 user.setCountry("Kyrgyzstan");
                 user.setStatus("gid");
                 userService.saveUser(user, "GID");
-                modelAndView.addObject("successMessage", "User has been registered successfully as GID");
+                modelAndView.addObject("successMessage", "User has been registered successfully as GID,We sent confirmation to your email, please confirm to login!");
             }
             else {
                 user.setStatus("tourist");
                 userService.saveUser(user, "TOURIST");
-                modelAndView.addObject("successMessage", "User has been registered successfully as Tourist");
+                modelAndView.addObject("successMessage", "User has been registered successfully as Tourist, We sent confirmation to your email, please confirm to login!");
             }
-
+            userService.sendTokenToConfirm(user,request);
             modelAndView.addObject("user", new User());
             modelAndView.setViewName("login");
 
         }
         return modelAndView;
     }
+
+    @RequestMapping("/confirm")
+    public String  confirm(@RequestParam("token") String token, Model model){
+        User user=userService.findByToken(token);
+            user.setActive(1);
+            userService.save(user);
+            return "redirect:/login";
+    }
+        
     @RequestMapping(value = "/resetPassword", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity<?> reset(@RequestParam("email") String email, HttpServletRequest request) {
         int result =0 ;
@@ -90,16 +101,12 @@ public class LoginController {
         return ResponseEntity.ok(result);
 
     }
+
     @RequestMapping("/reset")
     public String  reset(@RequestParam("token") String token, Model model){
         User user=userService.findByToken(token);
-        if(user==null){
-            return "error";
-        }
-        else {
-            model.addAttribute("token",token);
-            return "reset";
-        }
+        model.addAttribute("token",token);
+        return "reset";
     }
 
     @RequestMapping(value = "/newPassword", method = RequestMethod.GET, produces = "application/json")
@@ -111,4 +118,5 @@ public class LoginController {
         }
         return ResponseEntity.ok(0);
     }
+
 }
