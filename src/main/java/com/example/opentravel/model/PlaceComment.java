@@ -1,12 +1,15 @@
 package com.example.opentravel.model;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "comment")
-public class Comment {
+@Table(name = "placeComment")
+public class PlaceComment {
 
     @Id
     @GeneratedValue
@@ -26,10 +29,16 @@ public class Comment {
     @Column(name = "image", length = 136)
     private String image;
 
-    public Comment() {
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "place_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
+    private Place place;
+
+    public PlaceComment() {
     }
 
-    public Comment(String username, long id_place, String comentText) {
+    public PlaceComment(String username, long id_place, String comentText) {
         this.username = username;
         this.idPlace = id_place;
         this.comentText = comentText;
@@ -89,5 +98,13 @@ public class Comment {
 
     public void setBlogID(long blogID) {
         this.blogID = blogID;
+    }
+
+    public Place getPlace() {
+        return place;
+    }
+
+    public void setPlace(Place place) {
+        this.place = place;
     }
 }

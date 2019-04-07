@@ -1,5 +1,8 @@
 package com.example.opentravel.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
@@ -30,8 +33,6 @@ public class Place {
         private String photo2;
         @Column(name = "photo3", length = 36)
         private String photo3;
-        @Column(name = "usarname", length = 136)
-        private String usarname;
         @Column(name = "address", length = 136)
         @NotEmpty(message = "*Please write an address")
         private String address;
@@ -40,10 +41,13 @@ public class Place {
         private Date date;
         @Column(name = "view",nullable = true)
         private int view;
-        @Column(name = "comNumber")
-        private int comNumber;
         @Column(name = "likes")
         private int likes;
+        @ManyToOne(fetch = FetchType.LAZY, optional = false)
+        @JoinColumn(name = "user_id", nullable = false)
+        @OnDelete(action = OnDeleteAction.CASCADE)
+        @JsonIgnore
+        private User author;
 
         public Long getId() {
             return id;
@@ -101,14 +105,6 @@ public class Place {
             this.photo3 = photo3;
         }
 
-        public String getUsarname() {
-            return usarname;
-        }
-
-        public void setUsarname(String usarname) {
-            this.usarname = usarname;
-        }
-
         public String getAddress() {
             return address;
         }
@@ -133,14 +129,6 @@ public class Place {
             this.view = view;
         }
 
-        public int getComNumber() {
-            return comNumber;
-        }
-
-        public void setComNumber(int comNumber) {
-            this.comNumber = comNumber;
-        }
-
         public int getLikes() {
             return likes;
         }
@@ -159,5 +147,13 @@ public class Place {
 
     public void setSmallText(String smallText) {
         this.smallText = smallText;
+    }
+
+    public User getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(User author) {
+        this.author = author;
     }
 }
