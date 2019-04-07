@@ -3,6 +3,8 @@ import com.example.opentravel.model.Blog;
 import com.example.opentravel.model.User;
 import com.example.opentravel.repository.BlogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.ResultActions;
@@ -51,9 +53,11 @@ public class BlogService {
 }
     public List<Blog> findAllByTitle(String text){
         return blogRepository.findAllByTitle(text);
-}
+    }
 
-
+    public Page<Blog> findAll(Pageable pageable){
+        return blogRepository.findAll(pageable);
+    }
 
 
 }

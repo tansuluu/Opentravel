@@ -95,7 +95,6 @@ public class BlogServiceTest {
         mockTicket1.setPhoto1("emg/meder.png");
         mockTicket1.setPhoto2("emg/meder.png");
         mockTicket1.setPhoto3("emg/meder.png");
-        mockTicket1.setUsername("meder");
         mockTicket1.setDate(new Date());
         mockTicket1.setView(1);
         mockTicket1.setLikes(1);
@@ -109,7 +108,6 @@ public class BlogServiceTest {
         mockTicket2.setPhoto1("emg/meder.png");
         mockTicket2.setPhoto2("emg/meder.png");
         mockTicket2.setPhoto3("emg/meder.png");
-        mockTicket2.setUsername("meder");
         mockTicket2.setDate(new Date());
         mockTicket2.setView(1);
         mockTicket2.setLikes(1);
@@ -131,7 +129,6 @@ public class BlogServiceTest {
         mockTicket1.setPhoto1("emg/meder.png");
         mockTicket1.setPhoto2("emg/meder.png");
         mockTicket1.setPhoto3("emg/meder.png");
-        mockTicket1.setUsername("meder");
         mockTicket1.setDate(new Date());
         mockTicket1.setView(1);
         mockTicket1.setLikes(9);
@@ -145,7 +142,6 @@ public class BlogServiceTest {
         mockTicket2.setPhoto1("emg/meder.png");
         mockTicket2.setPhoto2("emg/meder.png");
         mockTicket2.setPhoto3("emg/meder.png");
-        mockTicket2.setUsername("meder");
         mockTicket2.setDate(new Date());
         mockTicket2.setView(1);
         mockTicket2.setLikes(1);
@@ -158,7 +154,6 @@ public class BlogServiceTest {
         mockTicket3.setPhoto1("emg/meder.png");
         mockTicket3.setPhoto2("emg/meder.png");
         mockTicket3.setPhoto3("emg/meder.png");
-        mockTicket3.setUsername("meder");
         mockTicket3.setDate(new Date());
         mockTicket3.setView(5);
         mockTicket3.setLikes(1);

@@ -33,8 +33,6 @@ public class Blog {
     private String photo2;
     @Column(name = "photo3", length = 36)
     private String photo3;
-    @Column(name = "username", length = 136)
-    private String username;
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "date", nullable = false)
     private Date date;
@@ -105,14 +103,6 @@ public class Blog {
 
     public void setPhoto3(String photo3) {
         this.photo3 = photo3;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public Date getDate() {
