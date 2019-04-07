@@ -166,14 +166,14 @@
     <section class="ftco-section bg-light">
       <div class="container">
         <div class="row">
-          <div class="col-md-6 col-lg-3 ftco-animate" th:each="blog:${blogs}">
+          <div class="col-md-6 col-lg-4 ftco-animate" th:each="blog:${blogs}">
             <div class="blog-entry">
               <a th:href="@{/blogInfo(id=${blog.id})}"  class="block-20" th:style="'background: url(/image/' + ${blog.photo1} + ');background-size: cover'">
               </a>
               <div class="text p-4">
                 <div class="meta">
                   <div><a href="" th:text="${blog.date}">July 7, 2018</a></div>
-                  <div style="display: block"><a href="" th:text="${blog.username}">Admin</a></div>
+                  <div style="display: block"><a href="" th:text="${blog.author.getEmail()}">Admin</a></div>
                 </div>
                 <h3 class="heading" th:text="${blog.title}"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
               </div>
@@ -181,8 +181,23 @@
           </div>
         </div>
       </div>
+      <div class="row" th:fragment="pagination">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+          <nav aria-label="Pagination">
+            <ul class="pagination justify-content-center">
+              <li class="page-item" th:each="pageNumber : ${pageNumbers}" >
+                <a class="page-link" th:href="@{/blog(page=${pageNumber})}" th:text="${pageNumber}">1</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <div class="col-md-2"></div>
+      </div>
     </section>
-    <div class="copyright">
+
+
+  <div class="copyright">
       <div class="container">
         <div class="row">
           <div class="col-lg-3 order-lg-1 order-2  ">
