@@ -1,5 +1,8 @@
 package com.example.opentravel.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
@@ -37,12 +40,13 @@ public class Blog {
     private Date date;
     @Column(name = "view",nullable = true)
     private int view;
-    @Column(name = "comNumber")
-    private int comNumber;
     @Column(name = "likes")
     private int likes;
-    @Column(name = "image", length = 136)
-    private String image;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
+    private User author;
 
     public Blog() {
     }
@@ -127,14 +131,6 @@ public class Blog {
         this.view = view;
     }
 
-    public int getComNumber() {
-        return comNumber;
-    }
-
-    public void setComNumber(int comNumber) {
-        this.comNumber = comNumber;
-    }
-
     public int getLikes() {
         return likes;
     }
@@ -143,19 +139,19 @@ public class Blog {
         this.likes = likes;
     }
 
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
     public String getSmallText() {
         return smallText;
     }
 
     public void setSmallText(String smallText) {
         this.smallText = smallText;
+    }
+
+    public User getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(User author) {
+        this.author = author;
     }
 }
