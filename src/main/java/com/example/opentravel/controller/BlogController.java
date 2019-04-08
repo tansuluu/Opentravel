@@ -51,7 +51,7 @@ public class BlogController {
         try {
             blog=storageService.preStore(file1,file2,file3,blog);
             userService.findUserByEmail(principal.getName());
-            blog.setUsername(principal.getName());
+//            blog.setUsername(principal.getName());
             blogService.save(blog);
         } catch (Exception e) {
             model.addAttribute("errorMessage", "Error: " + e.getMessage());
@@ -107,7 +107,6 @@ public class BlogController {
         model.addAttribute("blogs", list);
         return "blog";
     }
-
 
 
 }
