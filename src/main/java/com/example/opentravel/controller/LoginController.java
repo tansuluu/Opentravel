@@ -46,7 +46,6 @@ public class LoginController {
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
     public ModelAndView createNewUser(@Valid User user, BindingResult bindingResult, @RequestParam(name = "file",required = false) MultipartFile file,HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView();
-        System.out.println("hello");
         User userExists = userService.findUserByEmail(user.getEmail());
         if (userExists != null) {
             bindingResult
@@ -56,7 +55,10 @@ public class LoginController {
         if (bindingResult.hasErrors()) {
             modelAndView.setViewName("registration");
         } else {
-            user.setImage("member.png");
+            if(user.getGender().equals("female")){
+                user.setImage("download.jpg");
+            }
+            else user.setImage("images.png");
             if (file!=null && !file.isEmpty()){
                 storageService.saveAvatar(file);
                 user.setImage(file.getOriginalFilename());
@@ -80,39 +82,12 @@ public class LoginController {
         return modelAndView;
     }
 
-    @RequestMapping("/reset")
-    public String  reset(@RequestParam("token") String token, Model model){
-        User user=userService.findByToken(token);
-        if(user==null){
-            return "error";
-        }
-        else {
-            model.addAttribute("token",token);
-            return "reset";
-        }
-    }
-
-    @RequestMapping(value = "/newPassword", method = RequestMethod.GET, produces = "application/json")
-    public ResponseEntity<?> newPassword(@RequestParam("password") String password,@RequestParam("token") String token,Model model) {
-        User user=userService.findByToken(token);
-        if (user!=null) {
-            userService.saveNewPas(user,password);
-            return ResponseEntity.ok(1);
-        }
-        return ResponseEntity.ok(0);
-    }
-
     @RequestMapping("/confirm")
     public String  confirm(@RequestParam("token") String token, Model model){
         User user=userService.findByToken(token);
-        if(user==null){
-            return "error";
-        }
-        else {
             user.setActive(1);
             userService.save(user);
             return "redirect:/login";
-        }
     }
         
     @RequestMapping(value = "/resetPassword", method = RequestMethod.GET, produces = "application/json")
@@ -126,4 +101,22 @@ public class LoginController {
         return ResponseEntity.ok(result);
 
     }
+
+    @RequestMapping("/reset")
+    public String  reset(@RequestParam("token") String token, Model model){
+        User user=userService.findByToken(token);
+        model.addAttribute("token",token);
+        return "reset";
+    }
+
+    @RequestMapping(value = "/newPassword", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<?> newPassword(@RequestParam("password") String password,@RequestParam("token") String token,Model model) {
+        User user=userService.findByToken(token);
+        if (user!=null) {
+            userService.saveNewPas(user,password);
+            return ResponseEntity.ok(1);
+        }
+        return ResponseEntity.ok(0);
+    }
+
 }

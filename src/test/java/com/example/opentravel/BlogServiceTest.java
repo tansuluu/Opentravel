@@ -31,8 +31,6 @@ public class BlogServiceTest {
         System.out.println("Starting BlogService Test Class");
     }
 
-
-
     @Test
     public void testFindById(){
         Blog blog = new Blog();
@@ -85,33 +83,6 @@ public class BlogServiceTest {
         assertEquals(list1,blogServiceTest.findAllByTitle("Talas"));
     }
 
-    @Test
-    public void findByUsernameTest(){
-        ArrayList<Blog> list=new ArrayList<>();
-        Blog blog=new Blog();
-        String username = "Meder";
-
-        blog.setUsername(username);
-        Blog blog1=new Blog();
-        blog1.setUsername(username);
-        list.add(blog);
-        list.add(blog1);
-        when(blogRepositoryMock.findBlogByUsername(username)).thenReturn(list);
-        assertEquals(list,blogServiceTest.findByUsername(username));
-    }
-    @Test
-    public void findByUsernameTest_whenNull(){
-        ArrayList<Blog> list=new ArrayList<>();
-        Blog blog=new Blog();
-        String username = null;
-        blog.setUsername(username);
-        Blog blog1=new Blog();
-        blog1.setUsername(username);
-        list.add(blog);
-        list.add(blog1);
-        when(blogRepositoryMock.findBlogByUsername(username)).thenReturn(list);
-        assertEquals(list,blogServiceTest.findByUsername(username));
-    }
 
     @Test
     public void testGetAllBlogs() {
@@ -124,12 +95,9 @@ public class BlogServiceTest {
         mockTicket1.setPhoto1("emg/meder.png");
         mockTicket1.setPhoto2("emg/meder.png");
         mockTicket1.setPhoto3("emg/meder.png");
-        mockTicket1.setUsername("meder");
         mockTicket1.setDate(new Date());
         mockTicket1.setView(1);
-        mockTicket1.setComNumber(1);
         mockTicket1.setLikes(1);
-        mockTicket1.setImage("img/png");
         mockTicket1.setSmallText("is the best of the best");
 
         Blog mockTicket2 = new Blog();
@@ -140,12 +108,9 @@ public class BlogServiceTest {
         mockTicket2.setPhoto1("emg/meder.png");
         mockTicket2.setPhoto2("emg/meder.png");
         mockTicket2.setPhoto3("emg/meder.png");
-        mockTicket2.setUsername("meder");
         mockTicket2.setDate(new Date());
         mockTicket2.setView(1);
-        mockTicket2.setComNumber(1);
         mockTicket2.setLikes(1);
-        mockTicket2.setImage("img/png");
         mockTicket2.setSmallText("is the best of the best");
 
         List<Blog> ticketList = new ArrayList<>();
@@ -164,12 +129,9 @@ public class BlogServiceTest {
         mockTicket1.setPhoto1("emg/meder.png");
         mockTicket1.setPhoto2("emg/meder.png");
         mockTicket1.setPhoto3("emg/meder.png");
-        mockTicket1.setUsername("meder");
         mockTicket1.setDate(new Date());
         mockTicket1.setView(1);
-        mockTicket1.setComNumber(1);
         mockTicket1.setLikes(9);
-        mockTicket1.setImage("img/png");
         mockTicket1.setSmallText("is the best of the best");
 
         Blog mockTicket2 = new Blog();
@@ -180,12 +142,9 @@ public class BlogServiceTest {
         mockTicket2.setPhoto1("emg/meder.png");
         mockTicket2.setPhoto2("emg/meder.png");
         mockTicket2.setPhoto3("emg/meder.png");
-        mockTicket2.setUsername("meder");
         mockTicket2.setDate(new Date());
         mockTicket2.setView(1);
-        mockTicket2.setComNumber(1);
         mockTicket2.setLikes(1);
-        mockTicket2.setImage("img/png");
         mockTicket2.setSmallText("is the best of the best");
         Blog mockTicket3 = new Blog();
         mockTicket3.setId(3);
@@ -195,12 +154,9 @@ public class BlogServiceTest {
         mockTicket3.setPhoto1("emg/meder.png");
         mockTicket3.setPhoto2("emg/meder.png");
         mockTicket3.setPhoto3("emg/meder.png");
-        mockTicket3.setUsername("meder");
         mockTicket3.setDate(new Date());
         mockTicket3.setView(5);
-        mockTicket3.setComNumber(1);
         mockTicket3.setLikes(1);
-        mockTicket3.setImage("img/png");
         mockTicket3.setSmallText("is the best of the best");
 
         List<Blog> ticketList = new ArrayList<>();

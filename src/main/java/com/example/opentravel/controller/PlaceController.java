@@ -1,11 +1,14 @@
 package com.example.opentravel.controller;
 
 
+import com.example.opentravel.model.Blog;
 import com.example.opentravel.model.Place;
 import com.example.opentravel.model.User;
 import com.example.opentravel.repository.PlaceRepository;
 import com.example.opentravel.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -20,6 +23,8 @@ import javax.validation.Valid;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 @Controller
 @Transactional
@@ -55,8 +60,8 @@ public class PlaceController {
 
         try {
             place=storageService.preStore(file1,file2,file3,place);
-            userService.findUserByEmail(principal.getName());
-            place.setUsarname(principal.getName());
+            User user=userService.findUserByEmail(principal.getName());
+            place.setAuthor(user);
             placeService.save(place);
         } catch (Exception e) {
             model.addAttribute("errorMessage", "Error: " + e.getMessage());
@@ -70,9 +75,15 @@ public class PlaceController {
 
 
     @RequestMapping("/places")
-    public String places(Model model){
-        ArrayList<Place> list=(ArrayList)placeService.getAll();
-        model.addAttribute("places", list);
+    public String places(@RequestParam(value = "page",defaultValue = "1") int page,Model model){
+        PageRequest pageRequest=PageRequest.of(page-1,5);
+        Page<Place> adminPage=placeService.getAll(pageRequest);
+        int total=adminPage.getTotalPages();
+        if(total>0){
+            List<Integer> pageNumbers = IntStream.rangeClosed(1,total).boxed().collect(Collectors.toList());
+            model.addAttribute("pageNumbers", pageNumbers);
+        }
+        model.addAttribute("places",adminPage.getContent());
         return "allPlaceS";
     }
     @RequestMapping("/findPlace")
@@ -98,7 +109,6 @@ public class PlaceController {
     }
     @RequestMapping("/updateApp")
     public String update(Model model, @RequestParam("id")long id){
-        System.out.println(id);
         model.addAttribute("place", placeService.findById(id));
         return "updatePlace";
     }

@@ -10,7 +10,7 @@
 	<!-- Font -->
 	<title>Registration Form</title>
 	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
-
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="/folderforindex/styles/bootstrap4/bootstrap.min.css">
 	<link href="folderforindex/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -72,6 +72,8 @@
 							<li class="main_nav_item"><a th:href="@{/places}">offers</a></li>
 							<li class="main_nav_item"><a th:href="@{/blog}">blog</a></li>
 							<li class="main_nav_item"><a th:href="@{/gids}">users</a></li>
+							<li class="main_nav_item"><a th:href="@{/chats}">chats</a></li>
+							<li class="main_nav_item"><a th:href="@{/help}">help</a></li>
 						</ul>
 					</div>
 					<div class="content_search ml-lg-0 ml-auto">
@@ -135,36 +137,32 @@
 
 					<div class="post-top-area">
 
-						<h5 class="pre-title" style="text-align: center; font-size: 35px; font-weight: bold">Place</h5>
+						<h5 class="pre-title"  th:text="${app.title}" style="text-align: center; font-size: 35px; font-weight: bold">Place</h5>
+						<div class="post-image"><img th:if="${app.getPhoto1()}!=null" th:src="@{${'/image/'+app.photo1}}"alt="Blog Image"></div>
 
-						<h3 class="title" ><i th:text="${app.title}"></i></h3>
+						<h4 class="title"><i class="fa fa-user"></i> <a th:href="@{/userPage(username=${app.author.getEmail()})}"> Author: <i th:text="${app.author.getEmail()}"></i></a></h4>
+                        <h4 class="title"><i class="fa fa-tags"> </i> Category: <i th:text="${app.category}"></i></h4>
+                        <h4 class="title"><i class="fa fa-calendar"> </i> Date: <i th:text="${app.date}"></i></h4>
 						<h4 class="title"><i class="fa fa-home"> </i> Address: <i th:text="${app.address}"></i></h4>
-						<h4 class="title"><i class="fa fa-tags"> </i> Category: <i th:text="${app.category}"></i></h4>
+
+
 						<p class="para" th:text="${app.text}"></p>
 
 					</div><!-- post-top-area -->
-					<div class="post-image"><img th:if="${app.getPhoto1()}!=null" th:src="@{${'/image/'+app.photo1}}"alt="Blog Image"></div>
 					<div class="post-image"><img th:if="${app.getPhoto2()}!=null" th:src="@{${'/image/'+app.photo2}}"alt="Blog Image"></div>
 					<div class="post-image"><img th:if="${app.getPhoto3()}!=null" th:src="@{${'/image/'+app.photo3}}"alt="Blog Image"></div>
 					<div class="post-bottom-area">
 						<div  th:if="${#request.userPrincipal!=null}">
-							<a  th:if="${app.usarname==#request.userPrincipal.name}"  class="load-more-btn" th:href="@{/deleteAppP(id=${app.id})}"><b>DELETE THE PLACE</b></a>
+							<button class="btn btn-danger" th:if="${app.author.getEmail()==#request.userPrincipal.name}"  type="button" data-toggle="modal" data-target="#myModal" style="width: 100%">DELETE THE PLACE</button>
 						</div>
 						<div  th:if="${#request.userPrincipal!=null}">
-							<a  th:if="${app.usarname==#request.userPrincipal.name}"  class="load-more-btn" th:href="@{/updateApp(id=${app.id})}"><b>UPDATE THE PLACE</b></a>
+							<a  th:if="${app.author.getEmail()==#request.userPrincipal.name}"  class="load-more-btn" th:href="@{/updateApp(id=${app.id})}"><b>UPDATE THE PLACE</b></a>
 						</div>
 						<div class="right-area" sec:authorize="hasAuthority('ADMIN')">
-                            <div th:if="${!#request.userPrincipal.getName().equals(app.usarname)}">
-							<a class="load-more-btn" th:href="@{/deleteAppP(id=${app.id})}"><b>DELETE THE PLACE</b></a>
+                            <div th:if="${!#request.userPrincipal.getName().equals(app.author.getEmail())}">
+								<button class="btn btn-danger" type="button" data-toggle="modal" data-target="#myModal" style="width: 100%">DELETE THE PLACE</button>
 							<a class="load-more-btn" th:href="@{/updateApp(id=${app.id})}"><b>UPDATE THE PLACE</b></a>
                             </div>
-						</div>
-						<div class="post-info">
-							<div class="middle-area">
-								<a class="name" th:href="@{/userPage(username=${app.usarname})}"><b></b><h3 th:text="${app.usarname}"></h3></b></a>
-								<h6 class="date" th:text="${'on '+ app.date}">on Sep 29, 2017 at 9:48 am</h6>
-							</div>
-
 						</div>
 					</div><!-- post-bottom-area -->
 				</div><!-- main-post -->
@@ -196,6 +194,7 @@
 		</div><!-- row -->
 
 	</div><!-- container -->
+
 </section>
 <div class="copyright">
     <div class="container">
@@ -216,6 +215,7 @@
 							<li class="footer_nav_item"><a th:href="@{/places}">offers</a></li>
 							<li class="footer_nav_item"><a th:href="@{/blod}">blog</a></li>
 							<li class="footer_nav_item"><a th:href="@{/gids}">users</a></li>
+
 						</ul>
                     </div>
                 </div>
@@ -225,7 +225,27 @@
 </div>
 
 </div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<b class="modal-title">Confirmation</b>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				Are you sure about deleting data?
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+				<a class="btn btn-danger btn-ok" th:href="@{/deleteAppP(id=${app.id})}" >Delete</a>
+			</div>
+		</div>
+	</div>
+</div>
 <script>
+
 </script>
 <script src="folderforindex/js/jquery-3.2.1.min.js"></script>
 <script src="folderforindex/styles/bootstrap4/popper.js"></script>

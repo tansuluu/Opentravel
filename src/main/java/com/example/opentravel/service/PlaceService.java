@@ -1,8 +1,11 @@
 package com.example.opentravel.service;
 
 import com.example.opentravel.model.Place;
+import com.example.opentravel.model.User;
 import com.example.opentravel.repository.PlaceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -35,8 +38,8 @@ public class PlaceService {
         return listTop;
     }
 
-    public List<Place> findByUsarname(String username){
-        return placeRepository.findByUsarname(username);
+    public List<Place> findByAuthor(User user){
+        return placeRepository.findByAuthor(user);
     }
 
 
@@ -50,5 +53,13 @@ public class PlaceService {
 
     public void delete(long id){
         placeRepository.delete(placeRepository.findById(id));
+    }
+
+    public void deletePlace(Place place){
+        placeRepository.delete(place);
+    }
+
+    public Page<Place> getAll(Pageable pageable){
+        return placeRepository.findAll(pageable);
     }
 }
