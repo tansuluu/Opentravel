@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 
 import java.io.IOException;
 
@@ -29,6 +30,31 @@ public class Sprint1 {
 
 
     String baseUrl = "http://127.0.0.1:8080/";
+
+    public static void BAU(WebDriver driver, Sprint1 sp) {
+        String title = "";
+        String expectedTitle = "Opentravel";
+
+        driver.get(sp.baseUrl);
+        title=driver.getTitle();
+        if (!title.equals(expectedTitle)) {
+            System.out.println("Failed: Base URL -" + title);
+        }
+
+    }
+
+    public static void LUP1(WebDriver driver, Sprint1 sp) {
+        String title = "";
+        String expectedTitle = "All Places";
+
+        driver.get(sp.baseUrl);
+        driver.findElement(By.linkText("OFFERS")).click();
+        title=driver.getTitle();
+        if (!title.equals(expectedTitle)) {
+            System.out.println("Failed: LUP1 -" + title);
+        }
+
+    }
 
     public static boolean regGID(WebDriver driver, Sprint1 sp) {
         String title = "";
@@ -170,7 +196,7 @@ public class Sprint1 {
         String expectedTitle = "Profile";
 
         driver.get(sp.baseUrl);
-        driver.findElement(By.partialLinkText("MAIL")).click();
+        driver.findElement(By.partialLinkText("@")).click();
         title = driver.getTitle();
         if (!title.equals(expectedTitle)) {
             System.out.println("Failed:" + title);
@@ -201,7 +227,7 @@ public class Sprint1 {
         String expectedTitle = "Profile";
 
         driver.get(sp.baseUrl);
-        driver.findElement(By.partialLinkText("MAIL")).click();
+        driver.findElement(By.partialLinkText("@")).click();
         title = driver.getTitle();
         if (!title.equals(expectedTitle)) {
             System.out.println("Failed:" + title);
@@ -235,7 +261,7 @@ public class Sprint1 {
         String expectedTitle = "Profile";
 
         driver.get(sp.baseUrl);
-        driver.findElement(By.partialLinkText("MAIL")).click();
+        driver.findElement(By.partialLinkText("@")).click();
         driver.findElement(By.linkText(sp.exPlaceName)).click();
         title = driver.getTitle();
         if (!title.equals("Places")) {
@@ -257,7 +283,7 @@ public class Sprint1 {
 
 
     public static void main(String[] args) {
-        System.setProperty("webdriver.gecko.driver", "/home/student/Videos/geckodriver-master/geckodriver");
+        System.setProperty("webdriver.gecko.driver", "/home/zarlyk/Music/geckodriver");
 
         WebDriver driver = new FirefoxDriver();
         Sprint1 sp = new Sprint1();
