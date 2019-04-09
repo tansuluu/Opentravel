@@ -10,6 +10,7 @@ import com.example.opentravel.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -129,5 +130,21 @@ public class PlaceController {
         place1.setAddress(place.getAddress());
         placeService.save(place1);
         return "redirect:/placeInfo?id="+place.getId();
+    }
+
+//    @RequestMapping(value = "/hasPut", method = RequestMethod.GET, produces = "application/json")
+//    public ResponseEntity<?> putLike(@RequestParam("id") long id, @RequestParam("username") String username) {
+//        int result =0 ;
+//        if (likeService.existsByAppIdAndUsername(id, username)) {
+//            System.out.println(likeService.existsByAppIdAndUsername(id, username)+"hererererrrrrrr");
+//            result = 1;
+//        }
+//        return ResponseEntity.ok(result);
+//    }
+
+    @RequestMapping(value = "/newComment",method = RequestMethod.POST,produces = "application/json")
+    public ResponseEntity<?> newComment(@RequestParam("comment") String text, @RequestParam("appId") long id,Principal principal){
+        PlaceComment placeComment=placeCommentService.save(text,id,userService.findUserByEmail(principal.getName()));
+        return ResponseEntity.ok(placeComment);
     }
 }

@@ -32,6 +32,19 @@ public class PlaceComment {
     public PlaceComment() {
     }
 
+    public PlaceComment(String comentText, Place place, User user) {
+        this.comentText = comentText;
+        this.place = place;
+        this.user = user;
+    }
+
+    public PlaceComment(String comentText, Date dateCom, Place place, User user) {
+        this.comentText = comentText;
+        this.dateCom = dateCom;
+        this.place = place;
+        this.user = user;
+    }
+
     public long getId() {
         return id;
     }
