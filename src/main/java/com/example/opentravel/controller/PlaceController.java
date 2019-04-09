@@ -3,6 +3,7 @@ package com.example.opentravel.controller;
 
 import com.example.opentravel.model.Blog;
 import com.example.opentravel.model.Place;
+import com.example.opentravel.model.PlaceComment;
 import com.example.opentravel.model.User;
 import com.example.opentravel.repository.PlaceRepository;
 import com.example.opentravel.service.*;
@@ -39,6 +40,8 @@ public class PlaceController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    private PlaceCommentService placeCommentService;
 
     @RequestMapping(value = "/newPlace", method = RequestMethod.GET)
     public String newPlace(Model model) {
@@ -96,9 +99,12 @@ public class PlaceController {
     @RequestMapping("/placeInfo")
     public String showApplications(Model model, @RequestParam("id")long id, Principal principal){
         Place place=placeService.findById(id);
+        List<PlaceComment> placeComments=placeCommentService.findByPlace(place);
         List<Place> popular=placeService.getTop3PlaceByOrderByView();
         model.addAttribute("app",place);
         model.addAttribute("popular",popular);
+        model.addAttribute("comments",placeComments);
+
         return "places";
     }
 
@@ -107,11 +113,13 @@ public class PlaceController {
         placeService.delete(id);
         return "redirect:/places";
     }
+
     @RequestMapping("/updateApp")
     public String update(Model model, @RequestParam("id")long id){
         model.addAttribute("place", placeService.findById(id));
         return "updatePlace";
     }
+
     @RequestMapping(value = "/updateApp",method = RequestMethod.POST)
     public String update(@Valid Place place){
         Place place1=placeService.findById(place.getId());

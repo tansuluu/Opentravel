@@ -1,5 +1,6 @@
 package com.example.opentravel.service;
 
+import com.example.opentravel.model.Place;
 import com.example.opentravel.model.PlaceComment;
 import com.example.opentravel.model.User;
 import com.example.opentravel.repository.PlaceCommentRepository;
@@ -22,5 +23,10 @@ public class PlaceCommentService {
     public PlaceComment findById(long id){
         return placeCommentRepository.findById(id);
     }
+
+    public List<PlaceComment> findByPlace(Place place){
+        return placeCommentRepository.findByPlace(place);
+    }
+
 
 }

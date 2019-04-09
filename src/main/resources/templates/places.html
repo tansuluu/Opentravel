@@ -212,20 +212,16 @@
 							<div class="col-sm-12">
 								<input type="hidden" th:value="${app.id}"  id="appID">
 								</label>
-								<textarea  id="comments" rows="2" class="text-area-messge form-control"
-										   placeholder="Enter your comment"></textarea >
-
+								<textarea  id="comments" rows="2" class="text-area-messge form-control" placeholder="Enter your comment"></textarea >
 							</div><!-- col-sm-12 -->
 							<div class="col-sm-12">
 								<button type="button" class="submit-btn" id="form-submit"><b>POST COMMENT</b></button>
 							</div><!-- col-sm-12 -->
-
 						</div><!-- row -->
 					</form>
 				</div><!-- comment-form -->
-
-				<h4><b th:text="${'COMMENTS('+app.comNumber+')'}" id="comTxt"></b></h4>
-				<input type="hidden" th:value="${app.comNumber}" id="comNumber">
+				<h4><b th:text="${'COMMENTS('+comments.size()+')'}" id="comTxt"></b></h4>
+				<input type="hidden" th:value="${comments.size()}" id="comNumber">
 				<div class="commnets-area text-left" id="headerofcomment">
 					<div class="comment" th:each="commen: ${comments}">
 						<div class="post-info">
@@ -239,16 +235,12 @@
 							<div class="right-area" sec:authorize="hasRole('ROLE_ADMIN')">
 								<a th:href="@{/deleteComment(id=${commen.id},apId=${app.id})}"><img  src="images/trash.png" style="width: 30px" alt="Profile Image"></a>
 							</div>
-
 						</div><!-- post-info -->
 						<p th:text="${commen.comentText}"></p>
 					</div>
 				</div>
-
 			</div><!-- col-lg-8 col-md-12 -->
-
 		</div><!-- row -->
-
 	</div><!-- container -->
 </section>
 <div class="copyright">
@@ -278,7 +270,6 @@
         </div>
     </div>
 </div>
-
 </div>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
