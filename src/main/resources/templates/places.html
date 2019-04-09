@@ -249,8 +249,8 @@
 								<a class="name" th:href="@{/userPage(username=${commen.user.email})}"><b th:text="${commen.user.email}"></b></a>
 								<h6 class="date" th:text="${'on '+commen.dateCom}"></h6>
 							</div>
-							<div class="right-area" sec:authorize="hasRole('ADMIN')">
-								<a th:href="@{/deleteComment(id=${commen.id},place=${commen.place})}"><img  src="images/trash.png" style="width: 30px" alt="Profile Image"></a>
+							<div class="right-area" sec:authorize="hasAuthority('ADMIN')">
+								<a th:href="@{/deleteComment(id=${commen.id},place=${commen.place})}" style="font-size: 22px; color: red "><i class="fa fa-trash"></i></a>
 							</div>
 						</div><!-- post-info -->
 						<p th:text="${commen.comentText}"></p>
@@ -335,24 +335,6 @@
             }
         });
 
-        $("#form-submit").on("click",function(){
-            console.log("here comment");
-            var text=$("#comments").val();
-            var id=$("#appID").val();
-            if(text!=null && text!="" && text!=" "){
-                $.ajax({
-                    url:"/newComment",
-                    type:"GET",
-                    data:({comment:text, appId:id}),
-                    dataType: 'json',
-                    contentType: "application/json",
-                    before:function(){
-                        $("#comments").val("");
-                    },
-                    success: funcSuccessAddComment
-                });
-            }
-        });
         $('#addLike').on('click', function() {
             var id=$("#placeId").val();
             var username=$("#userName").val();
@@ -390,16 +372,34 @@
             $("#deleteLike").hide();
             $("#addLike").show();
         };
+        $("#form-submit").on("click",function(){
+            console.log("here comment");
+            var text=$("#comments").val();
+            var id=$("#appID").val();
+            if(text!=null && text!="" && text!=" "){
+                $.ajax({
+                    url:"/newComment",
+                    type:"GET",
+                    data:({comment:text, appId:id}),
+                    dataType: 'json',
+                    contentType: "application/json",
+                    before:function(){
+                        $("#comments").val("");
+                    },
+                    success: funcSuccessAddComment
+                });
+            }
+        });
 
         function funcSuccessAddComment(data) {
             console.log(data);
             var comment='<div class="comment">' +
                 '<div class="post-info">' +
                 '<div class="left-area">' +
-                '<a class="avatar" href="#"><img  src="'+data.image+'" alt="Profile Image"></a>' +
+                '<a class="avatar" href="#"><img  src="'+data.user.image+'" alt="Profile Image"></a>' +
                 '</div>\n' +
                 '<div class="middle-area">\n' +
-                '<a class="name"><b style="color: black">'+data.username+'</b></a>' +
+                '<a class="name"><b style="color: black">'+data.user.name+'</b></a>' +
                 '<h6 class="date">on '+data.dateCom+'</h6>' +
                 '</div>\n' +
                 '</div>' +

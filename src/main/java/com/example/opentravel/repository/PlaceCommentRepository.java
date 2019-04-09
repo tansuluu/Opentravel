@@ -16,4 +16,6 @@ public interface PlaceCommentRepository extends JpaRepository<PlaceComment,Long>
     PlaceComment findById(long id);
 
     List<PlaceComment> findByPlace(Place place);
+
+    PlaceComment findByIdAndPlace(long id,Place place);
 }

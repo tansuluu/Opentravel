@@ -142,9 +142,15 @@ public class PlaceController {
 //        return ResponseEntity.ok(result);
 //    }
 
-    @RequestMapping(value = "/newComment",method = RequestMethod.POST,produces = "application/json")
+    @RequestMapping(value = "/newComment",method = RequestMethod.GET,produces = "application/json")
     public ResponseEntity<?> newComment(@RequestParam("comment") String text, @RequestParam("appId") long id,Principal principal){
         PlaceComment placeComment=placeCommentService.save(text,id,userService.findUserByEmail(principal.getName()));
         return ResponseEntity.ok(placeComment);
+    }
+
+    @RequestMapping("/deleteComment")
+    public String deleteComment(@RequestParam("id") long id, @RequestParam("place") Place place){
+        placeCommentService.deleteComment(id,place);
+        return "redirect:/placeInfo?id="+place.getId();
     }
 }
