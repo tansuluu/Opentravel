@@ -164,6 +164,23 @@
 							<a class="load-more-btn" th:href="@{/updateApp(id=${app.id})}"><b>UPDATE THE PLACE</b></a>
                             </div>
 						</div>
+						<div class="post-icons-area">
+							<ul class="post-icons" >
+								<input th:value="${app.id}" type="hidden" id="placeId">
+								<input type="hidden" th:if="${#request.userPrincipal !=null}" th:value="${#request.userPrincipal.name}"  id="userName">
+								<li id="deleteLike" th:if="${#request.userPrincipal!=null}"><a style="color: red" id="dl" th:text="${' '+app.likes}" class="ion-heart"></a></li>
+								<li id="addLike" th:if="${#request.userPrincipal!=null}" ><a  th:text="${' '+app.likes}" id="ad" class="ion-heart"></a></li>
+								<li><a th:if="${#request.userPrincipal==null}"  th:text="${' '+app.likes}" class="ion-heart" style="color: red"></a></li>
+								<li><a href="#" class="ion-chatbubble"  th:text="${' '+comments.size()}"></a></li>
+								<li><a href="#" class="ion-eye" th:text="${' '+app.view}" ></a></li>
+							</ul>
+							<ul class="icons">
+								<li>SHARE : </li>
+								<li><a href="#"><i class="ion-social-facebook"></i></a></li>
+								<li><a href="#"><i class="ion-social-twitter"></i></a></li>
+								<li><a href="#"><i class="ion-social-pinterest"></i></a></li>
+							</ul>
+						</div>
 					</div><!-- post-bottom-area -->
 				</div><!-- main-post -->
 			</div><!-- col-lg-8 col-md-12 -->
@@ -196,6 +213,53 @@
 	</div><!-- container -->
 
 </section>
+<section class="comment-section center-text">
+	<div class="container">
+		<h4><b th:if="${#request.userPrincipal != null}">POST COMMENT</b></h4>
+		<h4><b th:if="${#request.userPrincipal == null}">To add comment, <a th:href="@{/login}">sign in</a></b></h4>
+		<div class="row">
+
+			<div class="col-lg-2 col-md-0"></div>
+
+			<div class="col-lg-8 col-md-12"   >
+				<div class="comment-form" th:if="${#request.userPrincipal != null}">
+					<form>
+						<div class="row">
+							<a class="name" href="#"><b th:text="${'Add comment as '+#request.userPrincipal.name}"></b></a>
+							<div class="col-sm-12">
+								<input type="hidden" th:value="${app.id}"  id="appID">
+								</label>
+								<textarea  id="comments" rows="2" class="text-area-messge form-control" placeholder="Enter your comment"></textarea >
+							</div><!-- col-sm-12 -->
+							<div class="col-sm-12">
+								<button type="button" class="submit-btn" id="form-submit"><b>POST COMMENT</b></button>
+							</div><!-- col-sm-12 -->
+						</div><!-- row -->
+					</form>
+				</div><!-- comment-form -->
+				<h4><b th:text="${'COMMENTS('+comments.size()+')'}" id="comTxt"></b></h4>
+				<input type="hidden" th:value="${comments.size()}" id="comNumber">
+				<div class="commnets-area text-left" id="headerofcomment">
+					<div class="comment" th:each="commen: ${comments}">
+						<div class="post-info">
+							<div class="left-area">
+								<a class="avatar" href="#"><img  th:src="@{${commen.user.image}}" alt="Profile Image"></a>
+							</div>
+							<div class="middle-area">
+								<a class="name" th:href="@{/userPage(username=${commen.user.email})}"><b th:text="${commen.user.email}"></b></a>
+								<h6 class="date" th:text="${'on '+commen.dateCom}"></h6>
+							</div>
+							<div class="right-area" sec:authorize="hasRole('ADMIN')">
+								<a th:href="@{/deleteComment(id=${commen.id},place=${commen.place})}"><img  src="images/trash.png" style="width: 30px" alt="Profile Image"></a>
+							</div>
+						</div><!-- post-info -->
+						<p th:text="${commen.comentText}"></p>
+					</div>
+				</div>
+			</div><!-- col-lg-8 col-md-12 -->
+		</div><!-- row -->
+	</div><!-- container -->
+</section>
 <div class="copyright">
     <div class="container">
         <div class="row">
@@ -223,7 +287,6 @@
         </div>
     </div>
 </div>
-
 </div>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
@@ -245,7 +308,112 @@
 	</div>
 </div>
 <script>
+    $(document).ready(function() {
+        var id=$("#placeId").val();
+        var username=$("#userName").val();
+        $.ajax({
+            url: "/hasPut",
+            type: "GET",
+            data: ({id:id, username:username}),
+            dataType: 'json',
+            contentType: "application/json",
+            success: function (data) {
+                console.log(data+ " data");
+                console.log(data==1);
+                if(data==1){
+                    $("#deleteLike").show();
+                    $("#addLike").hide();
+                    console.log(data+ " show");
+                }
+                if(data==0) {
+                    $("#deleteLike").hide();
+                    $("#addLike").show();
+                }
+            },
+            error: function () {
+                console.log("not put");
+            }
+        });
 
+        $("#form-submit").on("click",function(){
+            console.log("here comment");
+            var text=$("#comments").val();
+            var id=$("#appID").val();
+            if(text!=null && text!="" && text!=" "){
+                $.ajax({
+                    url:"/newComment",
+                    type:"GET",
+                    data:({comment:text, appId:id}),
+                    dataType: 'json',
+                    contentType: "application/json",
+                    before:function(){
+                        $("#comments").val("");
+                    },
+                    success: funcSuccessAddComment
+                });
+            }
+        });
+        $('#addLike').on('click', function() {
+            var id=$("#placeId").val();
+            var username=$("#userName").val();
+            $.ajax({
+                url: "/addLike",
+                type: "GET",
+                data: ({id:id, username:username}),
+                dataType: 'json',
+                contentType: "application/json",
+                success: funcSuccessAdd
+            });
+
+        });
+        $('#deleteLike').on('click', function() {
+            var id=$("#placeId").val();
+            var username=$("#userName").val();
+            $.ajax({
+                url: "/deleteLike",
+                type: "GET",
+                data: ({id:id, username:username}),
+                dataType: 'json',
+                contentType: "application/json",
+                success: funcSuccessDell
+            });
+        });
+        function funcSuccessAdd(data){
+            console.log(data);
+            $("#addLike").hide();
+            $("#dl").text(data);
+            $("#deleteLike").show();
+        };
+
+        function funcSuccessDell(data){
+            $("#ad").text(data);
+            $("#deleteLike").hide();
+            $("#addLike").show();
+        };
+
+        function funcSuccessAddComment(data) {
+            console.log(data);
+            var comment='<div class="comment">' +
+                '<div class="post-info">' +
+                '<div class="left-area">' +
+                '<a class="avatar" href="#"><img  src="'+data.image+'" alt="Profile Image"></a>' +
+                '</div>\n' +
+                '<div class="middle-area">\n' +
+                '<a class="name"><b style="color: black">'+data.username+'</b></a>' +
+                '<h6 class="date">on '+data.dateCom+'</h6>' +
+                '</div>\n' +
+                '</div>' +
+                '<p>'+data.comentText+'</p>\n' +
+                '</div>';
+            $("#comments").val("");
+            $("#headerofcomment").append(comment);
+            var num=parseInt($("#comNumber").val());
+            console.log(num);
+            num=num+1;
+            $("#comTxt").text("COMMENTS("+num+")");
+            var num=$("#comNumber").val(num);
+        }
+    });
 </script>
 <script src="folderforindex/js/jquery-3.2.1.min.js"></script>
 <script src="folderforindex/styles/bootstrap4/popper.js"></script>

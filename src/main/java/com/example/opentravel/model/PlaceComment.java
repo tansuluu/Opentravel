@@ -1,8 +1,6 @@
 package com.example.opentravel.model;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -15,33 +13,36 @@ public class PlaceComment {
     @GeneratedValue
     @Column(name = "id", nullable = false)
     private long id;
-    @Column(name = "username")
-    private String username;
-    @Column(name = "idPlace")
-    private long idPlace;
-    @Column(name = "blogID ")
-    private long blogID;
+
     @Column(name = "text")
     private String comentText;
+
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "dateCom", nullable = false)
     private Date dateCom;
-    @Column(name = "image", length = 136)
-    private String image;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "place_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
     private Place place;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private User user;
 
     public PlaceComment() {
     }
 
-    public PlaceComment(String username, long id_place, String comentText) {
-        this.username = username;
-        this.idPlace = id_place;
+    public PlaceComment(String comentText, Place place, User user) {
         this.comentText = comentText;
+        this.place = place;
+        this.user = user;
+    }
+
+    public PlaceComment(String comentText, Date dateCom, Place place, User user) {
+        this.comentText = comentText;
+        this.dateCom = dateCom;
+        this.place = place;
+        this.user = user;
     }
 
     public long getId() {
@@ -50,22 +51,6 @@ public class PlaceComment {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public long getIdPlace() {
-        return idPlace;
-    }
-
-    public void setIdPlace(long idPlace) {
-        this.idPlace = idPlace;
     }
 
     public String getComentText() {
@@ -84,27 +69,19 @@ public class PlaceComment {
         this.dateCom = dateCom;
     }
 
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-    public long getBlogID() {
-        return blogID;
-    }
-
-    public void setBlogID(long blogID) {
-        this.blogID = blogID;
-    }
-
     public Place getPlace() {
         return place;
     }
 
     public void setPlace(Place place) {
         this.place = place;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
