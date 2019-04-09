@@ -137,23 +137,23 @@ public class Place {
             this.likes = likes;
         }
 
-    public void setId(long id) {
-        this.id = id;
-    }
+        public void setId(long id) {
+            this.id = id;
+        }
 
-    public String getSmallText() {
-        return smallText;
-    }
+        public String getSmallText() {
+            return smallText;
+        }
 
-    public void setSmallText(String smallText) {
-        this.smallText = smallText;
-    }
+        public void setSmallText(String smallText) {
+            this.smallText = smallText;
+        }
 
-    public User getAuthor() {
-        return author;
-    }
+        public User getAuthor() {
+            return author;
+        }
 
-    public void setAuthor(User author) {
-        this.author = author;
-    }
+        public void setAuthor(User author) {
+            this.author = author;
+        }
 }
