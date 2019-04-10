@@ -250,8 +250,14 @@
 								<h6 class="date" th:text="${'on '+commen.dateCom}"></h6>
 							</div>
 							<div class="right-area" sec:authorize="hasAuthority('ADMIN')">
-								<a th:href="@{/deleteComment(id=${commen.id},place=${commen.place})}" style="font-size: 22px; color: red "><i class="fa fa-trash"></i></a>
+								<a th:href="@{/deleteComment(id=${commen.id},placeId=${commen.place.id})}" style="font-size: 22px; color: red "><i class="fa fa-trash"></i></a>
 							</div>
+							<div th:if="${#request.userPrincipal.name}" sec:authorize="!hasAuthority('ADMIN')">
+								<div class="right-area" th:if="${#request.userPrincipal.name==commen.user.email}">
+									<a th:href="@{/deleteComment(id=${commen.id},placeId=${commen.place.id})}" style="font-size: 22px; color: red "><i class="fa fa-trash"></i></a>
+								</div>
+							</div>
+
 						</div><!-- post-info -->
 						<p th:text="${commen.comentText}"></p>
 					</div>
@@ -399,8 +405,8 @@
                 '<a class="avatar" href="#"><img  src="'+data.user.image+'" alt="Profile Image"></a>' +
                 '</div>\n' +
                 '<div class="middle-area">\n' +
-                '<a class="name"><b style="color: black">'+data.user.name+'</b></a>' +
-                '<h6 class="date">on '+data.dateCom+'</h6>' +
+                '<a class="name"><b style="color: black">'+data.user.email+'  </b></a>' +
+                '<h6 class="date"> on '+data.dateCom+'</h6>' +
                 '</div>\n' +
                 '</div>' +
                 '<p>'+data.comentText+'</p>\n' +
