@@ -51,8 +51,8 @@ public class UserController {
     @RequestMapping("/userPage")
     public String showUser(Model model, @RequestParam("username") String email) {
         User user = userService.findUserByEmail(email);
-        List<Place> list = placeService.findByUsarname(email);
-        List<Blog> list1 = blogService.findByUsername(email);
+        List<Place> list = placeService.findByAuthor(user);
+        List<Blog> list1 = blogService.findByAuthor(user);
         model.addAttribute("places", list);
         model.addAttribute("blogs", list1);
         model.addAttribute("user", user);

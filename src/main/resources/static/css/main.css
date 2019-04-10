@@ -7,8 +7,19 @@
 html,body {
     height: 100%;
     overflow: hidden;
-}
 
+}
+a {
+    display: block;
+    color: #060;
+    text-decoration: none;
+    font-size: 1.5em;
+    padding: 4px 6px;
+    margin: 4px;
+}
+i{
+    background-size: cover;
+}
 body {
     margin: 0;
     padding: 0;
@@ -220,7 +231,7 @@ button.accent {
 
 #messageForm .input-group input {
     float: left;
-    width: calc(100% - 85px);
+    width: calc(100% - 170px);
 }
 
 #messageForm .input-group button {

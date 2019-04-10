@@ -68,7 +68,7 @@ public class UserService {
     }
     public ArrayList<User> getAll()
     {
-        return (ArrayList) userRepository.getAllByOrderByAboutMe();
+        return (ArrayList) userRepository.findAll();
     }
 
     public ArrayList<User> findByName(String name){
@@ -120,11 +120,11 @@ public class UserService {
 
     public void deleteUser(int id){
         User user =findUserById(id);
-        List<Blog> blogs=blogService.findByUsername(user.getEmail());
+        List<Blog> blogs=blogService.findByAuthor(user);
         for (Blog b:blogs){
             blogService.deleteBlog(b);
         }
-        List<Place> places=placeService.findByUsarname(user.getEmail());
+        List<Place> places=placeService.findByAuthor(user);
         for(Place p: places){
             placeService.deletePlace(p);
         }
@@ -141,6 +141,10 @@ public class UserService {
         user1.setLanguages(user.getLanguages());
         user1.setGender(user.getGender());
         save(user1);
+    }
+
+    public String getImagePhoto(String name){
+        return findUserByEmail(name).getImage();
     }
 
 }

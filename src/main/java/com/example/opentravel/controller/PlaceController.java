@@ -1,11 +1,16 @@
 package com.example.opentravel.controller;
 
 
+import com.example.opentravel.model.Blog;
 import com.example.opentravel.model.Place;
+import com.example.opentravel.model.PlaceComment;
 import com.example.opentravel.model.User;
 import com.example.opentravel.repository.PlaceRepository;
 import com.example.opentravel.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -20,6 +25,8 @@ import javax.validation.Valid;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 @Controller
 @Transactional
@@ -34,6 +41,8 @@ public class PlaceController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    private PlaceCommentService placeCommentService;
 
     @RequestMapping(value = "/newPlace", method = RequestMethod.GET)
     public String newPlace(Model model) {
@@ -55,8 +64,8 @@ public class PlaceController {
 
         try {
             place=storageService.preStore(file1,file2,file3,place);
-            userService.findUserByEmail(principal.getName());
-            place.setUsarname(principal.getName());
+            User user=userService.findUserByEmail(principal.getName());
+            place.setAuthor(user);
             placeService.save(place);
         } catch (Exception e) {
             model.addAttribute("errorMessage", "Error: " + e.getMessage());
@@ -70,9 +79,15 @@ public class PlaceController {
 
 
     @RequestMapping("/places")
-    public String places(Model model){
-        ArrayList<Place> list=(ArrayList)placeService.getAll();
-        model.addAttribute("places", list);
+    public String places(@RequestParam(value = "page",defaultValue = "1") int page,Model model){
+        PageRequest pageRequest=PageRequest.of(page-1,5);
+        Page<Place> adminPage=placeService.getAll(pageRequest);
+        int total=adminPage.getTotalPages();
+        if(total>0){
+            List<Integer> pageNumbers = IntStream.rangeClosed(1,total).boxed().collect(Collectors.toList());
+            model.addAttribute("pageNumbers", pageNumbers);
+        }
+        model.addAttribute("places",adminPage.getContent());
         return "allPlaceS";
     }
     @RequestMapping("/findPlace")
@@ -85,9 +100,12 @@ public class PlaceController {
     @RequestMapping("/placeInfo")
     public String showApplications(Model model, @RequestParam("id")long id, Principal principal){
         Place place=placeService.findById(id);
+        List<PlaceComment> placeComments=placeCommentService.findByPlace(place);
         List<Place> popular=placeService.getTop3PlaceByOrderByView();
         model.addAttribute("app",place);
         model.addAttribute("popular",popular);
+        model.addAttribute("comments",placeComments);
+
         return "places";
     }
 
@@ -96,11 +114,13 @@ public class PlaceController {
         placeService.delete(id);
         return "redirect:/places";
     }
+
     @RequestMapping("/updateApp")
     public String update(Model model, @RequestParam("id")long id){
         model.addAttribute("place", placeService.findById(id));
         return "updatePlace";
     }
+
     @RequestMapping(value = "/updateApp",method = RequestMethod.POST)
     public String update(@Valid Place place){
         Place place1=placeService.findById(place.getId());
@@ -110,5 +130,21 @@ public class PlaceController {
         place1.setAddress(place.getAddress());
         placeService.save(place1);
         return "redirect:/placeInfo?id="+place.getId();
+    }
+
+//    @RequestMapping(value = "/hasPut", method = RequestMethod.GET, produces = "application/json")
+//    public ResponseEntity<?> putLike(@RequestParam("id") long id, @RequestParam("username") String username) {
+//        int result =0 ;
+//        if (likeService.existsByAppIdAndUsername(id, username)) {
+//            System.out.println(likeService.existsByAppIdAndUsername(id, username)+"hererererrrrrrr");
+//            result = 1;
+//        }
+//        return ResponseEntity.ok(result);
+//    }
+
+    @RequestMapping(value = "/newComment",method = RequestMethod.POST,produces = "application/json")
+    public ResponseEntity<?> newComment(@RequestParam("comment") String text, @RequestParam("appId") long id,Principal principal){
+        PlaceComment placeComment=placeCommentService.save(text,id,userService.findUserByEmail(principal.getName()));
+        return ResponseEntity.ok(placeComment);
     }
 }

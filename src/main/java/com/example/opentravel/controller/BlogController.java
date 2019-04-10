@@ -2,8 +2,11 @@ package com.example.opentravel.controller;
 
 import com.example.opentravel.model.Blog;
 import com.example.opentravel.model.Place;
+import com.example.opentravel.model.User;
 import com.example.opentravel.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -18,6 +21,8 @@ import javax.validation.Valid;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 @Controller
 @Transactional
@@ -46,12 +51,13 @@ public class BlogController {
                                @RequestParam(name = "file2", required = false)MultipartFile file2, @RequestParam(name = "file3", required = false)MultipartFile file3) {
         if (result.hasErrors()) {
             model.addAttribute("blog", blog);
+            System.out.println("Error in adding a new blog");
             return "newBlog";
         }
         try {
             blog=storageService.preStore(file1,file2,file3,blog);
-            userService.findUserByEmail(principal.getName());
-            blog.setUsername(principal.getName());
+            User user=userService.findUserByEmail(principal.getName());
+            blog.setAuthor(user);
             blogService.save(blog);
         } catch (Exception e) {
             model.addAttribute("errorMessage", "Error: " + e.getMessage());
@@ -78,10 +84,17 @@ public class BlogController {
     }
 
     @RequestMapping("/blog")
-    public String places(Model model){
-        List<Blog> list=blogService.getAll();
-        model.addAttribute("blogs", list);
+    public String places(@RequestParam(value = "page",defaultValue = "1") int page,Model model){
+        PageRequest pageRequest=PageRequest.of(page-1,6);
+        Page<Blog> adminPage=blogService.findAll(pageRequest);
+        int total=adminPage.getTotalPages();
+        if(total>0){
+            List<Integer> pageNumbers = IntStream.rangeClosed(1,total).boxed().collect(Collectors.toList());
+            model.addAttribute("pageNumbers", pageNumbers);
+        }
+        model.addAttribute("blogs",adminPage.getContent());
         return "blog";
+
     }
 
     @RequestMapping("/updateBlog")

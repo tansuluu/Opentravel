@@ -137,7 +137,7 @@
 				<li class="menu_item"><a th:href="@{/about}">about us</a></li>
 				<li class="menu_item"><a th:href="@{/places}">offers</a></li>
 				<li class="menu_item"><a th:href="@{/blog}">blog</a></li>
-                <li class="main_nav_item"><a th:href="@{/gids}">users</a></li>
+                <li class="main_item"><a th:href="@{/gids}">users</a></li>
                 <li class="menu_item"><a th:href="@{/chats}">chats</a></li>
 				<li class="menu_item"><a th:href="@{/help}">help</a></li>
 
@@ -331,7 +331,7 @@
 					<div class="block-3 d-md-flex ftco-animate">
 						<div class="image order-last" style="background-image: url(images/SK.jpg);"></div>
 						<div class="text text-center order-first">
-							<a href="/placeInfo?id=103"><h2 class="heading">Sary Chelek</h2></a>
+							<a th:href="@{/places}"><h2 class="heading">Sary Chelek</h2></a>
 							<p>Sary-Chelek is a mountain lake located in Sary-Chelek Nature Reserve in Jalal-Abad Province in Western Kyrgyzstan</p>
 							<span class="price">from $50.00</span>
 						</div>
@@ -339,7 +339,7 @@
 					<div class="block-3 d-md-flex ftco-animate">
 						<div class="image order-first" style="background-image: url(images/sul.jpg);"></div>
 						<div class="text text-center order-first">
-							<a href="/placeInfo?id=9"><h2 class="heading">Sulaiman-Too</h2></a>
+							<a th:href="@{/places}"><h2 class="heading">Sulaiman-Too</h2></a>
 							<p>The Sulayman Mountain is the only World Heritage Site located entirely in the country of Kyrgyzstan</p>
 							<span class="price">from $50.00</span>
 						</div>
@@ -349,7 +349,7 @@
 					<div class="block-3 d-md-flex ftco-animate">
 						<div class="image order-last" style="background-image: url(images/son.jpg);"></div>
 						<div class="text text-center order-first">
-							<h2 class="heading">Son-kol</h2>
+							<a th:href="@{/places}"><h2  class="heading">Son-kol</h2></a>
 							<p>Song Köl is an alpine lake in northern Naryn Province, Kyrgyzstan. It lies at an altitude of 3016 m</p>
 							<span class="price">from $60.00</span>
 						</div>
@@ -357,7 +357,7 @@
 					<div class="block-3 d-md-flex ftco-animate">
 						<div class="image order-first" style="background-image: url(images/man.jpg);"></div>
 						<div class="text text-center order-first">
-							<a><h2 class="heading">Manas Ordo</h2></a>
+							<a th:href="@{/places}"><h2  class="heading">Manas Ordo</h2></a>
 							<p>Legend says that Manas Ordo, in Talas Province, is the final resting place of the great warrior and Kyrgyz hero</p>
 							<span class="price">from $60.00</span>
 						</div>
@@ -409,7 +409,7 @@
                         <div class="text p-4">
                             <div class="meta">
                                 <div><a href="" th:text="${blog.date}">July 7, 2018</a></div>
-                                <div style="display: block"><a href="" th:text="${blog.username}">Admin</a></div>
+                                <div style="display: block"><a href="" th:text="${blog.author.getEmail()}">Admin</a></div>
                             </div>
                             <h3 class="heading" th:text="${blog.title}"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
                         </div>
