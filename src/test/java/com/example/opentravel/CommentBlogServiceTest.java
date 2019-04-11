@@ -94,6 +94,20 @@ public class CommentBlogServiceTest {
         assertEquals(list,commentBlogService.findByBlog(user1));
     }
 
+    @Test
+    public void testSave(){
+        long id=1;
+        User user = new User();
+        String text = "Hello World!";
+        CommentBlog commentBlog = new CommentBlog();
+        commentBlog.setUser(user);
+        commentBlog.setComentText(text);
+        commentBlog.setId(id);
+        when(commentBlogRepositoryMock.save(commentBlog)).thenReturn(commentBlog);
+        assertEquals(commentBlog,commentBlogRepositoryMock.save(commentBlog));
+    }
+
+
     @After
     public void terminate(){
         System.out.println("Terminating Test Class");
