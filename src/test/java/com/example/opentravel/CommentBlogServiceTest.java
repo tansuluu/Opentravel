@@ -54,6 +54,23 @@ public class CommentBlogServiceTest {
         assertEquals(list,commentBlogService.findByUser(user));
     }
 
+    @Test
+    public void testFindById(){
+        CommentBlog blog = new CommentBlog();
+        long id = 1;
+        blog.setId(id);
+        when(commentBlogRepositoryMock.findById(id)).thenReturn(blog);
+        assertEquals(blog,commentBlogRepositoryMock.findById(id));
+    }
+
+    @Test
+    public void testFindByIdWhenNoSuchId(){
+        CommentBlog blog=new CommentBlog();
+        long id=0;
+        when(commentBlogRepositoryMock.findById(id)).thenReturn(blog);
+        assertEquals(blog,commentBlogRepositoryMock.findById(id));
+    }
+
     @After
     public void terminate(){
         System.out.println("Terminating Test Class");
