@@ -132,19 +132,16 @@ public class PlaceController {
         return "redirect:/placeInfo?id="+place.getId();
     }
 
-//    @RequestMapping(value = "/hasPut", method = RequestMethod.GET, produces = "application/json")
-//    public ResponseEntity<?> putLike(@RequestParam("id") long id, @RequestParam("username") String username) {
-//        int result =0 ;
-//        if (likeService.existsByAppIdAndUsername(id, username)) {
-//            System.out.println(likeService.existsByAppIdAndUsername(id, username)+"hererererrrrrrr");
-//            result = 1;
-//        }
-//        return ResponseEntity.ok(result);
-//    }
 
-    @RequestMapping(value = "/newComment",method = RequestMethod.POST,produces = "application/json")
+    @RequestMapping(value = "/newComment",method = RequestMethod.GET,produces = "application/json")
     public ResponseEntity<?> newComment(@RequestParam("comment") String text, @RequestParam("appId") long id,Principal principal){
         PlaceComment placeComment=placeCommentService.save(text,id,userService.findUserByEmail(principal.getName()));
         return ResponseEntity.ok(placeComment);
+    }
+
+    @RequestMapping("/deleteComment")
+    public String deleteComment(@RequestParam("id") long id, @RequestParam("placeId") long placeId){
+        placeCommentService.deleteComment(id,placeService.findById(placeId));
+        return "redirect:/placeInfo?id="+placeId;
     }
 }

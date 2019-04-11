@@ -28,6 +28,10 @@ public class PlaceCommentService {
         return placeCommentRepository.findById(id);
     }
 
+    public PlaceComment findByIdAndPlace(long id,Place place){
+        return placeCommentRepository.findByIdAndPlace(id,place);
+    }
+
     public List<PlaceComment> findByPlace(Place place){
         return placeCommentRepository.findByPlace(place);
     }
@@ -36,6 +40,10 @@ public class PlaceCommentService {
         Place place=placeService.findById(id);
         PlaceComment placeComment=new PlaceComment(text,Calendar.getInstance().getTime(),place,user);
         return placeCommentRepository.save(placeComment);
+    }
+
+    public void deleteComment(long id,Place place){
+        placeCommentRepository.delete(findByIdAndPlace(id,place));
     }
 
 

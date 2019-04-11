@@ -1,12 +1,11 @@
 package com.example.opentravel.controller;
 
-import com.example.opentravel.model.Blog;
-import com.example.opentravel.model.Place;
-import com.example.opentravel.model.User;
+import com.example.opentravel.model.*;
 import com.example.opentravel.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -36,6 +35,9 @@ public class BlogController {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    private CommentBlogService commentBlogService;
 
     @RequestMapping(value = "/newBlog", method = RequestMethod.GET)
     public String newPlace(Model model) {
@@ -72,8 +74,10 @@ public class BlogController {
     public String showApplications(Model model, @RequestParam("id")long id, Principal principal){
         Blog blog=blogService.findById(id);
         List<Blog> popular=blogService.getTop3PlaceByOrderByView();
+        List<CommentBlog> commentBlogs=commentBlogService.findByBlog(blogService.findById(id));
         model.addAttribute("app",blog);
         model.addAttribute("popular",popular);
+        model.addAttribute("comments",commentBlogs);
         return "single-blog";
     }
 
@@ -121,5 +125,16 @@ public class BlogController {
         return "blog";
     }
 
+    @RequestMapping(value = "/newBlogComment",method = RequestMethod.GET,produces = "application/json")
+    public ResponseEntity<?> newBlogComment(@RequestParam("comment") String text, @RequestParam("blogId") long id, Principal principal){
+        CommentBlog commentBlog=commentBlogService.save(text,id,userService.findUserByEmail(principal.getName()));
+        return ResponseEntity.ok(commentBlog);
+    }
+
+    @RequestMapping("/deleteBlogComment")
+    public String deleteBlogComment(@RequestParam("id") long id, @RequestParam("blogId") long blogId){
+        commentBlogService.deleteComment(id,blogService.findById(blogId));
+        return "redirect:/blogInfo?id="+blogId;
+    }
 
 }

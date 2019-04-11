@@ -249,9 +249,15 @@
 								<a class="name" th:href="@{/userPage(username=${commen.user.email})}"><b th:text="${commen.user.email}"></b></a>
 								<h6 class="date" th:text="${'on '+commen.dateCom}"></h6>
 							</div>
-							<div class="right-area" sec:authorize="hasRole('ADMIN')">
-								<a th:href="@{/deleteComment(id=${commen.id},place=${commen.place})}"><img  src="images/trash.png" style="width: 30px" alt="Profile Image"></a>
+							<div class="right-area" sec:authorize="hasAuthority('ADMIN')">
+								<a th:href="@{/deleteComment(id=${commen.id},placeId=${commen.place.id})}" style="font-size: 22px; color: red "><i class="fa fa-trash"></i></a>
 							</div>
+							<div th:if="${#request.userPrincipal.name}" sec:authorize="!hasAuthority('ADMIN')">
+								<div class="right-area" th:if="${#request.userPrincipal.name==commen.user.email}">
+									<a th:href="@{/deleteComment(id=${commen.id},placeId=${commen.place.id})}" style="font-size: 22px; color: red "><i class="fa fa-trash"></i></a>
+								</div>
+							</div>
+
 						</div><!-- post-info -->
 						<p th:text="${commen.comentText}"></p>
 					</div>
@@ -311,29 +317,7 @@
     $(document).ready(function() {
         var id=$("#placeId").val();
         var username=$("#userName").val();
-        $.ajax({
-            url: "/hasPut",
-            type: "GET",
-            data: ({id:id, username:username}),
-            dataType: 'json',
-            contentType: "application/json",
-            success: function (data) {
-                console.log(data+ " data");
-                console.log(data==1);
-                if(data==1){
-                    $("#deleteLike").show();
-                    $("#addLike").hide();
-                    console.log(data+ " show");
-                }
-                if(data==0) {
-                    $("#deleteLike").hide();
-                    $("#addLike").show();
-                }
-            },
-            error: function () {
-                console.log("not put");
-            }
-        });
+
 
         $("#form-submit").on("click",function(){
             console.log("here comment");
@@ -353,54 +337,17 @@
                 });
             }
         });
-        $('#addLike').on('click', function() {
-            var id=$("#placeId").val();
-            var username=$("#userName").val();
-            $.ajax({
-                url: "/addLike",
-                type: "GET",
-                data: ({id:id, username:username}),
-                dataType: 'json',
-                contentType: "application/json",
-                success: funcSuccessAdd
-            });
-
-        });
-        $('#deleteLike').on('click', function() {
-            var id=$("#placeId").val();
-            var username=$("#userName").val();
-            $.ajax({
-                url: "/deleteLike",
-                type: "GET",
-                data: ({id:id, username:username}),
-                dataType: 'json',
-                contentType: "application/json",
-                success: funcSuccessDell
-            });
-        });
-        function funcSuccessAdd(data){
-            console.log(data);
-            $("#addLike").hide();
-            $("#dl").text(data);
-            $("#deleteLike").show();
-        };
-
-        function funcSuccessDell(data){
-            $("#ad").text(data);
-            $("#deleteLike").hide();
-            $("#addLike").show();
-        };
 
         function funcSuccessAddComment(data) {
             console.log(data);
             var comment='<div class="comment">' +
                 '<div class="post-info">' +
                 '<div class="left-area">' +
-                '<a class="avatar" href="#"><img  src="'+data.image+'" alt="Profile Image"></a>' +
+                '<a class="avatar" href="#"><img  src="'+data.user.image+'" alt="Profile Image"></a>' +
                 '</div>\n' +
                 '<div class="middle-area">\n' +
-                '<a class="name"><b style="color: black">'+data.username+'</b></a>' +
-                '<h6 class="date">on '+data.dateCom+'</h6>' +
+                '<a class="name"><b style="color: black">'+data.user.email+'  </b></a>' +
+                '<h6 class="date"> on '+data.dateCom+'</h6>' +
                 '</div>\n' +
                 '</div>' +
                 '<p>'+data.comentText+'</p>\n' +
