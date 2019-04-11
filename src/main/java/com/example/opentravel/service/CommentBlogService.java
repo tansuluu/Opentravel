@@ -27,11 +27,11 @@ public class CommentBlogService {
         return commentBlogRepository.findById(id);
     }
 
-    public CommentBlog findByIdAndPlace(long id, Blog blog){
+    public CommentBlog findByIdAndBlog(long id, Blog blog){
         return commentBlogRepository.findByIdAndBlog(id,blog);
     }
 
-    public List<CommentBlog> findByPlace(Blog blog){
+    public List<CommentBlog> findByBlog(Blog blog){
         return commentBlogRepository.findByBlog(blog);
     }
 
@@ -42,7 +42,7 @@ public class CommentBlogService {
     }
 
     public void deleteComment(long id,Blog place){
-        commentBlogRepository.delete(findByIdAndPlace(id,place));
+        commentBlogRepository.delete(findByIdAndBlog(id,place));
     }
 
 }

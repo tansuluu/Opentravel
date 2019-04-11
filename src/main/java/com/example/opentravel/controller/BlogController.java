@@ -74,8 +74,10 @@ public class BlogController {
     public String showApplications(Model model, @RequestParam("id")long id, Principal principal){
         Blog blog=blogService.findById(id);
         List<Blog> popular=blogService.getTop3PlaceByOrderByView();
+        List<CommentBlog> commentBlogs=commentBlogService.findByBlog(blogService.findById(id));
         model.addAttribute("app",blog);
         model.addAttribute("popular",popular);
+        model.addAttribute("comments",commentBlogs);
         return "single-blog";
     }
 
