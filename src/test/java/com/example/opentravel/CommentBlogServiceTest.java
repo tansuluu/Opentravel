@@ -36,7 +36,7 @@ public class CommentBlogServiceTest {
 
     @Before
     public void setUp(){
-        System.out.println("Starting BlogService Test Class");
+        System.out.println("Starting CommentBlogService Test Class");
     }
 
     @Test
@@ -69,6 +69,29 @@ public class CommentBlogServiceTest {
         long id=0;
         when(commentBlogRepositoryMock.findById(id)).thenReturn(blog);
         assertEquals(blog,commentBlogRepositoryMock.findById(id));
+    }
+
+    @Test
+    public void testFindByIdAndBlog(){
+        CommentBlog blog = new CommentBlog();
+        Blog blog1 = new Blog();
+        long id = 1;
+        blog.setId(id);
+        when(commentBlogRepositoryMock.findByIdAndBlog(id, blog1)).thenReturn(blog);
+        assertEquals(blog,commentBlogRepositoryMock.findByIdAndBlog(id, blog1));
+    }
+
+    @Test
+    public void testFindByBlog(){
+        ArrayList<CommentBlog> list=new ArrayList<>();
+        CommentBlog blog=new CommentBlog();
+        Blog user1=new Blog();
+        String name = "Meder";
+        user1.setTitle(name);
+        blog.setBlog(user1);
+        list.add(blog);
+        when(commentBlogRepositoryMock.findByBlog(user1)).thenReturn(list);
+        assertEquals(list,commentBlogService.findByBlog(user1));
     }
 
     @After
