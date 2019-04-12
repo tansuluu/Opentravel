@@ -29,6 +29,16 @@ public class Post {
     @OnDelete(action = OnDeleteAction.CASCADE)
     private User writer;
 
+    public Post(String postText, Date dateCom, User user, User writer) {
+        this.postText = postText;
+        this.dateCom = dateCom;
+        this.user = user;
+        this.writer = writer;
+    }
+
+    public Post() {
+    }
+
     public long getId() {
         return id;
     }

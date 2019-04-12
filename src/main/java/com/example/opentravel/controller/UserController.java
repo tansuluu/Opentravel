@@ -114,28 +114,10 @@ public class UserController {
         return "updateUser";
     }
 
-    @RequestMapping(value = "/newPost", method = RequestMethod.POST)
-    public String saveComment(@ModelAttribute("post") @Valid Post post, BindingResult result, Principal principal, @RequestParam("username") String username){
-        if (result.hasErrors()) {
-            return "redirect:/userPage?username="+username;
-        }
-        post.setWriter(userService.findUserByEmail(principal.getName()));
-        post.setUser(userService.findUserByEmail(username));
-        postService.save(post);
-        return "redirect:/userPage?username="+username;
-    }
     @RequestMapping(value = "/newPost", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity<?> addComment(@RequestParam("post") String text, @RequestParam("username") String username, Principal principal) {
-        Post post=new Post();
-        post.setWriter(userService.findUserByEmail(principal.getName()));
-        post.setUser(userService.findUserByEmail(username));
-        postService.save(post);
-        post.setPostText(text);
-        post.setUsername(principal.getName());
-        post.setUser(username);
-        post.setImage(userService.findUserByEmail(principal.getName()).getImage());
-        Post post1=postService.save(post);
-        return ResponseEntity.ok(post1);
+        Post post=postService.save(principal.getName(), username, text);
+        return ResponseEntity.ok(post);
     }
 
     @RequestMapping("/deletePost")

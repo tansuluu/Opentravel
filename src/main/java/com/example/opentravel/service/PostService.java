@@ -15,6 +15,9 @@ public class PostService {
     @Autowired
     private PostRepository postRepository;
 
+    @Autowired
+    private UserService userService;
+
     public Post findByid(long id){
         return postRepository.findById(id);
     }
@@ -24,7 +27,12 @@ public class PostService {
     }
 
     public Post save(String writerName, String Username, String text){
+        Post post=new Post(text,Calendar.getInstance().getTime(),userService.findUserByEmail(Username),userService.findUserByEmail(writerName));
         post.setDateCom(Calendar.getInstance().getTime());
         return postRepository.save(post);
+    }
+
+    public void deleteById(long id){
+        postRepository.delete(findByid(id));
     }
 }
