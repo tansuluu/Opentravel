@@ -247,6 +247,63 @@
 
                     </div><!-- container -->
                 </section>
+
+                <section class="comment-section center-text">
+                    <div class="container">
+                        <h4><b th:if="${#request.userPrincipal != null}">Write post</b></h4>
+                        <h4><b th:if="${#request.userPrincipal == null}">To add post, <a th:href="@{/login}">sign in</a></b></h4>
+                        <div class="row">
+
+                            <div class="col-lg-2 col-md-0"></div>
+
+                            <div class="col-lg-8 col-md-12"   >
+                                <div class="comment-form" th:if="${#request.userPrincipal != null}">
+                                    <form>
+                                        <div class="row">
+                                            <a class="name" href="#"><b th:text="${'Write post as '+#request.userPrincipal.name}"></b></a>
+                                            <div class="col-sm-12">
+                                                <input type="hidden" th:value="${user.email}" id="userID">
+                                                <textarea id="comments" rows="2" class="text-area-messge form-control" placeholder="Enter your comment"></textarea >
+                                            </div><!-- col-sm-12 -->
+                                            <div class="col-sm-12">
+                                                <button class="submit-btn" type="button" id="form-submit"><b>POST</b></button>
+                                            </div><!-- col-sm-12 -->
+
+                                        </div><!-- row -->
+                                    </form>
+                                </div><!-- comment-form -->
+                                <div class="commnets-area text-left" id="postarea">
+
+                                    <div class="comment" th:each="post: ${posts}">
+
+                                        <div class="post-info">
+
+                                            <div class="left-area">
+                                                <a class="avatar" href="#"><img th:src="@{${post.image}}" alt="Profile Image"></a>
+                                            </div>
+
+                                            <div class="middle-area">
+                                                <a class="name" th:href="@{/userPage(username=${post.username})}"><b th:text="${post.username}"></b></a>
+                                                <h6 class="date" th:text="${'on '+post.datePost}"></h6>
+                                            </div>
+                                            <div class="right-area" sec:authorize="hasRole('ROLE_ADMIN')">
+                                                <a th:href="@{/deletePost(id=${post.id},username=${post.user})}"><img  src="images/trash.png" style="width: 30px" alt="Profile Image"></a>
+                                            </div>
+
+                                        </div><!-- post-info -->
+
+                                        <p th:text="${post.postText}"></p>
+
+                                    </div>
+                                </div>
+
+
+                            </div><!-- col-lg-8 col-md-12 -->
+
+                        </div><!-- row -->
+
+                    </div><!-- container -->
+                </section>
             </div>
         </div>
     <div class="copyright">
