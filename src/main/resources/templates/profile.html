@@ -278,15 +278,23 @@
                                         <div class="post-info">
 
                                             <div class="left-area">
-                                                <a class="avatar" href="#"><img th:src="@{${post.image}}" alt="Profile Image"></a>
+                                                <a class="avatar" href="#"><img th:src="@{${post.writer.image}}" alt="Profile Image"></a>
                                             </div>
 
                                             <div class="middle-area">
-                                                <a class="name" th:href="@{/userPage(username=${post.username})}"><b th:text="${post.username}"></b></a>
-                                                <h6 class="date" th:text="${'on '+post.datePost}"></h6>
+                                                <a class="name" th:href="@{/userPage(username=${post.writer.email})}"><b th:text="${post.writer.email}"></b></a>
+                                                <h6 class="date" th:text="${'on '+post.dateCom}"></h6>
                                             </div>
                                             <div class="right-area" sec:authorize="hasRole('ROLE_ADMIN')">
                                                 <a th:href="@{/deletePost(id=${post.id},username=${post.user})}"><img  src="images/trash.png" style="width: 30px" alt="Profile Image"></a>
+                                            </div>
+                                            <div class="right-area" sec:authorize="hasAuthority('ADMIN')">
+                                                <a th:href="@{/deletePost(id=${post.id},username=${post.user})}" style="font-size: 22px; color: red "><i class="fa fa-trash"></i></a>
+                                            </div>
+                                            <div th:if="${#request.userPrincipal.name}" sec:authorize="!hasAuthority('ADMIN')">
+                                                <div class="right-area" th:if="${#request.userPrincipal.name==post.writer.email}">
+                                                    <a th:href="@{/deleteBlogComment(id=${post.id},userId=${post.user.id})}" style="font-size: 22px; color: red "><i class="fa fa-trash"></i></a>
+                                                </div>
                                             </div>
 
                                         </div><!-- post-info -->

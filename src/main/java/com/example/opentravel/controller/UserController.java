@@ -2,11 +2,10 @@ package com.example.opentravel.controller;
 
 import com.example.opentravel.model.Blog;
 import com.example.opentravel.model.Place;
+import com.example.opentravel.model.Post;
 import com.example.opentravel.model.User;
-import com.example.opentravel.service.BlogService;
-import com.example.opentravel.service.PlaceService;
-import com.example.opentravel.service.StorageService;
-import com.example.opentravel.service.UserService;
+import com.example.opentravel.service.*;
+import javafx.geometry.Pos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -41,6 +40,9 @@ public class UserController {
     @Autowired
     PlaceService placeService;
 
+    @Autowired
+    private PostService postService;
+
     @RequestMapping("/find")
     public String find(@RequestParam(name = "input", required = true) String input, Model model) {
         ArrayList<User> list = userService.findByName(input);
@@ -53,7 +55,9 @@ public class UserController {
         User user = userService.findUserByEmail(email);
         List<Place> list = placeService.findByAuthor(user);
         List<Blog> list1 = blogService.findByAuthor(user);
+        List<Post> list2= postService.findByUser(user);
         model.addAttribute("places", list);
+        model.addAttribute("posts", list2);
         model.addAttribute("blogs", list1);
         model.addAttribute("user", user);
         return "profile";
