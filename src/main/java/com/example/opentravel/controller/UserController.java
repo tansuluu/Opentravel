@@ -2,11 +2,10 @@ package com.example.opentravel.controller;
 
 import com.example.opentravel.model.Blog;
 import com.example.opentravel.model.Place;
+import com.example.opentravel.model.Post;
 import com.example.opentravel.model.User;
-import com.example.opentravel.service.BlogService;
-import com.example.opentravel.service.PlaceService;
-import com.example.opentravel.service.StorageService;
-import com.example.opentravel.service.UserService;
+import com.example.opentravel.service.*;
+import javafx.geometry.Pos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -21,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,6 +41,9 @@ public class UserController {
     @Autowired
     PlaceService placeService;
 
+    @Autowired
+    private PostService postService;
+
     @RequestMapping("/find")
     public String find(@RequestParam(name = "input", required = true) String input, Model model) {
         ArrayList<User> list = userService.findByName(input);
@@ -53,7 +56,9 @@ public class UserController {
         User user = userService.findUserByEmail(email);
         List<Place> list = placeService.findByAuthor(user);
         List<Blog> list1 = blogService.findByAuthor(user);
+        List<Post> list2= postService.findByUser(user);
         model.addAttribute("places", list);
+        model.addAttribute("posts", list2);
         model.addAttribute("blogs", list1);
         model.addAttribute("user", user);
         return "profile";
@@ -107,6 +112,18 @@ public class UserController {
         System.out.println(user.getPassword());
         model.addAttribute("user",user);
         return "updateUser";
+    }
+
+    @RequestMapping(value = "/newPost", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<?> addComment(@RequestParam("post") String text, @RequestParam("username") String username, Principal principal) {
+        Post post=postService.save(principal.getName(), username, text);
+        return ResponseEntity.ok(post);
+    }
+
+    @RequestMapping("/deletePost")
+    public String deletePost(@RequestParam("id") long id, @RequestParam("username") String username){
+        postService.deleteById(id);
+        return "redirect:/userPage?username="+username+"#postt";
     }
 
 

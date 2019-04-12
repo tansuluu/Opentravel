@@ -276,6 +276,67 @@
 
                     </div><!-- container -->
                 </section>
+                <section class="comment-section center-text">
+                    <div class="container" id="postt">
+                        <h4><b th:if="${#request.userPrincipal != null}">Write post</b></h4>
+                        <h4><b th:if="${#request.userPrincipal == null}">To add post, <a th:href="@{/login}">sign in</a></b></h4>
+                        <div class="row">
+
+                            <div class="col-lg-2 col-md-0"></div>
+
+                            <div class="col-lg-8 col-md-12"   >
+                                <div class="comment-form" th:if="${#request.userPrincipal != null}">
+                                    <form>
+                                        <div class="row">
+                                            <a class="name" href="#"><b th:text="${'Write post as '+#request.userPrincipal.name}"></b></a>
+                                            <div class="col-sm-12">
+                                                <input type="hidden" th:value="${user.getEmail()}" id="userID">
+                                                <textarea id="comments" rows="2" class="text-area-messge form-control" placeholder="Enter your comment"></textarea >
+                                            </div><!-- col-sm-12 -->
+                                            <div class="col-sm-12">
+                                                <button class="submit-btn" type="button" id="form-submit"><b>POST</b></button>
+                                            </div><!-- col-sm-12 -->
+
+                                        </div><!-- row -->
+                                    </form>
+                                </div><!-- comment-form -->
+                                <div class="commnets-area text-left" id="postarea">
+
+                                    <div class="comment" th:each="post: ${posts}">
+
+                                        <div class="post-info">
+
+                                            <div class="left-area">
+                                                <a class="avatar" href="#"><img th:src="@{${post.writer.image}}" alt="Profile Image"></a>
+                                            </div>
+
+                                            <div class="middle-area">
+                                                <a class="name" th:href="@{/userPage(username=${post.writer.email})}"><b th:text="${post.writer.email}"></b></a>
+                                                <h6 class="date" th:text="${'on '+post.dateCom}"></h6>
+                                            </div>
+                                            <div class="right-area" sec:authorize="hasAuthority('ADMIN')">
+                                                <a th:href="@{/deletePost(id=${post.id},username=${post.user.getEmail()})}" style="font-size: 22px; color: red "><i class="fa fa-trash"></i></a>
+                                            </div>
+                                            <div th:if="${#request.userPrincipal!=null}" sec:authorize="!hasAuthority('ADMIN')">
+                                                <div class="right-area" th:if="${#request.userPrincipal.name==post.writer.email}">
+                                                    <a th:href="@{/deletePost(id=${post.id},username=${post.user.getEmail()})}" style="font-size: 22px; color: red "><i class="fa fa-trash"></i></a>
+                                                </div>
+                                            </div>
+
+                                        </div><!-- post-info -->
+
+                                        <p th:text="${post.postText}"></p>
+
+                                    </div>
+                                </div>
+
+
+                            </div><!-- col-lg-8 col-md-12 -->
+
+                        </div><!-- row -->
+
+                    </div><!-- container -->
+                </section>
             </div>
         </div>
     <div class="copyright">
@@ -323,7 +384,45 @@
             </div>
         </div>
     </div>
+    <script>
+        $(document).ready(function() {
+            console.log("here ready");
+            $("#form-submit").on("click", function () {
+                console.log("here post");
+                var text = $("#comments").val();
+                var id = $("#userID").val();
+                if (text != null && text != "" && text != " ") {
+                    $.ajax({
+                        url: "/newPost",
+                        type: "GET",
+                        data: ({post: text, username: id}),
+                        dataType: 'json',
+                        contentType: "application/json",
+                        success: funcSuccessAddPost
+                    });
+                }
+            });
+            function funcSuccessAddPost(data) {
+                console.log(data);
+                var comment='<div class="comment">' +
+                    '<div class="post-info">' +
+                    '<div class="left-area">' +
+                    '<a class="avatar" href="#"><img  src="'+data.writer.image+'" alt="Profile Image"></a>' +
+                    '</div>\n' +
+                    '<div class="middle-area">\n' +
+                    '<a class="name"><b style="color: black">'+data.writer.email+'</b></a>' +
+                    '<h6 class="date">on '+data.dateCom+'</h6>' +
+                    '</div>\n' +
+                    '</div>' +
+                    '<p>'+data.postText+'</p>\n' +
+                    '</div>';
+                $("#postarea").append(comment);
+                console.log(comment);
+                $("#comments").val("");
+            }
 
+        });
+    </script>
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="folderforprofile/js/jquery-2.1.4.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
