@@ -20,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -111,6 +112,36 @@ public class UserController {
         System.out.println(user.getPassword());
         model.addAttribute("user",user);
         return "updateUser";
+    }
+
+    @RequestMapping(value = "/newPost", method = RequestMethod.POST)
+    public String saveComment(@ModelAttribute("post") @Valid Post post, BindingResult result, Principal principal, @RequestParam("username") String username){
+        if (result.hasErrors()) {
+            return "redirect:/userPage?username="+username;
+        }
+        post.setWriter(userService.findUserByEmail(principal.getName()));
+        post.setUser(userService.findUserByEmail(username));
+        postService.save(post);
+        return "redirect:/userPage?username="+username;
+    }
+    @RequestMapping(value = "/newPost", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<?> addComment(@RequestParam("post") String text, @RequestParam("username") String username, Principal principal) {
+        Post post=new Post();
+        post.setWriter(userService.findUserByEmail(principal.getName()));
+        post.setUser(userService.findUserByEmail(username));
+        postService.save(post);
+        post.setPostText(text);
+        post.setUsername(principal.getName());
+        post.setUser(username);
+        post.setImage(userService.findUserByEmail(principal.getName()).getImage());
+        Post post1=postService.save(post);
+        return ResponseEntity.ok(post1);
+    }
+
+    @RequestMapping("/deletePost")
+    public String deletePost(@RequestParam("id") long id, @RequestParam("username") String username){
+        postService.deleteById(id);
+        return "redirect:/userPage?username="+username;
     }
 
 
