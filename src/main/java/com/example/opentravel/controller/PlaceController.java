@@ -142,6 +142,6 @@ public class PlaceController {
     @RequestMapping("/deleteComment")
     public String deleteComment(@RequestParam("id") long id, @RequestParam("placeId") long placeId){
         placeCommentService.deleteComment(id,placeService.findById(placeId));
-        return "redirect:/placeInfo?id="+placeId;
+        return "redirect:/placeInfo?id="+placeId+"#comm";
     }
 }

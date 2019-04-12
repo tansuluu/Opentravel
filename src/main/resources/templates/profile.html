@@ -248,7 +248,7 @@
                     </div><!-- container -->
                 </section>
                 <section class="comment-section center-text">
-                    <div class="container">
+                    <div class="container" id="postt">
                         <h4><b th:if="${#request.userPrincipal != null}">Write post</b></h4>
                         <h4><b th:if="${#request.userPrincipal == null}">To add post, <a th:href="@{/login}">sign in</a></b></h4>
                         <div class="row">
@@ -261,7 +261,7 @@
                                         <div class="row">
                                             <a class="name" href="#"><b th:text="${'Write post as '+#request.userPrincipal.name}"></b></a>
                                             <div class="col-sm-12">
-                                                <input type="hidden" th:value="${user.email}" id="userID">
+                                                <input type="hidden" th:value="${user.getEmail()}" id="userID">
                                                 <textarea id="comments" rows="2" class="text-area-messge form-control" placeholder="Enter your comment"></textarea >
                                             </div><!-- col-sm-12 -->
                                             <div class="col-sm-12">
@@ -286,11 +286,11 @@
                                                 <h6 class="date" th:text="${'on '+post.dateCom}"></h6>
                                             </div>
                                             <div class="right-area" sec:authorize="hasAuthority('ADMIN')">
-                                                <a th:href="@{/deletePost(id=${post.id},username=${post.user})}" style="font-size: 22px; color: red "><i class="fa fa-trash"></i></a>
+                                                <a th:href="@{/deletePost(id=${post.id},username=${post.user.getEmail()})}" style="font-size: 22px; color: red "><i class="fa fa-trash"></i></a>
                                             </div>
-                                            <div th:if="${#request.userPrincipal.name}" sec:authorize="!hasAuthority('ADMIN')">
+                                            <div th:if="${#request.userPrincipal!=null}" sec:authorize="!hasAuthority('ADMIN')">
                                                 <div class="right-area" th:if="${#request.userPrincipal.name==post.writer.email}">
-                                                    <a th:href="@{/deleteBlogComment(id=${post.id},userId=${post.user.id})}" style="font-size: 22px; color: red "><i class="fa fa-trash"></i></a>
+                                                    <a th:href="@{/deletePost(id=${post.id},username=${post.user.getEmail()})}" style="font-size: 22px; color: red "><i class="fa fa-trash"></i></a>
                                                 </div>
                                             </div>
 

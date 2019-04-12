@@ -123,7 +123,7 @@ public class UserController {
     @RequestMapping("/deletePost")
     public String deletePost(@RequestParam("id") long id, @RequestParam("username") String username){
         postService.deleteById(id);
-        return "redirect:/userPage?username="+username;
+        return "redirect:/userPage?username="+username+"#postt";
     }
 
 

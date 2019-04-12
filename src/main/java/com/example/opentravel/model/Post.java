@@ -6,6 +6,8 @@ import org.hibernate.annotations.OnDeleteAction;
 import javax.persistence.*;
 import java.util.Date;
 
+@Entity
+@Table(name = "post")
 public class Post {
 
     @Id

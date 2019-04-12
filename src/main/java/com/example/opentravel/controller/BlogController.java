@@ -134,7 +134,7 @@ public class BlogController {
     @RequestMapping("/deleteBlogComment")
     public String deleteBlogComment(@RequestParam("id") long id, @RequestParam("blogId") long blogId){
         commentBlogService.deleteComment(id,blogService.findById(blogId));
-        return "redirect:/blogInfo?id="+blogId;
+        return "redirect:/blogInfo?id="+blogId+"#comm1";
     }
 
 }
