@@ -80,6 +80,42 @@ public class PlaceCommentServiceTest {
         assertEquals(placeComment,placeCommentRepositoryMock.findByIdAndPlace(id, place));
     }
 
+    @Test
+    public void testFindByPlace(){
+        ArrayList<PlaceComment> list=new ArrayList<>();
+        PlaceComment placeComment=new PlaceComment();
+        Place place=new Place();
+        String name = "Meder";
+        place.setTitle(name);
+        placeComment.setPlace(place);
+        list.add(placeComment);
+        when(placeCommentRepositoryMock.findByPlace(place)).thenReturn(list);
+        assertEquals(list,placeCommentService.findByPlace(place));
+    }
+
+    @Test
+    public void testSave(){
+        long id=1;
+        User user = new User();
+        String text = "Hello World!";
+        PlaceComment placeComment = new PlaceComment();
+        placeComment.setUser(user);
+        placeComment.setComentText(text);
+        placeComment.setId(id);
+        when(placeCommentRepositoryMock.save(placeComment)).thenReturn(placeComment);
+        assertEquals(placeComment,placeCommentRepositoryMock.save(placeComment));
+    }
+
+    @Test
+    public void testDelete(){
+        PlaceComment placeComment = new PlaceComment();
+        Place place = new Place();
+        long doseId=1;
+        placeComment.setId(doseId);
+        // perform the call
+        placeCommentService.deleteComment(placeComment.getId(), place);
+    }
+
     @After
     public void terminate(){
         System.out.println("Terminating Test Class");

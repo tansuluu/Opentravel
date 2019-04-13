@@ -1,7 +1,5 @@
 package com.example.opentravel;
-import com.example.opentravel.model.Blog;
-import com.example.opentravel.model.CommentBlog;
-import com.example.opentravel.model.User;
+import com.example.opentravel.model.*;
 import com.example.opentravel.repository.BlogRepository;
 import com.example.opentravel.repository.CommentBlogRepository;
 import com.example.opentravel.service.BlogService;
@@ -105,6 +103,16 @@ public class CommentBlogServiceTest {
         commentBlog.setId(id);
         when(commentBlogRepositoryMock.save(commentBlog)).thenReturn(commentBlog);
         assertEquals(commentBlog,commentBlogRepositoryMock.save(commentBlog));
+    }
+
+    @Test
+    public void testDelete(){
+        CommentBlog commentBlog = new CommentBlog();
+        Blog blog = new Blog();
+        long doseId=1;
+        commentBlog.setId(doseId);
+        // perform the call
+        commentBlogService.deleteComment(commentBlog.getId(), blog);
     }
 
 
