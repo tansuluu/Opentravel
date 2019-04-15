@@ -12,60 +12,13 @@ import java.io.IOException;
 public class Sprint2 {
 
 
-    public static void BAU(WebDriver driver,Sprint1 sp) {
-        String title = "";
-        String expectedTitle = "Opentravel";
 
-        driver.get(sp.baseUrl);
-        title=driver.getTitle();
-        if (!title.equals(expectedTitle)) {
-            System.out.println("Failed: Base URL -" + title);
-        }
-
-    }
-
-    public static void LUP1(WebDriver driver, Sprint1 sp) {
-        String title = "";
-        String expectedTitle = "All Places";
-
-        driver.get(sp.baseUrl);
-        driver.findElement(By.linkText("OFFERS")).click();
-        title=driver.getTitle();
-        if (!title.equals(expectedTitle)) {
-            System.out.println("Failed: LUP1 -" + title);
-        }
-
-    }
-    public static void BLO1(WebDriver driver, Sprint1 sp) {
-        String title = "";
-        String expectedTitle = "Blogs";
-
-        driver.get(sp.baseUrl);
-        driver.findElement(By.linkText("BLOG")).click();
-        title=driver.getTitle();
-        if (!title.equals(expectedTitle)) {
-            System.out.println("Failed: BLO1 -" + title);
-        }
-
-    }
-    public static void USE1(WebDriver driver, Sprint1 sp) {
-        String title = "";
-        String expectedTitle = "GUIDES";
-
-        driver.get(sp.baseUrl);
-        driver.findElement(By.linkText("USERS")).click();
-        title=driver.getTitle();
-        if (!title.equals(expectedTitle)) {
-            System.out.println("Failed: USE1 -" + title);
-        }
-
-    }
 
     public static boolean REG5(WebDriver driver, Sprint1 sp) {
         String title = "";
         String expectedTitle = "Opentravel";
 
-        BAU(driver,sp);
+        Sprint1.BAU(driver,sp);
         driver.findElement(By.linkText("ABOUT US")).click();
 
         title = driver.getTitle();
@@ -80,8 +33,8 @@ public class Sprint2 {
     public static boolean LUP4(WebDriver driver, Sprint1 sp) throws InterruptedException {
         String title = "";
         String expectedTitle = "Toktogul city";
-        BAU(driver,sp);
-        LUP1(driver, sp);
+        Sprint1.BAU(driver,sp);
+        Sprint1.LUP1(driver, sp);
         driver.findElement(By.id("Layer_1")).click();
         driver.findElement(By.className("search_content_input")).sendKeys("Toktogul city");
         driver.findElement(By.className("search_content_input")).sendKeys(Keys.ENTER);
@@ -95,7 +48,7 @@ public class Sprint2 {
         String title = "";
         String expectedTitle = "Opentravel";
         Sprint1.LUP6(driver, sp);
-        BAU(driver, sp);
+        Sprint1.BAU(driver, sp);
         driver.findElement(By.partialLinkText("@")).click();
         title = driver.getTitle();
         if (!title.equals("Profile")) {
@@ -133,8 +86,8 @@ public class Sprint2 {
     public static boolean BLO3(WebDriver driver, Sprint1 sp) throws InterruptedException {
         String title = "";
         String expectedTitle = "Toktogul city";
-        BAU(driver,sp);
-        BLO1(driver, sp);
+        Sprint1.BAU(driver,sp);
+        Sprint1.BLO1(driver, sp);
         driver.findElement(By.id("Layer_1")).click();
         Thread.sleep(1000);
         driver.findElement(By.className("search_content_input")).sendKeys(expectedTitle+"\n");
@@ -146,8 +99,8 @@ public class Sprint2 {
     public static boolean USE11(WebDriver driver, Sprint1 sp) throws InterruptedException {
         String title = "";
         String expectedTitle = "Nadyr Sultanov";
-        BAU(driver,sp);
-        USE1(driver, sp);
+        Sprint1.BAU(driver,sp);
+        Sprint1.USE1(driver, sp);
         driver.findElement(By.id("Layer_1")).click();
         Thread.sleep(1000);
         driver.findElement(By.className("search_content_input")).sendKeys(expectedTitle+"\n");
@@ -163,7 +116,7 @@ public class Sprint2 {
         String title = "";
         String expectedTitle = "Opentravel";
         Sprint1.BLO4(driver, sp);
-        BAU(driver, sp);
+        Sprint1.BAU(driver, sp);
         driver.findElement(By.partialLinkText("@")).click();
         title = driver.getTitle();
         if (!title.equals("Profile")) {
@@ -197,7 +150,7 @@ public class Sprint2 {
 
 
     public static void main(String[] args) throws InterruptedException {
-        System.setProperty("webdriver.gecko.driver", "/home/student/Videos/geckodriver");
+        System.setProperty("webdriver.gecko.driver", "C:\\Users\\tanya\\Downloads\\programs\\geckodriver.exe");
 
         WebDriver driver = new FirefoxDriver();
         Sprint1 sp = new Sprint1();
