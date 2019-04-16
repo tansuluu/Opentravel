@@ -40,7 +40,7 @@ function onConnected() {
     // Tell your username to the server
     stompClient.send("/app/chat.addUser",
         {},
-        JSON.stringify({sender: username, type: 'JOIN'})
+        JSON.stringify({sender: username,avatar:avatar, type: 'JOIN'})
     )
 
     connectingElement.classList.add('hidden');
@@ -59,6 +59,7 @@ function sendMessage(event) {
     if(messageContent && stompClient) {
         var chatMessage = {
             sender: username,
+            avatar:avatar,
             content: messageInput.value,
             type: 'CHAT'
         };
@@ -88,7 +89,7 @@ function onMessageReceived(payload) {
         // var avatarText = document.createTextNode(message.sender[0]);
         // avatarElement.appendChild(avatarText);
         // avatarElement.style['background-color'] = getAvatarColor(message.sender);
-        avatarElement.style['background'] = "url("+avatar+")";
+        avatarElement.style['background'] = "url("+message.avatar+")";
         avatarElement.style['background-size'] = "cover";
         messageElement.appendChild(avatarElement);
 
