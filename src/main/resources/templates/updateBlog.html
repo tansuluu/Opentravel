@@ -159,8 +159,8 @@
           </div>
         </div>
         <div class="row d-flex">
-          <div class="col-md-4 ftco-animate img" style="background-image: url(images/и.jpg);"></div>
-          <div class="col-md-8 ftco-animate makereservation p-5 bg-light">
+          <div class="col-md-4 ftco-animate img" style="background-image: url(images/и.jpg); visibility: visible;"></div>
+          <div class="col-md-8 ftco-animate makereservation p-5 bg-light" style="visibility: visible">
             <form th:action="@{/updateBlog}" enctype="multipart/form-data" th:object="${blog}" method="post" class="login100-form validate-form">
               <input type="hidden"  th:field="*{id}" >
               <div class="row">

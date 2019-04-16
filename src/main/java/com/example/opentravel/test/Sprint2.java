@@ -1,11 +1,8 @@
 package com.example.opentravel.test;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
 
 import java.io.IOException;
 
@@ -16,7 +13,7 @@ public class Sprint2 {
 
     public static boolean REG5(WebDriver driver, Sprint1 sp) {
         String title = "";
-        String expectedTitle = "Opentravel";
+        String expectedTitle = "About Us";
 
         Sprint1.BAU(driver,sp);
         driver.findElement(By.linkText("ABOUT US")).click();
@@ -105,7 +102,9 @@ public class Sprint2 {
         Thread.sleep(1000);
         driver.findElement(By.className("search_content_input")).sendKeys(expectedTitle+"\n");
         title=driver.getTitle();
-        if(driver.findElement(By.linkText("Nadyr Sultanov"))==null) {
+        System.out.println("hehehe");
+        WebElement el=driver.findElement(By.linkText("Nadyr Sultanov"));
+        if(el==null) {
             System.out.println("Searching not found:"+title);
         }
         System.out.println("Searching found");
@@ -126,16 +125,15 @@ public class Sprint2 {
 
         driver.findElement(By.linkText(sp.exBlogName)).click();
 
-        driver.findElement(By.linkText("UPDATE THE PLACE")).click();
+        driver.findElement(By.linkText("UPDATE THE BLOG")).click();
         title = driver.getTitle();
 
-        driver.findElement(By.id("title")).sendKeys();
         driver.findElement(By.id("text")).sendKeys(sp.exBlogText+"updated");
 
 
         Select categSel = new Select(driver.findElement(By.id("category")));
         categSel.selectByVisibleText("Parks");
-        driver.findElement(By.className("login100-form-btn"));
+        driver.findElement(By.cssSelector("input[value*='UPDATE']")).click();
         Sprint1.BLO5(driver, sp);
         title = driver.getTitle();
 
@@ -157,7 +155,7 @@ public class Sprint2 {
 
         Sprint1.logIn(driver,sp);
         boolean progress;
-        progress = LUP4(driver, sp);
+        /*progress = LUP4(driver, sp);
         if (!progress) {
             driver.close();
             System.exit(0);
@@ -186,7 +184,7 @@ public class Sprint2 {
             driver.close();
             System.exit(0);
             return;
-        }
+        }*/
         progress = LUP11(driver, sp);
         if (!progress) {
             driver.close();

@@ -76,7 +76,7 @@ public class Sprint1 {
     }
     public static void USE1(WebDriver driver, Sprint1 sp) {
         String title = "";
-        String expectedTitle = "GUIDES";
+        String expectedTitle = "Guides";
 
         BAU(driver, sp);
         driver.findElement(By.linkText("USERS")).click();
