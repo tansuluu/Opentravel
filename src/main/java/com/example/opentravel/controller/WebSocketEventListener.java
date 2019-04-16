@@ -29,13 +29,14 @@ public class WebSocketEventListener {
         StompHeaderAccessor headerAccessor = StompHeaderAccessor.wrap(event.getMessage());
 
         String username = (String) headerAccessor.getSessionAttributes().get("username");
+        String avatar = (String) headerAccessor.getSessionAttributes().get("avatar");
         if(username != null) {
             logger.info("User Disconnected : " + username);
 
             ChatMessage chatMessage = new ChatMessage();
             chatMessage.setType(ChatMessage.MessageType.LEAVE);
             chatMessage.setSender(username);
-
+            chatMessage.setAvatar(avatar);
             messagingTemplate.convertAndSend("/topic/public", chatMessage);
         }
     }

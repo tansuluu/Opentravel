@@ -4,6 +4,7 @@ public class ChatMessage {
     private MessageType type;
     private String content;
     private String sender;
+    private String avatar;
 
     public enum MessageType {
         CHAT,
@@ -33,5 +34,13 @@ public class ChatMessage {
 
     public void setSender(String sender) {
         this.sender = sender;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 }
