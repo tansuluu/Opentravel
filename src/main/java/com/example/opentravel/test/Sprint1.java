@@ -14,8 +14,8 @@ import java.io.IOException;
 public class Sprint1 {
     public static String uName = "Examp@mail.ru";
     public static String uName2 = "Exam2@mail.ru";
-    public static String exUName="example@mail.ru";
-    public static String pWord = "zzz123";
+    public static String exUName="examp@mail.ru";
+    public static String pWord = "12345";
     public static String exname = "Example user";
     public static String exage = "21";
     public static String exabout = "Hello";
@@ -37,11 +37,61 @@ public class Sprint1 {
         }
         return true;
     }
+
+    public static void BAU(WebDriver driver,Sprint1 sp) {
+        String title = "";
+        String expectedTitle = "Opentravel";
+
+        driver.get(sp.baseUrl);
+        title=driver.getTitle();
+        if (!title.equals(expectedTitle)) {
+            System.out.println("Failed: Base URL -" + title);
+        }
+
+    }
+
+    public static void LUP1(WebDriver driver, Sprint1 sp) {
+        String title = "";
+        String expectedTitle = "All Places";
+
+        BAU(driver, sp);
+        driver.findElement(By.linkText("OFFERS")).click();
+        title=driver.getTitle();
+        if (!title.equals(expectedTitle)) {
+            System.out.println("Failed: LUP1 -" + title);
+        }
+
+    }
+    public static void BLO1(WebDriver driver, Sprint1 sp) {
+        String title = "";
+        String expectedTitle = "Blogs";
+
+        BAU(driver, sp);
+        driver.findElement(By.linkText("BLOG")).click();
+        title=driver.getTitle();
+        if (!title.equals(expectedTitle)) {
+            System.out.println("Failed: BLO1 -" + title);
+        }
+
+    }
+    public static void USE1(WebDriver driver, Sprint1 sp) {
+        String title = "";
+        String expectedTitle = "Guides";
+
+        BAU(driver, sp);
+        driver.findElement(By.linkText("USERS")).click();
+        title=driver.getTitle();
+        if (!title.equals(expectedTitle)) {
+            System.out.println("Failed: USE1 -" + title);
+        }
+
+    }
+
     public static boolean regGID(WebDriver driver, Sprint1 sp) throws InterruptedException {
         String title = "";
         String expectedTitle = "Registration";
 
-        driver.get(sp.baseUrl);
+        BAU(driver, sp);
         driver.findElement(By.linkText("REGISTER")).click();
         title = driver.getTitle();
         if (!title.equals(expectedTitle)) {
@@ -75,7 +125,7 @@ public class Sprint1 {
         String title = "";
         String expectedTitle = "Registration";
 
-        driver.get(sp.baseUrl);
+        BAU(driver, sp);
         driver.findElement(By.linkText("REGISTER")).click();
         title = driver.getTitle();
         if (!title.equals(expectedTitle)) {
@@ -105,7 +155,7 @@ public class Sprint1 {
         String title = "";
         String expectedTitle = "Login";
 
-        driver.get(sp.baseUrl);
+        BAU(driver, sp);
         driver.findElement(By.linkText("LOGIN")).click();
         title = driver.getTitle();
         if (!title.equals(expectedTitle)) {
@@ -129,7 +179,7 @@ public class Sprint1 {
         String title = "";
         String expectedTitle = "Profile";
 
-        driver.get(sp.baseUrl);
+        BAU(driver, sp);
         driver.findElement(By.partialLinkText("@")).click();
         title = driver.getTitle();
         if (!title.equals(expectedTitle)) {
@@ -144,7 +194,7 @@ public class Sprint1 {
         String title = "";
         String expectedTitle = "Profile";
 
-        driver.get(sp.baseUrl);
+        BAU(driver, sp);
         driver.findElement(By.partialLinkText("@")).click();
         title = driver.getTitle();
         if (!title.equals(expectedTitle)) {
@@ -175,11 +225,11 @@ public class Sprint1 {
         return true;
     }
 
-    public static boolean BLO5(WebDriver driver, Sprint1 sp) throws InterruptedException {
+    public static boolean BLO5(WebDriver driver, Sprint1 sp)  {
         String title = "";
         String expectedTitle = "Profile";
 
-        driver.get(sp.baseUrl);
+        BAU(driver, sp);
         driver.findElement(By.partialLinkText("@")).click();
         title = driver.getTitle();
         if (!title.equals(expectedTitle)) {
@@ -193,7 +243,6 @@ public class Sprint1 {
             System.out.println("Failed:" + title);
             return false;
         }
-        Thread.sleep(3000);
         driver.findElement(By.className("btn-danger")).click();
         driver.findElement(By.partialLinkText("Delete")).click();
         title = driver.getTitle();
@@ -211,7 +260,7 @@ public class Sprint1 {
         String title = "";
         String expectedTitle = "Profile";
 
-        driver.get(sp.baseUrl);
+        BAU(driver, sp);
         driver.findElement(By.partialLinkText("@")).click();
         title = driver.getTitle();
         if (!title.equals(expectedTitle)) {
@@ -245,7 +294,7 @@ public class Sprint1 {
         String title = "";
         String expectedTitle = "Profile";
 
-        driver.get(sp.baseUrl);
+        BAU(driver, sp);
         driver.findElement(By.partialLinkText("@")).click();
         driver.findElement(By.linkText(sp.exPlaceName)).click();
         title = driver.getTitle();
@@ -267,9 +316,29 @@ public class Sprint1 {
         return true;
     }
 
+    public static boolean LUP12(WebDriver driver, Sprint1 sp) {
+        String expectedTitle = "Places";
+        LUP1(driver, sp);
+        driver.findElement(By.linkText("Sulaiman-Too")).click();
+        if(checkTitle(driver,expectedTitle)==false){
+            System.out.println("Fault in USE6");
+            return false;
+        }
+        return true;
+    }
+    public static boolean BLO2(WebDriver driver, Sprint1 sp) {
+        String expectedTitle = "Single Blog ";
+        BLO1(driver, sp);
+        driver.findElement(By.className("block-20")).click();
+        if(checkTitle(driver,expectedTitle)==false){
+            System.out.println("Fault in USE6");
+            return false;
+        }
+        return true;
+    }
 
     public static void main(String[] args) throws InterruptedException {
-        System.setProperty("webdriver.gecko.driver", "/home/student/Videos/geckodriver");
+        System.setProperty("webdriver.gecko.driver", "C:\\Users\\tanya\\Downloads\\programs\\geckodriver.exe");
 
         WebDriver driver = new FirefoxDriver();
         Sprint1 sp = new Sprint1();
@@ -279,13 +348,13 @@ public class Sprint1 {
             driver.close();
             System.exit(0);
             return;
-        }*/
+        }
         progress = regTourist(driver, sp);
         if (!progress) {
             driver.close();
             System.exit(0);
             return;
-        }/*
+        }*/
         progress = logIn(driver, sp);
         if (!progress) {
             driver.close();
@@ -323,7 +392,7 @@ public class Sprint1 {
             driver.close();
             System.exit(0);
             return;
-        }*/
+        }
         System.out.println("No fails found in Sprint 1");
         try {
             System.out.println("Please press Enter to continue...");
