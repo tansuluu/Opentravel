@@ -137,7 +137,7 @@
 
 					<div class="post-top-area">
 
-						<h5 class="pre-title"  th:text="${app.title}" style="text-align: center; font-size: 35px; font-weight: bold">Blog</h5>
+						<h5 th:id="${app.author.getEmail()}" class="pre-title"  th:text="${app.title}" style="text-align: center; font-size: 35px; font-weight: bold">Blog</h5>
                         <div class="post-image"><img th:if="${app.getPhoto1()}!=null" th:src="@{${'/image/'+app.photo1}}"alt="Blog Image"></div>
                         <h4 class="title"><i class="fa fa-user"></i> <a th:href="@{/userPage(username=${app.author.getEmail()})}"> Author: <i th:text="${app.author.getEmail()}"></i></a></h4>
 						<h4 class="title"><i class="fa fa-tags"> </i> Category: <i th:text="${app.category}"></i></h4>
@@ -266,6 +266,7 @@
 							<div th:if="${#request.userPrincipal!=null}" sec:authorize="!hasAuthority('ADMIN')">
 								<div class="right-area" th:if="${#request.userPrincipal.name==commen.user.email}">
 									<a th:href="@{/deleteBlogComment(id=${commen.id},blogId=${commen.blog.id})}" style="font-size: 22px; color: red "><i class="fa fa-trash"></i></a>
+									<a href="" style="font-size: 22px; color: blue " class="blogsCom" th:id="${commen.id}"><i class="fa fa-edit"></i></a>
 								</div>
 							</div>
 
@@ -328,6 +329,34 @@
 		</div>
 	</div>
 </div>
+<div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+	 aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header text-center">
+				<h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body mx-3">
+				<div class="md-form mb-5">
+					<label>Comment:</label>
+					<input type="text" id="defaultForm-email" class="form-control validate">
+				</div>
+			</div>
+			<div class="modal-footer d-flex justify-content-center">
+				<button class="btn btn-default">Login</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="text-center">
+	<a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalLoginForm">Launch
+		Modal Login Form</a>
+</div>
+
 <script>
     $(document).ready(function() {
         var id=$("#placeId").val();
@@ -374,8 +403,16 @@
             $("#comTxt").text("COMMENTS("+num+")");
             var num=$("#comNumber").val(num);
         }
+
+        $(".blogsCom").on('click', function(event){
+            console.log("dfvc");
+            console.log(event.target.id);
+
+        });
     });
+
 </script>
+
 <script src="folderforindex/js/jquery-3.2.1.min.js"></script>
 <script src="folderforindex/styles/bootstrap4/popper.js"></script>
 <script src="folderforindex/styles/bootstrap4/bootstrap.min.js"></script>

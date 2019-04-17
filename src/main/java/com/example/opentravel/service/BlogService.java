@@ -1,13 +1,12 @@
 package com.example.opentravel.service;
 import com.example.opentravel.model.Blog;
+import com.example.opentravel.model.CommentBlog;
 import com.example.opentravel.model.User;
 import com.example.opentravel.repository.BlogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.test.web.servlet.RequestBuilder;
-import org.springframework.test.web.servlet.ResultActions;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -48,9 +47,11 @@ public class BlogService {
     public void delete(long id){
        blogRepository.delete(blogRepository.findById(id));
     }
+
     public void deleteBlog(Blog blog){
        blogRepository.delete(blog);
-}
+    }
+
     public List<Blog> findAllByTitle(String text){
         return blogRepository.findAllByTitle(text);
     }
