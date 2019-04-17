@@ -1,4 +1,4 @@
-package com.example.opentravel.test;
+/*package com.example.opentravel.test;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -201,4 +201,4 @@ public class Sprint2 {
         driver.close();
         System.exit(0);
     }
-}
+}*/
