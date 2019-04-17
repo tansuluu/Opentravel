@@ -1,5 +1,6 @@
 package com.example.opentravel.service;
 import com.example.opentravel.model.Blog;
+import com.example.opentravel.model.CommentBlog;
 import com.example.opentravel.model.User;
 import com.example.opentravel.repository.BlogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,9 +47,11 @@ public class BlogService {
     public void delete(long id){
        blogRepository.delete(blogRepository.findById(id));
     }
+
     public void deleteBlog(Blog blog){
        blogRepository.delete(blog);
-}
+    }
+
     public List<Blog> findAllByTitle(String text){
         return blogRepository.findAllByTitle(text);
     }

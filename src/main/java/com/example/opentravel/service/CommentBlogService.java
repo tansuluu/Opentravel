@@ -45,4 +45,8 @@ public class CommentBlogService {
         commentBlogRepository.delete(findByIdAndBlog(id,place));
     }
 
+
+    public void updateBlogComment(long id) {
+        CommentBlog commentBlog = findById(id);
+    }
 }

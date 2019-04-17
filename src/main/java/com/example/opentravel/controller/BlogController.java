@@ -137,4 +137,10 @@ public class BlogController {
         return "redirect:/blogInfo?id="+blogId+"#comm1";
     }
 
+    @RequestMapping(value="/updateBlogComment",method = RequestMethod.GET,produces = "application/json")
+    public ResponseEntity<?> updateBlogComment(@RequestParam("blogId") long blogId){
+        CommentBlog commentBlog=commentBlogService.findById(blogId);
+        return ResponseEntity.ok(commentBlog);
+    }
+
 }
