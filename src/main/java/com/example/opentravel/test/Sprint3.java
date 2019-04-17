@@ -31,12 +31,15 @@ public class Sprint3 {
         return true;
 
     }
+
+
+
     public static boolean USE7(WebDriver driver,Sprint1 sp) {
         String expectedTitle = "Opentravel";
         Sprint1.USE2(driver, sp);
         driver.findElement(By.className("btn-danger")).click();
         driver.findElement(By.linkText("Delete")).click();
-        if(Sprint1.checkTitle(driver,"Update profile")==false){
+        if(Sprint1.checkTitle(driver,"Login")==false){
             System.out.println("Fault in USE7");
             return false;
         }
@@ -50,21 +53,87 @@ public class Sprint3 {
             return false;
         }
         return true;
-
     }
 
+    public static boolean LUP5(WebDriver driver,Sprint1 sp) {
+        String expectedTitle = "Places";
+        Sprint1.LUP12(driver, sp);
+        driver.findElement(By.id("comments")).sendKeys("Nice Place");
+        driver.findElement(By.className("submit-btn")).click();
+        if(Sprint1.checkTitle(driver,expectedTitle)==false){
+            System.out.println("Fault in USE6");
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean BLO8(WebDriver driver,Sprint1 sp) {
+        String expectedTitle = "Single Blog";
+        Sprint1.BLO2(driver, sp);
+        driver.findElement(By.id("comments")).sendKeys("Nice Blog");
+        driver.findElement(By.className("submit-btn")).click();
+        if(Sprint1.checkTitle(driver,expectedTitle)==false){
+            System.out.println("Fault in USE6");
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean USE14(WebDriver driver,Sprint1 sp) {
+        String expectedTitle = "Profile";
+        Sprint1.USE2(driver, sp);
+        driver.findElement(By.id("comments")).sendKeys("Nice Blog");
+        driver.findElement(By.className("submit-btn")).click();
+        if(Sprint1.checkTitle(driver,expectedTitle)==false){
+            System.out.println("Fault in USE6");
+            return false;
+        }
+        return true;
+    }
+
+
     public static void main(String[] args) throws InterruptedException {
-        System.setProperty("webdriver.gecko.driver", "/home/student/Videos/geckodriver");
+        System.setProperty("webdriver.gecko.driver", "C:\\Users\\tanya\\Downloads\\programs\\geckodriver.exe");
 
         WebDriver driver = new FirefoxDriver();
         Sprint1 sp = new Sprint1();
         boolean progress;
-        Sprint2.BAU(driver,sp);
+        Sprint1.BAU(driver,sp);
         Sprint1.logIn(driver,sp);
         progress = USE6(driver, sp);
         if (!progress) {
             driver.close();
             System.exit(0);
         }
+        progress = USE6(driver, sp);
+        if (!progress) {
+            driver.close();
+            System.exit(0);
+        }
+        progress = NEW(driver, sp);
+        if (!progress) {
+            driver.close();
+            System.exit(0);
+        }
+        progress = LUP5(driver, sp);
+        if (!progress) {
+            driver.close();
+            System.exit(0);
+        }
+        progress = BLO8(driver, sp);
+        if (!progress) {
+            driver.close();
+            System.exit(0);
+        }
+        progress = USE14(driver, sp);
+        if (!progress) {
+            driver.close();
+            System.exit(0);
+        }
+        /*progress = USE6(driver, sp);
+        if (!progress) {
+            driver.close();
+            System.exit(0);
+        }*/
     }
 }

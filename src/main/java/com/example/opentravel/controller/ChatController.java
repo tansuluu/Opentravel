@@ -21,7 +21,9 @@ public class ChatController {
     public ChatMessage addUser(@Payload ChatMessage chatMessage,
                                SimpMessageHeaderAccessor headerAccessor) {
         // Add username in web socket session
+
         headerAccessor.getSessionAttributes().put("username", chatMessage.getSender());
+        headerAccessor.getSessionAttributes().put("avatar", chatMessage.getAvatar());
         return chatMessage;
     }
 
