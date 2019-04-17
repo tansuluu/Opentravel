@@ -185,7 +185,7 @@ public class Sprint2 {
             System.exit(0);
             return;
         }*/
-        progress = LUP11(driver, sp);
+        /*progress = LUP11(driver, sp);
         if (!progress) {
             driver.close();
             System.exit(0);
