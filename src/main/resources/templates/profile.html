@@ -52,89 +52,22 @@
 
     <style>
 
-        .load-more-btn {
-            padding: 5px;
-            border: 1px solid #ef910a;
-            border-radius: 5px;
-            }
-        .load-more-btn b:hover{
-            color: white;
+        .load-more-btn{
+            background-color: yellow;
+            margin-left: 40px;
+            width: 150px;
+            height: 70px;
+            padding: 20px;
+        }
+        .load-more-btn a{
+            padding: 20px;
+            height: 20px;
+            margin: 40px;
         }
 
-
-
-
-        /*Tooltip */
-
-        /**
- * Tooltip Styles
- */
-
-        /* Add this attribute to the element that needs a tooltip */
-        [data-tooltip] {
-            position: relative;
-            z-index: 2;
-            cursor: pointer;
+        .load-more-btn button{
+            padding-left: 40px;
         }
-
-        /* Hide the tooltip content by default */
-        [data-tooltip]:before,
-        [data-tooltip]:after {
-            visibility: hidden;
-            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-            filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        /* Position tooltip above the element */
-        [data-tooltip]:before {
-            position: absolute;
-            bottom: 110%;
-            left: 50%;
-            margin-bottom: 5px;
-            margin-left: -80px;
-            padding: 7px;
-            width: 160px;
-            -webkit-border-radius: 3px;
-            -moz-border-radius: 3px;
-            border-radius: 3px;
-            background-color: #000;
-            background-color: hsla(0, 0%, 20%, 0.9);
-            color: #fff;
-            content: attr(data-tooltip);
-            text-align: center;
-            font-size: 14px;
-            line-height: 1.2;
-        }
-
-        /* Triangle hack to make tooltip look like a speech bubble */
-        [data-tooltip]:after {
-            position: absolute;
-            bottom: 110%;
-            left: 50%;
-            margin-left: -5px;
-            width: 0;
-            border-top: 5px solid #000;
-            border-top: 5px solid hsla(0, 0%, 20%, 0.9);
-            border-right: 5px solid transparent;
-            border-left: 5px solid transparent;
-            content: " ";
-            font-size: 0;
-            line-height: 0;
-        }
-
-        /* Show tooltip content on hover */
-        [data-tooltip]:hover:before,
-        [data-tooltip]:hover:after {
-            visibility: visible;
-            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-            filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
-            opacity: 1;
-        }
-
-
-
     </style>
     </head>
 
@@ -248,31 +181,7 @@
                         <div class="col-md-5">
                             <div class="person_img">
                                 <img th:src="@{${user.image}}"alt="">
-                                <a class="download_btn" href="#" th:text="${user.name}"><span></span></a>
-                            </div><br>
-                            <!--<ul class="social_icon" style="display: inline">
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                            </ul>-->
-                            <div th:if="${#request.userPrincipal != null}" >
-                                <div  th:if="${user.email==#request.userPrincipal.name}" style="display: inline-block;" >
 
-                                    <a class="load-more-btn" th:href="@{/newBlog}" data-tooltip="NEW BLOG"><i class='fas fa-blog' style="padding: 0 6px 0 6px;"></i></a>
-                                    <a sec:authorize="hasAuthority('GID')" class="load-more-btn " th:href="@{/newPlace}" data-tooltip="ADD NEW PLACE" ><i class='fas fa-atlas' style="padding: 0 6px 0 6px;"></i></a>
-                                    <a sec:authorize="hasAuthority('ADMIN')" class="load-more-btn" th:href="@{/newPlace}" data-tooltip="ADD NEW PLACE"><i class='fas fa-atlas' style="padding: 0 6px 0 6px;"></i></a>
-                                    <a class="load-more-btn" th:href="@{/updateUser(id=${user.id})}" data-tooltip="UPDATE PROFILE"><i class='fas fa-user-edit' style="padding: 0 6px 0 6px;"></i></a>
-                                    <button class="btn btn-danger" type="button" data-toggle="modal" data-target="#myModal" data-tooltip="DELETE PROFILE"><i class='fas fa-trash' ></i></button>
-
-                                </div>
-                                <div th:if="${!#request.userPrincipal.getName().equals(user.email)}">
-                                    <div class="right-area" sec:authorize="hasAuthority('ADMIN')">
-                                        <a class="load-more-btn" th:href="@{/updateUser(id=${user.id})}"><b> <i class='fas fa-user-edit' style="padding: 0 6px 0 6px;"></i> UPDATE USER</b></a><br>
-                                        <button class="btn btn-danger" style="max-width: 170px" type="button" data-toggle="modal" data-target="#myModal"> <i class='fas fa-trash' style="padding: 0 6px 0 0;"></i> DELETE PROFILE</button><br>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                         <div class="col-md-7">
@@ -302,23 +211,28 @@
                                         <li><a href="#" th:text="${user.gender}"></a></li>
                                         <li><a href="#"th:text="${user.email}"></a></li>
                                     </ul>
-                                <!--</div>-->
-                                <!--<div th:if="${#request.userPrincipal != null}">
+                                </div>
+                                <ul class="social_icon" style="display: inline">
+                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                </ul><br><br>
+                                <div th:if="${#request.userPrincipal != null}">
                                 <div  th:if="${user.email==#request.userPrincipal.name}">
-                                    <a class="load-more-btn" th:href="@{/newBlog}"><i class='fas fa-blog' style="padding: 0 6px 0 6px;"></i></a><br>
-                                    <a sec:authorize="hasAuthority('GID')" class="load-more-btn" th:href="@{/newPlace}"><i class='fas fa-atlas' style="padding: 0 6px 0 6px;"></i></a><br>
-                                    <a sec:authorize="hasAuthority('ADMIN')" class="load-more-btn" th:href="@{/newPlace}"><i class='fas fa-atlas' style="padding: 0 6px 0 6px;"></i></a>
-                                    <a class="load-more-btn" th:href="@{/updateUser(id=${user.id})}"><i title="Update User" class='fas fa-user-edit' style="padding: 0 6px 0 6px;"></i></a><br>
+                                    <a class="load-more-btn" th:href="@{/updateUser(id=${user.id})}"><b> <i class='fas fa-user-edit' style="padding: 0 6px 0 10px;"></i>UPDATE USER</b></a><br>
                                     <button class="btn btn-danger" style="max-width: 170px" type="button" data-toggle="modal" data-target="#myModal"><i class='fas fa-trash' style="padding: 0 6px 0 0;"></i>DELETE PROFILE</button><br>
-
+                                    <a class="load-more-btn" th:href="@{/newBlog}"><b> <i class='fas fa-blog' style="padding: 0 6px 0 10px;"></i> NEW BLOG</b></a><br>
+                                    <a sec:authorize="hasAuthority('GID')" class="load-more-btn" th:href="@{/newPlace}"><b> <i class='fas fa-atlas' style="padding: 0 6px 0 10px;"></i> NEW PLACE</b></a><br>
+                                    <a sec:authorize="hasAuthority('ADMIN')" class="load-more-btn" th:href="@{/newPlace}"><b> <i class='fas fa-atlas' style="padding: 0 6px 0 10px;"></i> NEW PLACE</b></a><br>
                                 </div>
                                 <div th:if="${!#request.userPrincipal.getName().equals(user.email)}">
                                     <div class="right-area" sec:authorize="hasAuthority('ADMIN')">
-                                        <a class="load-more-btn" th:href="@{/updateUser(id=${user.id})}"><b> <i class='fas fa-user-edit' style="padding: 0 6px 0 6px;"></i> UPDATE USER</b></a><br>
+                                        <a class="load-more-btn" th:href="@{/updateUser(id=${user.id})}"><b> <i class='fas fa-user-edit' style="padding: 0 6px 0 10px;"></i> UPDATE USER</b></a><br>
                                         <button class="btn btn-danger" style="max-width: 170px" type="button" data-toggle="modal" data-target="#myModal"> <i class='fas fa-trash' style="padding: 0 6px 0 0;"></i> DELETE PROFILE</button><br>
                                     </div>
                                 </div>
-                            </div>-->
                             </div>
                         </div>
                     </div>
