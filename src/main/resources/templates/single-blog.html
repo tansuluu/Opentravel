@@ -266,6 +266,7 @@
 							<div th:if="${#request.userPrincipal!=null}" sec:authorize="!hasAuthority('ADMIN')">
 								<div class="right-area" th:if="${#request.userPrincipal.name==commen.user.email}">
 									<a th:href="@{/deleteBlogComment(id=${commen.id},blogId=${commen.blog.id})}" style="font-size: 22px; color: red "><i class="fa fa-trash"></i></a>
+									<a href="" style="font-size: 22px; color: blue " class="blogsCom" th:id="${commen.id}"><i class="fa fa-edit"></i></a>
 								</div>
 							</div>
 
@@ -402,6 +403,12 @@
             $("#comTxt").text("COMMENTS("+num+")");
             var num=$("#comNumber").val(num);
         }
+
+        $(".blogsCom").on('click', function(event){
+            console.log("dfvc");
+            console.log(event.target.id);
+
+        });
     });
 
 </script>
