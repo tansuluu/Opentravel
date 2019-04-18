@@ -381,28 +381,7 @@
             }
         });
 
-        function funcSuccessAddComment(data) {
-            console.log(data);
-            var comment='<div class="comment">' +
-                '<div class="post-info">' +
-                '<div class="left-area">' +
-                '<a class="avatar" href="#"><img  src="'+data.user.image+'" alt="Profile Image"></a>' +
-                '</div>\n' +
-                '<div class="middle-area">\n' +
-                '<a class="name"><b style="color: black">'+data.user.email+'</b></a>' +
-                '<h6 class="date">on '+data.dateCom+'</h6>' +
-                '</div>\n' +
-                '</div>' +
-                '<p>'+data.comentText+'</p>\n' +
-                '</div>';
-            $("#comments").val("");
-            $("#headerofcomment").append(comment);
-            var num=parseInt($("#comNumber").val());
-            console.log(num);
-            num=num+1;
-            $("#comTxt").text("COMMENTS("+num+")");
-            var num=$("#comNumber").val(num);
-        }
+
 
         $(".blogsCom").on('click', function(event){
             console.log("dfvc");
