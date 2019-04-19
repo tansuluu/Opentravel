@@ -70,6 +70,28 @@ public class PostServiceTest {
             assertEquals(list,postService.findByUser(user));
         }
 
+    @Test
+    public void testSave(){
+        long id=1;
+        User user = new User();
+        String text = "Hello World!";
+        Post post = new Post();
+        post.setUser(user);
+        post.setPostText(text);
+        post.setId(id);
+        when(postRepositoryMock.save(post)).thenReturn(post);
+        assertEquals(post,postRepositoryMock.save(post));
+    }
+
+    @Test
+    public void testDelete(){
+        Post post = new Post();
+        long doseId=1;
+        post.setId(doseId);
+        // perform the call
+        postService.deleteById(post.getId());
+    }
+
     @After
     public void terminate(){
         System.out.println("PostServiceTest class is terminated");
