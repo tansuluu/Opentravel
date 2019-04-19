@@ -319,7 +319,7 @@ public class Sprint1 {
     public static boolean LUP12(WebDriver driver, Sprint1 sp) {
         String expectedTitle = "Places";
         LUP1(driver, sp);
-        driver.findElement(By.linkText("Sulaiman-Too")).click();
+        driver.get("http://127.0.0.1:8080/placeInfo?id=52");
         if(checkTitle(driver,expectedTitle)==false){
             System.out.println("Fault in USE6");
             return false;
@@ -329,7 +329,7 @@ public class Sprint1 {
     public static boolean BLO2(WebDriver driver, Sprint1 sp) {
         String expectedTitle = "Single Blog ";
         BLO1(driver, sp);
-        driver.findElement(By.className("block-20")).click();
+        driver.get("http://127.0.0.1:8080/blogInfo?id=53");
         if(checkTitle(driver,expectedTitle)==false){
             System.out.println("Fault in USE6");
             return false;
