@@ -32,8 +32,6 @@ public class Sprint3 {
 
     }
 
-
-
     public static boolean USE7(WebDriver driver,Sprint1 sp) {
         String expectedTitle = "Opentravel";
         Sprint1.USE2(driver, sp);

@@ -267,6 +267,26 @@ public class Sprint1 {
         return true;
     }
 
+    public static boolean LUP12(WebDriver driver, Sprint1 sp) {
+        String expectedTitle = "Places";
+        LUP1(driver, sp);
+        driver.get("http://127.0.0.1:8080/placeInfo?id=52");
+        if(checkTitle(driver,expectedTitle)==false){
+            System.out.println("Fault in USE6");
+            return false;
+        }
+        return true;
+    }
+    public static boolean BLO2(WebDriver driver, Sprint1 sp) {
+        String expectedTitle = "Single Blog ";
+        BLO1(driver, sp);
+        driver.get("http://127.0.0.1:8080/blogInfo?id=53");
+        if(checkTitle(driver,expectedTitle)==false){
+            System.out.println("Fault in USE6");
+            return false;
+        }
+        return true;
+    }
 
     public static void main(String[] args) throws InterruptedException {
         System.setProperty("webdriver.gecko.driver", "/home/student/Videos/geckodriver");
