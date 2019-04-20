@@ -262,7 +262,8 @@
 							</div>
 							<div class="right-area" sec:authorize="hasAuthority('ADMIN')">
 								<a th:href="@{/deleteBlogComment(id=${commen.id},blogId=${commen.blog.id})}" style="font-size: 22px; color: red "><i class="fa fa-trash"></i></a>
-							</div>
+                                <a style="font-size: 22px; color: blue " class="blogsCom" ><i th:id="${commen.id}" class="fa fa-edit"></i></a>
+                            </div>
 							<div th:if="${#request.userPrincipal!=null}" sec:authorize="!hasAuthority('ADMIN')">
 								<div class="right-area" th:if="${#request.userPrincipal.name==commen.user.email}">
 									<a th:href="@{/deleteBlogComment(id=${commen.id},blogId=${commen.blog.id})}" style="font-size: 22px; color: red "><i class="fa fa-trash"></i></a>
@@ -438,9 +439,7 @@
                 dataType: 'json',
                 contentType: "application/json",
                 success:function(data){
-                    console.log(data);
-                    $("#defaultForm").val(data.comentText);
-                    $("#idCok").val(data.id);
+                    document.location.reload(true);
                 },
             });
         });

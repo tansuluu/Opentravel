@@ -46,7 +46,9 @@ public class CommentBlogService {
     }
 
 
-    public void updateBlogComment(long id) {
+    public void updateBlogComment(long id,String  text) {
         CommentBlog commentBlog = findById(id);
+        commentBlog.setComentText(text);
+        commentBlogRepository.save(commentBlog);
     }
 }
