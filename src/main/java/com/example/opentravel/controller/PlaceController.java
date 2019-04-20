@@ -146,15 +146,15 @@ public class PlaceController {
     }
 
 
-    @RequestMapping(value="/updateBlogComment",method = RequestMethod.GET,produces = "application/json")
-    public ResponseEntity<?> updateBlogComment(@RequestParam("id") long id){
-        CommentBlog commentBlog=commentBlogService.findById(id);
-        return ResponseEntity.ok(commentBlog);
+    @RequestMapping(value="/updatePlaceComment",method = RequestMethod.GET,produces = "application/json")
+    public ResponseEntity<?> updatePlaceComment(@RequestParam("id") long id){
+        PlaceComment placeComment=placeCommentService.findById(id);
+        return ResponseEntity.ok(placeComment);
     }
 
-    @RequestMapping(value="/updateBlogCommentSave",method = RequestMethod.GET,produces = "application/json")
-    public ResponseEntity<?> updateBlogCommentSave(@RequestParam("id") long id,@RequestParam("text") String text){
-        commentBlogService.updateBlogComment(id,text);
+    @RequestMapping(value="/updatePlaceCommentSave",method = RequestMethod.GET,produces = "application/json")
+    public ResponseEntity<?> updatePlaceCommentSave(@RequestParam("id") long id,@RequestParam("text") String text){
+        placeCommentService.updateBlogComment(id,text);
         return ResponseEntity.ok(1);
     }
 

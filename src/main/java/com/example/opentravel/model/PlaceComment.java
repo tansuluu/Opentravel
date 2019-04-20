@@ -21,11 +21,11 @@ public class PlaceComment {
     @Column(name = "dateCom", nullable = false)
     private Date dateCom;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Place place;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private User user;
 
