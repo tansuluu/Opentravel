@@ -528,6 +528,44 @@
                 console.log(comment);
                 $("#comments").val("");
             }
+            $(".blogsCom").on('click', function(event){
+                console.log(event.target.id);
+                $.ajax({
+                    url:"/updatePlaceComment",
+                    type:"GET",
+                    data:({id:event.target.id}),
+                    dataType: 'json',
+                    contentType: "application/json",
+                    success:function(data){
+                        console.log(data);
+                        $("#defaultForm").val(data.comentText);
+                        $("#idCok").val(data.id);
+                    },
+                });
+
+                $('#modalLoginForm').modal('show');
+
+            });
+
+            $("#back").on('click', function(){
+                $('#modalLoginForm').modal('hide');
+            });
+
+            $("#update").on('click', function() {
+                $('#modalLoginForm').modal('hide');
+                if ($("#defaultForm").val() != " " && $("#defaultForm").val() != "") {
+                    $.ajax({
+                        url: "/updatePlaceCommentSave",
+                        type: "GET",
+                        data: ({id: $("#idCok").val(), text: $("#defaultForm").val()}),
+                        dataType: 'json',
+                        contentType: "application/json",
+                        success: function (data) {
+                            document.location.reload(true);
+                        },
+                    });
+                }
+            });
 
         });
     </script>
