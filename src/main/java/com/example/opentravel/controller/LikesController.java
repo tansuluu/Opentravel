@@ -3,6 +3,7 @@ package com.example.opentravel.controller;
 import com.example.opentravel.service.BlogService;
 import com.example.opentravel.service.LikesService;
 import com.example.opentravel.service.PlaceService;
+import com.example.opentravel.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -24,10 +25,13 @@ public class LikesController {
     @Autowired
     BlogService blogService;
 
+    @Autowired
+    UserService userService;
+
     @RequestMapping(value = "/hasPutBlog", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity<?> putedLikeBlog(@RequestParam("id") long id, @RequestParam("username") String username) {
         int result =0 ;
-        if (likeService.existsByBlogIDAndUsername(id, username)) {
+        if (likeService.existsByBlogAndUser(blogService.findById(id),userService.findUserByEmail(username))) {
             result = 1;
         }
         return ResponseEntity.ok(result);
