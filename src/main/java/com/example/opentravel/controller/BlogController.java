@@ -138,8 +138,8 @@ public class BlogController {
     }
 
     @RequestMapping(value="/updateBlogComment",method = RequestMethod.GET,produces = "application/json")
-    public ResponseEntity<?> updateBlogComment(@RequestParam("blogId") long blogId){
-        CommentBlog commentBlog=commentBlogService.findById(blogId);
+    public ResponseEntity<?> updateBlogComment(@RequestParam("id") long id){
+        CommentBlog commentBlog=commentBlogService.findById(id);
         return ResponseEntity.ok(commentBlog);
     }
 

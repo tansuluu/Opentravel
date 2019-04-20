@@ -266,7 +266,7 @@
 							<div th:if="${#request.userPrincipal!=null}" sec:authorize="!hasAuthority('ADMIN')">
 								<div class="right-area" th:if="${#request.userPrincipal.name==commen.user.email}">
 									<a th:href="@{/deleteBlogComment(id=${commen.id},blogId=${commen.blog.id})}" style="font-size: 22px; color: red "><i class="fa fa-trash"></i></a>
-									<a href="" style="font-size: 22px; color: blue " class="blogsCom" th:id="${commen.id}"><i class="fa fa-edit"></i></a>
+									<a style="font-size: 22px; color: blue " class="blogsCom" ><i th:id="${commen.id}" class="fa fa-edit"></i></a>
 								</div>
 							</div>
 
@@ -342,11 +342,12 @@
 			<div class="modal-body mx-3">
 				<div class="md-form mb-5">
 					<label>Comment:</label>
-					<input type="text" id="defaultForm-email" class="form-control validate">
+					<input type="text" id="defaultForm" class="form-control validate">
 				</div>
 			</div>
 			<div class="modal-footer d-flex justify-content-center">
-				<button class="btn btn-default">Login</button>
+				<button class="btn btn-default" id="back">BACK</button>
+				<button class="btn btn-success">UPDATE</button>
 			</div>
 		</div>
 	</div>
@@ -405,9 +406,23 @@
         }
 
         $(".blogsCom").on('click', function(event){
-            console.log("dfvc");
             console.log(event.target.id);
+            $.ajax({
+                url:"/updateBlogComment",
+                type:"GET",
+                data:({id:event.target.id}),
+                dataType: 'json',
+                contentType: "application/json",
+                success:function(data){
+                    console.log(data)
+                },
+            });
 
+            $('#modalLoginForm').modal('show');
+
+        });
+        $("#back").on('click', function(){
+            $('#modalLoginForm').modal('hide');
         });
     });
 
