@@ -60,5 +60,10 @@ public class BlogService {
         return blogRepository.findAll(pageable);
     }
 
+    public Blog updateLikes(long id, int n){
+        Blog blog=findById(id);
+        blog.setLikes(blog.getLikes()+n);
+        return save(blog);
+    }
 
 }
