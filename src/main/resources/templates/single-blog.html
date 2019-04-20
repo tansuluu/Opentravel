@@ -354,12 +354,6 @@
 		</div>
 	</div>
 </div>
-
-<div class="text-center">
-	<a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalLoginForm">Launch
-		Modal Login Form</a>
-</div>
-
 <script>
     $(document).ready(function() {
         var id=$("#placeId").val();
@@ -432,16 +426,18 @@
 
         $("#update").on('click', function(){
             $('#modalLoginForm').modal('hide');
-            $.ajax({
-                url:"/updateBlogCommentSave",
-                type:"GET",
-                data:({id:$("#idCok").val(),text:$("#defaultForm").val()}),
-                dataType: 'json',
-                contentType: "application/json",
-                success:function(data){
-                    document.location.reload(true);
-                },
-            });
+            if($("#defaultForm").val()!=" " && $("#defaultForm").val()!="") {
+                $.ajax({
+                    url: "/updateBlogCommentSave",
+                    type: "GET",
+                    data: ({id: $("#idCok").val(), text: $("#defaultForm").val()}),
+                    dataType: 'json',
+                    contentType: "application/json",
+                    success: function (data) {
+                        document.location.reload(true);
+                    },
+                });
+            }
         });
     });
 
