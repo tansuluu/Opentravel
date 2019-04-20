@@ -1,6 +1,5 @@
 package com.example.opentravel;
 
-import com.example.opentravel.model.Blog;
 import com.example.opentravel.model.Place;
 import com.example.opentravel.model.User;
 import com.example.opentravel.repository.PlaceRepository;

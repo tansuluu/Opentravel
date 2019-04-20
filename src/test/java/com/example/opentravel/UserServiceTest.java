@@ -1,10 +1,7 @@
 package com.example.opentravel;
 
-import com.example.opentravel.model.Place;
 import com.example.opentravel.model.User;
-import com.example.opentravel.repository.PlaceRepository;
 import com.example.opentravel.repository.UserRepository;
-import com.example.opentravel.service.PlaceService;
 import com.example.opentravel.service.UserService;
 import org.junit.After;
 import org.junit.Before;
@@ -14,7 +11,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import javax.management.relation.Role;
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
