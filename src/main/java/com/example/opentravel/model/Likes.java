@@ -27,6 +27,11 @@ public class Likes {
     public Likes() {
     }
 
+    public Likes(Blog blog, User user) {
+        this.blog = blog;
+        this.user = user;
+    }
+
     public long getId() {
         return id;
     }
