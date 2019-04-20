@@ -132,11 +132,8 @@
 		<div class="row">
 			<div class="col-lg-1 col-md-0"></div>
 			<div class="col-lg-10 col-md-12">
-
 				<div class="main-post">
-
 					<div class="post-top-area">
-
 						<h5 class="pre-title"  th:text="${app.title}" style="text-align: center; font-size: 35px; font-weight: bold">Place</h5>
 						<div class="post-image"><img th:if="${app.getPhoto1()}!=null" th:src="@{${'/image/'+app.photo1}}"alt="Blog Image"></div>
 
@@ -257,7 +254,6 @@
 								<div class="right-area" th:if="${#request.userPrincipal.name==commen.user.email}">
 									<a th:href="@{/deleteComment(id=${commen.id},placeId=${commen.place.id})}" style="font-size: 22px; color: red "><i class="fa fa-trash"></i></a>
 									<a style="font-size: 22px; color: blue " class="blogsCom" ><i th:id="${commen.id}" class="fa fa-edit"></i></a>
-
 								</div>
 							</div>
 
@@ -321,7 +317,7 @@
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header text-center">
-				<h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
+				<h4 class="modal-title w-100 font-weight-bold">UPDATE COMMENT</h4>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
@@ -387,6 +383,45 @@
             $("#comTxt").text("COMMENTS("+num+")");
             var num=$("#comNumber").val(num);
         }
+
+        $(".blogsCom").on('click', function(event){
+            console.log(event.target.id);
+            $.ajax({
+                url:"/updatePlaceComment",
+                type:"GET",
+                data:({id:event.target.id}),
+                dataType: 'json',
+                contentType: "application/json",
+                success:function(data){
+                    console.log(data);
+                    $("#defaultForm").val(data.comentText);
+                    $("#idCok").val(data.id);
+                },
+            });
+
+            $('#modalLoginForm').modal('show');
+
+        });
+
+        $("#back").on('click', function(){
+            $('#modalLoginForm').modal('hide');
+        });
+
+        $("#update").on('click', function() {
+            $('#modalLoginForm').modal('hide');
+            if ($("#defaultForm").val() != " " && $("#defaultForm").val() != "") {
+                $.ajax({
+                    url: "/updatePlaceCommentSave",
+                    type: "GET",
+                    data: ({id: $("#idCok").val(), text: $("#defaultForm").val()}),
+                    dataType: 'json',
+                    contentType: "application/json",
+                    success: function (data) {
+                        document.location.reload(true);
+                    },
+                });
+            }
+        });
     });
 </script>
 <script src="folderforindex/js/jquery-3.2.1.min.js"></script>

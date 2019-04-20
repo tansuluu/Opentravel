@@ -249,15 +249,8 @@
                         <div class="col-md-5">
                             <div class="person_img">
                                 <img th:src="@{${user.image}}"alt="">
-                                <a class="download_btn" href="#" th:text="${user.name}"><span></span></a>
                             </div><br>
-                            <!--<ul class="social_icon" style="display: inline">
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                            </ul>-->
+
                             <div th:if="${#request.userPrincipal != null}" >
                                 <div  th:if="${user.email==#request.userPrincipal.name}" style="display: inline-block;" >
 
