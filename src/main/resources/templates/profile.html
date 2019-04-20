@@ -53,13 +53,16 @@
     <style>
 
         .load-more-btn {
-            padding: 5px;
-            border: 1px solid #ef910a;
+            padding-top: 5px;
+            font-size: 18px;
+            border: 1px solid #677fb5;
             border-radius: 5px;
+            text-align: center;
+            height: 40px;
+            width: 40px;
+            margin-right: 20px;
             }
-        .load-more-btn b:hover{
-            color: white;
-        }
+
 
 
 
@@ -82,7 +85,6 @@
         [data-tooltip]:after {
             visibility: hidden;
             -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-            filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
             opacity: 0;
             pointer-events: none;
         }
@@ -129,7 +131,6 @@
         [data-tooltip]:hover:after {
             visibility: visible;
             -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-            filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
             opacity: 1;
         }
 
@@ -264,7 +265,7 @@
                                     <a sec:authorize="hasAuthority('GID')" class="load-more-btn " th:href="@{/newPlace}" data-tooltip="ADD NEW PLACE" ><i class='fas fa-atlas' style="padding: 0 6px 0 6px;"></i></a>
                                     <a sec:authorize="hasAuthority('ADMIN')" class="load-more-btn" th:href="@{/newPlace}" data-tooltip="ADD NEW PLACE"><i class='fas fa-atlas' style="padding: 0 6px 0 6px;"></i></a>
                                     <a class="load-more-btn" th:href="@{/updateUser(id=${user.id})}" data-tooltip="UPDATE PROFILE"><i class='fas fa-user-edit' style="padding: 0 6px 0 6px;"></i></a>
-                                    <button class="btn btn-danger" type="button" data-toggle="modal" data-target="#myModal" data-tooltip="DELETE PROFILE"><i class='fas fa-trash' ></i></button>
+                                    <button class="btn btn-danger" type="button" data-toggle="modal" data-target="#myModal" data-tooltip="DELETE PROFILE"><i class='fas fa-trash' style="font-size: 18px; margin-top: 5px;" ></i></button>
 
                                 </div>
                                 <div th:if="${!#request.userPrincipal.getName().equals(user.email)}">
