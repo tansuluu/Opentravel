@@ -129,13 +129,13 @@ public class UserController {
 
     @RequestMapping(value="/updatePost",method = RequestMethod.GET,produces = "application/json")
     public ResponseEntity<?> updatePlaceComment(@RequestParam("id") long id){
-        PlaceComment placeComment=placeCommentService.findById(id);
-        return ResponseEntity.ok(placeComment);
+        Post post=postService.findById(id);
+        return ResponseEntity.ok(post);
     }
 
-    @RequestMapping(value="/updatePlaceCommentSave",method = RequestMethod.GET,produces = "application/json")
+    @RequestMapping(value="/updatePostSave",method = RequestMethod.GET,produces = "application/json")
     public ResponseEntity<?> updatePlaceCommentSave(@RequestParam("id") long id,@RequestParam("text") String text){
-        placeCommentService.updatePlaceComment(id,text);
+        postService.updatePost(id,text);
         return ResponseEntity.ok(1);
     }
 
