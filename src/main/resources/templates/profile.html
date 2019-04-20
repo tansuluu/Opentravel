@@ -531,7 +531,7 @@
             $(".blogsCom").on('click', function(event){
                 console.log(event.target.id);
                 $.ajax({
-                    url:"/updatePlaceComment",
+                    url:"/updatePost",
                     type:"GET",
                     data:({id:event.target.id}),
                     dataType: 'json',
@@ -555,7 +555,7 @@
                 $('#modalLoginForm').modal('hide');
                 if ($("#defaultForm").val() != " " && $("#defaultForm").val() != "") {
                     $.ajax({
-                        url: "/updatePlaceCommentSave",
+                        url: "/updatePostSave",
                         type: "GET",
                         data: ({id: $("#idCok").val(), text: $("#defaultForm").val()}),
                         dataType: 'json',

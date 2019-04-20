@@ -145,7 +145,6 @@ public class PlaceController {
         return "redirect:/placeInfo?id="+placeId+"#comm";
     }
 
-
     @RequestMapping(value="/updatePlaceComment",method = RequestMethod.GET,produces = "application/json")
     public ResponseEntity<?> updatePlaceComment(@RequestParam("id") long id){
         PlaceComment placeComment=placeCommentService.findById(id);
