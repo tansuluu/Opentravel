@@ -1,7 +1,5 @@
 package com.example.opentravel;
 
-import com.example.opentravel.model.Place;
-import com.example.opentravel.model.PlaceComment;
 import com.example.opentravel.model.Post;
 import com.example.opentravel.model.User;
 import com.example.opentravel.repository.PostRepository;
@@ -23,7 +21,6 @@ import static org.mockito.Mockito.when;
 @RunWith(MockitoJUnitRunner.class)
 public class PostServiceTest {
 
-
         @Mock
         PostRepository postRepositoryMock;
 
@@ -44,7 +41,7 @@ public class PostServiceTest {
         long id=1;
         post.setId(1);
         when(postRepositoryMock.findById(id)).thenReturn(post);
-        assertEquals(post,postService.findByid(id));
+        assertEquals(post,postService.findById(id));
     }
 
     @Test
@@ -52,7 +49,7 @@ public class PostServiceTest {
         Post post=new Post();
         long id=0;
         when(postRepositoryMock.findById(id)).thenReturn(post);
-        assertEquals(post,postService.findByid(id));
+        assertEquals(post,postService.findById(id));
     }
 
     @Test

@@ -127,5 +127,17 @@ public class UserController {
         return "redirect:/userPage?username="+username+"#postt";
     }
 
+    @RequestMapping(value="/updatePost",method = RequestMethod.GET,produces = "application/json")
+    public ResponseEntity<?> updatePlaceComment(@RequestParam("id") long id){
+        Post post=postService.findById(id);
+        return ResponseEntity.ok(post);
+    }
+
+    @RequestMapping(value="/updatePostSave",method = RequestMethod.GET,produces = "application/json")
+    public ResponseEntity<?> updatePlaceCommentSave(@RequestParam("id") long id,@RequestParam("text") String text){
+        postService.updatePost(id,text);
+        return ResponseEntity.ok(1);
+    }
+
 
 }

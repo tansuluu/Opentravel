@@ -1,5 +1,6 @@
 package com.example.opentravel.service;
 
+import com.example.opentravel.model.PlaceComment;
 import com.example.opentravel.model.Post;
 import com.example.opentravel.model.User;
 import com.example.opentravel.repository.PostRepository;
@@ -18,7 +19,7 @@ public class PostService {
     @Autowired
     private UserService userService;
 
-    public Post findByid(long id){
+    public Post findById(long id){
         return postRepository.findById(id);
     }
 
@@ -33,6 +34,12 @@ public class PostService {
     }
 
     public void deleteById(long id){
-        postRepository.delete(findByid(id));
+        postRepository.delete(findById(id));
+    }
+
+    public void updatePost(long id,String  text) {
+        Post post = findById(id);
+        post.setPostText(text);
+        postRepository.save(post);
     }
 }
