@@ -154,7 +154,7 @@ public class PlaceController {
 
     @RequestMapping(value="/updatePlaceCommentSave",method = RequestMethod.GET,produces = "application/json")
     public ResponseEntity<?> updatePlaceCommentSave(@RequestParam("id") long id,@RequestParam("text") String text){
-        placeCommentService.updateBlogComment(id,text);
+        placeCommentService.updatePlaceComment(id,text);
         return ResponseEntity.ok(1);
     }
 

@@ -46,5 +46,9 @@ public class PlaceCommentService {
         placeCommentRepository.delete(findByIdAndPlace(id,place));
     }
 
-
+    public void updatePlaceComment(long id,String  text) {
+        PlaceComment placeComment = findById(id);
+        placeComment.setComentText(text);
+        placeCommentRepository.save(placeComment);
+    }
 }
