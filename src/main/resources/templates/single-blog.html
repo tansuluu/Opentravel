@@ -348,7 +348,7 @@
 			</div>
 			<div class="modal-footer d-flex justify-content-center">
 				<button class="btn btn-default" id="back">BACK</button>
-				<button class="btn btn-success">UPDATE</button>
+				<button class="btn btn-success" id="update">UPDATE</button>
 			</div>
 		</div>
 	</div>
@@ -417,15 +417,32 @@
                 success:function(data){
                     console.log(data);
                     $("#defaultForm").val(data.comentText);
-                    $("#defaultForm").val(data.comentText);
+                    $("#idCok").val(data.id);
                 },
             });
 
             $('#modalLoginForm').modal('show');
 
         });
+
         $("#back").on('click', function(){
             $('#modalLoginForm').modal('hide');
+        });
+
+        $("#update").on('click', function(){
+            $('#modalLoginForm').modal('hide');
+            $.ajax({
+                url:"/updateBlogCommentSave",
+                type:"GET",
+                data:({id:$("#idCok").val(),text:$("#defaultForm").val()}),
+                dataType: 'json',
+                contentType: "application/json",
+                success:function(data){
+                    console.log(data);
+                    $("#defaultForm").val(data.comentText);
+                    $("#idCok").val(data.id);
+                },
+            });
         });
     });
 
