@@ -1,31 +1,30 @@
 package com.example.opentravel.model;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
 
 @Entity
-@Table(name = "likes")
+@Table(name = "liked")
 public class Likes {
     @Id
     @GeneratedValue
     @Column(name = "id")
     private long id;
-    @Column(name = "username",length = 128)
-    private String username;
-    @Column(name = "appId")
-    private long appId;
-    @Column(name = "blogID")
-    private long blogID;
+
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private Place place;
+
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private Blog blog;
+
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private User user;
 
     public Likes() {
-    }
-
-    public Likes(String username, long app_id) {
-        this.username = username;
-        this.appId = app_id;
-    }
-
-    public Likes(long blogID,String username) {
-        this.username = username;
-        this.blogID = blogID;
     }
 
     public long getId() {
@@ -36,27 +35,27 @@ public class Likes {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public Place getPlace() {
+        return place;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setPlace(Place place) {
+        this.place = place;
     }
 
-    public long getAppId() {
-        return appId;
+    public Blog getBlog() {
+        return blog;
     }
 
-    public void setAppId(long appId) {
-        this.appId = appId;
+    public void setBlog(Blog blog) {
+        this.blog = blog;
     }
 
-    public long getBlogID() {
-        return blogID;
+    public User getUser() {
+        return user;
     }
 
-    public void setBlogID(long blogID) {
-        this.blogID = blogID;
+    public void setUser(User user) {
+        this.user = user;
     }
 }
