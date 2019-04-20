@@ -138,9 +138,18 @@ public class BlogController {
     }
 
     @RequestMapping(value="/updateBlogComment",method = RequestMethod.GET,produces = "application/json")
-    public ResponseEntity<?> updateBlogComment(@RequestParam("blogId") long blogId){
-        CommentBlog commentBlog=commentBlogService.findById(blogId);
+    public ResponseEntity<?> updateBlogComment(@RequestParam("id") long id){
+        System.out.println("gdfsafdgbfdv");
+        CommentBlog commentBlog=commentBlogService.findById(id);
+        System.out.println("gfubidjod");
+        System.out.println(commentBlog);
         return ResponseEntity.ok(commentBlog);
+    }
+
+    @RequestMapping(value="/updateBlogCommentSave",method = RequestMethod.GET,produces = "application/json")
+    public ResponseEntity<?> updateBlogCommentSave(@RequestParam("id") long id,@RequestParam("text") String text){
+        commentBlogService.updateBlogComment(id,text);
+        return ResponseEntity.ok(1);
     }
 
 }
