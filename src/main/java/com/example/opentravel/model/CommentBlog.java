@@ -1,7 +1,7 @@
 package com.example.opentravel.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.sun.xml.internal.ws.developer.Serialization;
+/*import com.sun.xml.internal.ws.developer.Serialization;*/
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
