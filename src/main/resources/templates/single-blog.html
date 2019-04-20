@@ -343,6 +343,7 @@
 				<div class="md-form mb-5">
 					<label>Comment:</label>
 					<input type="text" id="defaultForm" class="form-control validate">
+					<input type="number" id="idCok" class="form-control validate" hidden="hidden">
 				</div>
 			</div>
 			<div class="modal-footer d-flex justify-content-center">
@@ -414,7 +415,9 @@
                 dataType: 'json',
                 contentType: "application/json",
                 success:function(data){
-                    console.log(data)
+                    console.log(data);
+                    $("#defaultForm").val(data.comentText);
+                    $("#defaultForm").val(data.comentText);
                 },
             });
 
