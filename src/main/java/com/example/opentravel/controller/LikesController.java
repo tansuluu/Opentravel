@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.security.Principal;
+
 
 @Controller
 @Transactional
@@ -54,4 +56,24 @@ public class LikesController {
         int likes = blogService.findById(id).getLikes();
         return ResponseEntity.ok(likes);
     }
+
+    @RequestMapping(value = "/hasPut", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<?> putedLike(@RequestParam("id") long id, @RequestParam("username") String username) {
+        int result =0 ;
+        if (likeService.existsByAppIdAndUsername(id, username)) {
+            System.out.println(likeService.existsByAppIdAndUsername(id, username)+"hererererrrrrrr");
+            result = 1;
+        }
+        return ResponseEntity.ok(result);
+    }
+
+    @RequestMapping(value = "/addLike", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<?> getLike(@RequestParam("id") long id, @RequestParam("username") String username, Principal principal) {
+        likeService.save(new Likes(username, id));
+        placeService.updateLikes(id, 1);
+        int likes = placeService.findById(id).getLikes();
+        return ResponseEntity.ok(likes);
+    }
+
+
 }
