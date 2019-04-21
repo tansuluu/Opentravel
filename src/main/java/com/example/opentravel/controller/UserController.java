@@ -45,6 +45,9 @@ public class UserController {
     @Autowired
     private PostService postService;
 
+    @Autowired
+    private FavoriteService favoriteService;
+
     @RequestMapping("/find")
     public String find(@RequestParam(name = "input", required = true) String input, Model model) {
         ArrayList<User> list = userService.findByName(input);
@@ -137,6 +140,11 @@ public class UserController {
     public ResponseEntity<?> updatePlaceCommentSave(@RequestParam("id") long id,@RequestParam("text") String text){
         postService.updatePost(id,text);
         return ResponseEntity.ok(1);
+    }
+
+    @RequestMapping("/favoriteUser")
+    public String favoriteUser(Model model){
+        favoriteService.
     }
 
 
