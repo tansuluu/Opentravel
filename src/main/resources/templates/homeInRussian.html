@@ -48,12 +48,10 @@
 					<div class="col d-flex flex-row">
 						<div class="social">
 							<ul class="social_list">
-
-								<li class="social_list_item"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-								<li class="social_list_item"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-								<li class="social_list_item"><a href="#"><i class="fa fa-vk" aria-hidden="true"></i></a></li>
-								<li class="social_list_item"><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-
+								<ul class="social_list">
+									<li class="social_list_item"><a th:href="@{/(lang=ru)}"><i  aria-hidden="true"></i><img src="images/rus.png" ></a></li>
+									<li class="social_list_item"><a th:href="@{/}"><i  aria-hidden="true"></i><img src="images/eng.png" ></a></li>
+								</ul>
 							</ul>
 						</div>
 						<div class="user_box ml-auto">
@@ -82,12 +80,11 @@
 							<ul class="main_nav_list">
 								<li class="main_nav_item"><a th:href="@{/}">Главная</a></li>
 								<li class="main_nav_item"><a th:href="@{/about}">О нас</a></li>
-								<li class="main_nav_item"><a th:href="@{/places}">Предложения</a></li>
-								<li class="main_nav_item"><a th:href="@{/blog}">Блог</a></li>
+								<li class="main_nav_item"><a th:href="@{/places}">Места</a></li>
+								<li class="main_nav_item"><a th:href="@{/blog}">Блоги</a></li>
                                 <li class="main_nav_item"><a th:href="@{/gids}">Пользователи</a></li>
 								<li class="main_nav_item"><a th:href="@{/chats}">Чат</a></li>
 								<li class="main_nav_item"><a th:href="@{/help}">Помощь</a></li>
-
 							</ul>
 						</div>
 						<div class="content_search ml-lg-0 ml-auto">
@@ -135,8 +132,8 @@
 			<ul>
 				<li class="menu_item"><a th:href="@{/}">Главная</a></li>
 				<li class="menu_item"><a th:href="@{/about}">О нас</a></li>
-				<li class="menu_item"><a th:href="@{/places}">Предложения</a></li>
-				<li class="menu_item"><a th:href="@{/blog}">Блог</a></li>
+				<li class="menu_item"><a th:href="@{/places}">Места</a></li>
+				<li class="menu_item"><a th:href="@{/blog}">Блоги</a></li>
                 <li class="main_item"><a th:href="@{/gids}">Пользователи</a></li>
                 <li class="menu_item"><a th:href="@{/chats}">Чат</a></li>
 				<li class="menu_item"><a th:href="@{/help}">Помощь</a></li>
@@ -161,9 +158,9 @@
 
 					<div class="home_slider_content text-center">
 						<div class="home_slider_content_inner" data-animation-in="flipInX" data-animation-out="animate-out fadeOut">
-							<h1 style="font-size: 45px">discover</h1>
-							<h1 style="font-size: 85px">Kyrgyzstan</h1>
-							<div class="button home_slider_button"><div class="button_bcg"></div><a th:href="@{/places}">explore now</a></div>
+							<h1 style="font-size: 45px">исследуй</h1>
+							<h1 style="font-size: 85px">КЫРГЫЗСТАН</h1>
+							<div class="button home_slider_button"><div class="button_bcg"></div><a th:href="@{/places}">СЕЙЧАС</a></div>
 						</div>
 					</div>
 				</div>
@@ -245,8 +242,8 @@
 
 						<div class="button intro_button"><div class="button_bcg"></div><a th:href="@{/blog}">подробнее</a></div>
 						<div class="intro_center text-center">
-							<h1>Взаимодействовать с местным бытом</h1>
-							<div class="intro_price">Свяжитесь с местными жителями, которые будут вести вас</div>
+							<h1>Ознакомиться с местным бытом</h1>
+							<div class="intro_price">Свяжитесь с местными жителями</div>
 
 						</div>
 					</div>
@@ -273,8 +270,6 @@
 						<div class="owl-item cta_item text-center">
 							<div class="cta_title">Добро пожаловать в Кыргызстан</div>
 							<p class="cta_text">Откройте для себя захватывающие альпийские озера и пейзажи Кыргызстана, спрятанные высоко в скалистых горных хребтах Центральной Азии. Кочевые традиции живы в этой горной нации; Возьмите частный тур по Кыргызстану с местным гидом и познакомьтесь с этим древним образом жизни. Ваш опытный личный гид знает секреты и места, которые предпочитают местные жители Кыргызстана, в том числе впечатляющий национальный парк Ала-Арча с его альпийским величием, покрытым ледником, недалеко от столицы Бишкек. Верховая езда и треккинг - отличные способы для изучения живописного озера Иссык-Кель или летних пастбищ многих кочевых скотоводов страны. Торгуйтесь по выгодным ценам в Оше, тысячелетнем базаре, расположенном вдоль легендарного Великого шелкового пути, и спите в юрте под звездами.</p>
-
-							
 						</div>
 					</div>
 				</div>
@@ -284,9 +279,7 @@
 	</div>
 
 </div>
-
 <!-- Offers -->
-
 	<section class="ftco-section testimony-section">
 		<div class="container">
 			<div class="row justify-content-center mb-5 pb-5">

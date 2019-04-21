@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.nio.file.attribute.UserPrincipal;
 import java.security.Principal;
@@ -28,33 +30,29 @@ public class MainController {
     @Autowired
     BlogService blogService;
 
-    @RequestMapping("/")
-    public String index(Model model){
+    @RequestMapping(path = "/")
+    public String index(Model model,@RequestParam(value = "lang",defaultValue = "eng", required = false) String lang){
         ArrayList list2=userService.getAllByStatus("gid");
         ArrayList list1=userService.getAllByStatus("tourist");
         ArrayList list3=(ArrayList)blogService.getTop3PlaceByOrderByView();
         model.addAttribute("gids", list2);
         model.addAttribute("tourist", list1);
         model.addAttribute("blogs", list3);
-        return "home";
+        if(lang.equals("eng")) {
+            return "home";
+        }
+        return "homeInRussian";
     }
 
-    @RequestMapping("/rn")
-    public String indexrn(Model model){
-        ArrayList list2=userService.getAllByStatus("gid");
-        ArrayList list1=userService.getAllByStatus("tourist");
-        ArrayList list3=(ArrayList)blogService.getTop3PlaceByOrderByView();
-        model.addAttribute("gids", list2);
-        model.addAttribute("tourist", list1);
-        model.addAttribute("blogs", list3);
-        return "homelnRussian";
-    }
-
-    @RequestMapping("/about")
-    public String about(){
-        return "about";
+    @RequestMapping("/about/{lang}")
+    public String about(@PathVariable("lang") String lang){
+        if(lang.equals("eng")) {
+            return "about";
+        }
+        return "aboutRus";
 
     }
+
     @RequestMapping("/help")
     public String help(){
         return "help";
