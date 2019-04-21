@@ -162,7 +162,7 @@
                             </div>
 						</div>
 						<div class="post-icons-area">
-							<ul class="post-icons" >
+							<ul class="post-icons" style="font-size: 20px">
 								<input th:value="${app.id}" type="hidden" id="placeId">
 								<input type="hidden" th:if="${#request.userPrincipal !=null}" th:value="${#request.userPrincipal.name}"  id="userName">
 								<li id="deleteLike" th:if="${#request.userPrincipal!=null}"><a style="color: red" id="dl" th:text="${' '+app.likes}" class="ion-heart"></a></li>
@@ -170,6 +170,7 @@
 								<li><a th:if="${#request.userPrincipal==null}"  th:text="${' '+app.likes}" class="ion-heart" style="color: red"></a></li>
 								<li><a href="#" class="ion-chatbubble"  th:text="${' '+comments.size()}"></a></li>
 								<li><a href="#" class="ion-eye" th:text="${' '+app.view}" ></a></li>
+								<li><a href="#" data-tooltip="ADD NEW PLACE" class="ion-star" th:text="${' '+app.view}" ></a></li>
 							</ul>
 							<ul class="icons">
 								<li>SHARE : </li>
@@ -238,7 +239,7 @@
 				<input type="hidden" th:value="${comments.size()}" id="comNumber">
 				<div class="commnets-area text-left" id="headerofcomment">
 					<div class="comment" th:each="commen: ${comments}">
-						<div class="post-info">
+						<div class="post-info" >
 							<div class="left-area">
 								<a class="avatar" href="#"><img  th:src="@{${commen.user.image}}" alt="Profile Image"></a>
 							</div>
