@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.nio.file.attribute.UserPrincipal;
@@ -28,8 +29,9 @@ public class MainController {
     @Autowired
     BlogService blogService;
 
-    @RequestMapping("/")
-    public String index(Model model){
+    @RequestMapping(path = "/{lang}")
+    public String index(Model model,@PathVariable("lang") String name){
+        System.out.println(name);
         ArrayList list2=userService.getAllByStatus("gid");
         ArrayList list1=userService.getAllByStatus("tourist");
         ArrayList list3=(ArrayList)blogService.getTop3PlaceByOrderByView();
@@ -39,20 +41,14 @@ public class MainController {
         return "home";
     }
 
-    @RequestMapping("/rn")
-    public String indexrn(Model model){
-        ArrayList list2=userService.getAllByStatus("gid");
-        ArrayList list1=userService.getAllByStatus("tourist");
-        ArrayList list3=(ArrayList)blogService.getTop3PlaceByOrderByView();
-        model.addAttribute("gids", list2);
-        model.addAttribute("tourist", list1);
-        model.addAttribute("blogs", list3);
-        return "homelnRussian";
-    }
-
     @RequestMapping("/about")
     public String about(){
         return "about";
+
+    }
+    @RequestMapping("/aboutRus")
+    public String aboutRus(){
+        return "aboutRus";
 
     }
     @RequestMapping("/help")
