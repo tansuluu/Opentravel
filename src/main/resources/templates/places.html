@@ -341,6 +341,29 @@
         var id=$("#placeId").val();
         var username=$("#userName").val();
 
+        $.ajax({
+            url: "/hasPut",
+            type: "GET",
+            data: ({id:id, username:username}),
+            dataType: 'json',
+            contentType: "application/json",
+            success: function (data) {
+                console.log(data+ " data");
+                console.log(data==1);
+                if(data==1){
+                    $("#deleteLike").show();
+                    $("#addLike").hide();
+                    console.log(data+ " show");
+                }
+                if(data==0) {
+                    $("#deleteLike").hide();
+                    $("#addLike").show();
+                }
+            },
+            error: function () {
+                console.log("not put");
+            }
+        });
 
         $("#form-submit").on("click",function(){
             console.log("here comment");
