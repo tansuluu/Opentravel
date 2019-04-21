@@ -32,6 +32,11 @@ public class Likes {
         this.user = user;
     }
 
+    public Likes(Place place, User user) {
+        this.place = place;
+        this.user = user;
+    }
+
     public long getId() {
         return id;
     }

@@ -60,8 +60,7 @@ public class LikesController {
     @RequestMapping(value = "/hasPut", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity<?> putedLike(@RequestParam("id") long id, @RequestParam("username") String username) {
         int result =0 ;
-        if (likeService.existsByAppIdAndUsername(id, username)) {
-            System.out.println(likeService.existsByAppIdAndUsername(id, username)+"hererererrrrrrr");
+        if (likeService.existsByPlaceAndUser(placeService.findById(id), userService.findUserByEmail(username))) {
             result = 1;
         }
         return ResponseEntity.ok(result);
@@ -69,11 +68,17 @@ public class LikesController {
 
     @RequestMapping(value = "/addLike", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity<?> getLike(@RequestParam("id") long id, @RequestParam("username") String username, Principal principal) {
-        likeService.save(new Likes(username, id));
+        likeService.save(new Likes(placeService.findById(id),userService.findUserByEmail(username)));
         placeService.updateLikes(id, 1);
         int likes = placeService.findById(id).getLikes();
         return ResponseEntity.ok(likes);
     }
 
-
+    @RequestMapping(value = "/deleteLike", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<?> deletLike(@RequestParam("id") long id, @RequestParam("username") String username) {
+        likeService.removeByUsernameAndAppId(username, id);
+        placeService.updateLikes(id, -1);
+        int likes = placeService.findById(id).getLikes();
+        return ResponseEntity.ok(likes);
+    }
 }
