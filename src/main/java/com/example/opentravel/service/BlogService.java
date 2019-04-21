@@ -66,4 +66,10 @@ public class BlogService {
         return save(blog);
     }
 
+    public Blog updateView(long id,int n){
+        Blog blog=findById(id);
+        blog.setView(blog.getView()+n);
+        return save(blog);
+    }
+
 }
