@@ -29,8 +29,8 @@ public class FavoriteController {
     UserService userService;
 
 
-    @RequestMapping(value = "/hasPut", method = RequestMethod.GET, produces = "application/json")
-    public ResponseEntity<?> putedLike(@RequestParam("id") long id, @RequestParam("username") String username) {
+    @RequestMapping(value = "/isFav", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<?> isFav(@RequestParam("id") long id, @RequestParam("username") String username) {
         int result =0 ;
         if (favoriteService.existsByPlaceAndUser(placeService.findById(id), userService.findUserByEmail(username))) {
             result = 1;
