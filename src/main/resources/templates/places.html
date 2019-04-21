@@ -365,6 +365,46 @@
             }
         });
 
+        $('#addLike').on('click', function() {
+            var id=$("#placeId").val();
+            var username=$("#userName").val();
+            $.ajax({
+                url: "/addLike",
+                type: "GET",
+                data: ({id:id, username:username}),
+                dataType: 'json',
+                contentType: "application/json",
+                success: funcSuccessAdd
+            });
+
+        });
+        $('#deleteLike').on('click', function() {
+            var id=$("#placeId").val();
+            var username=$("#userName").val();
+            $.ajax({
+                url: "/deleteLike",
+                type: "GET",
+                data: ({id:id, username:username}),
+                dataType: 'json',
+                contentType: "application/json",
+                success: funcSuccessDell
+            });
+        });
+
+        function funcSuccessAdd(data){
+            console.log(data);
+            $("#addLike").hide();
+            $("#dl").text(data);
+            $("#deleteLike").show();
+        };
+
+        function funcSuccessDell(data){
+            $("#ad").text(data);
+            $("#deleteLike").hide();
+            $("#addLike").show();
+        };
+
+
         $("#form-submit").on("click",function(){
             console.log("here comment");
             var text=$("#comments").val();
