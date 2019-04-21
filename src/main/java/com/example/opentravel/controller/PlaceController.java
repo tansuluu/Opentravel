@@ -99,7 +99,7 @@ public class PlaceController {
 
     @RequestMapping("/placeInfo")
     public String showApplications(Model model, @RequestParam("id")long id, Principal principal){
-        Place place=placeService.findById(id);
+        Place place=placeService.updateView(id,1);
         List<PlaceComment> placeComments=placeCommentService.findByPlace(place);
         List<Place> popular=placeService.getTop3PlaceByOrderByView();
         model.addAttribute("app",place);
@@ -129,6 +129,7 @@ public class PlaceController {
         place1.setCategory(place.getCategory());
         place1.setAddress(place.getAddress());
         placeService.save(place1);
+        placeService.updateView(place.getId(),-1);
         return "redirect:/placeInfo?id="+place.getId();
     }
 
@@ -142,6 +143,8 @@ public class PlaceController {
     @RequestMapping("/deleteComment")
     public String deleteComment(@RequestParam("id") long id, @RequestParam("placeId") long placeId){
         placeCommentService.deleteComment(id,placeService.findById(placeId));
+        placeService.updateView(placeId,-1);
+
         return "redirect:/placeInfo?id="+placeId+"#comm";
     }
 

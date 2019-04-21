@@ -72,7 +72,7 @@ public class BlogController {
     }
     @RequestMapping("/blogInfo")
     public String showApplications(Model model, @RequestParam("id")long id, Principal principal){
-        Blog blog=blogService.findById(id);
+        Blog blog=blogService.updateView(id,1);
         List<Blog> popular=blogService.getTop3PlaceByOrderByView();
         List<CommentBlog> commentBlogs=commentBlogService.findByBlog(blogService.findById(id));
         model.addAttribute("app",blog);
@@ -115,6 +115,7 @@ public class BlogController {
         blog1.setText(blog.getText());
         blog1.setCategory(blog.getCategory());
         blogService.save(blog1);
+        blogService.updateView(blog1.getId(),-1);
         return "redirect:/blogInfo?id="+blog1.getId();
     }
 
@@ -134,6 +135,7 @@ public class BlogController {
     @RequestMapping("/deleteBlogComment")
     public String deleteBlogComment(@RequestParam("id") long id, @RequestParam("blogId") long blogId){
         commentBlogService.deleteComment(id,blogService.findById(blogId));
+        blogService.updateView(blogId,-1);
         return "redirect:/blogInfo?id="+blogId+"#comm1";
     }
 
