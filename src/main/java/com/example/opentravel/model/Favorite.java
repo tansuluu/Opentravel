@@ -26,6 +26,11 @@ public class Favorite {
     public Favorite() {
     }
 
+    public Favorite(Place place, User user) {
+        this.place = place;
+        this.user = user;
+    }
+
     public long getId() {
         return id;
     }
