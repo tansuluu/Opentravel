@@ -68,4 +68,10 @@ public class PlaceService {
         place.setLikes(place.getLikes()+n);
         return save(place);
     }
+
+    public Place updateView(long id,int n){
+        Place place=findById(id);
+        place.setView(place.getView()+n);
+        return save(place);
+    }
 }
