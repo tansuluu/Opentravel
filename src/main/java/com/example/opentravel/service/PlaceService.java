@@ -62,4 +62,10 @@ public class PlaceService {
     public Page<Place> getAll(Pageable pageable){
         return placeRepository.findAll(pageable);
     }
+
+    public Place updateLikes(long id, int n){
+        Place place=findById(id);
+        place.setLikes(place.getLikes()+n);
+        return save(place);
+    }
 }

@@ -12,11 +12,11 @@ public class Likes {
     @Column(name = "id")
     private long id;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = true)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Place place;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = true)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Blog blog;
 
@@ -29,6 +29,11 @@ public class Likes {
 
     public Likes(Blog blog, User user) {
         this.blog = blog;
+        this.user = user;
+    }
+
+    public Likes(Place place, User user) {
+        this.place = place;
         this.user = user;
     }
 
