@@ -160,7 +160,7 @@
 
             <div class="home_slider_content text-center">
               <div class="home_slider_content_inner" data-animation-in="flipInX" data-animation-out="animate-out fadeOut">
-                <h1 style="font-size: 85px">Places</h1>
+                <h1 style="font-size: 85px" th:text="${favorite}">Places</h1>
               </div>
             </div>
           </div>
@@ -185,8 +185,8 @@
                 <p th:text="${places.get(i).smallText}"> </p>
                 <ul class="post-footer">
                   <li><a th:href="@{/placeInfo(id=${places.get(i).id})}"  th:text="${' '+places.get(i).likes}" class="icon-heart"></a></li>
-                  <!--<li><a th:href="@{/placeInfo(id=${places.get(i).id})}" th:text="${' '+places.get(i).comNumber}" class="icon-chat"></a></li>-->
                   <li><a th:href="@{/placeInfo(id=${places.get(i).id})}" th:text="${' '+places.get(i).view}" class="icon-eye"></a></li>
+                  <li th:if="${favorite!=null}"><a th:href="@{/deleteFavorite}" class="icon-star" style="color: orange">DELETE FROM FAVORITE</a></li>
                 </ul>
               </div>
             </div>
@@ -195,6 +195,11 @@
               <div class="text text-center order-last">
                 <a th:href="@{/placeInfo(id=${places.get(i).id})}" ><h2 class="heading" th:text="${places.get(i).title}" style="color: #0c5460"></h2></a>
                 <p th:text="${places.get(i).smallText}"> </p>
+                <ul class="post-footer">
+                  <li><a th:href="@{/placeInfo(id=${places.get(i).id})}"  th:text="${' '+places.get(i).likes}" class="icon-heart"></a></li>
+                  <li><a th:href="@{/placeInfo(id=${places.get(i).id})}" th:text="${' '+places.get(i).view}" class="icon-eye"></a></li>
+                  <li th:if="${favorite!=null}"><a th:href="@{/deleteFavorite}" class="icon-star" style="color: orange">DELETE FROM FAVORITE</a></li>
+                </ul>
               </div>
             </div>
           </div>

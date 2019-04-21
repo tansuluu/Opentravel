@@ -253,7 +253,7 @@
                                     <a sec:authorize="hasAuthority('GID')" class="load-more-btn " th:href="@{/newPlace}" data-tooltip="ADD NEW PLACE" ><i class='fas fa-atlas' style="padding: 0 6px 0 6px;"></i></a>
                                     <a sec:authorize="hasAuthority('ADMIN')" class="load-more-btn" th:href="@{/newPlace}" data-tooltip="ADD NEW PLACE"><i class='fas fa-atlas' style="padding: 0 6px 0 6px;"></i></a>
                                     <a class="load-more-btn" th:href="@{/updateUser(id=${user.id})}" data-tooltip="UPDATE PROFILE"><i class='fas fa-user-edit' style="padding: 0 6px 0 6px;"></i></a>
-                                    <a class="load-more-btn" th:href="@{/favoriteUser(id=${user.id})}" data-tooltip="FAVORITE PLACES"><i class='fas fa-star' style="padding: 0 6px 0 6px; color: orange"></i></a>
+                                    <a class="load-more-btn" th:href="@{/favoriteUser}" data-tooltip="FAVORITE PLACES"><i class='fas fa-star' style="padding: 0 6px 0 6px; color: orange"></i></a>
                                     <button class="btn btn-danger" type="button" data-toggle="modal" data-target="#myModal" data-tooltip="DELETE PROFILE"><i class='fas fa-trash' style="font-size: 18px; margin-top: 5px;" ></i></button>
 
                                 </div>

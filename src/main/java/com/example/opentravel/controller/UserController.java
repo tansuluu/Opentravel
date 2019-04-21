@@ -1,9 +1,6 @@
 package com.example.opentravel.controller;
 
-import com.example.opentravel.model.Blog;
-import com.example.opentravel.model.Place;
-import com.example.opentravel.model.Post;
-import com.example.opentravel.model.User;
+import com.example.opentravel.model.*;
 import com.example.opentravel.service.*;
 /*import javafx.geometry.Pos;*/
 
@@ -143,8 +140,13 @@ public class UserController {
     }
 
     @RequestMapping("/favoriteUser")
-    public String favoriteUser(Model model){
-        favoriteService.
+    public String favoriteUser(Model model,Principal principal){
+        List<Favorite> list=favoriteService.getByUser(userService.findUserByEmail(principal.getName()));
+        List<Favorite> list1= placeService.findFavorite(list);
+        model.addAttribute("places",list);
+        model.addAttribute("favorite","Favorite places!");
+
+        return "allPlaceS";
     }
 
 
