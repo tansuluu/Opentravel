@@ -111,6 +111,17 @@ public class PlaceCommentServiceTest {
         placeCommentService.deleteComment(placeComment.getId(), place);
     }
 
+    @Test
+    public void testUpdate(){
+        PlaceComment placeComment= new PlaceComment();
+        long id;
+        String text = "Hello World";
+        placeComment.setComentText("Hello World");
+        when(placeCommentRepositoryMock.save(placeComment)).thenReturn(placeComment);
+        assertEquals(text, placeComment.getComentText());
+    }
+
+
     @After
     public void terminate(){
         System.out.println("Terminating Test Class");
