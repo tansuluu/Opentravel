@@ -184,13 +184,13 @@
 	<div class="container">
 		<div class="row">
 			<div class="col">
-				<h2 class="intro_title text-center">Explore Find Interact.</h2>
+				<h2 class="intro_title text-center">Исследуй Находи Взаимодействуй</h2>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-lg-10 offset-lg-1">
 				<div class="intro_text text-center">
-					<p>You’ll always have fascinating places to be and friendly people to see. Our goal is to help you to find those places and people in 3 steps. </p>
+					<p>Вы всегда можете найти замечательные места для  посещения, и встретить дружелюбных людей. Наша цель - помочь вам найти эти места и людей в 3 шага. </p>
 				</div>
 			</div>
 		</div>
@@ -206,10 +206,10 @@
 					<div class="intro_item_background" style="background-image:url(images/manas.jpg)"></div>
 					<div class="intro_item_content d-flex flex-column align-items-center justify-content-center">
 
-						<div class="button intro_button"><div class="button_bcg"></div><a th:href="@{/places}">see more</a></div>
+						<div class="button intro_button"><div class="button_bcg"></div><a th:href="@{/places}">подробнее</a></div>
 						<div class="intro_center text-center">
-							<h1>Explore the country</h1>
-							<div class="intro_price">Get to know history and interesting facts </div>
+							<h1>Исследуй страну</h1>
+							<div class="intro_price">Познакомьтесь с историей и интересными фактами </div>
 
 						</div>
 					</div>
@@ -225,10 +225,10 @@
 					<div class="intro_item_background" style="background-image:url(images/SK.jpg)"></div>
 					<div class="intro_item_content d-flex flex-column align-items-center justify-content-center">
 
-						<div class="button intro_button"><div class="button_bcg"></div><a th:href="@{/places}">see more</a></div>
+						<div class="button intro_button"><div class="button_bcg"></div><a th:href="@{/places}">подробнее</a></div>
 						<div class="intro_center text-center">
-							<h1>Find out nature</h1>
-							<div class="intro_price">Learn about nature: lakes, parks, mountains</div>
+							<h1>Узнай о природе</h1>
+							<div class="intro_price">Узнайте о природе: озера, парки, горы</div>
 
 						</div>
 					</div>
@@ -243,10 +243,10 @@
 					<div class="intro_item_background" style="background-image:url(images/d.jpg)"></div>
 					<div class="intro_item_content d-flex flex-column align-items-center justify-content-center">
 
-						<div class="button intro_button"><div class="button_bcg"></div><a th:href="@{/blog}">see more</a></div>
+						<div class="button intro_button"><div class="button_bcg"></div><a th:href="@{/blog}">подробнее</a></div>
 						<div class="intro_center text-center">
-							<h1>Interact with local's life</h1>
-							<div class="intro_price">Contact with local people which will guide you</div>
+							<h1>Взаимодействовать с местным бытом</h1>
+							<div class="intro_price">Свяжитесь с местными жителями, которые будут вести вас</div>
 
 						</div>
 					</div>
@@ -271,10 +271,8 @@
 					<div class="owl-carousel owl-theme cta_slider">
 						<!-- CTA Slider Item -->
 						<div class="owl-item cta_item text-center">
-							<div class="cta_title">Welcome to Kyrgyzstan</div>
-							<p class="cta_text">Discover the spectacular alpine lakes and vistas of remote Kyrgyzstan, tucked high up in the rugged mountain ranges of Central Asia. Nomadic traditions are alive and well in this mountainous nation; take a private Kyrgyzstan tour with a local guide
-							and experience this ancient way of life firsthand. Your expert personal guide knows the best-kept secrets and places favoured by the Kyrgyz locals, including spectacular Ala-Archa National Park, with its glacier-topped alpine grandeur, not far from the capital city of Bishkek. Horse-riding and trekking are excellent ways to explore around scenic Lake Issyk-Köl, or the summer pastures
-							of the country's many nomadic herders. Haggle for bargains in Osh, a thousands-year old bazaar located along the fabled Silk Road, and sleep in a yurt under the stars.</p>
+							<div class="cta_title">Добро пожаловать в Кыргызстан</div>
+							<p class="cta_text">Откройте для себя захватывающие альпийские озера и пейзажи Кыргызстана, спрятанные высоко в скалистых горных хребтах Центральной Азии. Кочевые традиции живы в этой горной нации; Возьмите частный тур по Кыргызстану с местным гидом и познакомьтесь с этим древним образом жизни. Ваш опытный личный гид знает секреты и места, которые предпочитают местные жители Кыргызстана, в том числе впечатляющий национальный парк Ала-Арча с его альпийским величием, покрытым ледником, недалеко от столицы Бишкек. Верховая езда и треккинг - отличные способы для изучения живописного озера Иссык-Кель или летних пастбищ многих кочевых скотоводов страны. Торгуйтесь по выгодным ценам в Оше, тысячелетнем базаре, расположенном вдоль легендарного Великого шелкового пути, и спите в юрте под звездами.</p>
 
 							
 						</div>
@@ -293,8 +291,8 @@
 		<div class="container">
 			<div class="row justify-content-center mb-5 pb-5">
 				<div class="col-md-7 text-center heading-section ftco-animate">
-					<span class="subheading">GIDS</span>
-					<h2>Our local gids</h2>
+					<span class="subheading">ГИДЫ</span>
+					<h2>Наши местные гиды</h2>
 				</div>
 			</div>
 			<div class="row ftco-animate">
@@ -305,8 +303,8 @@
 							<div class="text">
 								<a th:href="@{/userPage(username=${gid.email})}" ><p class="name" th:text="${gid.name}"></p></a>
 								<p class="mb-5" th:text="${gid.aboutMe}">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-								<p class="position">Experience <i style="color: #0c5460" th:text="${gid.experience}"></i></p>
-								<p class="position">Languages: <i style="color: #0c5460" th:text="${gid.languages}"></i></p>
+								<p class="position">Опыт <i style="color: #0c5460" th:text="${gid.experience}"></i></p>
+								<p class="position">Языки: <i style="color: #0c5460" th:text="${gid.languages}"></i></p>
 							</div>
 						</div>
 					</div>
@@ -320,7 +318,7 @@
 		<div class="container">
 			<div class="row justify-content-center mb-5 pb-5">
 				<div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
-					<h2>Our offers</h2>
+					<h2>Наши предложения</h2>
 				</div>
 			</div>
 		</div>
@@ -332,18 +330,18 @@
 					<div class="block-3 d-md-flex ftco-animate">
 						<div class="image order-last" style="background-image: url(images/SK.jpg);"></div>
 						<div class="text text-center order-first">
-							<a th:href="@{/places}"><h2 class="heading">Sary Chelek</h2></a>
-							<p>Sary-Chelek is a mountain lake located in Sary-Chelek Nature Reserve in Jalal-Abad Province in Western Kyrgyzstan</p>
-							<span class="price">from $50.00</span>
+							<a th:href="@{/places}"><h2 class="heading">Сары-Челек</h2></a>
+							<p>Сары-Челек - горное озеро, расположенное в Сары-Челекском заповеднике в Джалал-Абадской области на западе Кыргызстана</p>
+							<span class="price">от $50.00</span>
 						</div>
 						
 					</div>
 					<div class="block-3 d-md-flex ftco-animate">
 						<div class="image order-first" style="background-image: url(images/sul.jpg);"></div>
 						<div class="text text-center order-first">
-							<a th:href="@{/places}"><h2 class="heading">Sulaiman-Too</h2></a>
-							<p>The Sulayman Mountain is the only World Heritage Site located entirely in the country of Kyrgyzstan</p>
-							<span class="price">from $50.00</span>
+							<a th:href="@{/places}"><h2 class="heading">Сулайман-Тоо</h2></a>
+							<p>Гора Сулайман является единственным объектом всемирного наследия, расположенным полностью в стране Кыргызстан</p>
+							<span class="price">от $50.00</span>
 						</div>
 					</div>
 				</div>
@@ -351,17 +349,17 @@
 					<div class="block-3 d-md-flex ftco-animate">
 						<div class="image order-last" style="background-image: url(images/son.jpg);"></div>
 						<div class="text text-center order-first">
-							<a th:href="@{/places}"><h2  class="heading">Son-kol</h2></a>
-							<p>Song Köl is an alpine lake in northern Naryn Province, Kyrgyzstan. It lies at an altitude of 3016 m</p>
-							<span class="price">from $60.00</span>
+							<a th:href="@{/places}"><h2  class="heading">Сон_Кель</h2></a>
+							<p>Сонг Кёль - высокогорное озеро в северной Нарынской области, Кыргызстан. Лежит на высоте 3016 м/p>
+							<span class="price">от $60.00</span>
 						</div>
 					</div>
 					<div class="block-3 d-md-flex ftco-animate">
 						<div class="image order-first" style="background-image: url(images/man.jpg);"></div>
 						<div class="text text-center order-first">
-							<a th:href="@{/places}"><h2  class="heading">Manas Ordo</h2></a>
-							<p>Legend says that Manas Ordo, in Talas Province, is the final resting place of the great warrior and Kyrgyz hero</p>
-							<span class="price">from $60.00</span>
+							<a th:href="@{/places}"><h2  class="heading">Манас Ордо</h2></a>
+							<p>Легенда гласит, что Манас Ордо в Таласской области является местом последнего упокоения великого воина и кыргызского героя</p>
+							<span class="price">от $60.00</span>
 						</div>
 					</div>
 				</div>
@@ -373,8 +371,8 @@
 		<div class="container">
 			<div class="row justify-content-center mb-5 pb-5">
 				<div class="col-md-7 text-center heading-section ftco-animate">
-					<span class="subheading">Tourists</span>
-					<h2>Our active tourists</h2>
+					<span class="subheading">Туристы</span>
+					<h2>Наши активные туристы</h2>
 				</div>
 			</div>
 			<div class="row ftco-animate">
@@ -385,8 +383,8 @@
 							<div class="text">
 								<a th:href="@{/userPage(username=${tour.email})}" ><p class="name" th:text="${tour.name}"></p></a>
 								<p class="mb-5" th:text="${tour.aboutMe}">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-								<p class="position">Country: <i style="color: #0c5460" th:text="${tour.country}"></i></p>
-								<p class="position">Languages:<i style="color: #0c5460" th:text="${tour.languages}"></i></p>
+								<p class="position">Страна: <i style="color: #0c5460" th:text="${tour.country}"></i></p>
+								<p class="position">Языки:<i style="color: #0c5460" th:text="${tour.languages}"></i></p>
 							</div>
 						</div>
 					</div>
@@ -398,8 +396,8 @@
     <div class="container">
         <div class="row justify-content-center mb-5 pb-5">
             <div class="col-md-7 text-center heading-section ftco-animate">
-                <span class="subheading">Blog</span>
-                <h2>Recent Blog</h2>
+                <span class="subheading">Блог</span>
+                <h2>Недавние блоги</h2>
             </div>
         </div>
         <div class="row ftco-animate">
