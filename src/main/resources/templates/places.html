@@ -170,7 +170,8 @@
 								<li><a th:if="${#request.userPrincipal==null}"  th:text="${' '+app.likes}" class="ion-heart" style="color: red"></a></li>
 								<li><a href="#" class="ion-chatbubble"  th:text="${' '+comments.size()}"></a></li>
 								<li><a href="#" class="ion-eye" th:text="${' '+app.view}" ></a></li>
-								<li><a href="#" data-tooltip="ADD NEW PLACE" class="ion-star" th:text="${' '+app.view}" ></a></li>
+								<li id="deleteFav" th:if="${#request.userPrincipal!=null}"><a style="color: yellow" id="f1"  class="ion-star"></a></li>
+								<li id="addFav" th:if="${#request.userPrincipal!=null}" ><a id="addF"  class="ion-star"></a></li>
 							</ul>
 							<ul class="icons">
 								<li>SHARE : </li>
@@ -405,6 +406,26 @@
             $("#addLike").show();
         };
 
+        $.ajax({
+            url: "/isFav",
+            type: "GET",
+            data: ({id:id, username:username}),
+            dataType: 'json',
+            contentType: "application/json",
+            success: function (data) {
+                if(data==1){
+                    $("#deleteLike").show();
+                    $("#addLike").hide();
+                }
+                if(data==0) {
+                    $("#deleteLike").hide();
+                    $("#addLike").show();
+                }
+            },
+            error: function () {
+                console.log("not put");
+            }
+        });
 
         $("#form-submit").on("click",function(){
             console.log("here comment");
