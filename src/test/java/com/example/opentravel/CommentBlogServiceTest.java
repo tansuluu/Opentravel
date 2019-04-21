@@ -110,6 +110,16 @@ public class CommentBlogServiceTest {
         commentBlogService.deleteComment(commentBlog.getId(), blog);
     }
 
+    @Test
+    public void testUpdate(){
+        CommentBlog commentBlog= new CommentBlog();
+        long id;
+        String text = "Hello World";
+        commentBlog.setComentText("Hello World");
+        when(commentBlogRepositoryMock.save(commentBlog)).thenReturn(commentBlog);
+        assertEquals(text, commentBlog.getComentText());
+    }
+
 
     @After
     public void terminate(){
