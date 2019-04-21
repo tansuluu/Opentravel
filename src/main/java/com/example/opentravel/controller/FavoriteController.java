@@ -44,14 +44,20 @@ public class FavoriteController {
 
 
     @RequestMapping(value = "/addFav", method = RequestMethod.GET, produces = "application/json")
-    public ResponseEntity<?> getLike(@RequestParam("id") long id, @RequestParam("username") String username) {
+    public ResponseEntity<?> addFav(@RequestParam("id") long id, @RequestParam("username") String username) {
         favoriteService.save(new Favorite(placeService.findById(id),userService.findUserByEmail(username)));
         return ResponseEntity.ok(1);
     }
 
     @RequestMapping(value = "/deleteFav", method = RequestMethod.GET, produces = "application/json")
-    public ResponseEntity<?> deletLike(@RequestParam("id") long id, @RequestParam("username") String username) {
+    public ResponseEntity<?> deleteFavorite(@RequestParam("id") long id, @RequestParam("username") String username) {
         favoriteService.removeByPlaceAndUser(placeService.findById(id), userService.findUserByEmail(username));
         return ResponseEntity.ok(1);
+    }
+
+    @RequestMapping(value = "/deleteFavorite")
+    public String  deleteFav(@RequestParam("id") long id,Principal principal) {
+        favoriteService.removeByPlaceAndUser(placeService.findById(id), userService.findUserByEmail(principal.getName()));
+        return "redirect:/favoriteUser";
     }
 }

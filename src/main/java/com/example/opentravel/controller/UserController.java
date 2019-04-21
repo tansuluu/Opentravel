@@ -1,9 +1,6 @@
 package com.example.opentravel.controller;
 
-import com.example.opentravel.model.Blog;
-import com.example.opentravel.model.Place;
-import com.example.opentravel.model.Post;
-import com.example.opentravel.model.User;
+import com.example.opentravel.model.*;
 import com.example.opentravel.service.*;
 /*import javafx.geometry.Pos;*/
 
@@ -44,6 +41,9 @@ public class UserController {
 
     @Autowired
     private PostService postService;
+
+    @Autowired
+    private FavoriteService favoriteService;
 
     @RequestMapping("/find")
     public String find(@RequestParam(name = "input", required = true) String input, Model model) {
@@ -137,6 +137,16 @@ public class UserController {
     public ResponseEntity<?> updatePlaceCommentSave(@RequestParam("id") long id,@RequestParam("text") String text){
         postService.updatePost(id,text);
         return ResponseEntity.ok(1);
+    }
+
+    @RequestMapping("/favoriteUser")
+    public String favoriteUser(Model model,Principal principal){
+        List<Favorite> list=favoriteService.getByUser(userService.findUserByEmail(principal.getName()));
+        List<Place> list1= placeService.findFavorite(list);
+        model.addAttribute("places",list1);
+        model.addAttribute("favorite","Favorite places!");
+
+        return "allPlaceS";
     }
 
 

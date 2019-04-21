@@ -7,6 +7,8 @@ import com.example.opentravel.repository.FavoriteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service("favoriteService")
 public class FavoriteService {
 
@@ -24,4 +26,9 @@ public class FavoriteService {
     public void removeByPlaceAndUser(Place place, User u){
         favoriteRepository.removeByPlaceAndUser(place,u);
     }
+
+    public List<Favorite> getByUser(User user){
+        return favoriteRepository.getByUser(user);
+    }
+
 }
