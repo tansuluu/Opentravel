@@ -1,5 +1,6 @@
 package com.example.opentravel.service;
 
+import com.example.opentravel.model.Favorite;
 import com.example.opentravel.model.Place;
 import com.example.opentravel.model.User;
 import com.example.opentravel.repository.PlaceRepository;
@@ -73,5 +74,13 @@ public class PlaceService {
         Place place=findById(id);
         place.setView(place.getView()+n);
         return save(place);
+    }
+
+    public List<Place> findFavorite(List<Favorite> f){
+        List<Place> places= new ArrayList();
+        for (Favorite favorite:f){
+            places.add(findById(favorite.getPlace().getId()));
+        }
+        return places;
     }
 }

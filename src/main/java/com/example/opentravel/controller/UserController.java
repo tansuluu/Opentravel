@@ -142,8 +142,8 @@ public class UserController {
     @RequestMapping("/favoriteUser")
     public String favoriteUser(Model model,Principal principal){
         List<Favorite> list=favoriteService.getByUser(userService.findUserByEmail(principal.getName()));
-        List<Favorite> list1= placeService.findFavorite(list);
-        model.addAttribute("places",list);
+        List<Place> list1= placeService.findFavorite(list);
+        model.addAttribute("places",list1);
         model.addAttribute("favorite","Favorite places!");
 
         return "allPlaceS";
