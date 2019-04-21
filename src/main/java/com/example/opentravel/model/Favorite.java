@@ -1,5 +1,7 @@
 package com.example.opentravel.model;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
@@ -12,14 +14,16 @@ public class Favorite {
     @GeneratedValue
     @Column(name = "id", nullable = false)
     private long id;
-    @Column(name = "placeId", length = 128)
-    private long placeId;
+
+    @ManyToOne(fetch = FetchType.EAGER, optional = true)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private Place place;
+
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private User user;
 
     public Favorite() {
-    }
-
-    public Favorite(long placeId) {
-        this.placeId = placeId;
     }
 
     public long getId() {
@@ -30,11 +34,19 @@ public class Favorite {
         this.id = id;
     }
 
-    public long getPlaceId() {
-        return placeId;
+    public Place getPlace() {
+        return place;
     }
 
-    public void setPlaceId(long placeId) {
-        this.placeId = placeId;
+    public void setPlace(Place place) {
+        this.place = place;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
