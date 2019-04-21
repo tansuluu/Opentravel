@@ -163,8 +163,8 @@
 								<a class="load-more-btn" th:href="@{/updateBlog(id=${app.id})}"><b>UPDATE THE BLOG</b></a>
 							</div>
 						</div>
-						<div class="post-icons-area">
-							<ul class="post-icons" >
+						<div class="post-icons-area" >
+							<ul class="post-icons" style="font-size:20px">
 								<input th:value="${app.id}" type="hidden" id="placeId">
 								<input type="hidden" th:if="${#request.userPrincipal !=null}" th:value="${#request.userPrincipal.name}"  id="userName">
 								<li id="deleteLike" th:if="${#request.userPrincipal!=null}"><a style="color: red" id="dl" th:text="${' '+app.likes}" class="ion-heart"></a></li>

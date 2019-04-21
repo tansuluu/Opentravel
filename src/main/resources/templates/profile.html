@@ -47,9 +47,6 @@
     <link href="folderforprofile/css/style.css" rel="stylesheet">
     <link href="folderforprofile/css/responsive.css" rel="stylesheet">
 
-
-
-
     <style>
 
         .load-more-btn {
@@ -133,8 +130,6 @@
             -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
             opacity: 1;
         }
-
-
 
     </style>
     </head>
@@ -296,23 +291,6 @@
                                         <li><a href="#" th:text="${user.gender}"></a></li>
                                         <li><a href="#"th:text="${user.email}"></a></li>
                                     </ul>
-                                <!--</div>-->
-                                <!--<div th:if="${#request.userPrincipal != null}">
-                                <div  th:if="${user.email==#request.userPrincipal.name}">
-                                    <a class="load-more-btn" th:href="@{/newBlog}"><i class='fas fa-blog' style="padding: 0 6px 0 6px;"></i></a><br>
-                                    <a sec:authorize="hasAuthority('GID')" class="load-more-btn" th:href="@{/newPlace}"><i class='fas fa-atlas' style="padding: 0 6px 0 6px;"></i></a><br>
-                                    <a sec:authorize="hasAuthority('ADMIN')" class="load-more-btn" th:href="@{/newPlace}"><i class='fas fa-atlas' style="padding: 0 6px 0 6px;"></i></a>
-                                    <a class="load-more-btn" th:href="@{/updateUser(id=${user.id})}"><i title="Update User" class='fas fa-user-edit' style="padding: 0 6px 0 6px;"></i></a><br>
-                                    <button class="btn btn-danger" style="max-width: 170px" type="button" data-toggle="modal" data-target="#myModal"><i class='fas fa-trash' style="padding: 0 6px 0 0;"></i>DELETE PROFILE</button><br>
-
-                                </div>
-                                <div th:if="${!#request.userPrincipal.getName().equals(user.email)}">
-                                    <div class="right-area" sec:authorize="hasAuthority('ADMIN')">
-                                        <a class="load-more-btn" th:href="@{/updateUser(id=${user.id})}"><b> <i class='fas fa-user-edit' style="padding: 0 6px 0 6px;"></i> UPDATE USER</b></a><br>
-                                        <button class="btn btn-danger" style="max-width: 170px" type="button" data-toggle="modal" data-target="#myModal"> <i class='fas fa-trash' style="padding: 0 6px 0 0;"></i> DELETE PROFILE</button><br>
-                                    </div>
-                                </div>
-                            </div>-->
                             </div>
                         </div>
                     </div>

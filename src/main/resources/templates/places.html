@@ -162,7 +162,7 @@
                             </div>
 						</div>
 						<div class="post-icons-area">
-							<ul class="post-icons" >
+							<ul class="post-icons" style="font-size: 20px">
 								<input th:value="${app.id}" type="hidden" id="placeId">
 								<input type="hidden" th:if="${#request.userPrincipal !=null}" th:value="${#request.userPrincipal.name}"  id="userName">
 								<li id="deleteLike" th:if="${#request.userPrincipal!=null}"><a style="color: red" id="dl" th:text="${' '+app.likes}" class="ion-heart"></a></li>
@@ -170,6 +170,8 @@
 								<li><a th:if="${#request.userPrincipal==null}"  th:text="${' '+app.likes}" class="ion-heart" style="color: red"></a></li>
 								<li><a href="#" class="ion-chatbubble"  th:text="${' '+comments.size()}"></a></li>
 								<li><a href="#" class="ion-eye" th:text="${' '+app.view}" ></a></li>
+								<li id="deleteFav" th:if="${#request.userPrincipal!=null}"><a style="color: yellow" id="f1"  class="ion-star" >DELETE FROM FAVORITE</a></li>
+								<li id="addFav" th:if="${#request.userPrincipal!=null}" ><a id="addF"  class="ion-star" >ASSIGNE TO FAVORITE</a></li>
 							</ul>
 							<ul class="icons">
 								<li>SHARE : </li>
@@ -238,7 +240,7 @@
 				<input type="hidden" th:value="${comments.size()}" id="comNumber">
 				<div class="commnets-area text-left" id="headerofcomment">
 					<div class="comment" th:each="commen: ${comments}">
-						<div class="post-info">
+						<div class="post-info" >
 							<div class="left-area">
 								<a class="avatar" href="#"><img  th:src="@{${commen.user.image}}" alt="Profile Image"></a>
 							</div>
@@ -378,6 +380,7 @@
             });
 
         });
+
         $('#deleteLike').on('click', function() {
             var id=$("#placeId").val();
             var username=$("#userName").val();
@@ -404,6 +407,64 @@
             $("#addLike").show();
         };
 
+        $.ajax({
+            url: "/isFav",
+            type: "GET",
+            data: ({id:id, username:username}),
+            dataType: 'json',
+            contentType: "application/json",
+            success: function (data) {
+                if(data==1){
+                    $("#deleteFav").show();
+                    $("#addFav").hide();
+                }
+                if(data==0) {
+                    $("#deleteFav").hide();
+                    $("#addFav").show();
+                }
+            },
+            error: function () {
+                console.log("not put");
+            }
+        });
+
+        $('#addFav').on('click', function() {
+            var id=$("#placeId").val();
+            var username=$("#userName").val();
+            $.ajax({
+                url: "/addFav",
+                type: "GET",
+                data: ({id:id, username:username}),
+                dataType: 'json',
+                contentType: "application/json",
+                success: funcSuccessAddFav
+            });
+
+        });
+
+        $('#deleteFav').on('click', function() {
+            var id=$("#placeId").val();
+            var username=$("#userName").val();
+            $.ajax({
+                url: "/deleteFav",
+                type: "GET",
+                data: ({id:id, username:username}),
+                dataType: 'json',
+                contentType: "application/json",
+                success: funcSuccessDellFav
+            });
+        });
+
+        function funcSuccessAddFav(data){
+            $("#addFav").hide();
+            $("#deleteFav").show();
+        };
+
+        function funcSuccessDellFav(data){
+            $("#ad").text(" "+data);
+            $("#deleteFav").hide();
+            $("#addFav").show();
+        };
 
         $("#form-submit").on("click",function(){
             console.log("here comment");
