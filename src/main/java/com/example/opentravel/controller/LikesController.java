@@ -76,7 +76,7 @@ public class LikesController {
 
     @RequestMapping(value = "/deleteLike", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity<?> deletLike(@RequestParam("id") long id, @RequestParam("username") String username) {
-        likeService.removeByUsernameAndAppId(username, id);
+        likeService.removeByPlaceAndUser(placeService.findById(id), userService.findUserByEmail(username));
         placeService.updateLikes(id, -1);
         int likes = placeService.findById(id).getLikes();
         return ResponseEntity.ok(likes);
