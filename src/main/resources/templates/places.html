@@ -442,6 +442,19 @@
 
         });
 
+        $('#deleteFav').on('click', function() {
+            var id=$("#placeId").val();
+            var username=$("#userName").val();
+            $.ajax({
+                url: "/deleteFav",
+                type: "GET",
+                data: ({id:id, username:username}),
+                dataType: 'json',
+                contentType: "application/json",
+                success: funcSuccessDellFav
+            });
+        });
+
         function funcSuccessAddFav(data){
             $("#addFav").hide();
             $("#deleteFav").show();
@@ -449,8 +462,8 @@
 
         function funcSuccessDellFav(data){
             $("#ad").text(" "+data);
-            $("#deleteLike").hide();
-            $("#addLike").show();
+            $("#deleteFav").hide();
+            $("#addFav").show();
         };
 
         $("#form-submit").on("click",function(){
