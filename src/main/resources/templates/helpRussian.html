@@ -230,11 +230,11 @@
                                 </ul>
                             </div>
                             <div class="user_box ml-auto">
-                                <div class="user_box_register user_box_link"><a th:if="${#request.userPrincipal !=null}" th:href="@{/logout}">Logout</a></div>
+                                <div class="user_box_register user_box_link"><a th:if="${#request.userPrincipal !=null}" th:href="@{/logout}">Выход</a></div>
                                 <div class="user_box_register user_box_link"><a th:if="${#request.userPrincipal !=null}" th:href="@{/userPage(username=${#request.userPrincipal.name})}"  th:text="${#request.userPrincipal.name}"></a></div>
 
-                                <div class="user_box_register user_box_link"><a th:if="${#request.userPrincipal == null}" th:href="@{/registration}">Register</a></div>
-                                <div class="user_box_register user_box_link"><a th:if="${#request.userPrincipal == null}" th:href="@{/login}">Login</a></div>
+                                <div class="user_box_register user_box_link"><a th:if="${#request.userPrincipal == null}" th:href="@{/registration}">Регистрация</a></div>
+                                <div class="user_box_register user_box_link"><a th:if="${#request.userPrincipal == null}" th:href="@{/login}">Вход</a></div>
                             </div>
                         </div>
                     </div>
@@ -250,13 +250,13 @@
                             </div>
                             <div class="main_nav_container ml-auto">
                                 <ul class="main_nav_list">
-                                    <li class="main_nav_item"><a th:href="@{/}">home</a></li>
-                                    <li class="main_nav_item"><a th:href="@{/about}">about us</a></li>
-                                    <li class="main_nav_item"><a th:href="@{/places}">offers</a></li>
-                                    <li class="main_nav_item"><a th:href="@{/blog}">blog</a></li>
-                                    <li class="main_nav_item"><a th:href="@{/gids}">users</a></li>
-                                    <li class="main_nav_item"><a th:href="@{/chats}">chats</a></li>
-                                    <li class="main_nav_item"><a th:href="@{/help}">help</a></li>
+                                    <li class="main_nav_item"><a th:href="@{/}">Главная</a></li>
+                                    <li class="main_nav_item"><a th:href="@{/about}">О нас</a></li>
+                                    <li class="main_nav_item"><a th:href="@{/places}">Предложения</a></li>
+                                    <li class="main_nav_item"><a th:href="@{/blog}">Блог</a></li>
+                                    <li class="main_nav_item"><a th:href="@{/gids}">Пользователи</a></li>
+                                    <li class="main_nav_item"><a th:href="@{/chats}">Чат</a></li>
+                                    <li class="main_nav_item"><a th:href="@{/help}">Помощь</a></li>
                                 </ul>
                             </div>
                             <div class="content_search ml-lg-0 ml-auto">
@@ -297,13 +297,13 @@
                 <div class="menu_close_container"><div class="menu_close"></div></div>
                 <div class="logo menu_logo"><a href="#"><img src="images/logo.png" alt=""></a></div>
                 <ul>
-                    <li class="menu_item"><a th:href="@{/}">home</a></li>
-                    <li class="menu_item"><a th:href="@{/about}">about us</a></li>
-                    <li class="menu_item"><a th:href="@{/places}">offers</a></li>
-                    <li class="menu_item"><a th:href="@{/blog}">blog</a></li>
-                    <li class="menu_item"><a th:href="@{/gids}">users</a></li>
-                    <li class="menu_item"><a th:href="@{/chats}">chats</a></li>
-                    <li class="menu_item"><a th:href="@{/help}">help</a></li>
+                    <li class="menu_item"><a th:href="@{/}">Главная</a></li>
+                    <li class="menu_item"><a th:href="@{/about}">О нас</a></li>
+                    <li class="menu_item"><a th:href="@{/places}">Предложения</a></li>
+                    <li class="menu_item"><a th:href="@{/blog}">Блог</a></li>
+                    <li class="menu_item"><a th:href="@{/gids}">Пользователи</a></li>
+                    <li class="menu_item"><a th:href="@{/chats}">Чат</a></li>
+                    <li class="menu_item"><a th:href="@{/help}">Помощь</a></li>
                 </ul>
             </div>
         </div>
@@ -324,7 +324,7 @@
                         <div class="home_slider_content text-center">
                             <div class="home_slider_content_inner" data-animation-in="flipInX" data-animation-out="animate-out fadeOut">
                                 <h1 style="font-size: 45px"></h1>
-                                <h1 style="font-size: 85px">Help for</h1>
+                                <h1 style="font-size: 85px">Помощь для</h1>
                             </div>
                         </div>
                     </div>
@@ -344,19 +344,19 @@
         <div class="panel pricing-table">
 
 
-            <div class="pricing-plan"  >
+            <div class="pricing-plan" th:if="${#request.userPrincipal == null}" >
 
                 <img src="images/tourist.png" alt="" class="pricing-img">
-                <h2 class="pricing-header">Tourist</h2>
-                <h5 style="font-size: 90%;">As a tourist you may</h5>
-                <h6 class="pages_name" > <a th:href="@{/}">On main page: </a> </h6>
+                <h2 class="pricing-header">Турист</h2>
+                <h5 style="font-size: 90%;">Как турист вы можете</h5>
+                <h6 class="pages_name" > <a th:href="@{/}">На главной странице: </a> </h6>
                 <ul class="pricing-features">
-                    <li class="pricing-features-item">read about Kyrgyzstan.</li>
-                    <li class="pricing-features-item">find out top 6 popular offers</li>
-                    <li class="pricing-features-item">find recently registered tourists.</li>
-                    <li class="pricing-features-item">find 3 recently registered guides</li>
-                    <li class="pricing-features-item">find top 3 popular blog</li>
-                    <li class="pricing-features-item">View page, with short information about features.</li>
+                    <li class="pricing-features-item">читать о Кыргызстане.</li>
+                    <li class="pricing-features-item">узнать 6 лучших популярных предложений</li>
+                    <li class="pricing-features-item">найти недавно зарегистрированных туристов.</li>
+                    <li class="pricing-features-item">найти 3 недавно зарегистрированных гида</li>
+                    <li class="pricing-features-item">найти топ 3 популярного блога</li>
+                    <li class="pricing-features-item">Просмотр страницы с краткой информацией о функциях.</li>
 
                 </ul>
                 <h6 class="pages_name"><a th:href="@{/about}"> On about  page: </a></h6>
@@ -402,7 +402,7 @@
 
             </div>
 
-            <div class="pricing-plan" >
+            <div class="pricing-plan" th:if="${#request.userPrincipal == null}" >
                 <img src="images/guest2.png" alt="" class="pricing-img">
                 <h2 class="pricing-header">Guest</h2>
                 <h5 style="font-size: 90%;">As a guest you may</h5>
@@ -445,7 +445,7 @@
                 </ul>
             </div >
 
-            <div class="pricing-plan"  >
+            <div class="pricing-plan" th:if="${#request.userPrincipal == null}" >
 
                 <img src="images/guides.png" alt="" class="pricing-img">
                 <h2 class="pricing-header">Guide</h2>
@@ -528,13 +528,13 @@
                     <div class="footer_nav_container d-flex flex-row align-items-center justify-content-lg-end">
                         <div class="footer_nav">
                             <ul class="footer_nav_list">
-                                <li class="footer_nav_item"><a th:href="@{/}">home</a></li>
-                                <li class="footer_nav_item"><a th:href="@{/about}">about us</a></li>
-                                <li class="footer_nav_item"><a th:href="@{/places}">offers</a></li>
-                                <li class="footer_nav_item"><a th:href="@{/blod}">blog</a></li>
-                                <li class="footer_nav_item"><a th:href="@{/gids}">users</a></li>
-                                <li class="footer_nav_item"><a th:href="@{/chats}">chats</a></li>
-                                <li class="footer_nav_item"><a th:href="@{/help}">help</a></li>
+                                <li class="footer_nav_item"><a th:href="@{/}">Главная</a></li>
+                                <li class="footer_nav_item"><a th:href="@{/about}">О нас</a></li>
+                                <li class="footer_nav_item"><a th:href="@{/places}">Предложения</a></li>
+                                <li class="footer_nav_item"><a th:href="@{/blod}">Блог</a></li>
+                                <li class="footer_nav_item"><a th:href="@{/gids}">Пользователи</a></li>
+                                <li class="footer_nav_item"><a th:href="@{/chats}">Чат</a></li>
+                                <li class="footer_nav_item"><a th:href="@{/help}">Помощь</a></li>
                             </ul>
                         </div>
                     </div>
