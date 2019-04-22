@@ -135,6 +135,8 @@
           <li class="menu_item"><a th:href="@{/places}">offers</a></li>
           <li class="menu_item"><a th:href="@{/blog}">blog</a></li>
           <li class="menu_item"><a th:href="@{/gids}">users</a></li>
+          <li sec:authorize="!hasAuthority('ADMIN')" class="main_nav_item"><a th:href="@{/help}">help</a></li>
+          <li sec:authorize="hasAuthority('ADMIN')" class="main_nav_item"><a th:href="@{/admin}">admin</a></li>
         </ul>
       </div>
     </div>

@@ -90,7 +90,7 @@
                                                 <td th:text="${user.author.email}"></td>
                                                 <td ><img th:src="@{${'/image/'+user.photo1}}" style="max-width: 70%"></td>
                                                 <td class="button"><a th:href="@{/deleteApp(id=${user.id})}" >Delete</a></td>
-                                                <td class="button"><a th:href="@{/updateBlog(id=${app.id})}">Update</a></td>
+                                                <td class="button"><a th:href="@{/updateBlog(id=${user.id})}">Update</a></td>
                                             </tr>
                                         </tbody>
                                     </table>
