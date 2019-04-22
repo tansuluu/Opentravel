@@ -39,7 +39,7 @@ public class AdminController {
 
     @RequestMapping("/adminBlogs")
     public String adminBlogs(Model model){
-        model.addAttribute("places",blogService.getAll());
+        model.addAttribute("blogs",blogService.getAll());
         return "adminBlogs";
     }
 }
