@@ -1,0 +1,591 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Profile</title>
+
+
+
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+
+    <!-- Icon css link -->
+    <link href="folderforprofile/vendors/material-icon/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="folderforprofile/css/font-awesome.min.css" rel="stylesheet">
+    <link href="folderforprofile/vendors/linears-icon/style.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" th:href="@{/folderforindex/css/bootstrap.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/folderforindex/css/ionicons.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/folderforindex/css/style.css}" />
+    <link rel="stylesheet" type="text/html" th:href="@{/folderforindex/css/responsive.css}" />
+
+    <link rel="stylesheet" href="folderforprofile/css/colors/default.css" title="default">
+    <link rel="alternate stylesheet" href="folderforprofile/css/colors/orange.css" title="orange">
+    <link rel="alternate stylesheet" href="folderforprofile/css/colors/pink.css" title="pink">
+    <link rel="alternate stylesheet" href="folderforprofile/css/colors/violet.css" title="violet">
+    <link rel="alternate stylesheet" href="folderforprofile/css/colors/blue.css" title="blue">
+    <link rel="alternate stylesheet" href="folderforprofile/css/colors/past.css" title="past">
+    <link rel="stylesheet" type="text/css" href="folderforindex/styles/bootstrap4/bootstrap.min.css">
+    <link href="folderforindex/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="folderforindex/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="folderforindex/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+    <link rel="stylesheet" type="text/css" href="folderforindex/plugins/OwlCarousel2-2.2.1/animate.css">
+    <link rel="stylesheet" type="text/css" href="folderforindex/styles/main_styles.css">
+    <link rel="stylesheet" type="text/css" href="folderforindex/styles/responsive.css">
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link href="folderforprofile/css/bootstrap.min.css" rel="stylesheet">
+    <link href="folderforprofile/vendors/owl-carousel/assets/owl.carousel.css" rel="stylesheet">
+    <link href="folderforprofile/vendors/animate-css/animate.css" rel="stylesheet">
+    <link href="folderforprofile/css/style.css" rel="stylesheet">
+    <link href="folderforprofile/css/responsive.css" rel="stylesheet">
+
+    <style>
+
+        .load-more-btn {
+            padding-top: 5px;
+            font-size: 18px;
+            border: 1px solid #677fb5;
+            border-radius: 5px;
+            text-align: center;
+            height: 40px;
+            width: 40px;
+            margin-right: 20px;
+        }
+
+
+
+
+
+        /*Tooltip */
+
+        /**
+ * Tooltip Styles
+ */
+
+        /* Add this attribute to the element that needs a tooltip */
+        [data-tooltip] {
+            position: relative;
+            z-index: 2;
+            cursor: pointer;
+        }
+
+        /* Hide the tooltip content by default */
+        [data-tooltip]:before,
+        [data-tooltip]:after {
+            visibility: hidden;
+            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* Position tooltip above the element */
+        [data-tooltip]:before {
+            position: absolute;
+            bottom: 110%;
+            left: 50%;
+            margin-bottom: 5px;
+            margin-left: -80px;
+            padding: 7px;
+            width: 160px;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+            background-color: #000;
+            background-color: hsla(0, 0%, 20%, 0.9);
+            color: #fff;
+            content: attr(data-tooltip);
+            text-align: center;
+            font-size: 14px;
+            line-height: 1.2;
+        }
+
+        /* Triangle hack to make tooltip look like a speech bubble */
+        [data-tooltip]:after {
+            position: absolute;
+            bottom: 110%;
+            left: 50%;
+            margin-left: -5px;
+            width: 0;
+            border-top: 5px solid #000;
+            border-top: 5px solid hsla(0, 0%, 20%, 0.9);
+            border-right: 5px solid transparent;
+            border-left: 5px solid transparent;
+            content: " ";
+            font-size: 0;
+            line-height: 0;
+        }
+
+        /* Show tooltip content on hover */
+        [data-tooltip]:hover:before,
+        [data-tooltip]:hover:after {
+            visibility: visible;
+            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+            opacity: 1;
+        }
+
+    </style>
+</head>
+
+<body class="light_bg" data-spy="scroll" data-target="#bs-example-navbar-collapse-1" data-offset="80" data-scroll-animation="true">
+<header class="header">
+
+    <!-- Top Bar -->
+
+    <div class="top_bar">
+        <div class="container">
+            <div class="row">
+                <div class="col d-flex flex-row">
+                    <div class="social">
+                        <ul class="social_list">
+
+                            <li class="social_list_item"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                            <li class="social_list_item"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                            <li class="social_list_item"><a href="#"><i class="fa fa-vk" aria-hidden="true"></i></a></li>
+                            <li class="social_list_item"><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+
+                        </ul>
+                    </div>
+                    <div class="user_box ml-auto">
+                        <div class="user_box_register user_box_link"><a th:if="${#request.userPrincipal != null}" th:href="@{/logout}">Logout</a></div>
+                        <div class="user_box_register user_box_link"><a th:if="${#request.userPrincipal != null}" th:href="@{/userPage(username=${#request.userPrincipal.name})}"  th:text="${#request.userPrincipal.name}"></a></div>
+                        <div class="user_box_register user_box_link"><a th:if="${#request.userPrincipal == null}" th:href="@{/registration}">Register</a></div>
+                        <div class="user_box_register user_box_link"><a th:if="${#request.userPrincipal == null}" th:href="@{/login}">Login</a></div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation -->
+
+    <nav class="main_nav">
+        <div class="container">
+            <div class="row">
+                <div class="col main_nav_col d-flex flex-row align-items-center justify-content-start">
+                    <div class="logo_container">
+                        <div class="logo"><a th:href="@{/}"><img src="" alt="">opentravel</a></div>
+                    </div>
+                    <div class="main_nav_container ml-auto">
+                        <ul class="main_nav_list">
+                            <li class="main_nav_item"><a th:href="@{/}">home</a></li>
+                            <li class="main_nav_item"><a th:href="@{/about}">about us</a></li>
+                            <li class="main_nav_item"><a th:href="@{/places}">offers</a></li>
+                            <li class="main_nav_item"><a th:href="@{/blog}">blog</a></li>
+                            <li class="main_nav_item"><a th:href="@{/gids}">users</a></li>
+                            <li class="main_nav_item"><a th:href="@{/chats}">chats</a></li>
+                            <li class="main_nav_item"><a th:href="@{/help}">help</a></li>
+                        </ul>
+                    </div>
+                    <div class="content_search ml-lg-0 ml-auto">
+                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"  x="0px" y="0px"
+                             width="17px" height="17px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+								<g>
+									<g>
+										<g>
+											<path class="mag_glass" fill="#FFFFFF" d="M78.438,216.78c0,57.906,22.55,112.343,63.493,153.287c40.945,40.944,95.383,63.494,153.287,63.494
+											s112.344-22.55,153.287-63.494C489.451,329.123,512,274.686,512,216.78c0-57.904-22.549-112.342-63.494-153.286
+											C407.563,22.549,353.124,0,295.219,0c-57.904,0-112.342,22.549-153.287,63.494C100.988,104.438,78.439,158.876,78.438,216.78z
+											M119.804,216.78c0-96.725,78.69-175.416,175.415-175.416s175.418,78.691,175.418,175.416
+											c0,96.725-78.691,175.416-175.416,175.416C198.495,392.195,119.804,313.505,119.804,216.78z"/>
+										</g>
+									</g>
+                                    <g>
+										<g>
+											<path class="mag_glass" fill="#FFFFFF" d="M6.057,505.942c4.038,4.039,9.332,6.058,14.625,6.058s10.587-2.019,14.625-6.058L171.268,369.98
+											c8.076-8.076,8.076-21.172,0-29.248c-8.076-8.078-21.172-8.078-29.249,0L6.057,476.693
+											C-2.019,484.77-2.019,497.865,6.057,505.942z"/>
+										</g>
+									</g>
+								</g>
+							</svg>
+                    </div>
+
+                    <form id="search_form" class="search_form bez_1">
+                        <input type="search" class="search_content_input bez_1">
+                    </form>
+
+                    <div class="hamburger">
+                        <i class="fa fa-bars trans_200"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+</header>
+
+<div class="menu trans_500" >
+    <div class="menu_content d-flex flex-column align-items-center justify-content-center text-center">
+        <div class="menu_close_container"><div class="menu_close"></div></div>
+        <div class="logo menu_logo"><a href="#"><img src="images/logo.png" alt=""></a></div>
+        <ul>
+            <li class="menu_item"><a th:href="@{/}">home</a></li>
+            <li class="menu_item"><a th:href="@{/about}">about us</a></li>
+            <li class="menu_item"><a th:href="@{/places}">offers</a></li>
+            <li class="menu_item"><a th:href="@{/blog}">blog</a></li>
+            <li class="menu_item"><a th:href="@{/gids}">users</a></li>
+        </ul>
+    </div>
+</div>
+<!--================Total container Area =================-->
+<div class="container main_container" th:object="${user}">
+    <div class="content_inner_bg row m0">
+        <section class="about_person_area pad" style="padding-top: 140px" id="about">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="person_img">
+                        <img th:src="@{${user.image}}"alt="">
+                    </div><br>
+
+                    <div th:if="${#request.userPrincipal != null}" >
+                        <div  th:if="${user.email==#request.userPrincipal.name}" style="display: inline-block;" >
+
+                            <a class="load-more-btn" th:href="@{/newBlog}" data-tooltip="НОВЫЙ БЛОГ"><i class='fas fa-blog' style="padding: 0 6px 0 6px;"></i></a>
+                            <a sec:authorize="hasAuthority('GID')" class="load-more-btn " th:href="@{/newPlace}" data-tooltip="ДОБАВИТЬ НОВОЕ МЕСТО" ><i class='fas fa-atlas' style="padding: 0 6px 0 6px;"></i></a>
+                            <a sec:authorize="hasAuthority('ADMIN')" class="load-more-btn" th:href="@{/newPlace}" data-tooltip="ДОБАВИТЬ НОВОЕ МЕСТО"><i class='fas fa-atlas' style="padding: 0 6px 0 6px;"></i></a>
+                            <a class="load-more-btn" th:href="@{/updateUser(id=${user.id})}" data-tooltip="ОБНОВИТЬ ПРОФИЛЬ"><i class='fas fa-user-edit' style="padding: 0 6px 0 6px;"></i></a>
+                            <a class="load-more-btn" th:href="@{/favoriteUser}" data-tooltip="ПОНРАВИВШИЕСЯ МЕСТА"><i class='fas fa-star' style="padding: 0 6px 0 6px; color: orange"></i></a>
+                            <button class="btn btn-danger" type="button" data-toggle="modal" data-target="#myModal" data-tooltip="УДАЛИТЬ ПРОФИЛЬ"><i class='fas fa-trash' style="font-size: 18px; margin-top: 5px;" ></i></button>
+
+                        </div>
+                        <div th:if="${!#request.userPrincipal.getName().equals(user.email)}">
+                            <div class="right-area" sec:authorize="hasAuthority('ADMIN')">
+                                <a class="load-more-btn" th:href="@{/updateUser(id=${user.id})}"><b> <i class='fas fa-user-edit' style="padding: 0 6px 0 6px;"></i> ОБНОВИТЬ ПРОФИЛЬ</b></a><br>
+                                <button class="btn btn-danger" style="max-width: 170px" type="button" data-toggle="modal" data-target="#myModal"> <i class='fas fa-trash' style="padding: 0 6px 0 0;"></i> УДАЛИТЬ ПРОФИЛЬ</button><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <div class="row person_details">
+                        <div th:if="${#request.userPrincipal != null}">
+                            <h3 th:if="${user.email!=#request.userPrincipal.name}">Привет! Я <span th:text="${user.name}"></span></h3>
+                            <h3 th:if="${user.email==#request.userPrincipal.name}">Привет <span th:text="${user.name}"></span></h3>
+                        </div>
+                        <div th:if="${#request.userPrincipal== null}">
+                            <h3>Hi I'm<span th:text="${user.name}"></span></h3>
+                        </div>
+                        <p th:text="${user.aboutMe}" style="width: 100%"></p>
+                        <div class="person_information">
+                            <ul>
+                                <li><a href="#">Возраст</a></li>
+                                <li><a href="#">Язык</a></li>
+                                <li><a href="#">Страна</a></li>
+                                <li th:if="${user.experience!=''}"><a th:if="${user.experience!=''}" href="#">Опыт</a></li>
+                                <li><a href="#">Пол</a></li>
+                                <li><a href="#">Email</a></li>
+                            </ul>
+                            <ul>
+                                <li><a href="#" th:text="${user.age}">24</a></li>
+                                <li><a href="#"th:text="${user.languages}"></a></li>
+                                <li><a href="#" th:text="${user.country}">Кырзгызстан</a></li>
+                                <li th:if="${user.experience!=''}"><a th:if="${user.experience!=''}"  href="#" th:text="${user.experience}"></a></li>
+                                <li><a href="#" th:text="${user.gender}"></a></li>
+                                <li><a href="#"th:text="${user.email}"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="recomended-area section">
+            <h2 style="color: #0c5460; padding-bottom: 20px; font-family: 'Maven Pro', sans-serif " th:text="${places.size()+' - ' + user.email+' места'}"></h2>
+            <div class="container" >
+                <div class="row">
+                    <div class="col-lg-4 col-md-6" th:each="app1:${places}">
+                        <div class="card h-100">
+                            <div class="single-post post-style-1">
+                                <div class="blog-image"><img th:if="${app1.getPhoto1()}!=null" th:src="@{${'/image/'+app1.photo1}}" alt="Фото блога"></div>
+                                <div class="blog-info">
+                                    <h4 class="title"><a th:href="@{/placeInfo(id=${app1.id})}" ><b th:text="${app1.title}"></b></a></h4>
+
+                                </div><!-- blog-info -->
+                            </div><!-- single-post -->
+                        </div><!-- card -->
+                    </div><!-- col-md-6 col-sm-12 -->
+                </div><!-- row -->
+
+            </div><!-- container -->
+        </section>
+        <section class="recomended-area section">
+            <h2 style="color: #0c5460; padding-bottom: 20px; font-family: 'Maven Pro', sans-serif " th:text="${blogs.size()+' - '+ user.email+' блоги'}"></h2>
+            <div class="container" >
+                <div class="row">
+                    <div class="col-lg-4 col-md-6" th:each="app1:${blogs}">
+                        <div class="card h-100">
+                            <div class="single-post post-style-1">
+                                <div class="blog-image"><img th:if="${app1.getPhoto1()}!=null" th:src="@{${'/image/'+app1.photo1}}" alt="Фото блога"></div>
+                                <div class="blog-info">
+                                    <h4 class="title"><a th:href="@{/blogInfo(id=${app1.id})}" ><b th:text="${app1.title}"></b></a></h4>
+
+                                </div><!-- blog-info -->
+                            </div><!-- single-post -->
+                        </div><!-- card -->
+                    </div><!-- col-md-6 col-sm-12 -->
+                </div><!-- row -->
+
+            </div><!-- container -->
+        </section>
+        <section class="comment-section center-text">
+            <div class="container" id="postt">
+                <h4><b th:if="${#request.userPrincipal != null}">Написать пост</b></h4>
+                <h4><b th:if="${#request.userPrincipal == null}">Что-бы написать пост, <a th:href="@{/login}">войдите в систему</a></b></h4>
+                <div class="row">
+
+                    <div class="col-lg-2 col-md-0"></div>
+
+                    <div class="col-lg-8 col-md-12"   >
+                        <div class="comment-form" th:if="${#request.userPrincipal != null}">
+                            <form>
+                                <div class="row">
+                                    <a class="name" href="#"><b th:text="${'Написать пост как '+#request.userPrincipal.name}"></b></a>
+                                    <div class="col-sm-12">
+                                        <input type="hidden" th:value="${user.getEmail()}" id="userID">
+                                        <textarea id="comments" rows="2" class="text-area-messge form-control" placeholder="Напишите ваш комментарий"></textarea >
+                                    </div><!-- col-sm-12 -->
+                                    <div class="col-sm-12">
+                                        <button class="submit-btn" type="button" id="form-submit"><b>Запостить</b></button>
+                                    </div><!-- col-sm-12 -->
+
+                                </div><!-- row -->
+                            </form>
+                        </div><!-- comment-form -->
+                        <div class="commnets-area text-left" id="postarea">
+
+                            <div class="comment" th:each="post: ${posts}">
+
+                                <div class="post-info">
+
+                                    <div class="left-area">
+                                        <a class="avatar" href="#"><img th:src="@{${post.writer.image}}" alt="Фото профиля"></a>
+                                    </div>
+
+                                    <div class="middle-area">
+                                        <a class="name" th:href="@{/userPage(username=${post.writer.email})}"><b th:text="${post.writer.email}"></b></a>
+                                        <h6 class="date" th:text="${'on '+post.dateCom}"></h6>
+                                    </div>
+                                    <div class="right-area" sec:authorize="hasAuthority('ADMIN')">
+                                        <a th:href="@{/deletePost(id=${post.id},username=${post.user.getEmail()})}" style="font-size: 22px; color: red "><i class="fa fa-trash"></i></a>
+                                        <a style="font-size: 22px; color: blue " class="blogsCom" ><i th:id="${post.id}" class="fa fa-edit"></i></a>
+
+                                    </div>
+                                    <div th:if="${#request.userPrincipal!=null}" sec:authorize="!hasAuthority('ADMIN')">
+                                        <div class="right-area" th:if="${#request.userPrincipal.name==post.writer.email}">
+                                            <a th:href="@{/deletePost(id=${post.id},username=${post.user.getEmail()})}" style="font-size: 22px; color: red "><i class="fa fa-trash"></i></a>
+                                            <a style="font-size: 22px; color: blue " class="blogsCom" ><i th:id="${post.id}" class="fa fa-edit"></i></a>
+
+                                        </div>
+                                    </div>
+
+                                </div><!-- post-info -->
+
+                                <p th:text="${post.postText}"></p>
+
+                            </div>
+                        </div>
+
+
+                    </div><!-- col-lg-8 col-md-12 -->
+
+                </div><!-- row -->
+
+            </div><!-- container -->
+        </section>
+    </div>
+</div>
+<div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 order-lg-1 order-2  ">
+                <div class="copyright_content d-flex flex-row align-items-center">
+                    <div><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This project is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by Brigada
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></div>
+                </div>
+            </div>
+            <div class="col-lg-9 order-lg-2 order-1">
+                <div class="footer_nav_container d-flex flex-row align-items-center justify-content-lg-end">
+                    <div class="footer_nav">
+                        <ul class="footer_nav_list">
+                            <li class="footer_nav_item"><a th:href="@{/}">home</a></li>
+                            <li class="footer_nav_item"><a th:href="@{/about}">about us</a></li>
+                            <li class="footer_nav_item"><a th:href="@{/places}">offers</a></li>
+                            <li class="footer_nav_item"><a th:href="@{/blod}">blog</a></li>
+                            <li class="footer_nav_item"><a th:href="@{/gids}">users</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <b class="modal-title">Confirmation</b>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure about deleting data?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-danger btn-ok" th:href="@{/deleteUser(id=${user.id})}" >Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h4 class="modal-title w-100 font-weight-bold">UPDATE POST</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body mx-3">
+                <div class="md-form mb-5">
+                    <label>POST:</label>
+                    <input type="text" id="defaultForm" class="form-control validate">
+                    <input type="number" id="idCok" class="form-control validate" hidden="hidden">
+                </div>
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+                <button class="btn btn-default" id="back">BACK</button>
+                <button class="btn btn-success" id="update">UPDATE</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function() {
+        console.log("here ready");
+        $("#form-submit").on("click", function () {
+            console.log("here post");
+            var text = $("#comments").val();
+            var id = $("#userID").val();
+            if (text != null && text != "" && text != " ") {
+                $.ajax({
+                    url: "/newPost",
+                    type: "GET",
+                    data: ({post: text, username: id}),
+                    dataType: 'json',
+                    contentType: "application/json",
+                    success: funcSuccessAddPost
+                });
+            }
+        });
+        function funcSuccessAddPost(data) {
+            console.log(data);
+            var comment='<div class="comment">' +
+                '<div class="post-info">' +
+                '<div class="left-area">' +
+                '<a class="avatar" href="#"><img  src="'+data.writer.image+'" alt="Profile Image"></a>' +
+                '</div>\n' +
+                '<div class="middle-area">\n' +
+                '<a class="name"><b style="color: black">'+data.writer.email+'</b></a>' +
+                '<h6 class="date">on '+data.dateCom+'</h6>' +
+                '</div>\n' +
+                '</div>' +
+                '<p>'+data.postText+'</p>\n' +
+                '</div>';
+            $("#postarea").append(comment);
+            console.log(comment);
+            $("#comments").val("");
+        }
+        $(".blogsCom").on('click', function(event){
+            console.log(event.target.id);
+            $.ajax({
+                url:"/updatePost",
+                type:"GET",
+                data:({id:event.target.id}),
+                dataType: 'json',
+                contentType: "application/json",
+                success:function(data){
+                    console.log(data);
+                    $("#defaultForm").val(data.postText);
+                    $("#idCok").val(data.id);
+                },
+            });
+
+            $('#modalLoginForm').modal('show');
+
+        });
+
+        $("#back").on('click', function(){
+            $('#modalLoginForm').modal('hide');
+        });
+
+        $("#update").on('click', function() {
+            $('#modalLoginForm').modal('hide');
+            if ($("#defaultForm").val() != " " && $("#defaultForm").val() != "") {
+                $.ajax({
+                    url: "/updatePostSave",
+                    type: "GET",
+                    data: ({id: $("#idCok").val(), text: $("#defaultForm").val()}),
+                    dataType: 'json',
+                    contentType: "application/json",
+                    success: function (data) {
+                        document.location.reload(true);
+                    },
+                });
+            }
+        });
+
+    });
+</script>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="folderforprofile/js/jquery-2.1.4.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="folderforprofile/js/bootstrap.min.js"></script>
+<!-- Extra plugin js -->
+<script src="folderforprofile/vendors/counter-up/waypoints.min.js"></script>
+<script src="folderforprofile/vendors/counter-up/jquery.counterup.min.js"></script>
+<script src="folderforprofile/vendors/isotope/imagesloaded.pkgd.min.js"></script>
+<script src="folderforprofile/vendors/isotope/isotope.pkgd.min.js"></script>
+<script src="folderforprofile/vendors/owl-carousel/owl.carousel.min.js"></script>
+
+<script src="folderforprofile/vendors/style-switcher/styleswitcher.js"></script>
+<script src="folderforprofile/vendors/style-switcher/switcher-active.js"></script>
+
+<script src="folderforprofile/vendors/animate-css/wow.min.js"></script>
+
+<!--gmaps Js-->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
+<script src="folderforprofile/js/gmaps.min.js"></script>
+
+<!-- contact js -->
+<script src="folderforprofile/js/jquery.form.js"></script>
+<script src="folderforprofile/js/jquery.validate.min.js"></script>
+<script src="folderforprofile/js/contact.js"></script>
+
+<script src="folderforprofile/js/theme.js"></script>
+<script src="folderforindex/js/jquery-3.2.1.min.js"></script>
+<script src="folderforindex/styles/bootstrap4/popper.js"></script>
+<script src="folderforindex/styles/bootstrap4/bootstrap.min.js"></script>
+<script src="folderforindex/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+<script src="folderforindex/plugins/easing/easing.js"></script>
+<script src="folderforindex/js/custom.js"></script>
+<script src="folderforindex/common-js/jquery-3.1.1.min.js"></script>
+
+<script src="folderforindex/common-js/tether.min.js"></script>
+
+<script src="folderforindex/common-js/bootstrap.js"></script>
+
+<script src="folderforindex/common-js/scripts.js"></script>
+</body>
+</html>

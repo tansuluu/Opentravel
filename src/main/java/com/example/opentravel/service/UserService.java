@@ -61,10 +61,14 @@ public class UserService {
     public ArrayList<User> getAllByStatus(String status){
         ArrayList<User> list=(ArrayList<User>)userRepository.getAllByStatus(status);
         ArrayList<User> finalist=new ArrayList<>();
+        if(!list.isEmpty() && list.size()>2){
         finalist.add(list.get(0));
         finalist.add(list.get(1));
         finalist.add(list.get(2));
         return finalist;
+        }
+
+        return list;
     }
     public ArrayList<User> getAll()
     {
