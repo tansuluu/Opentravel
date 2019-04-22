@@ -62,6 +62,13 @@ public class MainController {
 
     }
 
+    @RequestMapping("/userrr")
+    public String rr(){
+
+        return "adminUsers";
+
+    }
+
     @RequestMapping("/gids")
     public String gid(Model model,@RequestParam(value = "lang",defaultValue = "eng", required = false) String lang){
         ArrayList<User> list=userService.getAll();
