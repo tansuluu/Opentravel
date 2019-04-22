@@ -33,7 +33,7 @@ public class AdminController {
 
     @RequestMapping("/adminPlaces")
     public String adminPlaces(Model model){
-        model.addAttribute("users",userService.getAll());
-        return "adminUsers";
+        model.addAttribute("places",placeService.getAll());
+        return "adminPlaces";
     }
 }

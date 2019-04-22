@@ -77,20 +77,20 @@
                                     <table width="100%" class="display" id="example">
                                         <thead>
                                             <tr>
-                                                <th>Full name</th>
-                                                <th>Email</th>
+                                                <th>Title</th>
+                                                <th>Author</th>
                                                 <th>Image</th>
                                                 <th></th>
                                                 <th></th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr th:each="user:${users}">
-                                                <td th:text="${user.name}"></td>
-                                                <td th:text="${user.email}"></td>
-                                                <td ><img th:src="@{${user.image}}" style="max-width: 70%"></td>
-                                                <td class="button"><a th:href="@{/deleteUser(id=${user.id})}">Delete</a></td>
-                                                <td class="button"><a th:href="@{/updateUser(id=${user.id})}">Update</a></td>
+                                            <tr th:each="user:${places}">
+                                                <td th:text="${user.title}"></td>
+                                                <td th:text="${user.author.email}"></td>
+                                                <td ><img th:src="@{${user.photo1}}" style="max-width: 70%"></td>
+                                                <td class="button"><a th:href="@{/deleteAppP(id=${user.id})}">Delete</a></td>
+                                                <td class="button"><a th:href="@{/updateApp(id=${user.id})}">Update</a></td>
                                             </tr>
                                         </tbody>
                                     </table>
