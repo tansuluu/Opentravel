@@ -25,4 +25,12 @@ public class AdminController {
 
         return "adminUsers";
     }
+
+    @RequestMapping("/adminPlaces")
+    public String admin(Model model){
+        model.addAttribute("users",userService.getAll());
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+        return "adminUsers";
+    }
 }

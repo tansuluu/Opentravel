@@ -1,0 +1,146 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Travelling project">
+
+    <!-- Title Page-->
+    <title>Admin</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <!-- Fontfaces CSS-->
+    <link href="folderforadmin/css/font-face.css" rel="stylesheet" media="all">
+    <link href="folderforadmin/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="folderforadmin/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+    <link href="folderforadmin/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+
+    <!-- Bootstrap CSS-->
+    <link href="folderforadmin/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+
+    <!-- Vendor CSS-->
+    <link href="folderforadmin/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
+    <link href="folderforadmin/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+    <link href="folderforadmin/vendor/wow/animate.css" rel="stylesheet" media="all">
+    <link href="folderforadmin/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+    <link href="folderforadmin/vendor/slick/slick.css" rel="stylesheet" media="all">
+    <link href="folderforadmin/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="folderforadmin/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="folderforadmin/css/theme.css" rel="stylesheet" media="all">
+
+    <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
+</head>
+
+<body class="animsition">
+    <div class="page-wrapper">
+
+        <!-- MENU SIDEBAR-->
+        <aside class="menu-sidebar d-none d-lg-block">
+            <div class="logo">
+                <a href="#">
+                   <a th:href="@{/}"><h3 style="color: white">Opentravel</h3></a>
+                </a>
+            </div>
+            <div class="menu-sidebar__content js-scrollbar1">
+                <nav class="navbar-sidebar">
+                    <ul class="list-unstyled navbar__list">
+                        <li class="active has-sub">
+                            <a class="js-arrow" th:href="@{/admin}">
+                                <i class="fas fa-tachometer-alt"></i>Users</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/adminPlaces}">
+                                <i class="fas fa-list-alt"></i>Places</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/adminBlogs}">
+                                <i class="fas fa-list-alt"></i>Blogs</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+        <!-- END MENU SIDEBAR-->
+
+        <!-- PAGE CONTAINER-->
+        <div class="page-container">
+            <!-- MAIN CONTENT-->
+            <div class="main-content" style="padding-top: 25px">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                                <h3 class="title-1 m-b-25">Users Open travel</h3>
+                                <div lass="panel-body">
+                                    <table width="100%" class="display" id="example">
+                                        <thead>
+                                            <tr>
+                                                <th>Full name</th>
+                                                <th>Email</th>
+                                                <th>Image</th>
+                                                <th></th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr th:each="user:${users}">
+                                                <td th:text="${user.name}"></td>
+                                                <td th:text="${user.email}"></td>
+                                                <td ><img th:src="@{${user.image}}" style="max-width: 70%"></td>
+                                                <td class="button"><a th:href="@{/deleteUser(id=${user.id})}">Delete</a></td>
+                                                <td class="button"><a th:href="@{/updateUser(id=${user.id})}">Update</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END MAIN CONTENT-->
+            <!-- END PAGE CONTAINER-->
+        </div>
+
+    </div>
+    <script>
+        $(document).ready(function () {
+            $("#example").DataTable({
+                "scrollY":        "400px",
+                "scrollCollapse": true
+            });
+        });
+    </script>
+    <!-- Jquery JS-->
+    <script src="folderforadmin/vendor/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap JS-->
+    <script src="folderforadmin/vendor/bootstrap-4.1/popper.min.js"></script>
+    <script src="folderforadmin/vendor/bootstrap-4.1/bootstrap.min.js"></script>
+    <!-- Vendor JS       -->
+    <script src="folderforadmin/vendor/slick/slick.min.js">
+    </script>
+    <script src="folderforadmin/vendor/wow/wow.min.js"></script>
+    <script src="folderforadmin/vendor/animsition/animsition.min.js"></script>
+    <script src="folderforadmin/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+    </script>
+    <script src="folderforadmin/vendor/counter-up/jquery.waypoints.min.js"></script>
+    <script src="folderforadmin/vendor/counter-up/jquery.counterup.min.js">
+    </script>
+    <script src="folderforadmin/vendor/circle-progress/circle-progress.min.js"></script>
+    <script src="folderforadmin/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="folderforadmin/vendor/chartjs/Chart.bundle.min.js"></script>
+    <script src="folderforadmin/vendor/select2/select2.min.js">
+    </script>
+    <!-- Main JS-->
+    <script src="folderforadmin/js/main.js"></script>
+    <!-- DataTables JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js">
+
+    </script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js">
+
+    </script>
+</body>
+
+</html>
+<!-- end document-->
