@@ -72,7 +72,7 @@
             <div class="main-content" style="padding-top: 25px">
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
-                                <h3 class="title-1 m-b-25">Users Open travel</h3>
+                                <h3 class="title-1 m-b-25">Places</h3>
                                 <div lass="panel-body">
                                     <table width="100%" class="display" id="example">
                                         <thead>
@@ -88,7 +88,7 @@
                                             <tr th:each="user:${places}">
                                                 <td th:text="${user.title}"></td>
                                                 <td th:text="${user.author.email}"></td>
-                                                <td ><img th:src="@{${user.photo1}}" style="max-width: 70%"></td>
+                                                <td ><img th:src="@{${'/image/'+user.photo1}}" style="max-width: 70%"></td>
                                                 <td class="button"><a th:href="@{/deleteAppP(id=${user.id})}">Delete</a></td>
                                                 <td class="button"><a th:href="@{/updateApp(id=${user.id})}">Update</a></td>
                                             </tr>
