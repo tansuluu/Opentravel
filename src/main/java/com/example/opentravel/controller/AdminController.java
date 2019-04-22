@@ -36,4 +36,10 @@ public class AdminController {
         model.addAttribute("places",placeService.getAll());
         return "adminPlaces";
     }
+
+    @RequestMapping("/adminBlogs")
+    public String adminBlogs(Model model){
+        model.addAttribute("places",blogService.getAll());
+        return "adminBlogs";
+    }
 }
