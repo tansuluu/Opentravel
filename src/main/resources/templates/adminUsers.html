@@ -42,37 +42,24 @@
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
                 <a href="#">
-                    <h3 style="color: white">Opentravel</h3>
+                   <a th:href="@{/}"><h3 style="color: white">Opentravel</h3></a>
                 </a>
             </div>
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
                         <li class="active has-sub">
-                            <a class="js-arrow" th:href="@{/}">
-                                <i class="fas fa-tachometer-alt"></i>Главная</a>
+                            <a class="js-arrow" th:href="@{/admin}">
+                                <i class="fas fa-tachometer-alt"></i>Users</a>
                         </li>
                         <li>
-                            <a th:href="@{/all}">
-                                <i class="fas fa-list-alt"></i>Пользователи технодом</a>
+                            <a th:href="@{/adminPlaces}">
+                                <i class="fas fa-list-alt"></i>Places</a>
                         </li>
                         <li>
-                            <a th:href="@{/allUsersQ}">
-                                <i class="fas fa-list-alt"></i>Пользователи технодомомой</a>
+                            <a th:href="@{/adminBlogs}">
+                                <i class="fas fa-list-alt"></i>Blogs</a>
                         </li>
-                        <li>
-                            <a th:href="@{/sendMessage}">
-                                <i class="fas fa-envelope"></i>Отправить сообщение пользовательям</a>
-                        </li>
-                        <li>
-                            <a th:href="@{/allMessages}">
-                                <i class="fas fa-list-alt"></i>Вопросы и ответы</a>
-                        </li>
-                        <li>
-                            <a th:href="@{/history}">
-                                <i class="fas fa-bar-chart-o"></i>История тохнодом</a>
-                        </li>
-
                     </ul>
                 </nav>
             </div>
