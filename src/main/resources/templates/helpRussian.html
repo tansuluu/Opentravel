@@ -1,0 +1,576 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Opentravel</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Travelix Project">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="folderforindex/styles/bootstrap4/bootstrap.min.css">
+    <link href="folderforindex/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="folderforindex/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="folderforindex/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+    <link rel="stylesheet" type="text/css" href="folderforindex/plugins/OwlCarousel2-2.2.1/animate.css">
+    <link rel="stylesheet" type="text/css" href="folderforindex/styles/main_styles.css">
+    <link rel="stylesheet" type="text/css" href="folderforindex/styles/my.css">
+    <link rel="stylesheet" type="text/css" href="folderforindex/styles/responsive.css">
+    <div>
+        <link rel="stylesheet" href="tast/css/open-iconic-bootstrap.min.css">
+        <link rel="stylesheet" href="tast/css/animate.css">
+        <link rel="stylesheet" href="tast/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="tast/css/owl.theme.default.min.css">
+        <link rel="stylesheet" href="tast/css/magnific-popup.css">
+        <link rel="stylesheet" href="tast/css/aos.css">
+        <link rel="stylesheet" href="tast/css/ionicons.min.css">
+        <link rel="stylesheet" href="tast/css/bootstrap-datepicker.css">
+        <link rel="stylesheet" href="tast/css/jquery.timepicker.css">
+        <link rel="stylesheet" href="tast/css/flaticon.css">
+        <link rel="stylesheet" href="tast/css/icomoon.css">
+        <link rel="stylesheet" href="tast/css/style.css">
+        
+    </div>
+
+    <style>
+        html {
+            box-sizing: border-box;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        *, *:before, *:after {
+            box-sizing: inherit;
+        }
+
+        .background {
+            padding: 0 25px 25px;
+            position: relative;
+            width: 100%;
+        }
+
+        .background::after {
+            content: '';
+            background: #60a9ff;
+            background: -moz-linear-gradient(top, #60a9ff 0%, #4394f4 100%);
+            background: -webkit-linear-gradient(top, #60a9ff 0%,#4394f4 100%);
+            background: linear-gradient(to bottom, #60a9ff 0%,#4394f4 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#60a9ff', endColorstr='#4394f4',GradientType=0 );
+            height: 350px;
+            left: 0;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            z-index: 1;
+        }
+
+        @media (min-width: 900px) {
+            .background {
+                padding: 0 0 25px;
+            }
+        }
+
+        .box_shadow	 {
+            margin: 0 auto;
+            padding: 50px 0 0;
+            max-width: 960px;
+            width: 100%;
+        }
+
+        .panel {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 15px 25px;
+            position: relative;
+            width: 100%;
+            z-index: 10;
+        }
+
+        .pricing-table {
+            box-shadow: 0px 10px 13px -6px rgba(0, 0, 0, 0.08), 0px 20px 31px 3px rgba(0, 0, 0, 0.09), 0px 8px 20px 7px rgba(0, 0, 0, 0.02);
+            display: flex;
+            flex-direction: column;
+        }
+
+        @media (min-width: 900px) {
+            .pricing-table {
+                flex-direction: row;
+            }
+        }
+
+        .pricing-table * {
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .pricing-plan {
+            border-bottom: 1px solid #e1f1ff;
+            padding: 25px;
+        }
+
+        .pricing-plan:last-child {
+            border-bottom: none;
+        }
+
+        @media (min-width: 900px) {
+            .pricing-plan {
+                border-bottom: none;
+                border-right: 1px solid #e1f1ff;
+                flex-basis: 100%;
+                padding: 25px 50px;
+            }
+
+            .pricing-plan:last-child {
+                border-right: none;
+            }
+        }
+
+        .pricing-img {
+            margin-bottom: 25px;
+            max-width: 100%;
+        }
+
+        .pricing-header {
+            color: #888;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .pricing-features {
+            color: #016FF9;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin: 50px 0 25px;
+        }
+
+        .pricing-features-item {
+            border-top: 1px solid #e1f1ff;
+            font-size: 12px;
+            line-height: 1.5;
+            padding: 15px 0;
+        }
+
+        .pricing-features-item:last-child {
+            border-bottom: 1px solid #e1f1ff;
+        }
+
+        .pricing-price {
+            color: #016FF9;
+            display: block;
+            font-size: 32px;
+            font-weight: 700;
+        }
+
+        .pricing-button {
+            border: 1px solid #9dd1ff;
+            border-radius: 10px;
+            color: #348EFE;
+            display: inline-block;
+            margin: 25px 0;
+            padding: 15px 35px;
+            text-decoration: none;
+            transition: all 150ms ease-in-out;
+        }
+
+        .pricing-button:hover,
+        .pricing-button:focus {
+            background-color: #e1f1ff;
+        }
+
+        .pricing-button.is-featured {
+            background-color: #48aaff;
+            color: #fff;
+        }
+
+        .pricing-button.is-featured:hover,
+        .pricing-button.is-featured:active {
+            background-color: #269aff;
+        }
+
+        .pages_name{
+
+            margin-top: 30px;
+            font-family: New Century Schoolbook, TeX Gyre Schola, serif  ;
+        }
+
+        .pages_name a{
+            color: #4e555b;
+
+        }
+
+        .pages_name a:hover{
+            color: #fbb53d;
+
+        }
+
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="super_container">
+
+        <!-- Header -->
+
+        <header class="header">
+
+            <!-- Top Bar -->
+
+            <div class="top_bar">
+                <div class="container">
+                    <div class="row">
+                        <div class="col d-flex flex-row">
+                            <div class="social">
+                                <ul class="social_list">
+                                    <li class="social_list_item"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                    <li class="social_list_item"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                    <li class="social_list_item"><a href="#"><i class="fa fa-vk" aria-hidden="true"></i></a></li>
+                                    <li class="social_list_item"><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="user_box ml-auto">
+                                <div class="user_box_register user_box_link"><a th:if="${#request.userPrincipal !=null}" th:href="@{/logout}">Выход</a></div>
+                                <div class="user_box_register user_box_link"><a th:if="${#request.userPrincipal !=null}" th:href="@{/userPage(username=${#request.userPrincipal.name})}"  th:text="${#request.userPrincipal.name}"></a></div>
+
+                                <div class="user_box_register user_box_link"><a th:if="${#request.userPrincipal == null}" th:href="@{/registration}">Регистрация</a></div>
+                                <div class="user_box_register user_box_link"><a th:if="${#request.userPrincipal == null}" th:href="@{/login}">Вход</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Main Navigation -->
+            <nav class="main_nav">
+                <div class="container">
+                    <div class="row">
+                        <div class="col main_nav_col d-flex flex-row align-items-center justify-content-start">
+                            <div class="logo_container">
+                                <div class="logo"><a th:href="@{/}"><img src="" alt="">opentravel</a></div>
+                            </div>
+                            <div class="main_nav_container ml-auto">
+                                <ul class="main_nav_list">
+                                    <li class="main_nav_item"><a th:href="@{/}">Главная</a></li>
+                                    <li class="main_nav_item"><a th:href="@{/about}">О нас</a></li>
+                                    <li class="main_nav_item"><a th:href="@{/places}">Предложения</a></li>
+                                    <li class="main_nav_item"><a th:href="@{/blog}">Блог</a></li>
+                                    <li class="main_nav_item"><a th:href="@{/gids}">Пользователи</a></li>
+                                    <li class="main_nav_item"><a th:href="@{/chats}">Чат</a></li>
+                                    <li class="main_nav_item"><a th:href="@{/help}">Помощь</a></li>
+                                </ul>
+                            </div>
+                            <div class="content_search ml-lg-0 ml-auto">
+                                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                     width="17px" height="17px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+                                        <g>
+                                            <g>
+                                                <g>
+                                                    <path class="mag_glass" fill="#FFFFFF" d="M78.438,216.78c0,57.906,22.55,112.343,63.493,153.287c40.945,40.944,95.383,63.494,153.287,63.494
+                                                    s112.344-22.55,153.287-63.494C489.451,329.123,512,274.686,512,216.78c0-57.904-22.549-112.342-63.494-153.286
+                                                    C407.563,22.549,353.124,0,295.219,0c-57.904,0-112.342,22.549-153.287,63.494C100.988,104.438,78.439,158.876,78.438,216.78z
+                                                    M119.804,216.78c0-96.725,78.69-175.416,175.415-175.416s175.418,78.691,175.418,175.416
+                                                    c0,96.725-78.691,175.416-175.416,175.416C198.495,392.195,119.804,313.505,119.804,216.78z"/>
+                                                </g>
+                                            </g>
+                                            <g>
+                                                <g>
+                                                    <path class="mag_glass" fill="#FFFFFF" d="M6.057,505.942c4.038,4.039,9.332,6.058,14.625,6.058s10.587-2.019,14.625-6.058L171.268,369.98
+                                                    c8.076-8.076,8.076-21.172,0-29.248c-8.076-8.078-21.172-8.078-29.249,0L6.057,476.693
+                                                    C-2.019,484.77-2.019,497.865,6.057,505.942z"/>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </svg>
+                            </div>
+                            <div class="hamburger">
+                                <i class="fa fa-bars trans_200"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+        </header>
+
+        <div class="menu trans_500">
+            <div class="menu_content d-flex flex-column align-items-center justify-content-center text-center">
+                <div class="menu_close_container"><div class="menu_close"></div></div>
+                <div class="logo menu_logo"><a href="#"><img src="images/logo.png" alt=""></a></div>
+                <ul>
+                    <li class="menu_item"><a th:href="@{/}">Главная</a></li>
+                    <li class="menu_item"><a th:href="@{/about}">О нас</a></li>
+                    <li class="menu_item"><a th:href="@{/places}">Предложения</a></li>
+                    <li class="menu_item"><a th:href="@{/blog}">Блог</a></li>
+                    <li class="menu_item"><a th:href="@{/gids}">Пользователи</a></li>
+                    <li class="menu_item"><a th:href="@{/chats}">Чат</a></li>
+                    <li class="menu_item"><a th:href="@{/help}">Помощь</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Home -->
+        <div class="home">
+
+            <!-- Home Slider -->
+
+            <div class="home_slider_container">
+
+                <div class="owl-carousel owl-theme home_slider">
+
+                    <!-- Slider Item -->
+                    <div class="owl-item home_slider_item">
+                        <div class="home_slider_background" style="background-image:url(images/help.jpg)"></div>
+
+                        <div class="home_slider_content text-center">
+                            <div class="home_slider_content_inner" data-animation-in="flipInX" data-animation-out="animate-out fadeOut">
+                                <h1 style="font-size: 45px"></h1>
+                                <h1 style="font-size: 85px">Help for</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+    <!--If something will go wrong you can delete this section-->
+
+
+    <div class="box_shadow" style="padding-bottom: 40px;">
+        <div class="panel pricing-table">
+
+
+            <div class="pricing-plan" th:if="${#request.userPrincipal == null}" >
+
+                <img src="images/tourist.png" alt="" class="pricing-img">
+                <h2 class="pricing-header">Tourist</h2>
+                <h5 style="font-size: 90%;">As a tourist you may</h5>
+                <h6 class="pages_name" > <a th:href="@{/}">On main page: </a> </h6>
+                <ul class="pricing-features">
+                    <li class="pricing-features-item">read about Kyrgyzstan.</li>
+                    <li class="pricing-features-item">find out top 6 popular offers</li>
+                    <li class="pricing-features-item">find recently registered tourists.</li>
+                    <li class="pricing-features-item">find 3 recently registered guides</li>
+                    <li class="pricing-features-item">find top 3 popular blog</li>
+                    <li class="pricing-features-item">View page, with short information about features.</li>
+
+                </ul>
+                <h6 class="pages_name"><a th:href="@{/about}"> On about  page: </a></h6>
+                <ul class="pricing-features">
+                    <li class="pricing-features-item">he can find information related to developers</li>
+                    <li class="pricing-features-item">as well more information about site</li>
+                </ul>
+                <h6 class="pages_name"><a th:href="@{/places}"> On offers page: </a></h6>
+                <ul class="pricing-features">
+                    <li class="pricing-features-item">view all offers</li>
+                    <li class="pricing-features-item">most searcher offers by their title</li>
+                    <li class="pricing-features-item">detailed information about all individual places</li>
+                    <li class="pricing-features-item">activity display ( likes, comments )</li>
+                    <li class="pricing-features-item">writing comments.</li>
+                    <li class="pricing-features-item">deleting own comments.</li>
+                    <li class="pricing-features-item">putting "like".</li>
+                    <li class="pricing-features-item">unput own like".</li>
+                </ul>
+                <h6 class="pages_name"><a th:href="@{/gids}"> On users page: </a></h6>
+                <ul class="pricing-features">
+                    <li class="pricing-features-item">can see all registered users.</li>
+                    <li class="pricing-features-item">search by name.</li>
+                    <li class="pricing-features-item">and by clicking to name, user will be sent to profile page.</li>
+                    <li class="pricing-features-item">there user can see all detailed information about searched user.</li>
+                    <li class="pricing-features-item">all added places and blogs written by searched user./li>
+                    <li class="pricing-features-item">also read post that have been written to searched profile page.</li>
+                </ul>
+                <h6 class="pages_name"><a th:href="@{/blog}">On blog page:</a></h6>
+                <ul class="pricing-features">
+                    <li class="pricing-features-item">compose own blog.</li>
+                    <li class="pricing-features-item">view all blogs for more actual news.</li>
+                    <li class="pricing-features-item">search blogs by title.</li>
+                    <li class="pricing-features-item">read detailed information about each individual blog.</li>
+                    <li class="pricing-features-item">read comments that have been left on each individual blog.</li>
+                    <li class="pricing-features-item">activity display ( likes, comments ).</li>
+                    <li class="pricing-features-item">writing comments.</li>
+                    <li class="pricing-features-item">deleting own comments.</li>
+                    <li class="pricing-features-item">putting "like".</li>
+                    <li class="pricing-features-item">unput own like".</li>
+                </ul>
+
+
+
+            </div>
+
+            <div class="pricing-plan" th:if="${#request.userPrincipal == null}" >
+                <img src="images/guest2.png" alt="" class="pricing-img">
+                <h2 class="pricing-header">Guest</h2>
+                <h5 style="font-size: 90%;">As a guest you may</h5>
+                <h6 class="pages_name"><a th:href="@{/}">On main page: </a></h6>
+                <ul class="pricing-features" style="padding-bottom: 2px;">
+                    <li class="pricing-features-item">read about Kyrgyzstan.</li>
+                    <li class="pricing-features-item">find out top 6 popular offers</li>
+                    <li class="pricing-features-item">find 3 recently registered tourists</li>
+                    <li class="pricing-features-item">find 3 recently registered guides</li>
+                    <li class="pricing-features-item">find top 3 popular blog</li>
+                </ul>
+                <h6 class="pages_name"><a th:href="@{/about}"> On about  page: </a></h6>
+                <ul class="pricing-features">
+                    <li class="pricing-features-item">he can find information related to developers</li>
+                    <li class="pricing-features-item">as well more information about site</li>
+                </ul>
+                <h6 class="pages_name"><a th:href="@{/places}"> On offers page: </a></h6>
+                <ul class="pricing-features">
+                    <li class="pricing-features-item">view all offers</li>
+                    <li class="pricing-features-item">most searcher offers by their title</li>
+                    <li class="pricing-features-item">detailed information about all individual places</li>
+                    <li class="pricing-features-item">activity display ( likes, comments )</li>
+                </ul>
+                <h6 class="pages_name"><a th:href="@{/gids}"> On users page: </a></h6>
+                <ul class="pricing-features">
+                    <li class="pricing-features-item">can see all registered users.</li>
+                    <li class="pricing-features-item">search by name.</li>
+                    <li class="pricing-features-item">and by clicking to name, user will be sent to profile page.</li>
+                    <li class="pricing-features-item">there user can see all detailed information about searched user.</li>
+                    <li class="pricing-features-item">can see all registered usersall added places and blogs written by searched user..</li>
+                    <li class="pricing-features-item">also read post that have been written to searched profile page.</li>
+                </ul>
+                <h6 class="pages_name"><a th:href="@{/blog}">On blog page:</a></h6>
+                <ul class="pricing-features">
+                    <li class="pricing-features-item">view all blogs for more actual news.</li>
+                    <li class="pricing-features-item">search blogs by title.</li>
+                    <li class="pricing-features-item">read detailed information about each individual blog.</li>
+                    <li class="pricing-features-item">read comments that have been left on each individual blog.</li>
+                    <li class="pricing-features-item">activity display ( likes, comments ).</li>
+                </ul>
+            </div >
+
+            <div class="pricing-plan" th:if="${#request.userPrincipal == null}" >
+
+                <img src="images/guides.png" alt="" class="pricing-img">
+                <h2 class="pricing-header">Guide</h2>
+                <h5 style="font-size: 90%;">As a guide you may</h5>
+                <h6 class="pages_name"><a th:href="@{/}">On main page: </a></h6>
+                <ul class="pricing-features">
+                    <li class="pricing-features-item">read about Kyrgyzstan.</li>
+                    <li class="pricing-features-item">find out top 6 popular offers</li>
+                    <li class="pricing-features-item">find recently registered tourists.</li>
+                    <li class="pricing-features-item">find 3 recently registered guides</li>
+                    <li class="pricing-features-item">find top 3 popular blog</li>
+                    <li class="pricing-features-item">View page, with short information about features.</li>
+
+                </ul>
+                <h6 class="pages_name"><a th:href="@{/about}"> On about  page: </a></h6>
+                <ul class="pricing-features">
+                    <li class="pricing-features-item">he can find information related to developers</li>
+                    <li class="pricing-features-item">as well more information about site</li>
+                </ul>
+                <h6 class="pages_name"><a th:href="@{/places}"> On offers page: </a></h6>
+                <ul class="pricing-features">
+                    <li class="pricing-features-item">view all offers</li>
+                    <li class="pricing-features-item">most searcher offers by their title</li>
+                    <li class="pricing-features-item">detailed information about all individual places</li>
+                    <li class="pricing-features-item">activity display ( likes, comments )</li>
+                    <li class="pricing-features-item">writing comments.</li>
+                    <li class="pricing-features-item">deleting own comments.</li>
+                    <li class="pricing-features-item">putting "like".</li>
+                    <li class="pricing-features-item">unput own like".</li>
+                </ul>
+                <h6 class="pages_name"><a th:href="@{/gids}"> On users page: </a></h6>
+                <ul class="pricing-features">
+                    <li class="pricing-features-item">can see all registered users.</li>
+                    <li class="pricing-features-item">search by name.</li>
+                    <li class="pricing-features-item">and by clicking to name, user will be sent to profile page.</li>
+                    <li class="pricing-features-item">there user can see all detailed information about searched user.</li>
+                    <li class="pricing-features-item">all added places and blogs written by searched user./li>
+                    <li class="pricing-features-item">also read post that have been written to searched profile page.</li>
+                </ul>
+                <h6 class="pages_name"><a th:href="@{/blog}">On blog page:</a></h6>
+                <ul class="pricing-features">
+                    <li class="pricing-features-item">compose own blog.</li>
+                    <li class="pricing-features-item">view all blogs for more actual news.</li>
+                    <li class="pricing-features-item">search blogs by title.</li>
+                    <li class="pricing-features-item">read detailed information about each individual blog.</li>
+                    <li class="pricing-features-item">read comments that have been left on each individual blog.</li>
+                    <li class="pricing-features-item">activity display ( likes, comments ).</li>
+                    <li class="pricing-features-item">writing comments.</li>
+                    <li class="pricing-features-item">deleting own comments.</li>
+                    <li class="pricing-features-item">putting "like".</li>
+                    <li class="pricing-features-item">unput own like".</li>
+                </ul>
+
+            </div>
+
+    </div>
+    </div>
+
+    </section>
+
+
+
+
+
+    <!--This is the end for this section-->
+
+
+    <!-- Copyright -->
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 order-lg-1 order-2  ">
+                    <div class="copyright_content d-flex flex-row align-items-center">
+                        <div><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This project is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by Brigada
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></div>
+                    </div>
+                </div>
+                <div class="col-lg-9 order-lg-2 order-1">
+                    <div class="footer_nav_container d-flex flex-row align-items-center justify-content-lg-end">
+                        <div class="footer_nav">
+                            <ul class="footer_nav_list">
+                                <li class="footer_nav_item"><a th:href="@{/}">Главная</a></li>
+                                <li class="footer_nav_item"><a th:href="@{/about}">О нас</a></li>
+                                <li class="footer_nav_item"><a th:href="@{/places}">Предложения</a></li>
+                                <li class="footer_nav_item"><a th:href="@{/blod}">Блог</a></li>
+                                <li class="footer_nav_item"><a th:href="@{/gids}">Пользователи</a></li>
+                                <li class="footer_nav_item"><a th:href="@{/chats}">Чат</a></li>
+                                <li class="footer_nav_item"><a th:href="@{/help}">Помощь</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+    <script src="folderforindex/js/jquery-3.2.1.min.js"></script>
+    <script src="folderforindex/styles/bootstrap4/popper.js"></script>
+    <script src="folderforindex/styles/bootstrap4/bootstrap.min.js"></script>
+    <script src="folderforindex/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+    <script src="folderforindex/plugins/easing/easing.js"></script>
+    <script src="folderforindex/js/custom.js"></script>
+    <div>
+        <script src="tast/js/jquery.min.js"></script>
+        <script src="tast/js/jquery-migrate-3.0.1.min.js"></script>
+        <script src="tast/js/popper.min.js"></script>
+        <script src="tast/js/bootstrap.min.js"></script>
+        <script src="tast/js/jquery.easing.1.3.js"></script>
+        <script src="tast/js/jquery.waypoints.min.js"></script>
+        <script src="tast/js/jquery.stellar.min.js"></script>
+        <script src="tast/js/owl.carousel.min.js"></script>
+        <script src="tast/js/jquery.magnific-popup.min.js"></script>
+        <script src="tast/js/aos.js"></script>
+        <script src="tast/js/jquery.animateNumber.min.js"></script>
+        <script src="tast/js/bootstrap-datepicker.js"></script>
+        <script src="tast/js/jquery.timepicker.min.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+        <script src="tast/js/google-map.js"></script>
+        <script src="tast/js/main.js"></script>
+    </div>
+
+</body>
+
+</html>
+
