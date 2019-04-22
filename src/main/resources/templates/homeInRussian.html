@@ -74,17 +74,17 @@
 				<div class="row">
 					<div class="col main_nav_col d-flex flex-row align-items-center justify-content-start">
 						<div class="logo_container">
-							<div class="logo"><a href=""><img src="" alt="">opentravel</a></div>
+							<div class="logo"><a th:href="@{/(lang=ru)}"><img src="" alt="">opentravel</a></div>
 						</div>
 						<div class="main_nav_container ml-auto">
 							<ul class="main_nav_list">
-								<li class="main_nav_item"><a th:href="@{/}">Главная</a></li>
-								<li class="main_nav_item"><a th:href="@{/about}">О нас</a></li>
-								<li class="main_nav_item"><a th:href="@{/places}">Места</a></li>
-								<li class="main_nav_item"><a th:href="@{/blog}">Блоги</a></li>
-                                <li class="main_nav_item"><a th:href="@{/gids}">Пользователи</a></li>
-								<li class="main_nav_item"><a th:href="@{/chats}">Чат</a></li>
-								<li class="main_nav_item"><a th:href="@{/help}">Помощь</a></li>
+								<li class="main_nav_item"><a th:href="@{/(lang=ru)}">Главная</a></li>
+								<li class="main_nav_item"><a th:href="@{/about(lang=ru)}">О нас</a></li>
+								<li class="main_nav_item"><a th:href="@{/places(lang=ru)}">Места</a></li>
+								<li class="main_nav_item"><a th:href="@{/blog(lang=ru)}">Блоги</a></li>
+                                <li class="main_nav_item"><a th:href="@{/gids(lang=ru)}">Пользователи</a></li>
+								<li class="main_nav_item"><a th:href="@{/chats(lang=ru)}">Чат</a></li>
+								<li class="main_nav_item"><a th:href="@{/help(lang=ru)}">Помощь</a></li>
 							</ul>
 						</div>
 						<div class="content_search ml-lg-0 ml-auto">
@@ -130,13 +130,13 @@
 			<div class="menu_close_container"><div class="menu_close"></div></div>
 			<div class="logo menu_logo"><a href="#"><img src="images/logo.png" alt=""></a></div>
 			<ul>
-				<li class="menu_item"><a th:href="@{/}">Главная</a></li>
-				<li class="menu_item"><a th:href="@{/about}">О нас</a></li>
-				<li class="menu_item"><a th:href="@{/places}">Места</a></li>
-				<li class="menu_item"><a th:href="@{/blog}">Блоги</a></li>
-                <li class="main_item"><a th:href="@{/gids}">Пользователи</a></li>
-                <li class="menu_item"><a th:href="@{/chats}">Чат</a></li>
-				<li class="menu_item"><a th:href="@{/help}">Помощь</a></li>
+				<li class="menu_item"><a th:href="@{/(lang=ru)}">Главная</a></li>
+				<li class="menu_item"><a th:href="@{/about(lang=ru)}">О нас</a></li>
+				<li class="menu_item"><a th:href="@{/places(lang=ru)}">Места</a></li>
+				<li class="menu_item"><a th:href="@{/blog(lang=ru)}">Блоги</a></li>
+                <li class="main_item"><a th:href="@{/gids(lang=ru)}">Пользователи</a></li>
+                <li class="menu_item"><a th:href="@{/chats(lang=ru)}">Чат</a></li>
+				<li class="menu_item"><a th:href="@{/help(lang=ru)}">Помощь</a></li>
 
 			</ul>
 		</div>
@@ -160,7 +160,7 @@
 						<div class="home_slider_content_inner" data-animation-in="flipInX" data-animation-out="animate-out fadeOut">
 							<h1 style="font-size: 45px">исследуй</h1>
 							<h1 style="font-size: 85px">КЫРГЫЗСТАН</h1>
-							<div class="button home_slider_button"><div class="button_bcg"></div><a th:href="@{/places}">СЕЙЧАС</a></div>
+							<div class="button home_slider_button"><div class="button_bcg"></div><a th:href="@{/places(lang=ru)}">СЕЙЧАС</a></div>
 						</div>
 					</div>
 				</div>
@@ -203,7 +203,7 @@
 					<div class="intro_item_background" style="background-image:url(images/manas.jpg)"></div>
 					<div class="intro_item_content d-flex flex-column align-items-center justify-content-center">
 
-						<div class="button intro_button"><div class="button_bcg"></div><a th:href="@{/places}">подробнее</a></div>
+						<div class="button intro_button"><div class="button_bcg"></div><a th:href="@{/places(lang=ru)}">подробнее</a></div>
 						<div class="intro_center text-center">
 							<h1>Исследуй страну</h1>
 							<div class="intro_price">Познакомьтесь с историей и интересными фактами </div>
@@ -222,7 +222,7 @@
 					<div class="intro_item_background" style="background-image:url(images/SK.jpg)"></div>
 					<div class="intro_item_content d-flex flex-column align-items-center justify-content-center">
 
-						<div class="button intro_button"><div class="button_bcg"></div><a th:href="@{/places}">подробнее</a></div>
+						<div class="button intro_button"><div class="button_bcg"></div><a th:href="@{/places(lang=ru)}">подробнее</a></div>
 						<div class="intro_center text-center">
 							<h1>Узнай о природе</h1>
 							<div class="intro_price">Узнайте о природе: озера, парки, горы</div>
@@ -240,7 +240,7 @@
 					<div class="intro_item_background" style="background-image:url(images/d.jpg)"></div>
 					<div class="intro_item_content d-flex flex-column align-items-center justify-content-center">
 
-						<div class="button intro_button"><div class="button_bcg"></div><a th:href="@{/blog}">подробнее</a></div>
+						<div class="button intro_button"><div class="button_bcg"></div><a th:href="@{/blog(lang=ru)}">подробнее</a></div>
 						<div class="intro_center text-center">
 							<h1>Ознакомиться с местным бытом</h1>
 							<div class="intro_price">Свяжитесь с местными жителями</div>
@@ -294,7 +294,7 @@
 						<div class="testimony-wrap p-4 pb-5">
 							<div class="user-img mb-4"  th:style="'background: url(' + ${gid.image} + ');border: 1px solid red; background-size: cover'"></div>
 							<div class="text">
-								<a th:href="@{/userPage(username=${gid.email})}" ><p class="name" th:text="${gid.name}"></p></a>
+								<a th:href="@{/userPage(username=${gid.email},lang=ru))}" ><p class="name" th:text="${gid.name}"></p></a>
 								<p class="mb-5" th:text="${gid.aboutMe}">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
 								<p class="position">Опыт <i style="color: #0c5460" th:text="${gid.experience}"></i></p>
 								<p class="position">Языки: <i style="color: #0c5460" th:text="${gid.languages}"></i></p>
@@ -323,7 +323,7 @@
 					<div class="block-3 d-md-flex ftco-animate">
 						<div class="image order-last" style="background-image: url(images/SK.jpg);"></div>
 						<div class="text text-center order-first">
-							<a th:href="@{/places}"><h2 class="heading">Сары-Челек</h2></a>
+							<a th:href="@{/places(lang=ru)}"><h2 class="heading">Сары-Челек</h2></a>
 							<p>Сары-Челек - горное озеро, расположенное в Сары-Челекском заповеднике в Джалал-Абадской области на западе Кыргызстана</p>
 							<span class="price">от $50.00</span>
 						</div>
@@ -332,7 +332,7 @@
 					<div class="block-3 d-md-flex ftco-animate">
 						<div class="image order-first" style="background-image: url(images/sul.jpg);"></div>
 						<div class="text text-center order-first">
-							<a th:href="@{/places}"><h2 class="heading">Сулайман-Тоо</h2></a>
+							<a th:href="@{/places(lang=ru)}"><h2 class="heading">Сулайман-Тоо</h2></a>
 							<p>Гора Сулайман является единственным объектом всемирного наследия, расположенным полностью в стране Кыргызстан</p>
 							<span class="price">от $50.00</span>
 						</div>
@@ -350,7 +350,7 @@
 					<div class="block-3 d-md-flex ftco-animate">
 						<div class="image order-first" style="background-image: url(images/man.jpg);"></div>
 						<div class="text text-center order-first">
-							<a th:href="@{/places}"><h2  class="heading">Манас Ордо</h2></a>
+							<a th:href="@{/places(lang=ru)}"><h2  class="heading">Манас Ордо</h2></a>
 							<p>Легенда гласит, что Манас Ордо в Таласской области является местом последнего упокоения великого воина и кыргызского героя</p>
 							<span class="price">от $60.00</span>
 						</div>
@@ -370,11 +370,11 @@
 			</div>
 			<div class="row ftco-animate">
 				<div class="carousel owl-carousel ftco-owl" >
-					<div class="item text-center" th:each="tour:${tourist}">
+					<div class="item text-center" th:each="tour:${tourist(lang=ru)}">
 						<div class="testimony-wrap p-4 pb-5">
 							<div class="user-img mb-4"  th:style="'background: url(' + ${tour.image} + ');border: 1px solid red; background-size: cover'"></div>
 							<div class="text">
-								<a th:href="@{/userPage(username=${tour.email})}" ><p class="name" th:text="${tour.name}"></p></a>
+								<a th:href="@{/userPage(username=${tour.email},lang=ru)}" ><p class="name" th:text="${tour.name}"></p></a>
 								<p class="mb-5" th:text="${tour.aboutMe}">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
 								<p class="position">Страна: <i style="color: #0c5460" th:text="${tour.country}"></i></p>
 								<p class="position">Языки:<i style="color: #0c5460" th:text="${tour.languages}"></i></p>
@@ -397,7 +397,7 @@
             <div class="carousel1 owl-carousel ftco-owl">
                 <div class="item" th:each="blog:${blogs}">
                     <div class="blog-entry">
-                        <a th:href="@{/blogInfo(id=${blog.id})}"  class="block-20" th:style="'background: url(/image/' + ${blog.photo1} + ');background-size: cover'">
+                        <a th:href="@{/blogInfo(id=${blog.id},lang=ru)}"  class="block-20" th:style="'background: url(/image/' + ${blog.photo1} + ');background-size: cover'">
                         </a>
                         <div class="text p-4">
                             <div class="meta">
@@ -427,12 +427,12 @@
 					<div class="footer_nav_container d-flex flex-row align-items-center justify-content-lg-end">
 						<div class="footer_nav">
                             <ul class="footer_nav_list">
-                                <li class="footer_nav_item"><a th:href="@{/}">Главная</a></li>
-                                <li class="footer_nav_item"><a th:href="@{/about}">О нас</a></li>
-                                <li class="footer_nav_item"><a th:href="@{/places}">Предложения</a></li>
-                                <li class="footer_nav_item"><a th:href="@{/blod}">Блог</a></li>
-                                <li class="footer_nav_item"><a th:href="@{/gids}">Пользоатели</a></li>
-                                <li class="footer_nav_item"><a th:href="@{/chats}">Чат</a></li>
+                                <li class="footer_nav_item"><a th:href="@{/(lang=ru)}">Главная</a></li>
+                                <li class="footer_nav_item"><a th:href="@{/about(lang=ru)}">О нас</a></li>
+                                <li class="footer_nav_item"><a th:href="@{/places(lang=ru)}">Предложения</a></li>
+                                <li class="footer_nav_item"><a th:href="@{/blod(lang=ru)}">Блог</a></li>
+                                <li class="footer_nav_item"><a th:href="@{/gids(lang=ru)}">Пользоатели</a></li>
+                                <li class="footer_nav_item"><a th:href="@{/chats(lang=ru)}">Чат</a></li>
                             </ul>
 						</div>
 					</div>

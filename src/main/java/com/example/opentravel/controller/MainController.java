@@ -44,8 +44,8 @@ public class MainController {
         return "homeInRussian";
     }
 
-    @RequestMapping("/about/{lang}")
-    public String about(@PathVariable("lang") String lang){
+    @RequestMapping("/about")
+    public String about(@RequestParam(value = "lang",defaultValue = "eng", required = false) String lang){
         if(lang.equals("eng")) {
             return "about";
         }
@@ -54,15 +54,22 @@ public class MainController {
     }
 
     @RequestMapping("/help")
-    public String help(){
-        return "help";
+    public String help(@RequestParam(value = "lang",defaultValue = "eng", required = false) String lang){
+        if(lang.equals("eng")) {
+            return "help";
+        }
+        return "helpRus";
 
     }
 
     @RequestMapping("/gids")
-    public String gid(Model model){
+    public String gid(Model model,@RequestParam(value = "lang",defaultValue = "eng", required = false) String lang){
         ArrayList<User> list=userService.getAll();
         model.addAttribute("gids", list);
+        if(lang.equals("eng")) {
+            model.addAttribute("langEng", true);
+        }
+        model.addAttribute("langEng", false);
         return "gids";
     }
 
