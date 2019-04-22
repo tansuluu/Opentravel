@@ -96,8 +96,12 @@ public class UserController {
     }
 
     @RequestMapping("/deleteUser")
-    public String deleteUser(@RequestParam("id") int id){
+    public String deleteUser(@RequestParam("id") int id,Principal principal){
+        User user=userService.findUserByEmail(principal.getName());
         userService.deleteUser(id);
+        if(user.getStatus().equals("admin")){
+            return "redirect:/admin";
+        }
         return "redirect:/logout";
     }
 
