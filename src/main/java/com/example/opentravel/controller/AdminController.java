@@ -1,5 +1,7 @@
 package com.example.opentravel.controller;
 
+import com.example.opentravel.service.BlogService;
+import com.example.opentravel.service.PlaceService;
 import com.example.opentravel.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -18,11 +20,26 @@ public class AdminController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    PlaceService placeService;
+
+    @Autowired
+    BlogService blogService;
     @RequestMapping("/admin")
     public String admin(Model model){
         model.addAttribute("users",userService.getAll());
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-
         return "adminUsers";
+    }
+
+    @RequestMapping("/adminPlaces")
+    public String adminPlaces(Model model){
+        model.addAttribute("places",placeService.getAll());
+        return "adminPlaces";
+    }
+
+    @RequestMapping("/adminBlogs")
+    public String adminBlogs(Model model){
+        model.addAttribute("blogs",blogService.getAll());
+        return "adminBlogs";
     }
 }
