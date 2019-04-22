@@ -21,16 +21,12 @@ public class AdminController {
     @RequestMapping("/admin")
     public String admin(Model model){
         model.addAttribute("users",userService.getAll());
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-
         return "adminUsers";
     }
 
     @RequestMapping("/adminPlaces")
-    public String admin(Model model){
+    public String adminPlaces(Model model){
         model.addAttribute("users",userService.getAll());
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-
         return "adminUsers";
     }
 }
