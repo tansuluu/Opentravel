@@ -6,6 +6,7 @@ import com.example.opentravel.repository.ContactMessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Calendar;
 import java.util.List;
 
 @Service("contactMessageService")
@@ -20,5 +21,10 @@ public class ContactMessageService {
 
     public List<ContactMessage> getAll(){
         return contactMessageRepository.findAll();
+    }
+
+    public void save(ContactMessage contactMessage){
+        contactMessage.setDate(Calendar.getInstance().getTime());
+        contactMessageRepository.save(contactMessage);
     }
 }

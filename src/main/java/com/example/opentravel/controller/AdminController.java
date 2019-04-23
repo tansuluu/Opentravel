@@ -61,6 +61,8 @@ public class AdminController {
             return "about";
         }
         contactMessageService.save(contactMessage);
+        model.addAttribute("success","Thank you for your message, we will message you around 2 hours!");
+        return "redirect:/about";
     }
 
 }
