@@ -40,6 +40,7 @@ public class MainController {
         if(lang.equals("eng")) {
             return "home";
         }
+
         model.addAttribute("attributeName","value");
         return "homeInRussian";
     }
