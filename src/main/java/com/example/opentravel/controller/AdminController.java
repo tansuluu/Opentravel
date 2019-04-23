@@ -48,4 +48,28 @@ public class AdminController {
         model.addAttribute("places",placeService.getAll());
         return "adminPlaces";
     }
+    @RequestMapping(value = "/newBlog", method = RequestMethod.POST)
+    public String saveRegister(@ModelAttribute("blog")@Valid Blog blog,
+                               BindingResult result, Model model, //
+                               Principal principal, @RequestParam(name = "file1", required = false) MultipartFile file1,
+                               @RequestParam(name = "file2", required = false)MultipartFile file2, @RequestParam(name = "file3", required = false)MultipartFile file3) {
+        if (result.hasErrors()) {
+            model.addAttribute("blog", blog);
+            System.out.println("Error in adding a new blog");
+            return "newBlog";
+        }
+        try {
+            blog=storageService.preStore(file1,file2,file3,blog);
+            User user=userService.findUserByEmail(principal.getName());
+            blog.setAuthor(user);
+            blogService.save(blog);
+        } catch (Exception e) {
+            model.addAttribute("errorMessage", "Error: " + e.getMessage());
+            model.addAttribute("blog", blog);
+            model.addAttribute("message","There is already exist such image");
+            return "newBlog";
+        }
+
+        return "redirect:/userPage?username="+principal.getName();
+    }
 }
