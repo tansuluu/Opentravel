@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.security.Principal;
 
@@ -43,8 +44,8 @@ public class AdminController {
         return "adminBlogs";
     }
 
-    @RequestMapping("/contactMessage")
-    public String adminPlaces(Model model){
+    @RequestMapping(value = "/contactMessage",method = RequestMethod.POST)
+    public String contactMessage(Model model){
         model.addAttribute("places",placeService.getAll());
         return "adminPlaces";
     }
