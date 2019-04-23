@@ -294,7 +294,7 @@
 						<div class="testimony-wrap p-4 pb-5">
 							<div class="user-img mb-4"  th:style="'background: url(' + ${gid.image} + ');border: 1px solid red; background-size: cover'"></div>
 							<div class="text">
-								<a th:href="@{/userPage(username=${gid.email},lang=ru))}" ><p class="name" th:text="${gid.name}"></p></a>
+								<a th:href="@{/userPage(username=${gid.email},(lang=ru))}" ><p class="name" th:text="${gid.name}"></p></a>
 								<p class="mb-5" th:text="${gid.aboutMe}">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
 								<p class="position">Опыт <i style="color: #0c5460" th:text="${gid.experience}"></i></p>
 								<p class="position">Языки: <i style="color: #0c5460" th:text="${gid.languages}"></i></p>
@@ -370,11 +370,11 @@
 			</div>
 			<div class="row ftco-animate">
 				<div class="carousel owl-carousel ftco-owl" >
-					<div class="item text-center" th:each="tour:${tourist(lang=ru)}">
+					<div class="item text-center" th:each="tour:${tourist}">
 						<div class="testimony-wrap p-4 pb-5">
 							<div class="user-img mb-4"  th:style="'background: url(' + ${tour.image} + ');border: 1px solid red; background-size: cover'"></div>
 							<div class="text">
-								<a th:href="@{/userPage(username=${tour.email},lang=ru)}" ><p class="name" th:text="${tour.name}"></p></a>
+								<a th:href="@{/userPage(username=${tour.email},(lang=ru))}" ><p class="name" th:text="${tour.name}"></p></a>
 								<p class="mb-5" th:text="${tour.aboutMe}">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
 								<p class="position">Страна: <i style="color: #0c5460" th:text="${tour.country}"></i></p>
 								<p class="position">Языки:<i style="color: #0c5460" th:text="${tour.languages}"></i></p>
@@ -397,7 +397,7 @@
             <div class="carousel1 owl-carousel ftco-owl">
                 <div class="item" th:each="blog:${blogs}">
                     <div class="blog-entry">
-                        <a th:href="@{/blogInfo(id=${blog.id},lang=ru)}"  class="block-20" th:style="'background: url(/image/' + ${blog.photo1} + ');background-size: cover'">
+                        <a th:href="@{/blogInfo(id=${blog.id},(lang=ru))}"  class="block-20" th:style="'background: url(/image/' + ${blog.photo1} + ');background-size: cover'">
                         </a>
                         <div class="text p-4">
                             <div class="meta">

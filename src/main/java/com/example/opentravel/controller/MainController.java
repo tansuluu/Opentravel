@@ -8,11 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.nio.file.attribute.UserPrincipal;
 import java.security.Principal;
 import java.util.ArrayList;
 
@@ -49,7 +47,7 @@ public class MainController {
         if(lang.equals("eng")) {
             return "about";
         }
-        return "aboutRus";
+        return "russian/aboutRus";
 
     }
 
@@ -59,13 +57,6 @@ public class MainController {
             return "help";
         }
         return "helpRus";
-
-    }
-
-    @RequestMapping("/userrr")
-    public String rr(){
-
-        return "adminUsers";
 
     }
 
