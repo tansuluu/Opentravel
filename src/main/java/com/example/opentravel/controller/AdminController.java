@@ -42,4 +42,10 @@ public class AdminController {
         model.addAttribute("blogs",blogService.getAll());
         return "adminBlogs";
     }
+
+    @RequestMapping("/contactMessage")
+    public String adminPlaces(Model model){
+        model.addAttribute("places",placeService.getAll());
+        return "adminPlaces";
+    }
 }
