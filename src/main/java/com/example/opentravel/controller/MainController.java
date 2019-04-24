@@ -38,10 +38,10 @@ public class MainController {
         model.addAttribute("tourist", list1);
         model.addAttribute("blogs", list3);
         if(lang.equals("eng")) {
+
             return "home";
         }
 
-        model.addAttribute("text","value");
         return "homeInRussian";
     }
 
