@@ -88,7 +88,8 @@
                                     <li class="main_nav_item"><a th:href="@{/blog}">blog</a></li>
                                     <li class="main_nav_item"><a th:href="@{/gids}">users</a></li>
                                     <li class="main_nav_item"><a th:href="@{/chats}">chats</a></li>
-                                    <li class="main_nav_item"><a th:href="@{/help}">help</a></li>
+                                    <li sec:authorize="!hasAuthority('ADMIN')" class="main_nav_item"><a th:href="@{/help}">help</a></li>
+                                    <li sec:authorize="hasAuthority('ADMIN')" class="main_nav_item"><a th:href="@{/admin}">admin</a></li>
                                 </ul>
                             </div>
                             <div class="content_search ml-lg-0 ml-auto">
@@ -246,19 +247,19 @@
             </div>
         </div>
     </div>
-    <div class="container">
+    <div class="container" style="padding-left: 260px">
         <div class="row">
-            <div class="col-md-6 col-md-offset-3">
+            <div class="col-md-12 col-md-offset-3">
                 <div class="well well-sm">
-                <form class="form-horizontal" action="" method="post">
-                <fieldset>
-                    <legend class="text-center">Contact us</legend>
-
+                <form class="form-horizontal" th:object="${contactMessage}" th:action="@{/contactMessage}" method="post">
+                    <div class="col-md-7 text-center heading-section ftco-animate" style="padding-bottom: 40px">
+                        <h2>Contact us</h2>
+                    </div>
                     <!-- Name input-->
                     <div class="form-group">
                         <label class="col-md-3 control-label" for="name">Name</label>
                         <div class="col-md-9">
-                            <input id="name" name="name" type="text" placeholder="Your name" class="form-control">
+                            <input id="name" name="name" type="text" th:field="*{name}" placeholder="Your name" class="form-control" required="required">
                         </div>
                     </div>
 
@@ -266,7 +267,8 @@
                     <div class="form-group">
                         <label class="col-md-3 control-label" for="email">Your E-mail</label>
                         <div class="col-md-9">
-                            <input id="email" name="email" type="text" placeholder="Your email" class="form-control">
+                            <label th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="validation-message" style="color: red"></label>
+                            <input id="email" name="email" type="text" th:field="*{email}" placeholder="Your email" class="form-control" required="required">
                         </div>
                     </div>
 
@@ -274,33 +276,21 @@
                     <div class="form-group">
                         <label class="col-md-3 control-label" for="message">Your message</label>
                         <div class="col-md-9">
-                            <textarea class="form-control" id="message" name="message" placeholder="Please enter your message here..." rows="5"></textarea>
+                            <textarea class="form-control" id="message" th:field="*{text}" name="message" required="required" placeholder="Please enter your message here..." rows="5"></textarea>
                         </div>
                     </div>
 
                     <!-- Form actions -->
                     <div class="form-group">
-                        <div class="col-md-12 text-right">
+                        <div class="col-md-12 text-middle">
                             <button type="submit" class="btn btn-primary btn-lg">Submit</button>
                         </div>
                     </div>
-                </fieldset>
                 </form>
                 </div>
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
 
     <!-- Copyright -->
     <div class="copyright">
@@ -359,6 +349,17 @@
         <script src="tast/js/main.js"></script>
 
     </div>
+    <script th:inline="javascript">
+
+        /*<![CDATA[*/
+
+        var test = /*[[${test}]]*/ 'test';
+        console.log(test);
+        if(test!=null){
+            alert(test);
+        }
+        /*]]>*/
+    </script>
 
 </body>
 

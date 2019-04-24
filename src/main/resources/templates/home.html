@@ -29,6 +29,8 @@
 		<link rel="stylesheet" href="tast/css/icomoon.css">
 		<link rel="stylesheet" href="tast/css/style.css">
 	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
 	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
 
 </head>
@@ -85,7 +87,8 @@
 								<li class="main_nav_item"><a th:href="@{/blog}">blog</a></li>
                                 <li class="main_nav_item"><a th:href="@{/gids}">users</a></li>
 								<li class="main_nav_item"><a th:href="@{/chats}">chats</a></li>
-								<li class="main_nav_item"><a th:href="@{/help}">help</a></li>
+								<li sec:authorize="!hasAuthority('ADMIN')" class="main_nav_item"><a th:href="@{/help}">help</a></li>
+								<li sec:authorize="hasAuthority('ADMIN')" class="main_nav_item"><a th:href="@{/admin}">admin</a></li>
 
 							</ul>
 						</div>
@@ -473,8 +476,7 @@
 		<script src="tast/js/google-map.js"></script>
 		<script src="tast/js/main.js"></script>
 	</div>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+
 </body>
 
 </html>

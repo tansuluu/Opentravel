@@ -1,5 +1,6 @@
 package com.example.opentravel.controller;
 
+import com.example.opentravel.model.ContactMessage;
 import com.example.opentravel.model.User;
 import com.example.opentravel.service.BlogService;
 import com.example.opentravel.service.PlaceService;
@@ -8,11 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.nio.file.attribute.UserPrincipal;
 import java.security.Principal;
 import java.util.ArrayList;
 
@@ -39,17 +38,20 @@ public class MainController {
         model.addAttribute("tourist", list1);
         model.addAttribute("blogs", list3);
         if(lang.equals("eng")) {
+
             return "home";
         }
+
         return "homeInRussian";
     }
 
     @RequestMapping("/about")
-    public String about(@RequestParam(value = "lang",defaultValue = "eng", required = false) String lang){
+    public String about(@RequestParam(value = "lang",defaultValue = "eng", required = false) String lang, Model model){
+        model.addAttribute("contactMessage", new ContactMessage());
         if(lang.equals("eng")) {
             return "about";
         }
-        return "aboutRus";
+        return "russian/aboutRus";
 
     }
 
@@ -59,13 +61,6 @@ public class MainController {
             return "help";
         }
         return "helpRus";
-
-    }
-
-    @RequestMapping("/userrr")
-    public String rr(){
-
-        return "adminUsers";
 
     }
 
