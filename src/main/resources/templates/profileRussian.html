@@ -154,10 +154,12 @@
                         </ul>
                     </div>
                     <div class="user_box ml-auto">
-                        <div class="user_box_register user_box_link"><a th:if="${#request.userPrincipal != null}" th:href="@{/logout}">Logout</a></div>
-                        <div class="user_box_register user_box_link"><a th:if="${#request.userPrincipal != null}" th:href="@{/userPage(username=${#request.userPrincipal.name})}"  th:text="${#request.userPrincipal.name}"></a></div>
-                        <div class="user_box_register user_box_link"><a th:if="${#request.userPrincipal == null}" th:href="@{/registration}">Register</a></div>
-                        <div class="user_box_register user_box_link"><a th:if="${#request.userPrincipal == null}" th:href="@{/login}">Login</a></div>
+                        <div class="user_box_register user_box_link"><a th:if="${#request.userPrincipal !=null}" th:href="@{/logout}">Выход</a></div>
+                        <div class="user_box_register user_box_link"><a th:if="${#request.userPrincipal !=null}" th:href="@{/userPage(username=${#request.userPrincipal.name})}"  th:text="${#request.userPrincipal.name}"></a></div>
+                        <div class="user_box_register user_box_link"><a th:if="${#request.userPrincipal == null}" th:href="@{/registration}">Регистрация</a></div>
+                        <div class="user_box_register user_box_link"><a th:if="${#request.userPrincipal == null}" th:href="@{/login}">Вход</a></div>
+
+                    </div>
 
                     </div>
                 </div>
@@ -176,13 +178,13 @@
                     </div>
                     <div class="main_nav_container ml-auto">
                         <ul class="main_nav_list">
-                            <li class="main_nav_item"><a th:href="@{/}">home</a></li>
-                            <li class="main_nav_item"><a th:href="@{/about}">about us</a></li>
-                            <li class="main_nav_item"><a th:href="@{/places}">offers</a></li>
-                            <li class="main_nav_item"><a th:href="@{/blog}">blog</a></li>
-                            <li class="main_nav_item"><a th:href="@{/gids}">users</a></li>
-                            <li class="main_nav_item"><a th:href="@{/chats}">chats</a></li>
-                            <li class="main_nav_item"><a th:href="@{/help}">help</a></li>
+                            <li class="main_nav_item"><a th:href="@{/(lang=ru)}">Главная</a></li>
+                            <li class="main_nav_item"><a th:href="@{/about(lang=ru)}">О нас</a></li>
+                            <li class="main_nav_item"><a th:href="@{/places(lang=ru)}">Места</a></li>
+                            <li class="main_nav_item"><a th:href="@{/blog(lang=ru)}">Блоги</a></li>
+                            <li class="main_nav_item"><a th:href="@{/gids(lang=ru)}">Пользователи</a></li>
+                            <li class="main_nav_item"><a th:href="@{/chats(lang=ru)}">Чат</a></li>
+                            <li class="main_nav_item"><a th:href="@{/help(lang=ru)}">Помощь</a></li>
                         </ul>
                     </div>
                     <div class="content_search ml-lg-0 ml-auto">
@@ -228,11 +230,11 @@
         <div class="menu_close_container"><div class="menu_close"></div></div>
         <div class="logo menu_logo"><a href="#"><img src="images/logo.png" alt=""></a></div>
         <ul>
-            <li class="menu_item"><a th:href="@{/}">home</a></li>
-            <li class="menu_item"><a th:href="@{/about}">about us</a></li>
-            <li class="menu_item"><a th:href="@{/places}">offers</a></li>
-            <li class="menu_item"><a th:href="@{/blog}">blog</a></li>
-            <li class="menu_item"><a th:href="@{/gids}">users</a></li>
+            <li class="menu_item"><a th:href="@{/}">Главная</a></li>
+            <li class="menu_item"><a th:href="@{/about}">О нас</a></li>
+            <li class="menu_item"><a th:href="@{/places}">Места</a></li>
+            <li class="menu_item"><a th:href="@{/blog}">Блоги</a></li>
+            <li class="menu_item"><a th:href="@{/gids}">Пользователи</a></li>
         </ul>
     </div>
 </div>
@@ -269,7 +271,7 @@
                     <div class="row person_details">
                         <div th:if="${#request.userPrincipal != null}">
                             <h3 th:if="${user.email!=#request.userPrincipal.name}">Привет! Я <span th:text="${user.name}"></span></h3>
-                            <h3 th:if="${user.email==#request.userPrincipal.name}">Привет <span th:text="${user.name}"></span></h3>
+                            <h3 th:if="${user.email==#request.userPrincipal.name}">Здравствуйте <span th:text="${user.name}"></span></h3>
                         </div>
                         <div th:if="${#request.userPrincipal== null}">
                             <h3>Hi I'm<span th:text="${user.name}"></span></h3>
@@ -416,11 +418,11 @@
                 <div class="footer_nav_container d-flex flex-row align-items-center justify-content-lg-end">
                     <div class="footer_nav">
                         <ul class="footer_nav_list">
-                            <li class="footer_nav_item"><a th:href="@{/}">home</a></li>
-                            <li class="footer_nav_item"><a th:href="@{/about}">about us</a></li>
-                            <li class="footer_nav_item"><a th:href="@{/places}">offers</a></li>
-                            <li class="footer_nav_item"><a th:href="@{/blod}">blog</a></li>
-                            <li class="footer_nav_item"><a th:href="@{/gids}">users</a></li>
+                            <li class="footer_nav_item"><a th:href="@{/}">Главная</a></li>
+                            <li class="footer_nav_item"><a th:href="@{/about}">О нас</a></li>
+                            <li class="footer_nav_item"><a th:href="@{/places}">Места</a></li>
+                            <li class="footer_nav_item"><a th:href="@{/blod}">Блоги</a></li>
+                            <li class="footer_nav_item"><a th:href="@{/gids}">Пльзователи</a></li>
                         </ul>
                     </div>
                 </div>
