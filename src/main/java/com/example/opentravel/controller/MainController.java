@@ -1,5 +1,6 @@
 package com.example.opentravel.controller;
 
+import com.example.opentravel.model.ContactMessage;
 import com.example.opentravel.model.User;
 import com.example.opentravel.service.BlogService;
 import com.example.opentravel.service.PlaceService;
@@ -37,13 +38,16 @@ public class MainController {
         model.addAttribute("tourist", list1);
         model.addAttribute("blogs", list3);
         if(lang.equals("eng")) {
+
             return "home";
         }
+
         return "homeInRussian";
     }
 
     @RequestMapping("/about")
-    public String about(@RequestParam(value = "lang",defaultValue = "eng", required = false) String lang){
+    public String about(@RequestParam(value = "lang",defaultValue = "eng", required = false) String lang, Model model){
+        model.addAttribute("contactMessage", new ContactMessage());
         if(lang.equals("eng")) {
             return "about";
         }
