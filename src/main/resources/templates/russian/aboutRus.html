@@ -55,11 +55,11 @@
                             </ul>
                         </div>
                         <div class="user_box ml-auto">
-                            <div class="user_box_register user_box_link"><a th:if="${#request.userPrincipal !=null}" th:href="@{/logout}">Logout</a></div>
+                            <div class="user_box_register user_box_link"><a th:if="${#request.userPrincipal !=null}" th:href="@{/logout}">Выход</a></div>
                             <div class="user_box_register user_box_link"><a th:if="${#request.userPrincipal !=null}" th:href="@{/userPage(username=${#request.userPrincipal.name})}"  th:text="${#request.userPrincipal.name}"></a></div>
 
-                            <div class="user_box_register user_box_link"><a th:if="${#request.userPrincipal == null}" th:href="@{/registration}">Register</a></div>
-                            <div class="user_box_register user_box_link"><a th:if="${#request.userPrincipal == null}" th:href="@{/login}">Login</a></div>
+                            <div class="user_box_register user_box_link"><a th:if="${#request.userPrincipal == null}" th:href="@{/registration}">Регистрация</a></div>
+                            <div class="user_box_register user_box_link"><a th:if="${#request.userPrincipal == null}" th:href="@{/login}">Вход</a></div>
                         </div>
                     </div>
                 </div>
@@ -75,13 +75,13 @@
                         </div>
                         <div class="main_nav_container ml-auto">
                             <ul class="main_nav_list">
-                                <li class="main_nav_item"><a th:href="@{/}">home</a></li>
-                                <li class="main_nav_item"><a th:href="@{/about}">about us</a></li>
-                                <li class="main_nav_item"><a th:href="@{/places}">offers</a></li>
-                                <li class="main_nav_item"><a th:href="@{/blog}">blog</a></li>
-                                <li class="main_nav_item"><a th:href="@{/gids}">users</a></li>
-                                <li class="main_nav_item"><a th:href="@{/chats}">chats</a></li>
-                                <li class="main_nav_item"><a th:href="@{/help}">help</a></li>
+                                <li class="main_nav_item"><a th:href="@{/}">Главная</a></li>
+                                <li class="main_nav_item"><a th:href="@{/about}">О нас</a></li>
+                                <li class="main_nav_item"><a th:href="@{/places}">Места</a></li>
+                                <li class="main_nav_item"><a th:href="@{/blog}">Блог</a></li>
+                                <li class="main_nav_item"><a th:href="@{/gids}">Пользователи</a></li>
+                                <li class="main_nav_item"><a th:href="@{/chats}">Чаты</a></li>
+                                <li class="main_nav_item"><a th:href="@{/help}">Помощь</a></li>
                             </ul>
                         </div>
                         <div class="content_search ml-lg-0 ml-auto">
@@ -105,11 +105,11 @@
             <div class="menu_close_container"><div class="menu_close"></div></div>
             <div class="logo menu_logo"><a href="#"><img src="images/logo.png" alt=""></a></div>
             <ul>
-                <li class="menu_item"><a th:href="@{/}">home</a></li>
-                <li class="menu_item"><a th:href="@{/about}">about us</a></li>
-                <li class="menu_item"><a th:href="@{/places}">offers</a></li>
-                <li class="menu_item"><a th:href="@{/blog}">blog</a></li>
-                <li class="menu_item"><a th:href="@{/gids}">users</a></li>
+                <li class="menu_item"><a th:href="@{/}">Главная</a></li>
+                <li class="menu_item"><a th:href="@{/about}">О нас</a></li>
+                <li class="menu_item"><a th:href="@{/places}">Места</a></li>
+                <li class="menu_item"><a th:href="@{/blog}">Блог</a></li>
+                <li class="menu_item"><a th:href="@{/gids}">Пользователи</a></li>
             </ul>
         </div>
     </div>
@@ -315,7 +315,7 @@
             <div class="col-lg-3 order-lg-1 order-2  ">
                 <div class="copyright_content d-flex flex-row align-items-center">
                     <div><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This project is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by Brigada
+                        Авторсокое право &copy;<script>document.write(new Date().getFullYear());</script> Все права защищены | Сдалено с <i class="fa fa-heart-o" aria-hidden="true"></i> Бригада
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></div>
                 </div>
             </div>
@@ -323,13 +323,13 @@
                 <div class="footer_nav_container d-flex flex-row align-items-center justify-content-lg-end">
                     <div class="footer_nav">
                         <ul class="footer_nav_list">
-                            <li class="footer_nav_item"><a th:href="@{/}">home</a></li>
-                            <li class="footer_nav_item"><a th:href="@{/about}">about us</a></li>
-                            <li class="footer_nav_item"><a th:href="@{/places}">offers</a></li>
-                            <li class="footer_nav_item"><a th:href="@{/blod}">blog</a></li>
-                            <li class="footer_nav_item"><a th:href="@{/gids}">users</a></li>
-                            <li class="footer_nav_item"><a th:href="@{/chats}">chats</a></li>
-                            <li class="footer_nav_item"><a th:href="@{/help}">help</a></li>
+                            <li class="footer_nav_item"><a th:href="@{/}">Главная</a></li>
+                            <li class="footer_nav_item"><a th:href="@{/about}">О нас</a></li>
+                            <li class="footer_nav_item"><a th:href="@{/places}">Места</a></li>
+                            <li class="footer_nav_item"><a th:href="@{/blod}">Блог</a></li>
+                            <li class="footer_nav_item"><a th:href="@{/gids}">Пользователи</a></li>
+                            <li class="footer_nav_item"><a th:href="@{/chats}">Чаты</a></li>
+                            <li class="footer_nav_item"><a th:href="@{/help}">Помощь</a></li>
                         </ul>
                     </div>
                 </div>
