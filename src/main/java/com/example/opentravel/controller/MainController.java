@@ -41,7 +41,7 @@ public class MainController {
             return "home";
         }
 
-        model.addAttribute("attributeName","value");
+        model.addAttribute("text","value");
         return "homeInRussian";
     }
 
