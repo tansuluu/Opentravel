@@ -17,6 +17,9 @@ import java.util.UUID;
 public class ContactMessageService {
 
     @Autowired
+    private EmailService emailService;
+
+    @Autowired
     private ContactMessageRepository contactMessageRepository;
 
     public ContactMessage findById(long id){

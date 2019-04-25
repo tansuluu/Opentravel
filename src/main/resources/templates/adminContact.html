@@ -170,11 +170,11 @@
 
             $("#update").on('click', function(){
                 $('#modalLoginForm').modal('hide');
-                if($("#defaultForm").val()!=" " && $("#defaultForm").val()!="") {
+                if($("#text").val()!="" && $("#subject").val()!="") {
                     $.ajax({
-                        url: "/updateBlogCommentSave",
+                        url: "/replySend",
                         type: "GET",
-                        data: ({id: $("#idCok").val(), text: $("#defaultForm").val()}),
+                        data: ({id: $("#idCok").val(), text: $("#text").val(), subject:$("#subject").val(), email:$("#defaultForm").val()}),
                         dataType: 'json',
                         contentType: "application/json",
                         success: function (data) {
