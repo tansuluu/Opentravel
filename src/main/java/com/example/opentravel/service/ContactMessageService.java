@@ -26,5 +26,6 @@ public class ContactMessageService {
     public void save(ContactMessage contactMessage){
         contactMessage.setDate(Calendar.getInstance().getTime());
         contactMessageRepository.save(contactMessage);
+
     }
 }
