@@ -1,11 +1,10 @@
 package com.example.opentravel.controller;
 
+import com.example.opentravel.model.CommentBlog;
 import com.example.opentravel.model.ContactMessage;
-import com.example.opentravel.service.BlogService;
-import com.example.opentravel.service.ContactMessageService;
-import com.example.opentravel.service.PlaceService;
-import com.example.opentravel.service.UserService;
+import com.example.opentravel.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -17,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.security.Principal;
 
@@ -35,6 +35,9 @@ public class AdminController {
 
     @Autowired
     private ContactMessageService contactMessageService;
+
+    @Autowired
+    private EmailService emailService;
 
     @RequestMapping("/admin")
     public String admin(Model model){
@@ -79,11 +82,16 @@ public class AdminController {
         return "redirect:/adminContacts";
     }
 
-    @RequestMapping("/reply")
-    public String reply(@RequestParam("id")long id){
-        contactMessageService.delete(id);
-        return "redirect:/adminContacts";
+    @RequestMapping(value="/reply",method = RequestMethod.GET,produces = "application/json")
+    public ResponseEntity<?> reply(@RequestParam("id") long id){
+        return ResponseEntity.ok(contactMessageService.findById(id));
     }
 
+    @RequestMapping(value="/replySend",method = RequestMethod.GET,produces = "application/json")
+    public ResponseEntity<?> replySend(@RequestParam("id") long id, @RequestParam("text") String text, @RequestParam("subject")
+                                    String subject, @RequestParam("email") String email, HttpServletRequest request){
+        contactMessageService.sendReply(id,text,subject,email,request);
+        return ResponseEntity.ok(1);
+    }
 
 }
