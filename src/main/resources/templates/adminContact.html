@@ -95,7 +95,7 @@
                                                 <td th:text="${contact.text}"></td>
                                                 <td th:text="${contact.date}"></td>
                                                 <td><input type="checkbox" disabled="disabled" th:checked="${contact.answered==1}" /></td>
-                                                <td class="button"><a th:href="@{/reply(id=${contact.id})}"><i class="fas fa-reply"></i></a></td>
+                                                <td class="button"><a th:href="@{/reply(id=${contact.id})}" class="blogsCom"><i class="fas fa-reply"></i></a></td>
                                                 <td class="button"><a th:href="@{/deleteContact(id=${contact.id})}" ><i class="fas fa-trash"></i></a></td>
                                             </tr>
                                         </tbody>
@@ -121,8 +121,10 @@
                 </div>
                 <div class="modal-body mx-3">
                     <div class="md-form mb-5">
-                        <label>Comment:</label>
+                        <label>Reply to:</label>
                         <input type="text" id="defaultForm" class="form-control validate">
+                        <label>Message:</label>
+                        <input type="text" id="answer" class="form-control validate">
                         <input type="number" id="idCok" class="form-control validate" hidden="hidden">
                     </div>
                 </div>
@@ -143,15 +145,16 @@
             $(".blogsCom").on('click', function(event){
                 console.log(event.target.id);
                 $.ajax({
-                    url:"/updateBlogComment",
+                    url:"/reply",
                     type:"GET",
                     data:({id:event.target.id}),
                     dataType: 'json',
                     contentType: "application/json",
                     success:function(data){
                         console.log(data);
-                        $("#defaultForm").val(data.comentText);
+                        $("#defaultForm").val(data.email);
                         $("#idCok").val(data.id);
+
                     },
                 });
 
