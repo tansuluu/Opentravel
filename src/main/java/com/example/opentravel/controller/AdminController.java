@@ -79,8 +79,8 @@ public class AdminController {
         return "redirect:/adminContacts";
     }
 
-    @RequestMapping("/updateContact")
-    public String updateContact(@RequestParam("id")long id){
+    @RequestMapping("/reply")
+    public String reply(@RequestParam("id")long id){
         contactMessageService.delete(id);
         return "redirect:/adminContacts";
     }
