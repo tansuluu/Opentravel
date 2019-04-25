@@ -37,13 +37,11 @@ public class ContactMessageService {
         contactMessageRepository.delete(findById(id));
     }
 
-    public void sendTokenToReset(User user, HttpServletRequest request){
-        user.setToken(UUID.randomUUID().toString());
-
+    public void reply( HttpServletRequest request,String email){
         String appUrl = request.getScheme() + "://" + request.getServerName();
 
         SimpleMailMessage registrationEmail = new SimpleMailMessage();
-        registrationEmail.setTo(user.getEmail());
+        registrationEmail.setTo(email);
         registrationEmail.setSubject("Password reset");
         registrationEmail.setText("Hello "+ user.getName()+"!\n" +
                 "To reset your password on opentravel site, please click the link below:\n"

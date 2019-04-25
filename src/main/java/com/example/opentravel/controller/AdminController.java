@@ -1,11 +1,13 @@
 package com.example.opentravel.controller;
 
+import com.example.opentravel.model.CommentBlog;
 import com.example.opentravel.model.ContactMessage;
 import com.example.opentravel.service.BlogService;
 import com.example.opentravel.service.ContactMessageService;
 import com.example.opentravel.service.PlaceService;
 import com.example.opentravel.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -79,11 +81,9 @@ public class AdminController {
         return "redirect:/adminContacts";
     }
 
-    @RequestMapping("/reply")
-    public String reply(@RequestParam("id")long id){
-        contactMessageService.delete(id);
-        return "redirect:/adminContacts";
+    @RequestMapping(value="/reply",method = RequestMethod.GET,produces = "application/json")
+    public ResponseEntity<?> reply(@RequestParam("id") long id){
+        return ResponseEntity.ok(contactMessageService.findById(id));
     }
-
 
 }
