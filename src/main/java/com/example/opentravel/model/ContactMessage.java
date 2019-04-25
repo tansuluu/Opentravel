@@ -25,6 +25,9 @@ public class ContactMessage {
     @Column(name = "name", length = 200)
     private String name;
 
+    @Column(name = "answered", length = 200)
+    private int answered;
+
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "date", nullable = false)
     private Date date;
@@ -67,5 +70,13 @@ public class ContactMessage {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public int getAnswered() {
+        return answered;
+    }
+
+    public void setAnswered(int answered) {
+        this.answered = answered;
     }
 }

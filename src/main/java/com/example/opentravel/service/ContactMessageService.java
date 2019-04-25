@@ -25,6 +25,12 @@ public class ContactMessageService {
 
     public void save(ContactMessage contactMessage){
         contactMessage.setDate(Calendar.getInstance().getTime());
+        contactMessage.setAnswered(0);
         contactMessageRepository.save(contactMessage);
+
+    }
+
+    public void delete(long id){
+        contactMessageRepository.delete(findById(id));
     }
 }

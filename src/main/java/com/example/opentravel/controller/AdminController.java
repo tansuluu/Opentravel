@@ -15,6 +15,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
 import java.security.Principal;
@@ -53,6 +54,12 @@ public class AdminController {
         return "adminBlogs";
     }
 
+    @RequestMapping("/adminContacts")
+    public String adminContacts(Model model){
+        model.addAttribute("contacts",contactMessageService.getAll());
+        return "adminContact";
+    }
+
     @RequestMapping(value = "/contactMessage",method = RequestMethod.POST)
     public String contactMessage(Model model, @ModelAttribute("contactMessage")@Valid ContactMessage contactMessage, BindingResult result){
         if (result.hasErrors()) {
@@ -65,5 +72,18 @@ public class AdminController {
         model.addAttribute("contactMessage", new ContactMessage());
         return "about";
     }
+
+    @RequestMapping("/deleteContact")
+    public String deleteContact(@RequestParam("id")long id){
+        contactMessageService.delete(id);
+        return "redirect:/adminContacts";
+    }
+
+    @RequestMapping("/reply")
+    public String reply(@RequestParam("id")long id){
+        contactMessageService.delete(id);
+        return "redirect:/adminContacts";
+    }
+
 
 }
