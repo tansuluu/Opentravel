@@ -83,9 +83,9 @@
                                             <th>Name</th>
                                             <th>Text</th>
                                             <th>Data</th>
-                                            <th>Done</th>
-                                            <th>Delete</th>
+                                            <th>Replied</th>
                                             <th>Reply</th>
+                                            <th>Delete</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -94,9 +94,9 @@
                                                 <td th:text="${contact.name}"></td>
                                                 <td th:text="${contact.text}"></td>
                                                 <td th:text="${contact.date}"></td>
-                                                <td><input type="checkbox" th:checked="${contact.answered==1}" /></td>
-                                                <td class="button"><a th:href="@{/deleteContact(id=${contact.id})}" >Delete</a></td>
-                                                <td class="button"><a th:href="@{/reply(id=${contact.id})}">Reply</a></td>
+                                                <td><input type="checkbox" disabled="disabled" th:checked="${contact.answered==1}" /></td>
+                                                <td class="button"><a th:href="@{/reply(id=${contact.id})}"><i class="fas fa-reply"></i></a></td>
+                                                <td class="button"><a th:href="@{/deleteContact(id=${contact.id})}" ><i class="fas fa-trash"></i></a></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -112,7 +112,7 @@
     <script>
         $(document).ready(function () {
             $("#example").DataTable({
-                "scrollY":        "400px",
+                "scrollY":        "800px",
                 "scrollCollapse": true
             });
         });
