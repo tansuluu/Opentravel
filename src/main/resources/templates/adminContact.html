@@ -83,16 +83,19 @@
                                             <th>Name</th>
                                             <th>Text</th>
                                             <th>Data</th>
-                                            <th><input type="checkbox"></th>
+                                            <th>Done</th>
                                             <th>Delete</th>
+                                            <th>Reply</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                             <tr th:each="contact:${contacts}">
                                                 <td th:text="${contact.email}"></td>
                                                 <td th:text="${contact.name}"></td>
+                                                <td th:text="${contact.text}"></td>
+                                                <td th:text="${contact.date}"></td>
                                                 <td class="button"><a th:href="@{/deleteContact(id=${contact.id})}" >Delete</a></td>
-                                                <td class="button"><a th:href="@{/updateContact(id=${contact.id})}">Update</a></td>
+                                                <td class="button"><a th:href="@{/reply(id=${contact.id})}">Reply</a></td>
                                             </tr>
                                         </tbody>
                                     </table>

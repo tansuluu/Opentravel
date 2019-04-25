@@ -15,6 +15,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
 import java.security.Principal;
@@ -70,6 +71,18 @@ public class AdminController {
         model.addAttribute("test","Thank you for your message, we will message you around 2 hours!");
         model.addAttribute("contactMessage", new ContactMessage());
         return "about";
+    }
+
+    @RequestMapping("/deleteContact")
+    public String deleteContact(@RequestParam("id")long id){
+        contactMessageService.delete(id);
+        return "redirect:/adminContacts";
+    }
+
+    @RequestMapping("/updateContact")
+    public String updateContact(@RequestParam("id")long id){
+        contactMessageService.delete(id);
+        return "redirect:/adminContacts";
     }
 
 

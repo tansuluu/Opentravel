@@ -28,4 +28,8 @@ public class ContactMessageService {
         contactMessageRepository.save(contactMessage);
 
     }
+
+    public void delete(long id){
+        contactMessageRepository.delete(findById(id));
+    }
 }
