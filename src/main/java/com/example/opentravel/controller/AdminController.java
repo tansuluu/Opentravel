@@ -53,6 +53,12 @@ public class AdminController {
         return "adminBlogs";
     }
 
+    @RequestMapping("/adminContacts")
+    public String adminContacts(Model model){
+        model.addAttribute("contacts",contactMessageService.getAll());
+        return "adminContact";
+    }
+
     @RequestMapping(value = "/contactMessage",method = RequestMethod.POST)
     public String contactMessage(Model model, @ModelAttribute("contactMessage")@Valid ContactMessage contactMessage, BindingResult result){
         if (result.hasErrors()) {
@@ -65,5 +71,6 @@ public class AdminController {
         model.addAttribute("contactMessage", new ContactMessage());
         return "about";
     }
+
 
 }

@@ -16,10 +16,8 @@
     <link href="folderforadmin/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
     <link href="folderforadmin/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
     <link href="folderforadmin/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
-
     <!-- Bootstrap CSS-->
     <link href="folderforadmin/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
-
     <!-- Vendor CSS-->
     <link href="folderforadmin/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
     <link href="folderforadmin/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
@@ -76,7 +74,7 @@
             <div class="main-content" style="padding-top: 25px">
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
-                                <h3 class="title-1 m-b-25">Blogs</h3>
+                                <h3 class="title-1 m-b-25">Contact Messages</h3>
                                 <div lass="panel-body">
                                     <table width="100%" class="display" id="example">
                                         <thead>
@@ -85,16 +83,16 @@
                                             <th>Name</th>
                                             <th>Text</th>
                                             <th>Data</th>
-                                            <th></th>
+                                            <th><input type="checkbox"></th>
+                                            <th>Delete</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                            <tr th:each="user:${blogs}">
-                                                <td th:text="${user.title}"></td>
-                                                <td th:text="${user.author.email}"></td>
-                                                <td ><img th:src="@{${'/image/'+user.photo1}}" style="max-width: 70%"></td>
-                                                <td class="button"><a th:href="@{/deleteApp(id=${user.id})}" >Delete</a></td>
-                                                <td class="button"><a th:href="@{/updateBlog(id=${user.id})}">Update</a></td>
+                                            <tr th:each="contact:${contacts}">
+                                                <td th:text="${contact.email}"></td>
+                                                <td th:text="${contact.name}"></td>
+                                                <td class="button"><a th:href="@{/deleteContact(id=${contact.id})}" >Delete</a></td>
+                                                <td class="button"><a th:href="@{/updateContact(id=${contact.id})}">Update</a></td>
                                             </tr>
                                         </tbody>
                                     </table>
