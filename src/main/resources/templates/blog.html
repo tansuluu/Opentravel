@@ -170,7 +170,7 @@
     <section class="ftco-section bg-light">
       <div class="container">
         <div class="row">
-          <div class="col-md-6 col-lg-4 ftco-animate" th:each="blog:${blogs}">
+          <div class="col-md-6 col-lg-4 ftco-animate" th:each="blog:${blogs}" style="visibility: visible">
             <div class="blog-entry">
               <a th:href="@{/blogInfo(id=${blog.id})}"  class="block-20" th:style="'background: url(/image/' + ${blog.photo1} + ');background-size: cover'">
               </a>
@@ -179,7 +179,7 @@
                   <div><a href="" th:text="${blog.date}">July 7, 2018</a></div>
                   <div style="display: block"><a href="" th:text="${blog.author.getEmail()}">Admin</a></div>
                 </div>
-                <h3 class="heading" th:text="${blog.title}"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
+                <a th:href="@{/blogInfo(id=${blog.id})}"><h3 class="heading" th:text="${blog.title}"></h3></a>
               </div>
             </div>
           </div>
