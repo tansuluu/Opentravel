@@ -122,5 +122,37 @@ public class Sprint4 {
         driver.findElement(By.id("deleteFav")).click();
         return true;
     }
-
+    public static boolean ADM2(WebDriver driver,Main sp) throws InterruptedException {
+        String expectedTitle = "Users";
+        Sprint1.BAU(driver, sp);
+        driver.findElement(By.cssSelector("a[href*='/admin']")).click();
+        Thread.sleep(3000);
+        if(driver.findElement(By.className("title-1")).getText().equals(expectedTitle)){
+            return true;
+        }
+        System.out.println("Failed: Admin Users Page ");
+        return false;
+    }
+    public static boolean ADM5(WebDriver driver,Main sp) throws InterruptedException {
+        String expectedTitle = "Places";
+        ADM2(driver, sp);
+        driver.findElement(By.cssSelector("a[href*='/adminPlaces']")).click();
+        Thread.sleep(3000);
+        if(driver.findElement(By.className("title-1")).getText().equals(expectedTitle)){
+            return true;
+        }
+        System.out.println("Failed: Admin Places Page");
+        return false;
+    }
+    public static boolean ADM3(WebDriver driver,Main sp) throws InterruptedException {
+        String expectedTitle = "Blogs";
+        ADM2(driver, sp);
+        driver.findElement(By.cssSelector("a[href*='/adminBlogs']")).click();
+        Thread.sleep(3000);
+        if(driver.findElement(By.className("title-1")).getText().equals(expectedTitle)){
+            return true;
+        }
+        System.out.println("Failed: Admin Blogs Page "+driver.findElement(By.className("title-1")).getText());
+        return false;
+    }
 }

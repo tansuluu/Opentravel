@@ -125,5 +125,39 @@ public class Sprint2 {
         System.out.println("Blog Updated!!!");
         return true;
     }
+    public static boolean LUP10(WebDriver driver, Main sp) throws InterruptedException {
+        String expectedTitle = "Opentravel";
+        Sprint4.ADM5(driver, sp);
+        if(!driver.findElement(By.linkText("Delete")).getAttribute("href").equals("")){
+            return true;
+        }
+        return false;
+    }
+    public static boolean BLO9(WebDriver driver, Main sp) throws InterruptedException {
+        String expectedTitle = "Opentravel";
+        Sprint4.ADM3(driver, sp);
+        if(!driver.findElement(By.linkText("Delete")).getAttribute("href").equals("")){
+            return true;
+        }
+        return false;
+    }
+    public static boolean LUP8(WebDriver driver, Main sp) throws InterruptedException {
+        String expectedTitle = "Opentravel";
+        Sprint4.ADM5(driver, sp);
+        driver.findElement(By.linkText("Update")).click();
+        if(driver.findElement(By.tagName("h1")).getText().equals("Update Place")) {
+            return true;
+        }
+        return false;
+    }
+    public static boolean BLO10(WebDriver driver, Main sp) throws InterruptedException {
+        String expectedTitle = "Opentravel";
+        Sprint4.ADM2(driver, sp);
+        driver.findElement(By.linkText("Update")).click();
+        if(driver.findElement(By.tagName("h2")).getText().equals("Updateblog")) {
+            return true;
+        }
+        return false;
+    }
 
 }

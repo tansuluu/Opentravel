@@ -11,7 +11,7 @@ import java.io.IOException;
 public class Main {
     public static String uName = "Examp@mail.ru";
     public static String uName2 = "Exam2@mail.ru";
-    public static String exUName="example@mail.ru";
+    public static String exUName="exam2@mail.ru";
     public static String pWord = "zzz123";
     public static String exname = "Example user";
     public static String exage = "21";
@@ -75,7 +75,7 @@ public class Main {
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////                              Blog work
-        progress=Sprint1.BLO1(driver, sp); if(!progress) Sprint1.stopProg(driver,"Blogs Page"); else System.out.println("Blogs Page");
+        /*progress=Sprint1.BLO1(driver, sp); if(!progress) Sprint1.stopProg(driver,"Blogs Page"); else System.out.println("Blogs Page");
         progress=Sprint1.BLO4(driver, sp); if(!progress) Sprint1.stopProg(driver,"New Blog"); else System.out.println("New Blog");
         progress=Sprint1.BLO2(driver, sp); if(!progress) Sprint1.stopProg(driver,"Blog Page"); else System.out.println("Blog Page");
         progress=Sprint2.BLO3(driver, sp); if(!progress) Sprint1.stopProg(driver,"Search Blog"); else System.out.println("Search Blog");
@@ -85,7 +85,22 @@ public class Main {
         progress=Sprint4.BLO7(driver, sp); if(!progress) Sprint1.stopProg(driver,"Blog Like"); else System.out.println("Blog Like");
         progress=Sprint4.BLO15(driver, sp); if(!progress) Sprint1.stopProg(driver,"Blog Like Delete"); else System.out.println("Blog Like Delete");
 
-        progress=Sprint1.BLO5(driver, sp); if(!progress) Sprint1.stopProg(driver,"Delete Blog"); else System.out.println("Delete Blog");
+        progress=Sprint1.BLO5(driver, sp); if(!progress) Sprint1.stopProg(driver,"Delete Blog"); else System.out.println("Delete Blog");*/
+
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////                              Admin work
+        progress=Sprint4.ADM2(driver, sp); if(!progress) Sprint1.stopProg(driver,"Admin Users"); else System.out.println("Admin Users");
+        progress=Sprint4.ADM3(driver, sp); if(!progress) Sprint1.stopProg(driver,"Admin Blogs"); else System.out.println("Admin Blogs");
+        progress=Sprint4.ADM5(driver, sp); if(!progress) Sprint1.stopProg(driver,"Admin Places"); else System.out.println("Admin Places");
+        progress=Sprint2.LUP8(driver, sp); if(!progress) Sprint1.stopProg(driver,"Admin Places Updating"); else System.out.println("Admin Places Updating");
+        progress=Sprint2.BLO10(driver, sp); if(!progress) Sprint1.stopProg(driver,"Admin Blogs Updating"); else System.out.println("Admin Blogs Updating");
+        progress=Sprint2.LUP10(driver, sp); if(!progress) Sprint1.stopProg(driver,"Admin Places Deleting"); else System.out.println("Admin Places Deleting");
+        progress=Sprint2.BLO9(driver, sp); if(!progress) Sprint1.stopProg(driver,"Admin Blogs Deleting"); else System.out.println("Admin Blogs Deleting");
+
+
+
+
 
         //progress=Sprint3.USE7(driver, sp); if(!progress) Sprint1.stopProg(driver,"Delete User"); else System.out.println("Delete Users");
 

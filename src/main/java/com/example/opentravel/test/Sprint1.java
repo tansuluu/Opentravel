@@ -169,6 +169,12 @@ public class Sprint1 {
         System.out.println("Failed in Logging In");
         return false;
     }
+    public static boolean logOut(WebDriver driver, Main sp) {
+        String expectedTitle = "Login";
+        BAU(driver, sp);
+        driver.findElement(By.linkText("LOGOUT")).click();
+        return checkTitle(driver,expectedTitle);
+    }
 
     public static boolean USE2(WebDriver driver, Main sp) {
         String title = "";
