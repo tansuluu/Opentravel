@@ -29,9 +29,12 @@ public class LoginController {
     private UserService userService;
 
     @RequestMapping(value={"/login"}, method = RequestMethod.GET)
-    public ModelAndView login(){
+    public ModelAndView login(@RequestParam(value = "lang",defaultValue = "eng", required = false) String lang){
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("login");
+        if(lang.equals("eng")) {
+            modelAndView.addObject("eng",true);
+        }
         return modelAndView;
     }
 

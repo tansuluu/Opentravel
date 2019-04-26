@@ -60,7 +60,7 @@ public class MainController {
         if(lang.equals("eng")) {
             return "help";
         }
-        return "helpRus";
+        return "helpRussian";
 
     }
 
