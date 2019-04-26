@@ -145,19 +145,15 @@ public class Sprint2 {
         String expectedTitle = "Opentravel";
         Sprint4.ADM5(driver, sp);
         driver.findElement(By.linkText("Update")).click();
-        if(driver.findElement(By.tagName("h1")).getText().equals("Update Place")) {
-            return true;
-        }
-        return false;
+        Thread.sleep(1500);
+        return Sprint1.checkTitle(driver,expectedTitle);
     }
     public static boolean BLO10(WebDriver driver, Main sp) throws InterruptedException {
-        String expectedTitle = "Opentravel";
-        Sprint4.ADM2(driver, sp);
+        String expectedTitle = "New Blog";
+        Sprint4.ADM3(driver, sp);
         driver.findElement(By.linkText("Update")).click();
-        if(driver.findElement(By.tagName("h2")).getText().equals("Updateblog")) {
-            return true;
-        }
-        return false;
+        Thread.sleep(1500);
+        return Sprint1.checkTitle(driver,expectedTitle);
     }
 
 }

@@ -126,7 +126,7 @@ public class Sprint4 {
         String expectedTitle = "Users";
         Sprint1.BAU(driver, sp);
         driver.findElement(By.cssSelector("a[href*='/admin']")).click();
-        Thread.sleep(3000);
+        Thread.sleep(1500);
         if(driver.findElement(By.className("title-1")).getText().equals(expectedTitle)){
             return true;
         }
@@ -137,7 +137,7 @@ public class Sprint4 {
         String expectedTitle = "Places";
         ADM2(driver, sp);
         driver.findElement(By.cssSelector("a[href*='/adminPlaces']")).click();
-        Thread.sleep(3000);
+        Thread.sleep(1500);
         if(driver.findElement(By.className("title-1")).getText().equals(expectedTitle)){
             return true;
         }
@@ -148,7 +148,7 @@ public class Sprint4 {
         String expectedTitle = "Blogs";
         ADM2(driver, sp);
         driver.findElement(By.cssSelector("a[href*='/adminBlogs']")).click();
-        Thread.sleep(3000);
+        Thread.sleep(1500);
         if(driver.findElement(By.className("title-1")).getText().equals(expectedTitle)){
             return true;
         }
