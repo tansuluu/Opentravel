@@ -47,13 +47,10 @@
             <div class="col d-flex flex-row">
               <div class="social">
                 <ul class="social_list">
-
-                  <li class="social_list_item"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                  <li class="social_list_item"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                  <li class="social_list_item"><a href="#"><i class="fa fa-vk" aria-hidden="true"></i></a></li>
-                  <li class="social_list_item"><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-
-                </ul>
+                  <ul class="social_list">
+                    <li class="social_list_item"><a th:href="@{/about(lang=ru)}"><i  aria-hidden="true"></i><img src="images/rus.png" ></a></li>
+                    <li class="social_list_item"><a th:href="@{/about}"><i  aria-hidden="true"></i><img src="images/eng.png" ></a></li>
+                  </ul>
               </div>
               <div class="user_box ml-auto">
                 <div class="user_box_register user_box_link"><a th:if="${#request.userPrincipal !=null}" th:href="@{/logout}">Logout</a></div>

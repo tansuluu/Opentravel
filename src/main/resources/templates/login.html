@@ -32,10 +32,21 @@
 
 <div class="container-login100" style="background-image: url('/folderforlogin/images/k1.jpg');">
 	<div class="wrap-login100 p-l-55 p-r-55 p-t-80 p-b-30">
+		<div class="social">
+			<ul class="social_list">
+				<ul class="social_list">
+					<li class="social_list_item"><a th:href="@{/login(lang=ru)}"><i  aria-hidden="true"></i><img src="images/rus.png" ></a></li>
+					<li class="social_list_item"><a th:href="@{/login}"><i  aria-hidden="true"></i><img src="images/eng.png" ></a></li>
+				</ul>
+			</ul>
+		</div>
 		<h6><span class="text-success" th:utext="${successMessage}"></span></h6>
 		<form class="login100-form validate-form" th:action="@{/login}" method="post" id="login">
-				<span class="login100-form-title p-b-37">
+				<span class="login100-form-title p-b-37" th:if="${eng==true}">
 					Sign In
+				</span>
+				<span class="login100-form-title p-b-37" th:if="${eng!=true}">
+					Логин
 				</span>
 
 			<div class="wrap-input100 validate-input m-b-20" data-validate="Enter email">
@@ -52,20 +63,35 @@
 				<p style="font-size: 22; color: #FF1C19;">Email or Password invalid, please verify</p>
 			</div>
 
-			<div class="container-login100-form-btn">
+			<div class="container-login100-form-btn" th:if="${eng==true}">
 				<button class="login100-form-btn" type="submit">
 					Sign In
 				</button>
 			</div>
+			<div class="container-login100-form-btn" th:if="${eng!=true}">
+				<button class="login100-form-btn" type="submit">
+					Зайти
+				</button>
+			</div>
 
-			<div class="text-center">
+			<div class="text-center" th:if="${eng==true}">
 				<a class="txt2 hov1" th:href="@{/registration}">
 					Sign Up
 				</a>
 			</div>
-            <div class="text-center">
+            <div class="text-center" th:if="${eng==true}">
                 <p id="res" >
                     Forget Password?
+                </p>
+            </div>
+			<div class="text-center" th:if="${eng!=true}">
+				<a class="txt2 hov1" th:href="@{/registration}">
+					Регистрация
+				</a>
+			</div>
+            <div class="text-center" th:if="${eng!=true}">
+                <p id="ress" >
+                    Забыли пароль?
                 </p>
             </div>
 		</form>

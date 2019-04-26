@@ -223,10 +223,8 @@
                         <div class="col d-flex flex-row">
                             <div class="social">
                                 <ul class="social_list">
-                                    <li class="social_list_item"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                    <li class="social_list_item"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                    <li class="social_list_item"><a href="#"><i class="fa fa-vk" aria-hidden="true"></i></a></li>
-                                    <li class="social_list_item"><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                    <li class="social_list_item"><a th:href="@{/help(lang=ru)}"><i  aria-hidden="true"></i><img src="images/rus.png" ></a></li>
+                                    <li class="social_list_item"><a th:href="@{/help}"><i  aria-hidden="true"></i><img src="images/eng.png" ></a></li>
                                 </ul>
                             </div>
                             <div class="user_box ml-auto">
@@ -250,13 +248,12 @@
                             </div>
                             <div class="main_nav_container ml-auto">
                                 <ul class="main_nav_list">
-                                    <li class="main_nav_item"><a th:href="@{/}">Главная</a></li>
-                                    <li class="main_nav_item"><a th:href="@{/about}">О нас</a></li>
+                                    <li class="main_nav_item"><a th:href="@{/about(lang=ru)}">О нас</a></li>
                                     <li class="main_nav_item"><a th:href="@{/places}">Предложения</a></li>
                                     <li class="main_nav_item"><a th:href="@{/blog}">Блог</a></li>
                                     <li class="main_nav_item"><a th:href="@{/gids}">Пользователи</a></li>
                                     <li class="main_nav_item"><a th:href="@{/chats}">Чат</a></li>
-                                    <li class="main_nav_item"><a th:href="@{/help}">Помощь</a></li>
+                                    <li class="main_nav_item"><a th:href="@{/help(lang=ru)}">Помощь</a></li>
                                 </ul>
                             </div>
                             <div class="content_search ml-lg-0 ml-auto">
