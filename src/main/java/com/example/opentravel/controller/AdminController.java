@@ -84,6 +84,7 @@ public class AdminController {
 
     @RequestMapping(value="/reply",method = RequestMethod.GET,produces = "application/json")
     public ResponseEntity<?> reply(@RequestParam("id") long id){
+        System.out.println(id);
         return ResponseEntity.ok(contactMessageService.findById(id));
     }
 

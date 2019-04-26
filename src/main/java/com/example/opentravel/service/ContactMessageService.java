@@ -42,7 +42,9 @@ public class ContactMessageService {
 
     public void sendReply( long id,String text, String subject,String email,HttpServletRequest request){
         String appUrl = request.getScheme() + "://" + request.getServerName();
-
+        ContactMessage contactMessage=findById(id);
+        contactMessage.setAnswered(1);
+        contactMessageRepository.save(contactMessage);
         SimpleMailMessage registrationEmail = new SimpleMailMessage();
         registrationEmail.setTo(email);
         registrationEmail.setSubject(subject);

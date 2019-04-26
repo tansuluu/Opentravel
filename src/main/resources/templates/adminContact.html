@@ -95,8 +95,8 @@
                                                 <td th:text="${contact.text}"></td>
                                                 <td th:text="${contact.date}"></td>
                                                 <td><input type="checkbox" disabled="disabled" th:checked="${contact.answered==1}" /></td>
-                                                <td class="button"><a th:href="@{/reply(id=${contact.id})}" class="blogsCom"><i class="fas fa-reply"></i></a></td>
-                                                <td class="button"><a th:href="@{/deleteContact(id=${contact.id})}" ><i class="fas fa-trash"></i></a></td>
+                                                <td class="blogsCom"><i th:id="${contact.id}" class="fas fa-reply"></i></td>
+                                                <td ><a th:href="@{/deleteContact(id=${contact.id})}" ><i class="fas fa-trash"></i></a></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -122,11 +122,11 @@
                 <div class="modal-body mx-3">
                     <div class="md-form mb-5">
                         <label>Reply to:</label>
-                        <input type="text" id="defaultForm" class="form-control validate">
+                        <input type="text" id="defaultForm" class="form-control validate" readonly="readonly">
                         <label>Subject:</label>
                         <input type="text" id="subject" class="form-control validate">
                         <label>Text:</label>
-                        <input type="text" id="text" class="form-control validate">
+                        <textarea type="text" id="text" class="form-control validate"></textarea>
                         <input type="number" id="idCok" class="form-control validate" hidden="hidden">
                     </div>
                 </div>
@@ -156,8 +156,7 @@
                         console.log(data);
                         $("#defaultForm").val(data.email);
                         $("#idCok").val(data.id);
-
-                    },
+                    }
                 });
 
                 $('#modalLoginForm').modal('show');
@@ -171,12 +170,16 @@
             $("#update").on('click', function(){
                 $('#modalLoginForm').modal('hide');
                 if($("#text").val()!="" && $("#subject").val()!="") {
+                    console.log("ghbjkhgvbhjk");
                     $.ajax({
                         url: "/replySend",
                         type: "GET",
                         data: ({id: $("#idCok").val(), text: $("#text").val(), subject:$("#subject").val(), email:$("#defaultForm").val()}),
                         dataType: 'json',
                         contentType: "application/json",
+                        beforeSend:function(){
+                            alert("Please wait, we are sending an email!");
+                        },
                         success: function (data) {
                             document.location.reload(true);
                         },
@@ -211,6 +214,10 @@
     <script src="https://code.jquery.com/jquery-3.3.1.js">
 
     </script>
+    <script src="folderforindex/styles/bootstrap4/bootstrap.min.js"></script>
+
+    <script src="folderforindex/common-js/bootstrap.js"></script>
+
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js">
 
     </script>
