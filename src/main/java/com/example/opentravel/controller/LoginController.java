@@ -45,45 +45,7 @@ public class LoginController {
         modelAndView.addObject("user", user);
         modelAndView.setViewName("registration");
         return modelAndView;
-    }
-    @RequestMapping(value = "/registration", method = RequestMethod.POST)
-    public ModelAndView createNewUser(@Valid User user, BindingResult bindingResult, @RequestParam(name = "file",required = false) MultipartFile file,HttpServletRequest request) {
-        ModelAndView modelAndView = new ModelAndView();
-        User userExists = userService.findUserByEmail(user.getEmail());
-        if (userExists != null) {
-            bindingResult
-                    .rejectValue("email", "error.user",
-                            "*There is already a user registered with the email provided");
-        }
-        if (bindingResult.hasErrors()) {
-            modelAndView.setViewName("registration");
-        } else {
-            if(user.getGender().equals("female")){
-                user.setImage("download.jpg");
-            }
-            else user.setImage("images.png");
-            if (file!=null && !file.isEmpty()){
-                storageService.saveAvatar(file);
-                user.setImage(file.getOriginalFilename());
-            }
-            if (user.getCountry()==null || user.getCountry().equalsIgnoreCase("")) {
-                user.setCountry("Kyrgyzstan");
-                user.setStatus("gid");
-                userService.saveUser(user, "GID");
-                modelAndView.addObject("successMessage", "User has been registered successfully as GID,We sent confirmation to your email, please confirm to login!");
-            }
-            else {
-                user.setStatus("tourist");
-                userService.saveUser(user, "TOURIST");
-                modelAndView.addObject("successMessage", "User has been registered successfully as Tourist, We sent confirmation to your email, please confirm to login!");
-            }
-            userService.sendTokenToConfirm(user,request);
-            modelAndView.addObject("user", new User());
-            modelAndView.setViewName("login");
 
-        }
-        return modelAndView;
-    }
 
     @RequestMapping("/confirm")
     public String  confirm(@RequestParam("token") String token, Model model){
