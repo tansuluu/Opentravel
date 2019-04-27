@@ -32,30 +32,6 @@ public class LikesController {
     @Autowired
     UserService userService;
 
-    @RequestMapping(value = "/hasPutBlog", method = RequestMethod.GET, produces = "application/json")
-    public ResponseEntity<?> putedLikeBlog(@RequestParam("id") long id, @RequestParam("username") String username) {
-        int result =0 ;
-        if (likeService.existsByBlogAndUser(blogService.findById(id),userService.findUserByEmail(username))) {
-            result = 1;
-        }
-        return ResponseEntity.ok(result);
-    }
-
-    @RequestMapping(value = "/addLikeBlog", method = RequestMethod.GET, produces = "application/json")
-    public ResponseEntity<?> getLikeBlog(@RequestParam("id") long id, @RequestParam("username") String username) {
-        likeService.save(new Likes(blogService.findById(id),userService.findUserByEmail(username)));
-        blogService.updateLikes(id, 1);
-        int likes = blogService.findById(id).getLikes();
-        return ResponseEntity.ok(likes);
-    }
-
-    @RequestMapping(value = "/deleteLikeBlog", method = RequestMethod.GET, produces = "application/json")
-    public ResponseEntity<?> deletLikeBlog(@RequestParam("id") long id, @RequestParam("username") String username) {
-        likeService.removeByUsernameAndBlogIDd(userService.findUserByEmail(username), blogService.findById(id));
-        blogService.updateLikes(id, -1);
-        int likes = blogService.findById(id).getLikes();
-        return ResponseEntity.ok(likes);
-    }
 
     @RequestMapping(value = "/hasPut", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity<?> putedLike(@RequestParam("id") long id, @RequestParam("username") String username) {
