@@ -114,10 +114,11 @@ public class PlaceCommentServiceTest {
     @Test
     public void testUpdate(){
         PlaceComment placeComment= new PlaceComment();
-        long id;
+        long id=0;
         String text = "Hello World";
+        placeComment.setId(id);
         placeComment.setComentText("Hello World");
-        when(placeCommentRepositoryMock.save(placeComment)).thenReturn(placeComment);
+        //when(placeCommentRepositoryMock.save(placeComment)).thenReturn(placeComment);
         assertEquals(text, placeComment.getComentText());
     }
 
