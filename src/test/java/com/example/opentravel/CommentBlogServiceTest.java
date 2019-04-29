@@ -116,7 +116,7 @@ public class CommentBlogServiceTest {
         long id;
         String text = "Hello World";
         commentBlog.setComentText("Hello World");
-        when(commentBlogRepositoryMock.save(commentBlog)).thenReturn(commentBlog);
+        //when(commentBlogRepositoryMock.save(commentBlog)).thenReturn(commentBlog);
         assertEquals(text, commentBlog.getComentText());
     }
 
