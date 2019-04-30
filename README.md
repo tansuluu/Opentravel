@@ -24,3 +24,5 @@ Nurdin Imanaliev - requirement engineer - [nurdin.imanaliev@iaau.edu.kg](nurdin.
    [HOW TO RUN](https://github.com/tansuluu/Opentravel/wiki/MANUAL-FOR-TREVELLER-SITE#how-to-run)
 ### [TREVELLER SITE DEVELOPING CHRONOLOGY DOCUMENT](https://github.com/tansuluu/Opentravel/wiki/TREVELLER-SITE-DEVELOPING-CHRONOLOGY-DOCUMENT)
 ### [SOFTWARE REQUIREMENTS SPECIFICATION DOCUMENT](https://github.com/tansuluu/Opentravel/wiki/SRS)
+
+### [LICENCE](https://github.com/tansuluu/Opentravel/blob/master/LICENSE)
